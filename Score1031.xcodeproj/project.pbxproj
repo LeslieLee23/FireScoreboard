@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6F4DC4F35D8BA288F87A4E42 /* Pods_Score1031.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BF45B30815FE811A88C9425 /* Pods_Score1031.framework */; };
 		F51C7A3223C78B1700540B25 /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51C7A3123C78B1700540B25 /* RecordView.swift */; };
 		F51C7A3623D4EB6300540B25 /* NameAndScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51C7A3523D4EB6300540B25 /* NameAndScore.swift */; };
 		F51C7A3A23D569C500540B25 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51C7A3923D569C500540B25 /* HistoryView.swift */; };
@@ -27,15 +28,19 @@
 		F591294E241FE1C20071E1D3 /* SelectPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F591294D241FE1C20071E1D3 /* SelectPlayerView.swift */; };
 		F59129502420368F0071E1D3 /* SelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F591294F2420368F0071E1D3 /* SelectView.swift */; };
 		F5C95EA623FB4EB500D46C7A /* AddEditChoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C95EA523FB4EB500D46C7A /* AddEditChoice.swift */; };
+		F5F02578244427A20038A4FB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F5F02577244427A20038A4FB /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5037D95BEE917792B516E081 /* Pods-Score1031.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Score1031.debug.xcconfig"; path = "Target Support Files/Pods-Score1031/Pods-Score1031.debug.xcconfig"; sourceTree = "<group>"; };
+		7BF45B30815FE811A88C9425 /* Pods_Score1031.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Score1031.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C418E89D0900348FFE2E135F /* Pods-Score1031.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Score1031.release.xcconfig"; path = "Target Support Files/Pods-Score1031/Pods-Score1031.release.xcconfig"; sourceTree = "<group>"; };
 		F51C7A3123C78B1700540B25 /* RecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
 		F51C7A3523D4EB6300540B25 /* NameAndScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameAndScore.swift; sourceTree = "<group>"; };
 		F51C7A3923D569C500540B25 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		F51EE71D23F09EB80030B17C /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
 		F51EE72123F12D9D0030B17C /* Score1031.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Score1031.xcdatamodel; sourceTree = "<group>"; };
-		F53BDFCC236B44CC00C3E203 /* Score1031.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Score1031.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F53BDFCC236B44CC00C3E203 /* FireScoreboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FireScoreboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F53BDFCF236B44CC00C3E203 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F53BDFD1236B44CC00C3E203 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		F53BDFD3236B44CC00C3E203 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -52,6 +57,7 @@
 		F591294D241FE1C20071E1D3 /* SelectPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPlayerView.swift; sourceTree = "<group>"; };
 		F591294F2420368F0071E1D3 /* SelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectView.swift; sourceTree = "<group>"; };
 		F5C95EA523FB4EB500D46C7A /* AddEditChoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditChoice.swift; sourceTree = "<group>"; };
+		F5F02577244427A20038A4FB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,12 +65,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F4DC4F35D8BA288F87A4E42 /* Pods_Score1031.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2530B1FA40EA97F3FDD4A6B2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5037D95BEE917792B516E081 /* Pods-Score1031.debug.xcconfig */,
+				C418E89D0900348FFE2E135F /* Pods-Score1031.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		81256A6A0C2C25BB191774B8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7BF45B30815FE811A88C9425 /* Pods_Score1031.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F51C7A3023C78AED00540B25 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -113,13 +137,15 @@
 			children = (
 				F53BDFCE236B44CC00C3E203 /* Score1031 */,
 				F53BDFCD236B44CC00C3E203 /* Products */,
+				2530B1FA40EA97F3FDD4A6B2 /* Pods */,
+				81256A6A0C2C25BB191774B8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
 		F53BDFCD236B44CC00C3E203 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F53BDFCC236B44CC00C3E203 /* Score1031.app */,
+				F53BDFCC236B44CC00C3E203 /* FireScoreboard.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -136,6 +162,7 @@
 				F53BDFD5236B44CF00C3E203 /* Assets.xcassets */,
 				F53BDFDA236B44CF00C3E203 /* LaunchScreen.storyboard */,
 				F53BDFDD236B44CF00C3E203 /* Info.plist */,
+				F5F02577244427A20038A4FB /* GoogleService-Info.plist */,
 				F53BDFD7236B44CF00C3E203 /* Preview Content */,
 			);
 			path = Score1031;
@@ -156,9 +183,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F53BDFE0236B44CF00C3E203 /* Build configuration list for PBXNativeTarget "Score1031" */;
 			buildPhases = (
+				858741A165ABBC1FFAFE64C0 /* [CP] Check Pods Manifest.lock */,
 				F53BDFC8236B44CC00C3E203 /* Sources */,
 				F53BDFC9236B44CC00C3E203 /* Frameworks */,
 				F53BDFCA236B44CC00C3E203 /* Resources */,
+				E06CEBD45B429CEA6FDC1C99 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -166,7 +195,7 @@
 			);
 			name = Score1031;
 			productName = Score1031;
-			productReference = F53BDFCC236B44CC00C3E203 /* Score1031.app */;
+			productReference = F53BDFCC236B44CC00C3E203 /* FireScoreboard.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -208,12 +237,55 @@
 			buildActionMask = 2147483647;
 			files = (
 				F53BDFDC236B44CF00C3E203 /* LaunchScreen.storyboard in Resources */,
+				F5F02578244427A20038A4FB /* GoogleService-Info.plist in Resources */,
 				F53BDFD9236B44CF00C3E203 /* Preview Assets.xcassets in Resources */,
 				F53BDFD6236B44CF00C3E203 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		858741A165ABBC1FFAFE64C0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Score1031-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E06CEBD45B429CEA6FDC1C99 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Score1031/Pods-Score1031-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Score1031/Pods-Score1031-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Score1031/Pods-Score1031-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F53BDFC8236B44CC00C3E203 /* Sources */ = {
@@ -370,6 +442,7 @@
 		};
 		F53BDFE1236B44CF00C3E203 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5037D95BEE917792B516E081 /* Pods-Score1031.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -382,7 +455,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hulu.Score1031;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = FireScoreboard;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -390,6 +463,7 @@
 		};
 		F53BDFE2236B44CF00C3E203 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C418E89D0900348FFE2E135F /* Pods-Score1031.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -402,7 +476,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hulu.Score1031;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = FireScoreboard;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
