@@ -14,6 +14,7 @@ struct RecordView: View {
      var reason: String = ""
      var entryTime: String = ""
      var playerID: String = ""
+    
      var body: some View {
 
          HStack(){
