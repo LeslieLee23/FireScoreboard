@@ -12,6 +12,9 @@ import Combine
 import CoreData
 
 struct HistoryView: View {
+    //JSON var
+    var recordlines: [Recordline] = testRecordline
+    
     @State var modalIsPresented = false
     //CoreData var
      @Environment(\.managedObjectContext) var managedObjectContext
@@ -23,14 +26,16 @@ struct HistoryView: View {
      var body: some View {
 
          NavigationView {
+
              List {
+
                  ForEach(self.records) {record in
                      if record.playerID == self.userData.playerID && record.score != "NA" {
                      NavigationLink(
                          destination: HistoryDetailView(record: record)) {
                             RecordView(name: record.name!, score: record.score!, reason: record.reason!, entryTime: record.entryTimeString!, playerID: record.playerID)
                      }
-                     
+
                      }
 
                  }

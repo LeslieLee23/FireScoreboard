@@ -159,7 +159,8 @@ struct ContentView: View {
                     
                 HStack {
                     VStack {
-                        NavigationLink (destination: HistoryView(creationDate: creationDate))
+                        NavigationLink (destination: TaskListView())
+//                        NavigationLink (destination: HistoryView(creationDate: creationDate))
                         {
                             Text("View History")
                                 .fontWeight(.light)
