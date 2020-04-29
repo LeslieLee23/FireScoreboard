@@ -6,5 +6,11 @@ target 'Score1031' do
   use_frameworks!
 
   # Pods for Score1031
-pod 'Firebase/Analytics'
+  pod 'Resolver'
+  pod 'Disk', '~> 0.6.4'
+  
+  pod 'Firebase/Analytics'
+  pod 'Firebase/Firestore'
+  pod 'FirebaseFirestoreSwift'
 end
+

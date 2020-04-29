@@ -7,9 +7,12 @@
 //
 
 import SwiftUI
+import Foundation
+//import Resolver
 
 struct NewHistoryView: View {
     var tests: [Recordline] = testRecordline
+  //  @Published var scoreRepository: ScoreRepository = Resolver.resolve()
     
     var body: some View {
         NavigationView { // (2)
