@@ -8,18 +8,19 @@
 
 import SwiftUI
 import Foundation
-//import Resolver
+import Resolver
 
 struct NewHistoryView: View {
+    @ObservedObject var ListVM = ListViewModel()
     var tests: [Recordline] = testRecordline
-  //  @Published var scoreRepository: ScoreRepository = Resolver.resolve()
+
     
     var body: some View {
-        NavigationView { // (2)
+        NavigationView {
           VStack(alignment: .leading) {
             List {
-              ForEach (self.tests) { test in // (3)
-                RecordView(name: test.recordName, score: test.recordScore, reason: test.recordReason, entryTime: test.recordEntryTimeString, playerID: test.playerID) // (6)
+              ForEach (self.tests) { test in
+                RecordView(name: test.recordName, score: test.recordScore, reason: test.recordReason, entryTime: test.recordEntryTimeString, playerID: test.playerID)
               }
             }
 
