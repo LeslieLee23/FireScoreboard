@@ -8,18 +8,18 @@
 
 import Foundation
 import Combine
+import Resolver
 
 class CellViewModel: ObservableObject, Identifiable  {
   @Published var record: Recordline
-  var id: String = ""
-  private var cancellables = Set<AnyCancellable>()
+  @Injected var scoreRepository: ScoreRepository
+    
+  static func newTask() -> CellViewModel {
+    CellViewModel(record: Recordline(playerID: "1", playerOneEmoji: "🥰", playerOneName: "Default1", playerOneScore: 0, playerTwoEmoji: "🥶", playerTwoName: "Default2", playerTwoScore: 0, recordName: "Default1", recordScore: "0", recordReason: "default reason", recordEntryTimeString: "default time", recordAddEdit: true))
+  }
     
     init(record: Recordline) {
       self.record = record
-
-      $record
-        .map { $0.id }
-        .assign(to: \.id, on: self)
-        .store(in: &cancellables)
+        //self.scoreRepository = scoreRepository
     }
 }

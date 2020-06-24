@@ -36,3 +36,4 @@ struct NewHistoryView_Previews: PreviewProvider {
         NewHistoryView()
     }
 }
+

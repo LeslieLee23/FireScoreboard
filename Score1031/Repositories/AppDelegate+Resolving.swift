@@ -9,7 +9,6 @@ import Resolver
 
 extension Resolver: ResolverRegistering {
   public static func registerAllServices() {
-//    register { TestDataScoreRepository () as ScoreRepository }.scope(application)
     register { LocalScoreRepository () as ScoreRepository }.scope(application)
   }
 }

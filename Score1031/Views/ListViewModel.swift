@@ -10,20 +10,20 @@ import Foundation
 import Combine
 import Resolver
 
-class ListViewModel: ObservableObject {
+class ListViewModel: ObservableObject, Identifiable {
   @Published var scoreRepository: ScoreRepository = Resolver.resolve()
   @Published var cellViewModels = [CellViewModel]()
-  private var cancellables = Set<AnyCancellable>()
-    
+  
   init() {
     scoreRepository.$records.map { records in
       records.map { record in
         CellViewModel(record: record)
       }
     }
-    .assign(to: \.cellViewModels, on: self)
-    .store(in: &cancellables)
   }
+    func addTask(record: Recordline) {
+      scoreRepository.addTask(record)
+    }
   
 }
 

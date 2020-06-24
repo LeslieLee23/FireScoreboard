@@ -19,29 +19,6 @@ protocol ScoreRepository: BaseScoreRepository {
   func updateTask(_ record: Recordline)
 }
 
-class TestDataScoreRepository: BaseScoreRepository, ScoreRepository, ObservableObject {
-  override init() {
-    super.init()
-    self.records = testRecordline
-  }
-  
-  func addTask(_ record: Recordline) {
-    records.append(record)
-  }
-  
-  func removeTask(_ record: Recordline) {
-    if let index = records.firstIndex(where: { $0.id == record.id }) {
-      records.remove(at: index)
-    }
-  }
-  
-  func updateTask(_ record: Recordline) {
-    if let index = self.records.firstIndex(where: { $0.id == record.id } ) {
-      self.records[index] = record
-    }
-  }
-}
-
 //Disk added
 class LocalScoreRepository: BaseScoreRepository, ScoreRepository, ObservableObject {
   override init() {

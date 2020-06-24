@@ -28,6 +28,9 @@
 		F54C70052439A12500FD5175 /* CreationTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54C70042439A12500FD5175 /* CreationTime.swift */; };
 		F55E8EF1240D7F6200B6CD21 /* ChangePlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55E8EF0240D7F6200B6CD21 /* ChangePlayerView.swift */; };
 		F56E718E248EB2F3007E8FF5 /* CellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56E718D248EB2F3007E8FF5 /* CellViewModel.swift */; };
+		F56E71902491FA85007E8FF5 /* ZViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56E718F2491FA85007E8FF5 /* ZViewModel.swift */; };
+		F56E71922493505C007E8FF5 /* ZChangePlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56E71912493505C007E8FF5 /* ZChangePlayerView.swift */; };
+		F56E719424983B27007E8FF5 /* ZRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56E719324983B26007E8FF5 /* ZRecordView.swift */; };
 		F57BF4012404940D00141AF8 /* HistoryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57BF4002404940D00141AF8 /* HistoryDetailView.swift */; };
 		F58C7BB12475ADCD0092B1B4 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58C7BB02475ADCD0092B1B4 /* ListViewModel.swift */; };
 		F591294C241FD2540071E1D3 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = F591294A241FD2540071E1D3 /* Player.swift */; };
@@ -62,6 +65,9 @@
 		F54C70042439A12500FD5175 /* CreationTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationTime.swift; sourceTree = "<group>"; };
 		F55E8EF0240D7F6200B6CD21 /* ChangePlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePlayerView.swift; sourceTree = "<group>"; };
 		F56E718D248EB2F3007E8FF5 /* CellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellViewModel.swift; sourceTree = "<group>"; };
+		F56E718F2491FA85007E8FF5 /* ZViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZViewModel.swift; sourceTree = "<group>"; };
+		F56E71912493505C007E8FF5 /* ZChangePlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZChangePlayerView.swift; sourceTree = "<group>"; };
+		F56E719324983B26007E8FF5 /* ZRecordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZRecordView.swift; sourceTree = "<group>"; };
 		F57BF4002404940D00141AF8 /* HistoryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryDetailView.swift; sourceTree = "<group>"; };
 		F58C7BB02475ADCD0092B1B4 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
 		F591294A241FD2540071E1D3 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = SOURCE_ROOT; };
@@ -129,13 +135,16 @@
 				F53BDFD3236B44CC00C3E203 /* ContentView.swift */,
 				F51C7A3923D569C500540B25 /* HistoryView.swift */,
 				F51C7A3123C78B1700540B25 /* RecordView.swift */,
+				F56E719324983B26007E8FF5 /* ZRecordView.swift */,
 				F57BF4002404940D00141AF8 /* HistoryDetailView.swift */,
 				F53BDFE32371E48500C3E203 /* AddScoreView.swift */,
 				F55E8EF0240D7F6200B6CD21 /* ChangePlayerView.swift */,
+				F56E71912493505C007E8FF5 /* ZChangePlayerView.swift */,
 				F591294D241FE1C20071E1D3 /* SelectPlayerView.swift */,
 				F591294F2420368F0071E1D3 /* SelectView.swift */,
 				F54C70042439A12500FD5175 /* CreationTime.swift */,
 				F508FB6324501144001C5C24 /* NewHistoryView.swift */,
+				F56E718F2491FA85007E8FF5 /* ZViewModel.swift */,
 				F58C7BB02475ADCD0092B1B4 /* ListViewModel.swift */,
 				F56E718D248EB2F3007E8FF5 /* CellViewModel.swift */,
 			);
@@ -318,7 +327,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F56E71922493505C007E8FF5 /* ZChangePlayerView.swift in Sources */,
 				F53BE01B2384482700C3E203 /* UserData.swift in Sources */,
+				F56E71902491FA85007E8FF5 /* ZViewModel.swift in Sources */,
 				F51EE72223F12D9D0030B17C /* Score1031.xcdatamodeld in Sources */,
 				F51EE71E23F09EB80030B17C /* Record.swift in Sources */,
 				F53BDFD0236B44CC00C3E203 /* AppDelegate.swift in Sources */,
@@ -336,6 +347,7 @@
 				F51C7A3A23D569C500540B25 /* HistoryView.swift in Sources */,
 				F53BDFD2236B44CC00C3E203 /* SceneDelegate.swift in Sources */,
 				F54C70052439A12500FD5175 /* CreationTime.swift in Sources */,
+				F56E719424983B27007E8FF5 /* ZRecordView.swift in Sources */,
 				F508FB6724502001001C5C24 /* ScoreRepository.swift in Sources */,
 				F591294C241FD2540071E1D3 /* Player.swift in Sources */,
 				F57BF4012404940D00141AF8 /* HistoryDetailView.swift in Sources */,
