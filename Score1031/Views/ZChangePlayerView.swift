@@ -53,9 +53,8 @@ struct ZChangePlayerView: View {
     @FetchRequest(fetchRequest: Record.getAllRecords()) var records: FetchedResults<Record>
     
     //New repository change
-
-   // @Published var cellViewModels = [CellViewModel]()
-    
+    @State var records3 = APILoader.load()
+   
     var body: some View {
         VStack{
             Group{
@@ -112,8 +111,26 @@ struct ZChangePlayerView: View {
                 
                 self.userData.maxPlayerID += 1
                 self.showAlert = true
-
-                ZRecordView(cellVM: CellViewModel.newTask())
+                
+                self.records3.playerOneName = self.playerOneName
+              //  self.records3.playerTwoName = self.playerTwoName
+                self.records3.playerOneEmoji = self.playerOneEmoji
+//                self.records3.playerTwoEmoji = self.playerTwoEmoji
+//                self.records3.playerOneScore = 0
+//                self.records3.playerTwoScore = 0
+                self.records3.playerID = String(self.userData.maxPlayerID)
+//                self.records3.recordName = "\(self.playerOneName)+\(self.playerTwoName)"
+//                self.records3.recordScore = "NA"
+//                self.records3.recordReason = "New Palyers Added"
+               // self.records3.recordEntryTime = Date()
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "MMM d, yyyy HH:mm a"
+                dateFormatter.amSymbol = "AM"
+                dateFormatter.pmSymbol = "PM"
+//                self.records3.recordEntryTimeString = dateFormatter.string(from: Date())
+//                self.records3.recordAddEdit = true
+                
+                APILoader.write(records3: self.records3)
                 
                 self.nameAndScore.playerOneName = self.playerOneName
                 self.nameAndScore.playerTwoName = self.playerTwoName
@@ -128,10 +145,7 @@ struct ZChangePlayerView: View {
                 record.score = "NA"
                 record.reason = "New Palyers Added"
                 record.entryTime = Date()
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "MMM d, yyyy HH:mm a"
-                dateFormatter.amSymbol = "AM"
-                dateFormatter.pmSymbol = "PM"
+                
                 record.entryTimeString = dateFormatter.string(from: Date())
                 record.ponescore = "0"
                 record.ptwoscore = "0"

@@ -11,17 +11,16 @@ import Foundation
 import Resolver
 
 struct NewHistoryView: View {
-    @ObservedObject var ListVM = ListViewModel()
-    var tests: [Recordline] = testRecordline
-
+   
+    @State private var records3 = APILoader.load()
     
     var body: some View {
         NavigationView {
           VStack(alignment: .leading) {
             List {
-              ForEach (self.tests) { test in
-                RecordView(name: test.recordName, score: test.recordScore, reason: test.recordReason, entryTime: test.recordEntryTimeString, playerID: test.playerID)
-              }
+              //ForEach (self.records3) { records3 in
+                RecordView(name: records3.playerID, score: records3.playerOneEmoji, reason: records3.playerOneName, entryTime: records3.playerOneName, playerID: records3.playerID)
+              //}
             }
 
           }

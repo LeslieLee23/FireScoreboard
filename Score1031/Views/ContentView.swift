@@ -23,6 +23,7 @@ struct ContentView: View {
     @State var oldscore = [String]()
     @State var creationDate: String = ""
     
+    
     var body: some View {
         NavigationView{
         VStack {
@@ -217,6 +218,13 @@ struct ContentView: View {
                         })
                         
                         Spacer()
+                        NavigationLink (destination: DWView())
+                        {
+                            Text("DWView")
+                                .fontWeight(.light)
+                                .font(.system(size:15))
+                        }
+                        .padding()
                     }
                 }
                     
@@ -258,6 +266,50 @@ struct ContentView: View {
                         })
                         {
                             Text("Start Over")
+                        }
+                        Button(action: {
+                           // DWView
+                            let filemgr = FileManager.default
+
+                            let dirPaths = filemgr.urls(for: .documentDirectory, in: .userDomainMask)
+
+                            let docsDir = dirPaths[0]
+
+                            print("filemgr:\(filemgr)")
+                            print("docsDir:\(docsDir)")
+
+
+                            do {
+                                let filelist = try filemgr.contentsOfDirectory(atPath: docsDir.path)
+
+                                for filename in filelist {
+                                    print("filename:\(filename)")
+                                }
+                            } catch let error {
+                                print("Error: \(error.localizedDescription)")
+                            }
+//                             var plistURL: URL {
+//                              let documents = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+//                              return documents.appendingPathComponent("api_records3.plist")
+//                            }
+//                            print("plistURL:\(plistURL)")
+//                            let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
+//                             let url = NSURL(fileURLWithPath: path)
+//                             if let pathComponent = url.appendingPathComponent("api_records3") {
+//                                 let filePath = pathComponent.path
+//                                 let fileManager = FileManager.default
+//                                 if fileManager.fileExists(atPath: filePath) {
+//                                     print("FILE AVAILABLE")
+//                                 } else {
+//                                     print("FILE NOT AVAILABLE")
+//                                 }
+//                             } else {
+//                                 print("FILE PATH NOT AVAILABLE")
+//                             }
+
+                        })
+                        {
+                            Text("file path")
                         }
                     }
                 }

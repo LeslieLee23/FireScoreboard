@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Recordline: Codable, Identifiable
+struct Recordline: Codable , Identifiable
 {
     
   var id: String = UUID().uuidString
@@ -22,7 +22,7 @@ struct Recordline: Codable, Identifiable
   var recordName: String
   var recordScore: String
   var recordReason: String
-  var recordEntryTime: Date?
+ // var recordEntryTime: Date?
   var recordEntryTimeString: String
   var recordAddEdit: Bool
     
