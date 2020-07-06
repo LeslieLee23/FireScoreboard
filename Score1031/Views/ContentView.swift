@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 import Combine
 import CoreData
+import Disk
 
 struct ContentView: View {
     
@@ -172,7 +173,7 @@ struct ContentView: View {
                     }
                     Spacer()
                     VStack {
-                        NavigationLink (destination: ChangePlayerView())
+                        NavigationLink (destination: ZChangePlayerView())
                         {
                             Text("Add Players")
                                 .fontWeight(.light)
@@ -218,13 +219,6 @@ struct ContentView: View {
                         })
                         
                         Spacer()
-                        NavigationLink (destination: DWView())
-                        {
-                            Text("DWView")
-                                .fontWeight(.light)
-                                .font(.system(size:15))
-                        }
-                        .padding()
                     }
                 }
                     
@@ -268,18 +262,34 @@ struct ContentView: View {
                             Text("Start Over")
                         }
                         Button(action: {
-                           // DWView
+  // Delete file function
+//                            do {
+//                                let filemgr = FileManager.default
+//
+//                                let dirPaths = filemgr.urls(for: .documentDirectory, in: .userDomainMask)
+//
+//                                let docsDir = dirPaths[0]
+//                                //put the name of the file to delete here:
+//                                let filePath = docsDir.appendingPathComponent("scores2.json")
+//
+//                                try FileManager.default.removeItem(at: filePath)
+//                                print("File deleted")
+//
+//                            }
+//                            catch {
+//                                print("Error")
+//                            }
+  // End of delete function
                             let filemgr = FileManager.default
 
                             let dirPaths = filemgr.urls(for: .documentDirectory, in: .userDomainMask)
 
                             let docsDir = dirPaths[0]
 
-                            print("filemgr:\(filemgr)")
                             print("docsDir:\(docsDir)")
-
-
+                            
                             do {
+                            //    try Disk.clear(.documents)
                                 let filelist = try filemgr.contentsOfDirectory(atPath: docsDir.path)
 
                                 for filename in filelist {
@@ -288,6 +298,26 @@ struct ContentView: View {
                             } catch let error {
                                 print("Error: \(error.localizedDescription)")
                             }
+                            
+                            
+                            
+                            do {
+                                let records3 = try Disk.retrieve("scores.json", from: .documents, as: [Recordline].self)
+                                
+                               print(records3)
+//                                let mirror = Mirror(reflecting: records3)
+//
+//                                for child in mirror.children  {
+//                                    print("key: \(child.label), value: \(child.value)")
+//                                }
+//
+//                                for playerID in records3.playerID {
+//                                    print("filename:\(records3.playerID)")
+//                                }
+                            } catch let error {
+                                print("Error: \(error.localizedDescription)")
+                            }
+//                            
 //                             var plistURL: URL {
 //                              let documents = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
 //                              return documents.appendingPathComponent("api_records3.plist")

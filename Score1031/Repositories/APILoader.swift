@@ -11,16 +11,16 @@ import Foundation
 class APILoader {
   static private var plistURL: URL {
     let documents = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-    return documents.appendingPathComponent("api_records3.plist")
+    return documents.appendingPathComponent("scores.json")
   }
 
-  static func load() -> Testdata {
+  static func load() -> Recordline {
     let decoder = PropertyListDecoder()
 
     guard let data = try? Data.init(contentsOf: plistURL),
-      let records3 = try? decoder.decode(Testdata.self, from: data)
-      else { return Testdata(playerID: "008", playerOneEmoji: "playerOneEmoji", playerOneName: "playerOneName"
-//        , playerOneScore: 0, playerTwoEmoji: "playerTwoEmoji", playerTwoName: "playerTwoName", playerTwoScore: 0, recordName: "recordName", recordScore: "999", recordReason: "biubiu", recordEntryTimeString: "recordEntryTimeString", recordAddEdit: true
+      let records3 = try? decoder.decode(Recordline.self, from: data)
+      else { return Recordline(playerID: "008", playerOneEmoji: "playerOneEmoji", playerOneName: "playerOneName"
+        , playerOneScore: 0, playerTwoEmoji: "playerTwoEmoji", playerTwoName: "playerTwoName", playerTwoScore: 0, recordName: "recordName", recordScore: "999", recordReason: "biubiu", recordEntryTimeString: "recordEntryTimeString", recordAddEdit: true
         ) }
 
     return records3
@@ -39,7 +39,7 @@ extension APILoader {
 }
 
 extension APILoader {
-  static func write(records3: Testdata) {
+  static func write(records3: Recordline) {
     let encoder = PropertyListEncoder()
 
     if let data = try? encoder.encode(records3) {
@@ -53,3 +53,5 @@ extension APILoader {
     }
   }
 }
+
+ 

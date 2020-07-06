@@ -11,6 +11,7 @@ import SwiftUI
 import Combine
 import UIKit
 import Resolver
+import Disk
 
 extension String {
 
@@ -54,7 +55,7 @@ struct ZChangePlayerView: View {
     
     //New repository change
     @State var records3 = APILoader.load()
-   
+
     var body: some View {
         VStack{
             Group{
@@ -113,24 +114,30 @@ struct ZChangePlayerView: View {
                 self.showAlert = true
                 
                 self.records3.playerOneName = self.playerOneName
-              //  self.records3.playerTwoName = self.playerTwoName
+                self.records3.playerTwoName = self.playerTwoName
                 self.records3.playerOneEmoji = self.playerOneEmoji
-//                self.records3.playerTwoEmoji = self.playerTwoEmoji
-//                self.records3.playerOneScore = 0
-//                self.records3.playerTwoScore = 0
+                self.records3.playerTwoEmoji = self.playerTwoEmoji
+                self.records3.playerOneScore = 0
+                self.records3.playerTwoScore = 0
                 self.records3.playerID = String(self.userData.maxPlayerID)
-//                self.records3.recordName = "\(self.playerOneName)+\(self.playerTwoName)"
-//                self.records3.recordScore = "NA"
-//                self.records3.recordReason = "New Palyers Added"
-               // self.records3.recordEntryTime = Date()
+                self.records3.recordName = "\(self.playerOneName)+\(self.playerTwoName)"
+                self.records3.recordScore = "NA"
+                self.records3.recordReason = "New Palyers Added"
+                self.records3.recordEntryTime = Date()
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "MMM d, yyyy HH:mm a"
                 dateFormatter.amSymbol = "AM"
                 dateFormatter.pmSymbol = "PM"
-//                self.records3.recordEntryTimeString = dateFormatter.string(from: Date())
-//                self.records3.recordAddEdit = true
-                
-                APILoader.write(records3: self.records3)
+                self.records3.recordEntryTimeString = dateFormatter.string(from: Date())
+                self.records3.recordAddEdit = true
+                do {
+               // try Disk.save(self.records3, to: .documents, as: "scores.json")
+                    try Disk.append(self.records3, to: "scores.json", in: .documents)
+                    print("Yes yes yes this works!")
+                 } catch{
+                    print("NONONO This didn't work!")
+                }
+
                 
                 self.nameAndScore.playerOneName = self.playerOneName
                 self.nameAndScore.playerTwoName = self.playerTwoName

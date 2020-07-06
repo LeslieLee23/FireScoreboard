@@ -1,5 +1,5 @@
 //
-//  TestData.swift
+//  Recordline.swift
 //  Score1031
 //
 //  Created by Danting Li on 6/26/20.
@@ -11,7 +11,7 @@ import Foundation
 struct Testdata: Codable //, Identifiable
 {
     
-//  var id: String = UUID().uuidString
+  var id: String = UUID().uuidString
   var playerID: String
   var playerOneEmoji: String
   var playerOneName: String

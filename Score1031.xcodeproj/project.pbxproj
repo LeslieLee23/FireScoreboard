@@ -38,7 +38,6 @@
 		F591294C241FD2540071E1D3 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = F591294A241FD2540071E1D3 /* Player.swift */; };
 		F591294E241FE1C20071E1D3 /* SelectPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F591294D241FE1C20071E1D3 /* SelectPlayerView.swift */; };
 		F59129502420368F0071E1D3 /* SelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F591294F2420368F0071E1D3 /* SelectView.swift */; };
-		F5AA3CD924AC3B8A001BA28A /* DWView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AA3CD824AC3B8A001BA28A /* DWView.swift */; };
 		F5C95EA623FB4EB500D46C7A /* AddEditChoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C95EA523FB4EB500D46C7A /* AddEditChoice.swift */; };
 		F5F02578244427A20038A4FB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F5F02577244427A20038A4FB /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
@@ -79,7 +78,6 @@
 		F591294A241FD2540071E1D3 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = SOURCE_ROOT; };
 		F591294D241FE1C20071E1D3 /* SelectPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPlayerView.swift; sourceTree = "<group>"; };
 		F591294F2420368F0071E1D3 /* SelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectView.swift; sourceTree = "<group>"; };
-		F5AA3CD824AC3B8A001BA28A /* DWView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DWView.swift; sourceTree = "<group>"; };
 		F5C95EA523FB4EB500D46C7A /* AddEditChoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditChoice.swift; sourceTree = "<group>"; };
 		F5F02577244427A20038A4FB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -155,7 +153,6 @@
 				F56E718F2491FA85007E8FF5 /* ZViewModel.swift */,
 				F58C7BB02475ADCD0092B1B4 /* ListViewModel.swift */,
 				F56E718D248EB2F3007E8FF5 /* CellViewModel.swift */,
-				F5AA3CD824AC3B8A001BA28A /* DWView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -360,7 +357,6 @@
 				F56E719624A320E3007E8FF5 /* APILoader.swift in Sources */,
 				F56E719424983B27007E8FF5 /* ZRecordView.swift in Sources */,
 				F508FB6724502001001C5C24 /* ScoreRepository.swift in Sources */,
-				F5AA3CD924AC3B8A001BA28A /* DWView.swift in Sources */,
 				F591294C241FD2540071E1D3 /* Player.swift in Sources */,
 				F57BF4012404940D00141AF8 /* HistoryDetailView.swift in Sources */,
 				F53BDFD4236B44CC00C3E203 /* ContentView.swift in Sources */,

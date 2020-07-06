@@ -22,26 +22,11 @@ struct Recordline: Codable , Identifiable
   var recordName: String
   var recordScore: String
   var recordReason: String
- // var recordEntryTime: Date?
+  var recordEntryTime: Date?
   var recordEntryTimeString: String
   var recordAddEdit: Bool
     
-//    init(id: String, playerID: String, playerOneEmoji: String, playerOneName: String, playerOneScore: Int, playerTwoEmoji: String, playerTwoName: String, playerTwoScore: Int, recordName: String, recordScore: String, recordReason: String, recordEntryTimeString: String, recordAddEdit: Bool) {
-//        self.id = id
-//        self.playerID = playerID
-//        self.playerOneEmoji = playerOneEmoji
-//        self.playerOneName = playerOneName
-//        self.playerOneScore = playerOneScore
-//        self.playerTwoEmoji = playerTwoEmoji
-//        self.playerTwoName = playerTwoName
-//        self.playerTwoScore = playerTwoScore
-//        self.recordName = recordName
-//        self.recordScore = recordScore
-//        self.recordReason = recordReason
-//        self.recordEntryTimeString = recordEntryTimeString
-//        self.recordAddEdit = recordAddEdit
-//
-//    }
+
     
 }
 
