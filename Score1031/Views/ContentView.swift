@@ -22,7 +22,9 @@ struct ContentView: View {
     @FetchRequest(fetchRequest: Record.getAllRecords()) var records: FetchedResults<Record>
     @State var names = [String]()
     @State var oldscore = [String]()
-    @State var creationDate: String = ""
+    @State var oneEmoji = [String]()
+    @State var twoEmoji = [String]()
+    @State var filteredRecords3 = [Recordline]()
     
     
     var body: some View {
@@ -34,7 +36,7 @@ struct ContentView: View {
                 VStack {
                     
                     HStack{
-                        NavigationLink (destination: SelectPlayersView())
+                        NavigationLink (destination: NewSelectPlayersView(filteredRecords3: self.filteredRecords3))
                         {
                             Text("Change Players")
                                 .fontWeight(.light)
@@ -42,7 +44,30 @@ struct ContentView: View {
                                 .padding()
                         }
                         .simultaneousGesture(TapGesture().onEnded {
+        //query a list of id that is the most recent record for each player
+                        let records3 = try! Disk.retrieve("scores.json", from: .documents, as: [Recordline].self).sorted(by: { $0.recordEntryTime! >= $1.recordEntryTime!})
+                            
+                        let recordSet = Set<String>(try! Disk.retrieve("scores.json", from: .documents, as: [Recordline].self).map{$0.playerID})
+                            print(recordSet)
 
+                            print(records3)
+                                                       
+                            var resultArray = [String]()
+                            
+                            for playerID in recordSet {
+                                let id = records3.filter({$0.playerID == playerID}).map{$0.id}.first
+                                resultArray.append(id!)
+                            }
+                           //     print(resultArray)
+                            self.filteredRecords3.removeAll()
+                            for id in resultArray {
+                                let filtered = records3.filter({$0.id == id}).first
+                                print("\(id) -> \(filtered)")
+                                self.filteredRecords3.append(filtered!)
+                            }
+                                print(self.filteredRecords3)
+                            
+                // This step is to save the current score to the Player entity, becuase this button will lead user to change to other players, and before changing to other players we need save the current players. 
                             let fetchRequest:NSFetchRequest<NSFetchRequestResult> = NSFetchRequest.init(entityName: "Player")
                             fetchRequest.predicate = NSPredicate(format: "playerID == %@", self.userData.playerID!)
                             do
@@ -64,6 +89,8 @@ struct ContentView: View {
                             {
                                 print(error)
                             }
+                            //json data query
+                            
                         })
                             .disabled(Player.getProductCount() < 2 )
                         
@@ -162,7 +189,7 @@ struct ContentView: View {
                 HStack {
                     VStack {
                         NavigationLink (destination: NewHistoryView())
-  //                      NavigationLink (destination: HistoryView(creationDate: creationDate))
+
                         {
                             Text("View History")
                                 .fontWeight(.light)
@@ -302,9 +329,31 @@ struct ContentView: View {
                             
                             
                             do {
-                                let records3 = try Disk.retrieve("scores.json", from: .documents, as: [Recordline].self)
+//                             let records3Dic = Dictionary(grouping: try! Disk.retrieve("scores.json", from: .documents, as: [Recordline].self), by: { $0.playerID })
+//                              print(records3Dic)
+                           
+//                                let playerOneEmoji = records3.filter({$0.playerID == playerID}).map{$0.playerOneEmoji}
+//                                let playerOneName = records3.filter({$0.playerID == playerID}).map{$0.playerOneName}
+//                                let playerOneScore = records3.filter({$0.playerID == playerID}).map{$0.playerOneScore}
+//                                let playerTwoEmoji = records3.filter({$0.playerID == playerID}).map{$0.playerTwoEmoji}
+//                                let playerTwoName = records3.filter({$0.playerID == playerID}).map{$0.playerTwoName}
+//                                let playerTwoScore = records3.filter({$0.playerID == playerID}).map{$0.playerTwoScore}
+                                    
+     //                           resultArray.append(Playerline(
+     //                                   id: id
+//                                    ,
+//                                        playerID: playerID, playerOneEmoji:playerOneEmoji, playerOneName:playerOneName, playerOneScore:playerOneScore, playerTwoEmoji:playerTwoEmoji, playerTwoName:playerTwoName, playerTwoScore:playerTwoScore
+     //                               ))
+                                    
+                                }
+       //                         print(resultArray)
                                 
-                               print(records3)
+                // ^^%&*(*& remove this one
+//                                let records3 = try Disk.retrieve("scores.json", from: .documents, as: [Recordline].self)
+//
+//                               print(records3)
+                                
+                                
 //                                let mirror = Mirror(reflecting: records3)
 //
 //                                for child in mirror.children  {
@@ -314,9 +363,7 @@ struct ContentView: View {
 //                                for playerID in records3.playerID {
 //                                    print("filename:\(records3.playerID)")
 //                                }
-                            } catch let error {
-                                print("Error: \(error.localizedDescription)")
-                            }
+
 //                            
 //                             var plistURL: URL {
 //                              let documents = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!

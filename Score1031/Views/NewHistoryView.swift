@@ -13,15 +13,18 @@ import Disk
 
 struct NewHistoryView: View {
    
-    var records3 =  try? Disk.retrieve("scores.json", from: .documents, as: [Recordline].self)
+    var records3 =  try? Disk.retrieve("scores.json", from: .documents, as: [Recordline].self).sorted(by: { $0.recordEntryTime! >= $1.recordEntryTime!})
+    
+    @EnvironmentObject private var userData: UserData
     
     var body: some View {
         NavigationView {
           VStack(alignment: .leading) {
             List {
                 ForEach (self.records3!) { records3 in
+                    if records3.playerID == self.userData.playerID {
                 RecordView(name: records3.recordName, score: records3.recordScore, reason: records3.recordReason, entryTime: records3.recordEntryTimeString, playerID: records3.playerID)
-//                                RecordView(name: "records3.playerID", score: "records3.playerOneEmoji", reason: "records3.playerOneName", entryTime: "records3.playerOneName", playerID: "records3.playerID")
+                    }
               }
             }
 

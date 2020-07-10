@@ -25,12 +25,11 @@ struct SelectPlayersView: View {
         VStack {
             List {
                 ForEach(players, id: \.self) { player in
-//                    NavigationLink(
-//                        destination: ContentView().navigationBarBackButtonHidden(true)) {
+
                     HStack{
                     VStack{
                         SelectView(playerID: player.playerID, playerOneName: player.playerOneName ?? "NA", playerTwoName: player.playerTwoName ?? "NA", playerOneScore: String(player.playerOneScore), playerTwoScore: String(player.playerTwoScore), playerOneEmoji: player.playerOneEmoji ?? "", playerTwoEmoji: player.playerTwoEmoji ?? "")
-//                        }
+
                         }
                     VStack{
                         Button(action: {

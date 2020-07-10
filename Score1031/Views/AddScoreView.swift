@@ -124,6 +124,10 @@ struct AddScoreView: View {
                         record.name = self.selectedNameString
                         record.addEdit = self.addEidtChoice.addViewSelected
             //Disk save
+                    self.records3.playerOneEmoji = self.nameAndScore.playerOneEmoji!
+                    self.records3.playerTwoEmoji = self.nameAndScore.playerTwoEmoji!
+                    self.records3.playerOneName = self.nameAndScore.playerOneName!
+                    self.records3.playerTwoName = self.nameAndScore.playerTwoName!
                     self.records3.recordName = self.selectedNameString
                     
                     if self.addEidtChoice.addViewSelected == true {
@@ -136,6 +140,7 @@ struct AddScoreView: View {
             //Disk save
                             self.records3.recordScore = "+\(self.scoreEdited)"
                         }
+        //if it is in Edit Mode
                     } else {
                         if self.selectedName == 0 {
                             record.score = String(Int(self.nameAndScore.PlayerOneScore) - (Int(self.oldscore[0])!))
@@ -146,10 +151,11 @@ struct AddScoreView: View {
             //Disk save
                             self.records3.recordScore = String(Int(self.nameAndScore.PlayerTwoScore) - (Int(self.oldscore[1])!))
                         }
-                        if String(record.score!).first != "-" {
-                            record.score = "+\(record.score!)"
-                            
+//                        if String(record.score!).first != "-" {
+//                            record.score = "+\(record.score!)"
+//                        }
             //Disk save
+                        if String(self.records3.recordScore).first != "-" {
                             self.records3.recordScore = "+\(record.score!)"
                         }
                         }

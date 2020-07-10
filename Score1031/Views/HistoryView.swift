@@ -21,7 +21,7 @@ struct HistoryView: View {
      @FetchRequest(fetchRequest: Record.getAllRecords()) var records: FetchedResults<Record>
      @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
      @EnvironmentObject private var userData: UserData
-     var creationDate: String
+
 
      var body: some View {
 
@@ -49,7 +49,7 @@ struct HistoryView: View {
     
 struct HistoryView_Previews: PreviewProvider {
     static var previews: some View {
-        HistoryView(creationDate: "")
+        HistoryView()
     }
 }
 }
