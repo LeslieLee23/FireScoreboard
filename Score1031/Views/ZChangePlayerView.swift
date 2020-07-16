@@ -135,6 +135,7 @@ struct ZChangePlayerView: View {
                     try Disk.append(self.records3, to: "scores.json", in: .documents)
                     print("Yes yes yes this works!")
                  } catch{
+                  //  try Disk.save(self.records3, to: .documents, as: "scores.json")
                     print("NONONO This didn't work!")
                 }
 
@@ -206,6 +207,6 @@ struct ZChangePlayerView: View {
 
 struct ZChangePlayerView_Previews: PreviewProvider {
     static var previews: some View {
-        ChangePlayerView()
+        ZChangePlayerView()
     }
 }

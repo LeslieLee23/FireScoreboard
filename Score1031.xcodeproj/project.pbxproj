@@ -9,13 +9,13 @@
 /* Begin PBXBuildFile section */
 		5AAF387E8849555F0BBB8006 /* Pods_Score1031.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01D18C8DA08D01B06A0E91E2 /* Pods_Score1031.framework */; };
 		F50762E424B438AD00676F9C /* NewSelectPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50762E324B438AD00676F9C /* NewSelectPlayerView.swift */; };
+		F50762E624BC244600676F9C /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50762E524BC244600676F9C /* RecordView.swift */; };
+		F50762EA24BEE00900676F9C /* ZAPILoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50762E924BEE00900676F9C /* ZAPILoader.swift */; };
 		F508FB60244EA96A001C5C24 /* JSONData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F508FB5F244EA96A001C5C24 /* JSONData.swift */; };
 		F508FB6424501144001C5C24 /* NewHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F508FB6324501144001C5C24 /* NewHistoryView.swift */; };
 		F508FB6724502001001C5C24 /* ScoreRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F508FB6624502001001C5C24 /* ScoreRepository.swift */; };
 		F508FB692451453F001C5C24 /* AppDelegate+Resolving.swift in Sources */ = {isa = PBXBuildFile; fileRef = F508FB682451453F001C5C24 /* AppDelegate+Resolving.swift */; };
-		F51C7A3223C78B1700540B25 /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51C7A3123C78B1700540B25 /* RecordView.swift */; };
 		F51C7A3623D4EB6300540B25 /* NameAndScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51C7A3523D4EB6300540B25 /* NameAndScore.swift */; };
-		F51C7A3A23D569C500540B25 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51C7A3923D569C500540B25 /* HistoryView.swift */; };
 		F51EE71E23F09EB80030B17C /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51EE71D23F09EB80030B17C /* Record.swift */; };
 		F51EE72223F12D9D0030B17C /* Score1031.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F51EE72023F12D9D0030B17C /* Score1031.xcdatamodeld */; };
 		F53BDFD0236B44CC00C3E203 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53BDFCF236B44CC00C3E203 /* AppDelegate.swift */; };
@@ -26,17 +26,12 @@
 		F53BDFDC236B44CF00C3E203 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F53BDFDA236B44CF00C3E203 /* LaunchScreen.storyboard */; };
 		F53BDFE42371E48500C3E203 /* AddScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53BDFE32371E48500C3E203 /* AddScoreView.swift */; };
 		F53BE01B2384482700C3E203 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53BE01A2384482700C3E203 /* UserData.swift */; };
-		F54C70052439A12500FD5175 /* CreationTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54C70042439A12500FD5175 /* CreationTime.swift */; };
-		F55E8EF1240D7F6200B6CD21 /* ChangePlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55E8EF0240D7F6200B6CD21 /* ChangePlayerView.swift */; };
 		F56E71902491FA85007E8FF5 /* ZViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56E718F2491FA85007E8FF5 /* ZViewModel.swift */; };
 		F56E71922493505C007E8FF5 /* ZChangePlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56E71912493505C007E8FF5 /* ZChangePlayerView.swift */; };
-		F56E719424983B27007E8FF5 /* ZRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56E719324983B26007E8FF5 /* ZRecordView.swift */; };
 		F56E719624A320E3007E8FF5 /* APILoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56E719524A320E3007E8FF5 /* APILoader.swift */; };
 		F57BF4012404940D00141AF8 /* HistoryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57BF4002404940D00141AF8 /* HistoryDetailView.swift */; };
-		F58C7BB12475ADCD0092B1B4 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58C7BB02475ADCD0092B1B4 /* ListViewModel.swift */; };
 		F58F0B3724A652F6002676D3 /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58F0B3624A652F6002676D3 /* TestData.swift */; };
 		F591294C241FD2540071E1D3 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = F591294A241FD2540071E1D3 /* Player.swift */; };
-		F591294E241FE1C20071E1D3 /* SelectPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F591294D241FE1C20071E1D3 /* SelectPlayerView.swift */; };
 		F59129502420368F0071E1D3 /* SelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F591294F2420368F0071E1D3 /* SelectView.swift */; };
 		F5C95EA623FB4EB500D46C7A /* AddEditChoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C95EA523FB4EB500D46C7A /* AddEditChoice.swift */; };
 		F5F02578244427A20038A4FB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F5F02577244427A20038A4FB /* GoogleService-Info.plist */; };
@@ -47,13 +42,13 @@
 		0C286CC72021282DB2177955 /* Pods-Score1031.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Score1031.release.xcconfig"; path = "Target Support Files/Pods-Score1031/Pods-Score1031.release.xcconfig"; sourceTree = "<group>"; };
 		20FA246B4855C4B139F8EDF9 /* Pods-Score1031.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Score1031.debug.xcconfig"; path = "Target Support Files/Pods-Score1031/Pods-Score1031.debug.xcconfig"; sourceTree = "<group>"; };
 		F50762E324B438AD00676F9C /* NewSelectPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSelectPlayerView.swift; sourceTree = "<group>"; };
+		F50762E524BC244600676F9C /* RecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
+		F50762E924BEE00900676F9C /* ZAPILoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZAPILoader.swift; sourceTree = "<group>"; };
 		F508FB5F244EA96A001C5C24 /* JSONData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONData.swift; sourceTree = "<group>"; };
 		F508FB6324501144001C5C24 /* NewHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewHistoryView.swift; sourceTree = "<group>"; };
 		F508FB6624502001001C5C24 /* ScoreRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreRepository.swift; sourceTree = "<group>"; };
 		F508FB682451453F001C5C24 /* AppDelegate+Resolving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Resolving.swift"; sourceTree = "<group>"; };
-		F51C7A3123C78B1700540B25 /* RecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
 		F51C7A3523D4EB6300540B25 /* NameAndScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameAndScore.swift; sourceTree = "<group>"; };
-		F51C7A3923D569C500540B25 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		F51EE71D23F09EB80030B17C /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
 		F51EE72123F12D9D0030B17C /* Score1031.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Score1031.xcdatamodel; sourceTree = "<group>"; };
 		F53BDFCC236B44CC00C3E203 /* FireScoreboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FireScoreboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -66,17 +61,12 @@
 		F53BDFDD236B44CF00C3E203 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F53BDFE32371E48500C3E203 /* AddScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddScoreView.swift; sourceTree = "<group>"; };
 		F53BE01A2384482700C3E203 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
-		F54C70042439A12500FD5175 /* CreationTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationTime.swift; sourceTree = "<group>"; };
-		F55E8EF0240D7F6200B6CD21 /* ChangePlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePlayerView.swift; sourceTree = "<group>"; };
 		F56E718F2491FA85007E8FF5 /* ZViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZViewModel.swift; sourceTree = "<group>"; };
 		F56E71912493505C007E8FF5 /* ZChangePlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZChangePlayerView.swift; sourceTree = "<group>"; };
-		F56E719324983B26007E8FF5 /* ZRecordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZRecordView.swift; sourceTree = "<group>"; };
 		F56E719524A320E3007E8FF5 /* APILoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APILoader.swift; sourceTree = "<group>"; };
 		F57BF4002404940D00141AF8 /* HistoryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryDetailView.swift; sourceTree = "<group>"; };
-		F58C7BB02475ADCD0092B1B4 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
 		F58F0B3624A652F6002676D3 /* TestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
 		F591294A241FD2540071E1D3 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = SOURCE_ROOT; };
-		F591294D241FE1C20071E1D3 /* SelectPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPlayerView.swift; sourceTree = "<group>"; };
 		F591294F2420368F0071E1D3 /* SelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectView.swift; sourceTree = "<group>"; };
 		F5C95EA523FB4EB500D46C7A /* AddEditChoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditChoice.swift; sourceTree = "<group>"; };
 		F5F02577244427A20038A4FB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -117,6 +107,7 @@
 				F508FB6624502001001C5C24 /* ScoreRepository.swift */,
 				F508FB682451453F001C5C24 /* AppDelegate+Resolving.swift */,
 				F56E719524A320E3007E8FF5 /* APILoader.swift */,
+				F50762E924BEE00900676F9C /* ZAPILoader.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -139,20 +130,14 @@
 			isa = PBXGroup;
 			children = (
 				F53BDFD3236B44CC00C3E203 /* ContentView.swift */,
-				F51C7A3923D569C500540B25 /* HistoryView.swift */,
-				F51C7A3123C78B1700540B25 /* RecordView.swift */,
-				F56E719324983B26007E8FF5 /* ZRecordView.swift */,
 				F57BF4002404940D00141AF8 /* HistoryDetailView.swift */,
 				F53BDFE32371E48500C3E203 /* AddScoreView.swift */,
-				F55E8EF0240D7F6200B6CD21 /* ChangePlayerView.swift */,
 				F56E71912493505C007E8FF5 /* ZChangePlayerView.swift */,
-				F591294D241FE1C20071E1D3 /* SelectPlayerView.swift */,
 				F50762E324B438AD00676F9C /* NewSelectPlayerView.swift */,
 				F591294F2420368F0071E1D3 /* SelectView.swift */,
-				F54C70042439A12500FD5175 /* CreationTime.swift */,
 				F508FB6324501144001C5C24 /* NewHistoryView.swift */,
 				F56E718F2491FA85007E8FF5 /* ZViewModel.swift */,
-				F58C7BB02475ADCD0092B1B4 /* ListViewModel.swift */,
+				F50762E524BC244600676F9C /* RecordView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -336,26 +321,21 @@
 				F56E71922493505C007E8FF5 /* ZChangePlayerView.swift in Sources */,
 				F53BE01B2384482700C3E203 /* UserData.swift in Sources */,
 				F56E71902491FA85007E8FF5 /* ZViewModel.swift in Sources */,
+				F50762E624BC244600676F9C /* RecordView.swift in Sources */,
 				F51EE72223F12D9D0030B17C /* Score1031.xcdatamodeld in Sources */,
 				F51EE71E23F09EB80030B17C /* Record.swift in Sources */,
+				F50762EA24BEE00900676F9C /* ZAPILoader.swift in Sources */,
 				F53BDFD0236B44CC00C3E203 /* AppDelegate.swift in Sources */,
 				F59129502420368F0071E1D3 /* SelectView.swift in Sources */,
 				F51C7A3623D4EB6300540B25 /* NameAndScore.swift in Sources */,
 				F508FB6424501144001C5C24 /* NewHistoryView.swift in Sources */,
 				F5C95EA623FB4EB500D46C7A /* AddEditChoice.swift in Sources */,
 				F50762E424B438AD00676F9C /* NewSelectPlayerView.swift in Sources */,
-				F51C7A3223C78B1700540B25 /* RecordView.swift in Sources */,
-				F55E8EF1240D7F6200B6CD21 /* ChangePlayerView.swift in Sources */,
-				F58C7BB12475ADCD0092B1B4 /* ListViewModel.swift in Sources */,
 				F508FB692451453F001C5C24 /* AppDelegate+Resolving.swift in Sources */,
 				F53BDFE42371E48500C3E203 /* AddScoreView.swift in Sources */,
-				F591294E241FE1C20071E1D3 /* SelectPlayerView.swift in Sources */,
-				F51C7A3A23D569C500540B25 /* HistoryView.swift in Sources */,
 				F53BDFD2236B44CC00C3E203 /* SceneDelegate.swift in Sources */,
 				F58F0B3724A652F6002676D3 /* TestData.swift in Sources */,
-				F54C70052439A12500FD5175 /* CreationTime.swift in Sources */,
 				F56E719624A320E3007E8FF5 /* APILoader.swift in Sources */,
-				F56E719424983B27007E8FF5 /* ZRecordView.swift in Sources */,
 				F508FB6724502001001C5C24 /* ScoreRepository.swift in Sources */,
 				F591294C241FD2540071E1D3 /* Player.swift in Sources */,
 				F57BF4012404940D00141AF8 /* HistoryDetailView.swift in Sources */,

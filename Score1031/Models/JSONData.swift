@@ -7,10 +7,12 @@
 //
 
 import Foundation
+import SwiftUI
+import Combine
 
 struct Recordline: Codable , Identifiable
 {
-    
+  
   var id: String = UUID().uuidString
   var playerID: String
   var playerOneEmoji: String
@@ -25,30 +27,30 @@ struct Recordline: Codable , Identifiable
   var recordEntryTime: Date?
   var recordEntryTimeString: String
   var recordAddEdit: Bool
-    
-
-    
+  
+  
+  
 }
 
 struct Playerline: Identifiable
 {
-    
+  
   var id: String
-//  var playerID: String
-//  var playerOneEmoji: String
-//  var playerOneName: String
-//  var playerOneScore: Int
-//  var playerTwoEmoji: String
-//  var playerTwoName: String
-//  var playerTwoScore: Int
-    
+  //  var playerID: String
+  //  var playerOneEmoji: String
+  //  var playerOneName: String
+  //  var playerOneScore: Int
+  //  var playerTwoEmoji: String
+  //  var playerTwoName: String
+  //  var playerTwoScore: Int
+  
 }
 
 #if DEBUG
 let testRecordline = [
-    Recordline(playerID: "1", playerOneEmoji: "🥰", playerOneName: "Jiujiu", playerOneScore: 4, playerTwoEmoji: "🥶", playerTwoName: "Cold Face", playerTwoScore: 3, recordName: "Jiujiu", recordScore: "+2", recordReason: "Being a good girl", recordEntryTimeString: "Apr 20, 2020 11:17 PM", recordAddEdit: true),
-    Recordline(playerID: "1", playerOneEmoji: "🥰", playerOneName: "Jiujiu", playerOneScore: 5, playerTwoEmoji: "🥶", playerTwoName: "Cold Face", playerTwoScore: 3, recordName: "Jiujiu", recordScore: "+1", recordReason: "Being a good party girl", recordEntryTimeString: "Apr 20, 2020 11:18 PM",recordAddEdit: true),
-    Recordline(playerID: "2", playerOneEmoji: "🤓", playerOneName: "Nerd Face", playerOneScore: 6, playerTwoEmoji: "😳", playerTwoName: "Flushed Face", playerTwoScore: 8, recordName: "Flushed Face", recordScore: "+4", recordReason: "Being a bad boy", recordEntryTimeString: "Apr 20, 2020 11:19 PM", recordAddEdit: false)
+  Recordline(playerID: "1", playerOneEmoji: "🥰", playerOneName: "Jiujiu", playerOneScore: 4, playerTwoEmoji: "🥶", playerTwoName: "Cold Face", playerTwoScore: 3, recordName: "Jiujiu", recordScore: "+2", recordReason: "Being a good girl", recordEntryTimeString: "Apr 20, 2020 11:17 PM", recordAddEdit: true),
+  Recordline(playerID: "1", playerOneEmoji: "🥰", playerOneName: "Jiujiu", playerOneScore: 5, playerTwoEmoji: "🥶", playerTwoName: "Cold Face", playerTwoScore: 3, recordName: "Jiujiu", recordScore: "+1", recordReason: "Being a good party girl", recordEntryTimeString: "Apr 20, 2020 11:18 PM",recordAddEdit: true),
+  Recordline(playerID: "2", playerOneEmoji: "🤓", playerOneName: "Nerd Face", playerOneScore: 6, playerTwoEmoji: "😳", playerTwoName: "Flushed Face", playerTwoScore: 8, recordName: "Flushed Face", recordScore: "+4", recordReason: "Being a bad boy", recordEntryTimeString: "Apr 20, 2020 11:19 PM", recordAddEdit: false)
 ]
 #endif
 

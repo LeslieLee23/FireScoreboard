@@ -12,126 +12,126 @@ import Combine
 import CoreData
 
 struct HistoryDetailView: View {
-     @EnvironmentObject private var nameAndScore: NameAndScore
-     @EnvironmentObject private var userData: UserData
-     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-
-     var record: Record
-
-
-     var body: some View {
-         NavigationView{
-         VStack {
-             VStack(alignment: .leading) {
-                HStack {
-                VStack {
-                 Text("\(self.record.entryTimeString ?? "")")
-                 if record.addEdit == true {
-                     Text("\(self.record.score ?? "NO ONE") score for \(self.record.name!)")
-                 } else {
-                     Text("\(self.record.name ?? "NO ONE")'s score were edited")
-                 }
-                }
-            }
-                HStack {
-                    Spacer()
-                }
-             }
-            .padding(.leading)
-            
-
-
-             VStack {
-                 HStack {
-                 if record.addEdit == true {
-                 Text("Before Score Add:")
-                     .font(.headline)
-                     .fontWeight(.bold)
-                 } else {
-                 Text("Before Score Edit:")
-                     .font(.headline)
-                     .fontWeight(.bold)
-                     }
-                 }
-                 .padding(.leading)
-                 if self.record.name == self.nameAndScore.playerOneName {
-                    HStack {
-                    Spacer()
-                    Text("\(Int(self.record.ponescore!)! - Int(self.record.score!)!)")
-                        .font(.system(size: 25))
-                    Spacer()
-                    Text("\(self.record.ptwoscore!)")
-                        .font(.system(size: 25))
-                    Spacer()
-                    }
-                } else {
-                    HStack {
-                    Spacer()
-                    Text("\(self.record.ponescore!)")
-                        .font(.system(size: 25))
-                    Spacer()
-                    Text("\(Int(self.record.ptwoscore!)! - Int(self.record.score!)!)")
-                        .font(.system(size: 25))
-                    Spacer()
-                }
-                }
-                
-                HStack {
-                    Spacer()
-                    Text("\(self.userData.showEmoji ? self.nameAndScore.playerOneEmoji! : self.nameAndScore.playerOneName!)")
-                    .font(.system(size: self.userData.showEmoji ? 45 : 25))
-                    Spacer()
-                    Text("\(self.userData.showEmoji ? self.nameAndScore.playerTwoEmoji! : self.nameAndScore.playerTwoName!)")
-                    .font(.system(size: self.userData.showEmoji ? 45 : 25))
-                    Spacer()
-                }
-             }
-             Spacer()
-             VStack {
-                 HStack {
-                 if record.addEdit == true {
-                 Text("After Score Add:")
-                     .font(.headline)
-                     .fontWeight(.bold)
-                 } else {
-                 Text("After Score Edit:")
-                     .font(.headline)
-                     .fontWeight(.bold)
-                     }
-                 }
-                 HStack {
-                     Spacer()
-                     Text("\(self.record.ponescore!)")
-                        .font(.system(size: 25))
-                    Spacer()
-                    Text("\(self.record.ptwoscore!)")
-                        .font(.system(size: 25))
-                    Spacer()
-                }
-                
-                HStack {
-                    Spacer()
-                    Text("\(self.userData.showEmoji ? self.nameAndScore.playerOneEmoji! : self.nameAndScore.playerOneName!)")
-                    .font(.system(size: self.userData.showEmoji ? 45 : 25))
-                    Spacer()
-                    Text("\(self.userData.showEmoji ? self.nameAndScore.playerTwoEmoji! : self.nameAndScore.playerTwoName!)")
-                    .font(.system(size: self.userData.showEmoji ? 45 : 25))
-                    Spacer()
-                }
-                Spacer()
-                Spacer()
-            }
+  @EnvironmentObject private var nameAndScore: NameAndScore
+  @EnvironmentObject private var userData: UserData
+  @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+  
+  var record: Record
+  
+  
+  var body: some View {
+    NavigationView{
+      VStack {
+        VStack(alignment: .leading) {
+          HStack {
             VStack {
-                Spacer()
-                Spacer()
-                Spacer()
-                Spacer()
-
+              Text("\(self.record.entryTimeString ?? "")")
+              if record.addEdit == true {
+                Text("\(self.record.score ?? "NO ONE") score for \(self.record.name!)")
+              } else {
+                Text("\(self.record.name ?? "NO ONE")'s score were edited")
+              }
             }
-
-            }
+          }
+          HStack {
+            Spacer()
+          }
         }
+        .padding(.leading)
+        
+        
+        
+        VStack {
+          HStack {
+            if record.addEdit == true {
+              Text("Before Score Add:")
+                .font(.headline)
+                .fontWeight(.bold)
+            } else {
+              Text("Before Score Edit:")
+                .font(.headline)
+                .fontWeight(.bold)
+            }
+          }
+          .padding(.leading)
+          if self.record.name == self.nameAndScore.playerOneName {
+            HStack {
+              Spacer()
+              Text("\(Int(self.record.ponescore!)! - Int(self.record.score!)!)")
+                .font(.system(size: 25))
+              Spacer()
+              Text("\(self.record.ptwoscore!)")
+                .font(.system(size: 25))
+              Spacer()
+            }
+          } else {
+            HStack {
+              Spacer()
+              Text("\(self.record.ponescore!)")
+                .font(.system(size: 25))
+              Spacer()
+              Text("\(Int(self.record.ptwoscore!)! - Int(self.record.score!)!)")
+                .font(.system(size: 25))
+              Spacer()
+            }
+          }
+          
+          HStack {
+            Spacer()
+            Text("\(self.userData.showEmoji ? self.nameAndScore.playerOneEmoji! : self.nameAndScore.playerOneName!)")
+              .font(.system(size: self.userData.showEmoji ? 45 : 25))
+            Spacer()
+            Text("\(self.userData.showEmoji ? self.nameAndScore.playerTwoEmoji! : self.nameAndScore.playerTwoName!)")
+              .font(.system(size: self.userData.showEmoji ? 45 : 25))
+            Spacer()
+          }
+        }
+        Spacer()
+        VStack {
+          HStack {
+            if record.addEdit == true {
+              Text("After Score Add:")
+                .font(.headline)
+                .fontWeight(.bold)
+            } else {
+              Text("After Score Edit:")
+                .font(.headline)
+                .fontWeight(.bold)
+            }
+          }
+          HStack {
+            Spacer()
+            Text("\(self.record.ponescore!)")
+              .font(.system(size: 25))
+            Spacer()
+            Text("\(self.record.ptwoscore!)")
+              .font(.system(size: 25))
+            Spacer()
+          }
+          
+          HStack {
+            Spacer()
+            Text("\(self.userData.showEmoji ? self.nameAndScore.playerOneEmoji! : self.nameAndScore.playerOneName!)")
+              .font(.system(size: self.userData.showEmoji ? 45 : 25))
+            Spacer()
+            Text("\(self.userData.showEmoji ? self.nameAndScore.playerTwoEmoji! : self.nameAndScore.playerTwoName!)")
+              .font(.system(size: self.userData.showEmoji ? 45 : 25))
+            Spacer()
+          }
+          Spacer()
+          Spacer()
+        }
+        VStack {
+          Spacer()
+          Spacer()
+          Spacer()
+          Spacer()
+          
+        }
+        
+      }
     }
+  }
 }
 
 //struct HistoryDetailView_Previews: PreviewProvider {

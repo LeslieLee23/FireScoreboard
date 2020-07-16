@@ -12,32 +12,32 @@ import Resolver
 import Disk
 
 struct NewHistoryView: View {
-   
-    var records3 =  try? Disk.retrieve("scores.json", from: .documents, as: [Recordline].self).sorted(by: { $0.recordEntryTime! >= $1.recordEntryTime!})
-    
-    @EnvironmentObject private var userData: UserData
-    
-    var body: some View {
-        NavigationView {
-          VStack(alignment: .leading) {
-            List {
-                ForEach (self.records3!) { records3 in
-                    if records3.playerID == self.userData.playerID {
-                RecordView(name: records3.recordName, score: records3.recordScore, reason: records3.recordReason, entryTime: records3.recordEntryTimeString, playerID: records3.playerID)
-                    }
-              }
+  
+  var records3 =  try? Disk.retrieve("scores.json", from: .documents, as: [Recordline].self).sorted(by: { $0.recordEntryTime! >= $1.recordEntryTime!})
+  
+  @EnvironmentObject private var userData: UserData
+  
+  var body: some View {
+    NavigationView {
+      VStack(alignment: .leading) {
+        List {
+          ForEach (self.records3!) { records3 in
+            if records3.playerID == self.userData.playerID {
+              RecordView(name: records3.recordName, score: records3.recordScore, reason: records3.recordReason, entryTime: records3.recordEntryTimeString, playerID: records3.playerID)
             }
-
           }
-          .navigationBarTitle("Tests")
         }
-
+        
+      }
+      .navigationBarTitle("Tests")
     }
+    
+  }
 }
 
 struct NewHistoryView_Previews: PreviewProvider {
-    static var previews: some View {
-        NewHistoryView()
-    }
+  static var previews: some View {
+    NewHistoryView()
+  }
 }
 
