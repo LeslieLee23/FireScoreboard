@@ -1,5 +1,5 @@
 //
-//  SelectView.swift
+//  SelectViewModel.swift
 //  Score1031
 //
 //  Created by Danting Li on 3/16/20.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct SelectView: View {
+struct SelectViewModel: View {
     var playerID: String = ""
     var playerOneName: String = ""
     var playerTwoName: String = ""
@@ -43,8 +43,8 @@ struct SelectView: View {
     }
 }
 
-struct SelectView_Previews: PreviewProvider {
+struct SelectViewModel_Previews: PreviewProvider {
     static var previews: some View {
-        SelectView()
+        SelectViewModel()
     }
 }

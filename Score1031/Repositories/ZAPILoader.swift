@@ -26,6 +26,7 @@ class ZAPILoader: ObservableObject {
     }
     return records3
   }
+  
 }
 
 extension ZAPILoader {
@@ -48,12 +49,26 @@ extension ZAPILoader {
       if let filtered = load().filter({$0.id == id}).first {
         filteredRecords3.append(filtered) }
       else {
-        let filteredRecords3 = [Recordline(playerID: "0", playerOneEmoji: "👩🏻",playerOneName: "Player One", playerOneScore: 0, playerTwoEmoji: "👨🏻", playerTwoName: "Player Two", playerTwoScore: 0, recordName: "Player one and two", recordScore: "NA", recordReason: "Default players created", recordEntryTime: Date(), recordEntryTimeString: "", recordAddEdit: true)]
+        var filteredRecords3 = [Recordline(playerID: "0", playerOneEmoji: "👩🏻",playerOneName: "Player One", playerOneScore: 0, playerTwoEmoji: "👨🏻", playerTwoName: "Player Two", playerTwoScore: 0, recordName: "Player one and two", recordScore: "NA", recordReason: "Default players created", recordEntryTime: Date(), recordEntryTimeString: "", recordAddEdit: true)]        
       }
     }
     print("The result of printing filteredRecords3 is \(filteredRecords3)")
     return filteredRecords3
 
+  }
+}
+
+extension ZAPILoader {
+  func loadOne() -> Recordline {
+    let decoder = PropertyListDecoder()
+
+    guard let data = try? Data.init(contentsOf: ZAPILoader.scoreURL),
+      let records3 = try? decoder.decode(Recordline.self, from: data)
+      else { return Recordline(playerID: "008", playerOneEmoji: "playerOneEmoji", playerOneName: "playerOneName"
+        , playerOneScore: 0, playerTwoEmoji: "playerTwoEmoji", playerTwoName: "playerTwoName", playerTwoScore: 0, recordName: "recordName", recordScore: "999", recordReason: "biubiu", recordEntryTimeString: "recordEntryTimeString", recordAddEdit: true
+        ) }
+
+    return records3
   }
 }
 

@@ -16,10 +16,7 @@ struct ContentView: View {
   @EnvironmentObject private var nameAndScore: NameAndScore
   @EnvironmentObject private var userData: UserData
   @EnvironmentObject private var addEidtChoice: AddEidtChoice
-  
-  //CoreData var
-  @Environment(\.managedObjectContext) var managedObjectContext
-  @FetchRequest(fetchRequest: Record.getAllRecords()) var records: FetchedResults<Record>
+
   @State var names = [String]()
   @State var oldscore = [String]()
   @State var oneEmoji = [String]()
@@ -33,7 +30,7 @@ struct ContentView: View {
         VStack {
           VStack {
             HStack{
-              NavigationLink (destination: NewSelectPlayersView(filteredRecords3: self.filteredRecords3))
+              NavigationLink (destination: ChangePlayersView(filteredRecords3: self.filteredRecords3))
               {
                 Text("Change Players")
                   .fontWeight(.light)
@@ -143,7 +140,7 @@ struct ContentView: View {
             /// View History row
             HStack {
               VStack {
-                NavigationLink (destination: NewHistoryView()){
+                NavigationLink (destination: HistoryView()){
                   Text("View History")
                     .fontWeight(.light)
                     .font(.system(size:15))
@@ -153,7 +150,7 @@ struct ContentView: View {
               }
               Spacer()
               VStack {
-                NavigationLink (destination: ZChangePlayerView())
+                NavigationLink (destination: AddNewPlayerView())
                 {
                   Text("Add Players")
                     .fontWeight(.light)
@@ -182,7 +179,7 @@ struct ContentView: View {
                       dateFormatter.amSymbol = "AM"
                       dateFormatter.pmSymbol = "PM"
                       
-                      let defaultPlayer = Recordline(playerID: "0", playerOneEmoji: "👩🏻",playerOneName: "Player One", playerOneScore: 0, playerTwoEmoji: "👨🏻", playerTwoName: "Player Two", playerTwoScore: 0, recordName: "Player one and two", recordScore: "NA", recordReason: "Default players created", recordEntryTime: Date(), recordEntryTimeString: "recordEntryTimeString", recordAddEdit: true)
+                      let defaultPlayer = [Recordline(playerID: "0", playerOneEmoji: "👩🏻",playerOneName: "Player One", playerOneScore: 0, playerTwoEmoji: "👨🏻", playerTwoName: "Player Two", playerTwoScore: 0, recordName: "Player one and two", recordScore: "NA", recordReason: "Default players created", recordEntryTime: Date(), recordEntryTimeString: "recordEntryTimeString", recordAddEdit: true)]
                         print(defaultPlayer)
                         try! Disk.remove("scores.json", from: .documents)
   

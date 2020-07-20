@@ -29,7 +29,6 @@ struct Recordline: Codable , Identifiable
   var recordAddEdit: Bool
   
   
-  
 }
 
 struct Playerline: Identifiable

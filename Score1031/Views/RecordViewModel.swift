@@ -7,7 +7,7 @@
 //
 import SwiftUI
 
-struct RecordView: View {
+struct RecordViewModel: View {
   var name: String = ""
   var score: String = ""
   var reason: String = ""
@@ -44,9 +44,9 @@ struct RecordView: View {
   }
 }
 
-struct RecordView_Preview: PreviewProvider
+struct RecordViewModel_Preview: PreviewProvider
 {
   static var previews: some View {
-    RecordView()
+    RecordViewModel()
   }
 }

@@ -13,31 +13,7 @@ import UIKit
 import Resolver
 import Disk
 
-extension String {
-
-    var zcontainsEmoji: Bool {
-        for scalar in unicodeScalars {
-            switch scalar.value {
-            case 0x1F600...0x1F64F, // Emoticons
-                 0x1F300...0x1F5FF, // Misc Symbols and Pictographs
-                 0x1F680...0x1F6FF, // Transport and Map
-                 0x2600...0x26FF,   // Misc symbols
-                 0x2700...0x27BF,   // Dingbats
-                 0xFE00...0xFE0F,   // Variation Selectors
-                 0x1F900...0x1F9FF, // Supplemental Symbols and Pictographs
-                 0x1F1E6...0x1F1FF: // Flags
-                return true
-            default:
-                continue
-            }
-        }
-        return false
-    }
-
-}
-
-
-struct ZChangePlayerView: View {
+struct AddNewPlayerView: View {
     
     @State var playerOneName = ""
     @State var playerOneEmoji = ""
@@ -51,10 +27,9 @@ struct ZChangePlayerView: View {
     @EnvironmentObject private var userData: UserData
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @Environment(\.managedObjectContext) var managedObjectContext
-    @FetchRequest(fetchRequest: Record.getAllRecords()) var records: FetchedResults<Record>
     
     //New repository change
-    @State var records3 = APILoader.load()
+  @State var records3 = ZAPILoader.load().first!
 
     var body: some View {
         VStack{
@@ -147,33 +122,6 @@ struct ZChangePlayerView: View {
                 self.nameAndScore.PlayerOneScore = 0
                 self.nameAndScore.PlayerTwoScore = 0
                 self.userData.playerID = String(self.userData.maxPlayerID)
-                //trying to save through two enities
-                let record = Record(context: self.managedObjectContext)
-                record.name = "\(self.playerOneName)+\(self.playerTwoName)"
-                record.score = "NA"
-                record.reason = "New Palyers Added"
-                record.entryTime = Date()
-                
-                record.entryTimeString = dateFormatter.string(from: Date())
-                record.ponescore = "0"
-                record.ptwoscore = "0"
-                record.addEdit = true
-                record.playerID = String(self.userData.maxPlayerID)
-                
-                record.player = Player(context: self.managedObjectContext)
-                record.player?.playerOneName = self.playerOneName
-                record.player?.playerTwoName = self.playerTwoName
-                record.player?.playerOneEmoji = self.playerOneEmoji
-                record.player?.playerTwoEmoji = self.playerTwoEmoji
-                record.player?.playerOneScore = 0
-                record.player?.playerTwoScore = 0
-                record.player?.playerID = String(self.userData.maxPlayerID)
-                
-                 do {
-                     try self.managedObjectContext.save()
-                 } catch{
-                    print(error)
-                }
                 
             }) {
                 Text("Change Players")
@@ -183,8 +131,8 @@ struct ZChangePlayerView: View {
                 .disabled(playerOneEmoji.isEmpty)
                 .disabled(playerTwoName.isEmpty)
                 .disabled(playerTwoEmoji.isEmpty)
-                .disabled(playerOneEmoji.zcontainsEmoji == false)
-                .disabled(playerTwoEmoji.zcontainsEmoji == false)
+                .disabled(playerOneEmoji.containsEmoji == false)
+                .disabled(playerTwoEmoji.containsEmoji == false)
 
             .alert(isPresented: $showAlert) { () ->
                 Alert in
@@ -194,7 +142,6 @@ struct ZChangePlayerView: View {
                 
             }
             }
-          //  Spacer()
             Spacer()
             Spacer()
             Spacer()
@@ -205,8 +152,8 @@ struct ZChangePlayerView: View {
     }
 }
 
-struct ZChangePlayerView_Previews: PreviewProvider {
+struct AddNewPlayerView_Previews: PreviewProvider {
     static var previews: some View {
-        ZChangePlayerView()
+        AddNewPlayerView()
     }
 }

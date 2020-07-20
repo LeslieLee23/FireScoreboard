@@ -2,54 +2,41 @@
 //  HistoryView.swift
 //  Score1031
 //
-//  Created by Danting Li on 1/19/20.
+//  Created by Danting Li on 4/21/20.
 //  Copyright © 2020 HULUCave. All rights reserved.
 //
 
-import Foundation
 import SwiftUI
-import Combine
-import CoreData
+import Foundation
+import Resolver
+import Disk
 
 struct HistoryView: View {
-    //JSON var
-    var recordlines: [Recordline] = testRecordline
-    
-    @State var modalIsPresented = false
-    //CoreData var
-     @Environment(\.managedObjectContext) var managedObjectContext
-     @FetchRequest(fetchRequest: Record.getAllRecords()) var records: FetchedResults<Record>
-     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-     @EnvironmentObject private var userData: UserData
-
-
-     var body: some View {
-
-         NavigationView {
-
-             List {
-
-                 ForEach(self.records) {record in
-                     if record.playerID == self.userData.playerID && record.score != "NA" {
-                     NavigationLink(
-                         destination: HistoryDetailView(record: record)) {
-                            RecordView(name: record.name!, score: record.score!, reason: record.reason!, entryTime: record.entryTimeString!, playerID: record.playerID)
-                     }
-
-                     }
-
-                 }
-                  FilteredList(playerID: self.userData.playerID!)
-                    .navigationBarTitle(Text("Score Change History"), displayMode: .inline)
+  
+  @State var records3 = ZAPILoader.load()
+  @EnvironmentObject private var userData: UserData
+  
+  var body: some View {
+    NavigationView {
+      VStack(alignment: .leading) {
+        List {
+          ForEach (self.records3) { records3 in
+            if records3.playerID == self.userData.playerID {
+              RecordViewModel(name: records3.recordName, score: records3.recordScore, reason: records3.recordReason, entryTime: records3.recordEntryTimeString, playerID: records3.playerID)
             }
-            
-            
+          }
         }
+        
+      }
+      .navigationBarTitle("Tests")
     }
     
+  }
+}
+
 struct HistoryView_Previews: PreviewProvider {
-    static var previews: some View {
-        HistoryView()
-    }
+  static var previews: some View {
+    HistoryView()
+  }
 }
-}
+
