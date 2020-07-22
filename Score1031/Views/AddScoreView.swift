@@ -21,6 +21,7 @@ struct AddScoreView: View {
   @State var showAlert = false
   @EnvironmentObject var nameAndScore: NameAndScore
   @EnvironmentObject var addEidtChoice: AddEidtChoice
+  @EnvironmentObject var addScoreFunc: AddScoreFunc
   @EnvironmentObject private var userData: UserData
   @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
   
@@ -29,8 +30,10 @@ struct AddScoreView: View {
   
 
   
-  var names = [String]()
+  var emojiPlusName = [String]()
   var oldscore = [String]()
+  var names = [String]()
+  var emojis = [String]()
   
   var btnBack : some View { Button(action: {
     self.presentationMode.wrappedValue.dismiss()
@@ -49,8 +52,8 @@ struct AddScoreView: View {
         Picker(selection: $selectedName, label:
           Text("Pick a name")
           , content: {
-            ForEach(0 ..< names.count) {
-              Text(self.names[$0])
+            ForEach(0 ..< emojiPlusName.count) {
+              Text(self.emojiPlusName[$0])
             }
             
         }).pickerStyle(SegmentedPickerStyle())
@@ -90,69 +93,88 @@ struct AddScoreView: View {
           
           Button(action: {
             self.showAlert = true
-            
-            if Int(self.scoreEdited) == nil {
-            }
-            
-            if self.addEidtChoice.addViewSelected == true {
-              if self.selectedName == 0 {
-                self.nameAndScore.PlayerOneScore += Int(self.scoreEdited)!
-                self.selectedNameString = self.nameAndScore.playerOneName!
-              }
-              else if self.selectedName == 1 {
-                self.nameAndScore.PlayerTwoScore += Int(self.scoreEdited)!
-                self.selectedNameString = self.nameAndScore.playerTwoName!
-              }
-            } else {
-              if self.selectedName == 0 {
-                self.nameAndScore.PlayerOneScore = Int(self.scoreEdited)!
-                self.selectedNameString = self.nameAndScore.playerOneName!
-              }
-              else if self.selectedName == 1 {
-                self.nameAndScore.PlayerTwoScore = Int(self.scoreEdited)!
-                
-                self.selectedNameString = self.nameAndScore.playerTwoName!
-              }
-            }
             if Int(self.scoreEdited) == 1 {
               self.pointGrammar = "point"
             }
-            
-            self.records3.playerOneEmoji = self.nameAndScore.playerOneEmoji!
-            self.records3.playerTwoEmoji = self.nameAndScore.playerTwoEmoji!
-            self.records3.playerOneName = self.nameAndScore.playerOneName!
-            self.records3.playerTwoName = self.nameAndScore.playerTwoName!
-            self.records3.recordName = self.selectedNameString
-            
-            if self.addEidtChoice.addViewSelected == true {
-              if self.scoreEdited.first == "-" || self.scoreEdited == "0" {
-                self.records3.recordScore = self.scoreEdited
-              } else {
-                self.records3.recordScore = "+\(self.scoreEdited)"
-              }
-            } else {
-              if self.selectedName == 0 {
-                self.records3.recordScore = String(Int(self.nameAndScore.PlayerOneScore) - (Int(self.oldscore[0])!))
-              } else {
-                self.records3.recordScore = String(Int(self.nameAndScore.PlayerTwoScore) - (Int(self.oldscore[1])!))
-              }
-              if String(self.records3.recordScore).first != "-" {
-                self.records3.recordScore = "+\(self.records3.recordScore)"
-              }
+            if Int(self.scoreEdited) == nil {
             }
+            
+            self.records3 = self.addScoreFunc.createRecord(
+              playerID: self.userData.playerID!,
+              oldscore: self.oldscore,
+              emojiPlusName: self.emojiPlusName,
+              names: self.names,
+              emojis: self.emojis,
+              scoreEdited: self.scoreEdited,
+              addViewSelected: true,
+              reason: self.reason,
+              selectedName: self.selectedName)
+            
+              self.nameAndScore.playerOneEmoji = self.records3.playerOneEmoji
+              self.nameAndScore.playerTwoEmoji = self.records3.playerTwoEmoji
+              self.nameAndScore.playerOneName = self.records3.playerOneName
+              self.nameAndScore.playerTwoName = self.records3.playerTwoName
+              self.nameAndScore.PlayerOneScore = self.records3.playerOneScore
+              self.nameAndScore.PlayerTwoScore = self.records3.playerTwoScore
+              
+            
+//            if self.addEidtChoice.addViewSelected == true {
+//              if self.selectedName == 0 {
+//                self.nameAndScore.PlayerOneScore += Int(self.scoreEdited)!
+//                self.selectedNameString = self.nameAndScore.playerOneName!
+//              }
+//              else if self.selectedName == 1 {
+//                self.nameAndScore.PlayerTwoScore += Int(self.scoreEdited)!
+//                self.selectedNameString = self.nameAndScore.playerTwoName!
+//              }
+//            } else {
+//              if self.selectedName == 0 {
+//                self.nameAndScore.PlayerOneScore = Int(self.scoreEdited)!
+//                self.selectedNameString = self.nameAndScore.playerOneName!
+//              }
+//              else if self.selectedName == 1 {
+//                self.nameAndScore.PlayerTwoScore = Int(self.scoreEdited)!
+//
+//                self.selectedNameString = self.nameAndScore.playerTwoName!
+//              }
+//            }
 
-            self.records3.recordReason = self.reason
-
-            self.records3.playerOneScore = self.nameAndScore.PlayerOneScore
-            self.records3.playerTwoScore = self.nameAndScore.PlayerTwoScore
-            self.records3.recordAddEdit = self.addEidtChoice.addViewSelected
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "MMM d, yyyy h:mm a"
-            dateFormatter.amSymbol = "AM"
-            dateFormatter.pmSymbol = "PM"
-            self.records3.recordEntryTimeString = dateFormatter.string(from: Date())
-            self.records3.recordEntryTime = Date()
-            self.records3.playerID = self.userData.playerID!
+            
+//            self.records3.playerOneEmoji = self.nameAndScore.playerOneEmoji!
+//            self.records3.playerTwoEmoji = self.nameAndScore.playerTwoEmoji!
+//            self.records3.playerOneName = self.nameAndScore.playerOneName!
+//            self.records3.playerTwoName = self.nameAndScore.playerTwoName!
+//            self.records3.recordName = self.selectedNameString
+//
+//            if self.addEidtChoice.addViewSelected == true {
+//              if self.scoreEdited.first == "-" || self.scoreEdited == "0" {
+//                self.records3.recordScore = self.scoreEdited
+//              } else {
+//                self.records3.recordScore = "+\(self.scoreEdited)"
+//              }
+//            } else {
+//              if self.selectedName == 0 {
+//                self.records3.recordScore = String(Int(self.nameAndScore.PlayerOneScore) - (Int(self.oldscore[0])!))
+//              } else {
+//                self.records3.recordScore = String(Int(self.nameAndScore.PlayerTwoScore) - (Int(self.oldscore[1])!))
+//              }
+//              if String(self.records3.recordScore).first != "-" {
+//                self.records3.recordScore = "+\(self.records3.recordScore)"
+//              }
+//            }
+//
+//            self.records3.recordReason = self.reason
+//
+//            self.records3.playerOneScore = self.nameAndScore.PlayerOneScore
+//            self.records3.playerTwoScore = self.nameAndScore.PlayerTwoScore
+//            self.records3.recordAddEdit = self.addEidtChoice.addViewSelected
+//            let dateFormatter = DateFormatter()
+//            dateFormatter.dateFormat = "MMM d, yyyy h:mm a"
+//            dateFormatter.amSymbol = "AM"
+//            dateFormatter.pmSymbol = "PM"
+//            self.records3.recordEntryTimeString = dateFormatter.string(from: Date())
+//            self.records3.recordEntryTime = Date()
+//            self.records3.playerID = self.userData.playerID!
 
             do {
               try Disk.append(self.records3, to: "scores.json", in: .documents)
@@ -174,7 +196,7 @@ struct AddScoreView: View {
           .alert(isPresented: $showAlert) { () ->
             Alert in
             if self.addEidtChoice.addViewSelected == true {
-              return Alert(title: Text("Score added!"), message: Text("You added \(self.scoreEdited) \(self.pointGrammar) to \(self.selectedNameString)"), dismissButton: Alert.Button.default(Text("Ok"))
+              return Alert(title: Text("Score added!"), message: Text("You added \(self.scoreEdited) \(self.pointGrammar) to \(self.records3.recordName)"), dismissButton: Alert.Button.default(Text("Ok"))
 
               {self.presentationMode.wrappedValue.dismiss() }
               )

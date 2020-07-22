@@ -32,15 +32,16 @@ class ZAPILoader: ObservableObject {
 extension ZAPILoader {
   static func queryPlayerList() -> [Recordline] {
     let recordSet = Set<String>(load().map{$0.playerID})
-    print(recordSet)
+    print("###SET \(recordSet)")
 
-    print("Look at this \(load())")
+    print("###Full List\(load())")
 
     var resultArray = [String]()
 
     for playerID in recordSet {
       let id = load().filter({$0.playerID == playerID}).map{$0.id}.first
       resultArray.append(id!)
+      print("###What to Append\(String(describing: id))")
     }
     /// Reset the array before quering it
     var filteredRecords3 = [Recordline]()
@@ -49,7 +50,7 @@ extension ZAPILoader {
       if let filtered = load().filter({$0.id == id}).first {
         filteredRecords3.append(filtered) }
       else {
-        var filteredRecords3 = [Recordline(playerID: "0", playerOneEmoji: "👩🏻",playerOneName: "Player One", playerOneScore: 0, playerTwoEmoji: "👨🏻", playerTwoName: "Player Two", playerTwoScore: 0, recordName: "Player one and two", recordScore: "NA", recordReason: "Default players created", recordEntryTime: Date(), recordEntryTimeString: "", recordAddEdit: true)]        
+        let filteredRecords3 = [Recordline(playerID: "0", playerOneEmoji: "👩🏻",playerOneName: "Player One", playerOneScore: 0, playerTwoEmoji: "👨🏻", playerTwoName: "Player Two", playerTwoScore: 0, recordName: "Player one and two", recordScore: "NA", recordReason: "Default players created", recordEntryTime: Date(), recordEntryTimeString: "", recordAddEdit: true)]
       }
     }
     print("The result of printing filteredRecords3 is \(filteredRecords3)")
@@ -59,16 +60,11 @@ extension ZAPILoader {
 }
 
 extension ZAPILoader {
-  func loadOne() -> Recordline {
-    let decoder = PropertyListDecoder()
-
-    guard let data = try? Data.init(contentsOf: ZAPILoader.scoreURL),
-      let records3 = try? decoder.decode(Recordline.self, from: data)
-      else { return Recordline(playerID: "008", playerOneEmoji: "playerOneEmoji", playerOneName: "playerOneName"
-        , playerOneScore: 0, playerTwoEmoji: "playerTwoEmoji", playerTwoName: "playerTwoName", playerTwoScore: 0, recordName: "recordName", recordScore: "999", recordReason: "biubiu", recordEntryTimeString: "recordEntryTimeString", recordAddEdit: true
-        ) }
-
-    return records3
+  static func findMaxPlayerID() -> Int {
+    let maxPlayerIDInt = ZAPILoader.load().map{Int($0.playerID)!}.max()
+    let maxPlayerID = String(maxPlayerIDInt ?? 0)
+    print("&&&\(maxPlayerIDInt)")
+    return maxPlayerIDInt!
   }
 }
 

@@ -85,9 +85,9 @@ struct AddNewPlayerView: View {
             Spacer()
             Button(action: {
                 
-                self.userData.maxPlayerID += 1
+                self.userData.maxPlayerID = ZAPILoader.findMaxPlayerID() + 1
                 self.showAlert = true
-                
+                self.records3.id = UUID().uuidString
                 self.records3.playerOneName = self.playerOneName
                 self.records3.playerTwoName = self.playerTwoName
                 self.records3.playerOneEmoji = self.playerOneEmoji
@@ -99,11 +99,7 @@ struct AddNewPlayerView: View {
                 self.records3.recordScore = "NA"
                 self.records3.recordReason = "New Palyers Added"
                 self.records3.recordEntryTime = Date()
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "MMM d, yyyy HH:mm a"
-                dateFormatter.amSymbol = "AM"
-                dateFormatter.pmSymbol = "PM"
-                self.records3.recordEntryTimeString = dateFormatter.string(from: Date())
+                self.records3.recordEntryTimeString = getDateString(Date: self.records3.recordEntryTime!)
                 self.records3.recordAddEdit = true
                 do {
                // try Disk.save(self.records3, to: .documents, as: "scores.json")

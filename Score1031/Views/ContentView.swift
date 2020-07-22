@@ -17,8 +17,10 @@ struct ContentView: View {
   @EnvironmentObject private var userData: UserData
   @EnvironmentObject private var addEidtChoice: AddEidtChoice
 
-  @State var names = [String]()
+  @State var emojiPlusName = [String]()
   @State var oldscore = [String]()
+  @State var names = [String]()
+  @State var emojis = [String]()
   @State var oneEmoji = [String]()
   @State var twoEmoji = [String]()
   @State var filteredRecords3 = ZAPILoader.queryPlayerList()
@@ -40,6 +42,7 @@ struct ContentView: View {
               .simultaneousGesture(TapGesture().onEnded {
                 self.filteredRecords3 = ZAPILoader.queryPlayerList()
                 self.records3 = ZAPILoader.load()
+                print("#####\(self.filteredRecords3)")
               })
               .disabled(!Disk.exists("scores.json", in: .documents))
  
@@ -94,7 +97,7 @@ struct ContentView: View {
           }
           ///Add Score Button row
           VStack {
-            NavigationLink (destination: AddScoreView(names: names, oldscore: oldscore)) {
+            NavigationLink (destination: AddScoreView(emojiPlusName: emojiPlusName, oldscore: oldscore, names: names, emojis: emojis)) {
               Text("Add Score!")
                 .fontWeight(.semibold)
             }
@@ -105,8 +108,10 @@ struct ContentView: View {
             .cornerRadius(13)
             .simultaneousGesture(TapGesture().onEnded {
               self.addEidtChoice.addViewSelected = true
-              self.names  = ["\(self.nameAndScore.playerOneEmoji!) \( self.nameAndScore.playerOneName!)","\( self.nameAndScore.playerTwoEmoji!) \( self.nameAndScore.playerTwoName!)"]
+              self.emojiPlusName  = ["\(self.nameAndScore.playerOneEmoji!) \( self.nameAndScore.playerOneName!)","\( self.nameAndScore.playerTwoEmoji!) \( self.nameAndScore.playerTwoName!)"]
               self.oldscore = ["\(self.nameAndScore.PlayerOneScore)", "\(self.nameAndScore.PlayerTwoScore)"]
+              self.emojis = [self.nameAndScore.playerOneEmoji!, self.nameAndScore.playerTwoEmoji!]
+              self.names = [self.nameAndScore.playerOneName!, self.nameAndScore.playerTwoName!]
               })
             
           }
@@ -115,7 +120,7 @@ struct ContentView: View {
           
           ///Edit Score Button row
           VStack {
-            NavigationLink (destination: AddScoreView(names: names, oldscore: oldscore)) {
+            NavigationLink (destination: AddScoreView(emojiPlusName: emojiPlusName, oldscore: oldscore, names: names, emojis: emojis)) {
               Text("Edit Score!")
                 .fontWeight(.semibold)
             }
@@ -127,8 +132,10 @@ struct ContentView: View {
               
             .simultaneousGesture(TapGesture().onEnded {
               self.addEidtChoice.addViewSelected = false
-              self.names  = ["\(self.nameAndScore.playerOneEmoji!) \( self.nameAndScore.playerOneName!)","\( self.nameAndScore.playerTwoEmoji!) \( self.nameAndScore.playerTwoName!)"]
+              self.emojiPlusName  = ["\(self.nameAndScore.playerOneEmoji!) \( self.nameAndScore.playerOneName!)","\( self.nameAndScore.playerTwoEmoji!) \( self.nameAndScore.playerTwoName!)"]
               self.oldscore = ["\(self.nameAndScore.PlayerOneScore)", "\(self.nameAndScore.PlayerTwoScore)"]
+              self.emojis = [self.nameAndScore.playerOneEmoji!, self.nameAndScore.playerTwoEmoji!]
+              self.names = [self.nameAndScore.playerOneName!, self.nameAndScore.playerTwoName!]
             })
             
           }
@@ -170,6 +177,7 @@ struct ContentView: View {
                 self.nameAndScore.playerOneName = "Player One"
                 self.nameAndScore.playerOneEmoji = "👩🏻"
                 self.nameAndScore.playerTwoEmoji = "👨🏻"
+                self.userData.playerID = "0"
          ///Check if file exist
 
                     if Disk.exists("scores.json", in: .documents) {
@@ -179,7 +187,7 @@ struct ContentView: View {
                       dateFormatter.amSymbol = "AM"
                       dateFormatter.pmSymbol = "PM"
                       
-                      let defaultPlayer = [Recordline(playerID: "0", playerOneEmoji: "👩🏻",playerOneName: "Player One", playerOneScore: 0, playerTwoEmoji: "👨🏻", playerTwoName: "Player Two", playerTwoScore: 0, recordName: "Player one and two", recordScore: "NA", recordReason: "Default players created", recordEntryTime: Date(), recordEntryTimeString: "recordEntryTimeString", recordAddEdit: true)]
+                      let defaultPlayer = [Recordline(id: UUID().uuidString, playerID: "0", playerOneEmoji: "👩🏻",playerOneName: "Player One", playerOneScore: 0, playerTwoEmoji: "👨🏻", playerTwoName: "Player Two", playerTwoScore: 0, recordName: "Player one and two", recordScore: "NA", recordReason: "Default players created", recordEntryTime: Date(), recordEntryTimeString: "recordEntryTimeString", recordAddEdit: true)]
                         print(defaultPlayer)
                         try! Disk.remove("scores.json", from: .documents)
   
@@ -221,8 +229,8 @@ struct ContentView: View {
 
                 print("docsDir:\(docsDir)")
 
-//                let records3 = try! Disk.retrieve("scores.json", from: .documents, as: [Recordline].self)
-//                print(records3)
+                let records3 = try! Disk.retrieve("scores.json", from: .documents, as: [Recordline].self)
+                print("This is what: \(records3)")
 
 
                 do {
@@ -235,6 +243,8 @@ struct ContentView: View {
                 } catch let error {
                   print("Error: \(error.localizedDescription)")
                 }
+                
+                let abc = ZAPILoader.findMaxPlayerID()
                 
               })
               {
