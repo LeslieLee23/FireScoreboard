@@ -36,6 +36,11 @@ extension String {
 
 }
 
+extension Color {
+    static let offWhite = Color(red: 225 / 255, green: 225 / 255, blue: 235 / 255)
+}
+
+
 class AddScoreFunc: ObservableObject {
   func createRecord(playerID: String, oldscore: [String], emojiPlusName: [String], names: [String], emojis: [String], scoreEdited: String, addViewSelected: Bool, reason: String, selectedName: Int) -> (Recordline) {
     var record = ZAPILoader.load().first!
@@ -88,7 +93,9 @@ class AddScoreFunc: ObservableObject {
         
         record.recordScore = String(Int(record.playerTwoScore) - (Int(oldscore[1])!))
       }
-      
+      if record.recordScore.first != "-" && record.recordScore.first != "0" {
+        record.recordScore = "+\(record.recordScore)"
+      }
     }
     return record
   }

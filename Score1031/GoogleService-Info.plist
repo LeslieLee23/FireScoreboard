@@ -3,34 +3,34 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>272608569399-8pc0dq0phoa6na3fe3i343opdtto9gm1.apps.googleusercontent.com</string>
+	<string>392136657808-ncc5gkk4je4n6t2l195j47lumdjhq06g.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.272608569399-8pc0dq0phoa6na3fe3i343opdtto9gm1</string>
+	<string>com.googleusercontent.apps.392136657808-ncc5gkk4je4n6t2l195j47lumdjhq06g</string>
 	<key>API_KEY</key>
-	<string>AIzaSyBk2Vg1l4sbKNcwuEin3aEw1OUDIkzkbp8</string>
+	<string>AIzaSyDlI9o-dWHQRjch-eO-HhJIogDZvWW1l_I</string>
 	<key>GCM_SENDER_ID</key>
-	<string>272608569399</string>
+	<string>392136657808</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.hulu.Score1031</string>
 	<key>PROJECT_ID</key>
-	<string>firescoreboard</string>
+	<string>fir-scoreboard-fe847</string>
 	<key>STORAGE_BUCKET</key>
-	<string>firescoreboard.appspot.com</string>
+	<string>fir-scoreboard-fe847.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_APPINVITE_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_GCM_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:272608569399:ios:416d8b9267180d4088f7b2</string>
+	<string>1:392136657808:ios:3d4327332f59b43eeb0115</string>
 	<key>DATABASE_URL</key>
-	<string>https://firescoreboard.firebaseio.com</string>
+	<string>https://fir-scoreboard-fe847.firebaseio.com</string>
 </dict>
 </plist>

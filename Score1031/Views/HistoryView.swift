@@ -28,7 +28,7 @@ struct HistoryView: View {
         }
         
       }
-      .navigationBarTitle("Tests")
+      .navigationBarTitle("Score Change History")
     }
     
   }

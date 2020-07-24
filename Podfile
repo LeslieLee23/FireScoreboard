@@ -8,6 +8,9 @@ target 'Score1031' do
   # Pods for Score1031
   pod 'Resolver'
   pod 'Disk', '~> 0.6.4'
-
+  
+  pod 'Firebase/Analytics'
+  pod 'Firebase/Firestore'
+  pod 'FirebaseFirestoreSwift'
 end
 

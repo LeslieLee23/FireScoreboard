@@ -27,6 +27,9 @@ struct ContentView: View {
   @State var records3 = ZAPILoader.load()
   
   var body: some View {
+    ZStack{
+      Color.offWhite
+    
     NavigationView{
       VStack {
         VStack {
@@ -55,7 +58,12 @@ struct ContentView: View {
             
             HStack {
               Spacer()
-              Toggle(isOn: $userData.showEmoji) {
+              Toggle(isOn: $userData.showEmoji
+                .animation(
+                  Animation.spring(dampingFraction: 0.7)
+              )
+                
+              ) {
                 Text("Emoji Mode")
               }.padding(.trailing, 35)
                 .labelsHidden()
@@ -83,14 +91,30 @@ struct ContentView: View {
           }
           VStack {
             Spacer()
+            if self.userData.showEmoji == true {
             HStack {
-              Spacer()
-              Text("\((self.userData.showEmoji ? self.nameAndScore.playerOneEmoji ?? "" : self.nameAndScore.playerOneName ?? "") )")
-                .font(.system(size: self.userData.showEmoji ? 45 : 25))
-              Spacer()
-              Text("\((self.userData.showEmoji ? self.nameAndScore.playerTwoEmoji ?? "" : self.nameAndScore.playerTwoName ?? "") )")
-                .font(.system(size: self.userData.showEmoji ? 45 : 25))
-              Spacer()
+                Spacer()
+              
+                Text(self.nameAndScore.playerOneEmoji ?? "👩🏻")
+                .font(.system(size: 45))
+                .transition(.scale(scale: 5))
+
+                Spacer()
+                Text(self.nameAndScore.playerTwoEmoji ?? "👨🏻")
+                .font(.system(size: 45))
+                Spacer()
+            }
+            } else {
+              HStack {
+                  Spacer()
+                
+                  Text(self.nameAndScore.playerOneName ?? "Miu")
+                  .font(.system(size: 25))
+                  Spacer()
+                  Text(self.nameAndScore.playerTwoName ?? "Whof")
+                  .font(.system(size: 25))
+                  Spacer()
+              }
             }
             Spacer()
             Spacer()
@@ -105,7 +129,10 @@ struct ContentView: View {
             .padding()
             .foregroundColor(.white)
             .background(LinearGradient(gradient: Gradient(colors: [Color("isaacblue"), Color("destinygreen")]), startPoint: .leading, endPoint: .trailing))
+           
             .cornerRadius(13)
+       //     .shadow(color: Color.black.opacity(0.2), radius: 5, x: 10, y: 10)
+       //     .shadow(color: Color.white.opacity(1), radius: 5, x: -5, y: -5)
             .simultaneousGesture(TapGesture().onEnded {
               self.addEidtChoice.addViewSelected = true
               self.emojiPlusName  = ["\(self.nameAndScore.playerOneEmoji!) \( self.nameAndScore.playerOneName!)","\( self.nameAndScore.playerTwoEmoji!) \( self.nameAndScore.playerTwoName!)"]
@@ -255,6 +282,8 @@ struct ContentView: View {
         }
       }
     }
+    }
+   // .edgesIgnoringSafeArea(.all)
   }
   
   
