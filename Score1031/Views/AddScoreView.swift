@@ -116,13 +116,9 @@ struct AddScoreView: View {
               self.nameAndScore.playerTwoName = self.records3.playerTwoName
               self.nameAndScore.PlayerOneScore = self.records3.playerOneScore
               self.nameAndScore.PlayerTwoScore = self.records3.playerTwoScore
-
-            do {
-              try Disk.append(self.records3, to: "scores.json", in: .documents)
-              print("Yes yes yes this works!")
-            } catch{
-              print("NONONO This didn't work!")
-            }
+            
+            ZAPILoader.saveData(record: self.records3)
+            
           }) {
             if addEidtChoice.addViewSelected == true {
               Text("Add")

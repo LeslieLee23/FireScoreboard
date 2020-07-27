@@ -63,9 +63,11 @@ class AddScoreFunc: ObservableObject {
       
       if selectedName == 0 {
         record.playerOneScore = Int(oldscore[0])! + Int(scoreEdited)!
+        record.playerTwoScore = Int(oldscore[1])!
         record.recordName = emojiPlusName[0]
       } else if selectedName == 1 {
         record.playerTwoScore = Int(oldscore[1])! + Int(scoreEdited)!
+        record.playerOneScore = Int(oldscore[0])!
         record.recordName = emojiPlusName[1]
       }
       
@@ -83,12 +85,14 @@ class AddScoreFunc: ObservableObject {
       
       if selectedName == 0 {
         record.playerOneScore = Int(scoreEdited)!
+        record.playerTwoScore = Int(oldscore[1])!
         record.recordName = emojiPlusName[0]
         
         record.recordScore = String(Int(record.playerOneScore) - (Int(oldscore[0])!))
       }
       else if selectedName == 1 {
         record.playerTwoScore = Int(scoreEdited)!
+        record.playerOneScore = Int(oldscore[0])!
         record.recordName = emojiPlusName[1]
         
         record.recordScore = String(Int(record.playerTwoScore) - (Int(oldscore[1])!))

@@ -101,14 +101,8 @@ struct AddNewPlayerView: View {
                 self.records3.recordEntryTime = Date()
                 self.records3.recordEntryTimeString = getDateString(Date: self.records3.recordEntryTime!)
                 self.records3.recordAddEdit = true
-                do {
-               // try Disk.save(self.records3, to: .documents, as: "scores.json")
-                    try Disk.append(self.records3, to: "scores.json", in: .documents)
-                    print("Yes yes yes this works!")
-                 } catch{
-                  //  try Disk.save(self.records3, to: .documents, as: "scores.json")
-                    print("NONONO This didn't work!")
-                }
+
+                ZAPILoader.saveData(record: self.records3)
 
                 
                 self.nameAndScore.playerOneName = self.playerOneName

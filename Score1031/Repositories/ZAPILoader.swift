@@ -65,6 +65,17 @@ extension ZAPILoader {
     let maxPlayerID = String(maxPlayerIDInt ?? 0)
     print("&&&\(maxPlayerIDInt)")
     return maxPlayerIDInt!
+  } 
+}
+
+extension ZAPILoader {
+  static func saveData(record: Recordline) {
+    do {
+      try Disk.append(record, to: "scores.json", in: .documents)
+      print("Yes yes yes this works!")
+    } catch{
+      print("NONONO This didn't work!")
+    }
   }
 }
 
