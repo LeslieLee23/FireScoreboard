@@ -9,7 +9,7 @@ import Resolver
 
 extension Resolver: ResolverRegistering {
   public static func registerAllServices() {
-    register { LocalScoreRepository () as ScoreRepository }.scope(application)
+    register { ZAPILoader () as ZAPILoader }.scope(application)
   }
 }
 

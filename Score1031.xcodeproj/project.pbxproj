@@ -29,6 +29,7 @@
 		F56E71922493505C007E8FF5 /* AddNewPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56E71912493505C007E8FF5 /* AddNewPlayerView.swift */; };
 		F59129502420368F0071E1D3 /* SelectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F591294F2420368F0071E1D3 /* SelectViewModel.swift */; };
 		F5C95EA623FB4EB500D46C7A /* AddEditChoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C95EA523FB4EB500D46C7A /* AddEditChoice.swift */; };
+		F5D7FC6B24D0E7F7006BFC4A /* APILoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D7FC6A24D0E7F7006BFC4A /* APILoader.swift */; };
 		F5F02578244427A20038A4FB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F5F02577244427A20038A4FB /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +60,7 @@
 		F56E71912493505C007E8FF5 /* AddNewPlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewPlayerView.swift; sourceTree = "<group>"; };
 		F591294F2420368F0071E1D3 /* SelectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectViewModel.swift; sourceTree = "<group>"; };
 		F5C95EA523FB4EB500D46C7A /* AddEditChoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditChoice.swift; sourceTree = "<group>"; };
+		F5D7FC6A24D0E7F7006BFC4A /* APILoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APILoader.swift; sourceTree = "<group>"; };
 		F5F02577244427A20038A4FB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -97,6 +99,7 @@
 				F508FB6624502001001C5C24 /* ScoreRepository.swift */,
 				F508FB682451453F001C5C24 /* AppDelegate+Resolving.swift */,
 				F50762E924BEE00900676F9C /* ZAPILoader.swift */,
+				F5D7FC6A24D0E7F7006BFC4A /* APILoader.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -312,6 +315,7 @@
 				F59129502420368F0071E1D3 /* SelectViewModel.swift in Sources */,
 				F51C7A3623D4EB6300540B25 /* NameAndScore.swift in Sources */,
 				F508FB6424501144001C5C24 /* HistoryView.swift in Sources */,
+				F5D7FC6B24D0E7F7006BFC4A /* APILoader.swift in Sources */,
 				F50762EC24C01D0100676F9C /* Functions.swift in Sources */,
 				F5C95EA623FB4EB500D46C7A /* AddEditChoice.swift in Sources */,
 				F50762E424B438AD00676F9C /* ChangePlayersView.swift in Sources */,

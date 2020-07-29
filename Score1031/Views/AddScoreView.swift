@@ -11,6 +11,8 @@ import SwiftUI
 import Combine
 import CoreData
 import Disk
+import Firebase
+
 
 struct AddScoreView: View {
   @State var scoreEdited = ""
@@ -117,8 +119,8 @@ struct AddScoreView: View {
               self.nameAndScore.PlayerOneScore = self.records3.playerOneScore
               self.nameAndScore.PlayerTwoScore = self.records3.playerTwoScore
             
-            ZAPILoader.saveData(record: self.records3)
-            
+            APILoader.saveData(record: self.records3)
+
           }) {
             if addEidtChoice.addViewSelected == true {
               Text("Add")

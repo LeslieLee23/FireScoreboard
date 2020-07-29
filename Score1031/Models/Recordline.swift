@@ -9,10 +9,12 @@
 import Foundation
 import SwiftUI
 import Combine
+import FirebaseFirestore
+import FirebaseFirestoreSwift
 
 struct Recordline: Codable , Identifiable
 {
-  
+//  @DocumentID var id2: String?
   var id: String = UUID().uuidString
   var playerID: String
   var playerOneEmoji: String
@@ -27,7 +29,7 @@ struct Recordline: Codable , Identifiable
   var recordEntryTime: Date?
   var recordEntryTimeString: String
   var recordAddEdit: Bool
-  
+//  @ServerTimestamp var createdTime: Timestamp?
   
 }
 

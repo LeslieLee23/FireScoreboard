@@ -10,6 +10,7 @@ import SwiftUI
 import Combine
 import CoreData
 import Disk
+import Firebase
 
 struct ContentView: View {
   
@@ -230,48 +231,22 @@ struct ContentView: View {
                 Text("Start Over")
               }
               Button(action: {
-//                // Delete file function
-//                do {
-//                    let filemgr = FileManager.default
-//
-//                    let dirPaths = filemgr.urls(for: .documentDirectory, in: .userDomainMask)
-//
-//                    let docsDir = dirPaths[0]
-//                    ///put the name of the file to delete here:
-//                    let filePath = docsDir.appendingPathComponent("scores.json")
-//
-//                    try FileManager.default.removeItem(at: filePath)
-//                    print("File deleted")
-//
-//                }
-//                catch {
-//                    print("Error")
-//                }
-//                // End of delete function
-                let filemgr = FileManager.default
-
-                let dirPaths = filemgr.urls(for: .documentDirectory, in: .userDomainMask)
-
-                let docsDir = dirPaths[0]
-
-                print("docsDir:\(docsDir)")
-
-                let records3 = try! Disk.retrieve("scores.json", from: .documents, as: [Recordline].self)
-                print("This is what: \(records3)")
-
-
-                do {
-                  //    try Disk.clear(.documents)
-                  let filelist = try filemgr.contentsOfDirectory(atPath: docsDir.path)
-
-                  for filename in filelist {
-                    print("filename:\(filename)")
+              
+                let db = Firestore.firestore()
+                db.collection("records").getDocuments { (snapshot, error) in
+                  
+                  if error == nil && snapshot != nil {
+                    for document in snapshot!.documents {
+                      let documentData = document.data()
+                      print ("One example \(documentData)")
+                    }
                   }
-                } catch let error {
-                  print("Error: \(error.localizedDescription)")
+                  
                 }
+               
                 
-                let abc = ZAPILoader.findMaxPlayerID()
+               // ref.childByAutoId().setValue(["playerID": "0", "playerOneEmoji": "👩🏻","playerOneName": "Player One", "playerOneScore": 0, "playerTwoEmoji": "👨🏻", "playerTwoName": "Player Two", "playerTwoScore": 0, "recordName": "Player one and two", "recordScore": "NA", "recordReason": "Default players created", "recordEntryTime": Date(), "recordEntryTimeString": "", "recordAddEdit": true])
+                
                 
               })
               {

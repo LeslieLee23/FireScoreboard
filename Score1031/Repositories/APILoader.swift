@@ -1,8 +1,8 @@
 //
-//  ZAPILoader.swift
+//  APILoader.swift
 //  Score1031
 //
-//  Created by Danting Li on 7/14/20.
+//  Created by Danting Li on 7/28/20.
 //  Copyright © 2020 HULUCave. All rights reserved.
 //
 
@@ -15,8 +15,8 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 import FirebaseDatabase
 
-class ZAPILoader: ObservableObject {
-  
+class APILoader: ObservableObject {
+  let ref = Database.database().reference()
   
   static private var scoreURL: URL {
     let documents = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
@@ -35,7 +35,7 @@ class ZAPILoader: ObservableObject {
   
 }
 
-extension ZAPILoader {
+extension APILoader {
   static func queryPlayerList() -> [Recordline] {
     let recordSet = Set<String>(load().map{$0.playerID})
     print("###SET \(recordSet)")
@@ -65,7 +65,7 @@ extension ZAPILoader {
   }
 }
 
-extension ZAPILoader {
+extension APILoader {
   static func findMaxPlayerID() -> Int {
     let maxPlayerIDInt = load().map{Int($0.playerID)!}.max()
     let maxPlayerID = String(maxPlayerIDInt ?? 0)
@@ -74,18 +74,25 @@ extension ZAPILoader {
   }
 }
 
-extension ZAPILoader {
+extension APILoader {
   static func saveData(record: Recordline) {
     do {
       try Disk.append(record, to: "scores.json", in: .documents)
       print("Yes yes yes this works!")
+      ///save to Firebase
+      let db = Firestore.firestore()
+      db.collection("records").addDocument(data: ["playerID": record.playerID, "playerOneEmoji": record.playerOneEmoji,"playerOneName": record.playerOneName, "playerOneScore": record.playerOneScore, "playerTwoEmoji": record.playerTwoEmoji, "playerTwoName": record.playerTwoName, "playerTwoScore": record.playerTwoScore, "recordName": record.recordName, "recordScore": record.recordScore, "recordReason": record.recordReason, "recordEntryTime": Date(), "recordEntryTimeString": record.recordEntryTimeString, "recordAddEdit": record.recordAddEdit])
+      
     } catch{
       print("NONONO This didn't work!")
     }
+    
+    
+   
   }
 }
 
-extension ZAPILoader {
+extension APILoader {
   static func copyrecords3FromBundle() {
     if let path = Bundle.main.path(forResource: "api_records3", ofType: "plist"),
       let data = FileManager.default.contents(atPath: path),
@@ -96,7 +103,7 @@ extension ZAPILoader {
   }
 }
 
-extension ZAPILoader {
+extension APILoader {
   static func write(records3: Recordline) {
     let encoder = PropertyListEncoder()
 

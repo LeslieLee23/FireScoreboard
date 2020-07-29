@@ -12,5 +12,7 @@ target 'Score1031' do
   pod 'Firebase/Analytics'
   pod 'Firebase/Firestore'
   pod 'FirebaseFirestoreSwift'
+  pod 'Firebase/Core'
+  pod 'Firebase/Database'
 end
 
