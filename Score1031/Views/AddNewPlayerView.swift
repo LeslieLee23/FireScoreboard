@@ -102,7 +102,7 @@ struct AddNewPlayerView: View {
                 self.records3.recordEntryTimeString = getDateString(Date: self.records3.recordEntryTime!)
                 self.records3.recordAddEdit = true
 
-                ZAPILoader.saveData(record: self.records3)
+                APILoader.saveData(record: self.records3)
 
                 
                 self.nameAndScore.playerOneName = self.playerOneName

@@ -17,6 +17,7 @@ struct ContentView: View {
   @EnvironmentObject private var nameAndScore: NameAndScore
   @EnvironmentObject private var userData: UserData
   @EnvironmentObject private var addEidtChoice: AddEidtChoice
+  @ObservedObject private var apiLoader = APILoader()
 
   @State var emojiPlusName = [String]()
   @State var oldscore = [String]()
@@ -26,7 +27,8 @@ struct ContentView: View {
   @State var twoEmoji = [String]()
   @State var filteredRecords3 = ZAPILoader.queryPlayerList()
   @State var records3 = ZAPILoader.load()
-  
+  @State var records = [Recordline]()
+
   var body: some View {
     ZStack{
       Color.offWhite
@@ -232,22 +234,30 @@ struct ContentView: View {
               }
               Button(action: {
               
-                let db = Firestore.firestore()
-                db.collection("records").getDocuments { (snapshot, error) in
-                  
-                  if error == nil && snapshot != nil {
-                    for document in snapshot!.documents {
-                      let documentData = document.data()
-                      print ("One example \(documentData)")
-                    }
-                  }
-                  
-                }
-               
-                
-               // ref.childByAutoId().setValue(["playerID": "0", "playerOneEmoji": "👩🏻","playerOneName": "Player One", "playerOneScore": 0, "playerTwoEmoji": "👨🏻", "playerTwoName": "Player Two", "playerTwoScore": 0, "recordName": "Player one and two", "recordScore": "NA", "recordReason": "Default players created", "recordEntryTime": Date(), "recordEntryTimeString": "", "recordAddEdit": true])
-                
-                
+//                let db = Firestore.firestore()
+//                db.collection("records").getDocuments { (snapshot, error) in
+//
+//                  if error == nil && snapshot != nil {
+//                    for document in snapshot!.documents {
+//                      let documentData = document.data()
+//                      print ("One example \(documentData)")
+//                    }
+//                  }
+//                }
+                self.apiLoader.fetchData()
+                print ("This is what I am looking for \(self.apiLoader.records)")
+//
+//                db.collection("records").order(by: "recordEntryTime").addSnapshotListener { (querySnapshot, error) in
+//                  if let querySnapshot = querySnapshot {
+//                    self.records = querySnapshot.documents.compactMap { document -> Recordline? in
+//                      try? document.data(as: Recordline.self)
+//
+//                    }
+//                  }
+//                }
+//                print("YOYO Here is the result \(self.records)")
+//
+//                print("YOYO Here is record3 \(self.records3)")
               })
               {
                 Text("file path")

@@ -16,7 +16,57 @@ import FirebaseFirestoreSwift
 import FirebaseDatabase
 
 class APILoader: ObservableObject {
-  let ref = Database.database().reference()
+  @Published var records = [Recordline]()
+  private var db = Firestore.firestore()
+  
+  func fetchData() {
+    db.collection("records").addSnapshotListener {(querySnapshot, error) in
+      guard let documents = querySnapshot?.documents else {
+        print("No documents")
+        return
+      }
+      self.records = documents.map {(queryDocumentSnapshot) -> Recordline in
+        let data = queryDocumentSnapshot.data()
+      //  print ("%%%data \(data)")
+        
+        let id = data["id"] as? String ?? ""
+        let playerID = data["playerID"] as? String ?? ""
+        let playerOneEmoji = data["playerOneEmoji"] as? String ?? ""
+        let playerOneName = data["playerOneName"] as? String ?? ""
+        let playerOneScore = data["playerOneScore"] as? Int ?? 0
+        let playerTwoEmoji = data["playerTwoEmoji"] as? String ?? ""
+        let playerTwoName = data["playerTwoName"] as? String ?? ""
+        let playerTwoScore = data["playerTwoScore"] as? Int ?? 0
+        let recordName = data["recordName"] as? String ?? ""
+        let recordScore = data["recordScore"] as? String ?? ""
+        let recordReason = data["recordReason"] as? String ?? ""
+        let recordEntryTime = Date() //data["recordEntryTime"] as? Date?
+        let recordEntryTimeString = data["recordEntryTimeString"] as? String ?? ""
+        let recordAddEdit = data["recordAddEdit"] as? Bool ?? true
+        
+        let abc = Recordline(
+                  id: id,
+                  playerID: playerID,
+                  playerOneEmoji: playerOneEmoji,
+                  playerOneName: playerOneName,
+                  playerOneScore: playerOneScore,
+                  playerTwoEmoji: playerTwoEmoji,
+                  playerTwoName: playerTwoName,
+                  playerTwoScore: playerTwoScore,
+
+                  recordName: recordName,
+                  recordScore: recordScore,
+                  recordReason: recordReason,
+                  recordEntryTime: recordEntryTime,
+                  recordEntryTimeString: recordEntryTimeString,
+                  recordAddEdit: recordAddEdit
+        )
+        
+        print("this is abc \(abc)")
+        return abc
+      }
+    }
+  }
   
   static private var scoreURL: URL {
     let documents = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
@@ -77,11 +127,11 @@ extension APILoader {
 extension APILoader {
   static func saveData(record: Recordline) {
     do {
-      try Disk.append(record, to: "scores.json", in: .documents)
+  //    try Disk.append(record, to: "scores.json", in: .documents)
       print("Yes yes yes this works!")
       ///save to Firebase
       let db = Firestore.firestore()
-      db.collection("records").addDocument(data: ["playerID": record.playerID, "playerOneEmoji": record.playerOneEmoji,"playerOneName": record.playerOneName, "playerOneScore": record.playerOneScore, "playerTwoEmoji": record.playerTwoEmoji, "playerTwoName": record.playerTwoName, "playerTwoScore": record.playerTwoScore, "recordName": record.recordName, "recordScore": record.recordScore, "recordReason": record.recordReason, "recordEntryTime": Date(), "recordEntryTimeString": record.recordEntryTimeString, "recordAddEdit": record.recordAddEdit])
+      db.collection("records").addDocument(data: ["id": record.id, "playerID": record.playerID, "playerOneEmoji": record.playerOneEmoji,"playerOneName": record.playerOneName, "playerOneScore": record.playerOneScore, "playerTwoEmoji": record.playerTwoEmoji, "playerTwoName": record.playerTwoName, "playerTwoScore": record.playerTwoScore, "recordName": record.recordName, "recordScore": record.recordScore, "recordReason": record.recordReason, "recordEntryTime": Date(), "recordEntryTimeString": record.recordEntryTimeString, "recordAddEdit": record.recordAddEdit])
       
     } catch{
       print("NONONO This didn't work!")

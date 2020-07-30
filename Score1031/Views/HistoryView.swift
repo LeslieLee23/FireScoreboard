@@ -13,14 +13,15 @@ import Disk
 
 struct HistoryView: View {
   
-  @State var records3 = ZAPILoader.load()
+ // @State var records3 = ZAPILoader.load()
   @EnvironmentObject private var userData: UserData
+  @ObservedObject private var apiLoader = APILoader()
   
   var body: some View {
     NavigationView {
       VStack(alignment: .leading) {
         List {
-          ForEach (self.records3) { records3 in
+          ForEach (apiLoader.records) { records3 in
             if records3.playerID == self.userData.playerID {
               RecordViewModel(name: records3.recordName, score: records3.recordScore, reason: records3.recordReason, entryTime: records3.recordEntryTimeString, playerID: records3.playerID)
             }
@@ -29,6 +30,9 @@ struct HistoryView: View {
         
       }
       .navigationBarTitle("Score Change History")
+      .onAppear() {
+        self.apiLoader.fetchData()
+      }
     }
     
   }
