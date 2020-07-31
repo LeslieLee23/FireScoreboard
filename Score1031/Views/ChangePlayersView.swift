@@ -14,13 +14,13 @@ struct ChangePlayersView: View {
   @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
   @EnvironmentObject private var nameAndScore: NameAndScore
   @EnvironmentObject private var userData: UserData
+  @ObservedObject private var apiLoader = APILoader()
   
-  var filteredRecords3 = [Recordline]()
   
   var body: some View {
     VStack {
       List {
-        ForEach(self.filteredRecords3) { record in
+        ForEach(self.apiLoader.queryPlayerList()) { record in
           
           HStack{
             VStack{

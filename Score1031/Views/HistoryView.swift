@@ -13,7 +13,6 @@ import Disk
 
 struct HistoryView: View {
   
- // @State var records3 = ZAPILoader.load()
   @EnvironmentObject private var userData: UserData
   @ObservedObject private var apiLoader = APILoader()
   

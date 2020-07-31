@@ -43,7 +43,7 @@ extension Color {
 
 class AddScoreFunc: ObservableObject {
   func createRecord(playerID: String, oldscore: [String], emojiPlusName: [String], names: [String], emojis: [String], scoreEdited: String, addViewSelected: Bool, reason: String, selectedName: Int) -> (Recordline) {
-    var record = ZAPILoader.load().first!
+    var record = Recordline(playerID: "0", playerOneEmoji: "👩🏻",playerOneName: "Player One", playerOneScore: 0, playerTwoEmoji: "👨🏻", playerTwoName: "Player Two", playerTwoScore: 0, recordName: "Player one and two", recordScore: "NA", recordReason: "Default players created", recordEntryTime: Date(), recordEntryTimeString: "", recordAddEdit: true)
     
     record.id = UUID().uuidString
     record.recordReason = reason

@@ -14,8 +14,6 @@
 		F50762EC24C01D0100676F9C /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50762EB24C01D0100676F9C /* Functions.swift */; };
 		F508FB60244EA96A001C5C24 /* Recordline.swift in Sources */ = {isa = PBXBuildFile; fileRef = F508FB5F244EA96A001C5C24 /* Recordline.swift */; };
 		F508FB6424501144001C5C24 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F508FB6324501144001C5C24 /* HistoryView.swift */; };
-		F508FB6724502001001C5C24 /* ScoreRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F508FB6624502001001C5C24 /* ScoreRepository.swift */; };
-		F508FB692451453F001C5C24 /* AppDelegate+Resolving.swift in Sources */ = {isa = PBXBuildFile; fileRef = F508FB682451453F001C5C24 /* AppDelegate+Resolving.swift */; };
 		F51C7A3623D4EB6300540B25 /* NameAndScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51C7A3523D4EB6300540B25 /* NameAndScore.swift */; };
 		F51EE72223F12D9D0030B17C /* Score1031.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F51EE72023F12D9D0030B17C /* Score1031.xcdatamodeld */; };
 		F53BDFD0236B44CC00C3E203 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53BDFCF236B44CC00C3E203 /* AppDelegate.swift */; };
@@ -43,8 +41,6 @@
 		F50762EB24C01D0100676F9C /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		F508FB5F244EA96A001C5C24 /* Recordline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recordline.swift; sourceTree = "<group>"; };
 		F508FB6324501144001C5C24 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
-		F508FB6624502001001C5C24 /* ScoreRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreRepository.swift; sourceTree = "<group>"; };
-		F508FB682451453F001C5C24 /* AppDelegate+Resolving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Resolving.swift"; sourceTree = "<group>"; };
 		F51C7A3523D4EB6300540B25 /* NameAndScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameAndScore.swift; sourceTree = "<group>"; };
 		F51EE72123F12D9D0030B17C /* Score1031.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Score1031.xcdatamodel; sourceTree = "<group>"; };
 		F53BDFCC236B44CC00C3E203 /* FireScoreboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FireScoreboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -96,8 +92,6 @@
 		F508FB6524501FC1001C5C24 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				F508FB6624502001001C5C24 /* ScoreRepository.swift */,
-				F508FB682451453F001C5C24 /* AppDelegate+Resolving.swift */,
 				F50762E924BEE00900676F9C /* ZAPILoader.swift */,
 				F5D7FC6A24D0E7F7006BFC4A /* APILoader.swift */,
 			);
@@ -319,10 +313,8 @@
 				F50762EC24C01D0100676F9C /* Functions.swift in Sources */,
 				F5C95EA623FB4EB500D46C7A /* AddEditChoice.swift in Sources */,
 				F50762E424B438AD00676F9C /* ChangePlayersView.swift in Sources */,
-				F508FB692451453F001C5C24 /* AppDelegate+Resolving.swift in Sources */,
 				F53BDFE42371E48500C3E203 /* AddScoreView.swift in Sources */,
 				F53BDFD2236B44CC00C3E203 /* SceneDelegate.swift in Sources */,
-				F508FB6724502001001C5C24 /* ScoreRepository.swift in Sources */,
 				F53BDFD4236B44CC00C3E203 /* ContentView.swift in Sources */,
 				F508FB60244EA96A001C5C24 /* Recordline.swift in Sources */,
 			);

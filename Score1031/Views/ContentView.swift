@@ -25,8 +25,6 @@ struct ContentView: View {
   @State var emojis = [String]()
   @State var oneEmoji = [String]()
   @State var twoEmoji = [String]()
-  @State var filteredRecords3 = ZAPILoader.queryPlayerList()
-  @State var records3 = ZAPILoader.load()
   @State var records = [Recordline]()
 
   var body: some View {
@@ -38,19 +36,14 @@ struct ContentView: View {
         VStack {
           VStack {
             HStack{
-              NavigationLink (destination: ChangePlayersView(filteredRecords3: self.filteredRecords3))
+              NavigationLink (destination: ChangePlayersView())
               {
                 Text("Change Players")
                   .fontWeight(.light)
                   .font(.system(size:15))
                   .padding()
               }
-              .simultaneousGesture(TapGesture().onEnded {
-                self.filteredRecords3 = ZAPILoader.queryPlayerList()
-                self.records3 = ZAPILoader.load()
-                print("#####\(self.filteredRecords3)")
-              })
-              .disabled(!Disk.exists("scores.json", in: .documents))
+              .disabled(self.apiLoader.queryPlayerList().count < 2)
  
               
               Spacer()
@@ -208,24 +201,8 @@ struct ContentView: View {
                 self.nameAndScore.playerOneEmoji = "👩🏻"
                 self.nameAndScore.playerTwoEmoji = "👨🏻"
                 self.userData.playerID = "0"
-         ///Check if file exist
-
-                    if Disk.exists("scores.json", in: .documents) {
-                      
-                      let dateFormatter = DateFormatter()
-                      dateFormatter.dateFormat = "MMM d, yyyy h:mm a"
-                      dateFormatter.amSymbol = "AM"
-                      dateFormatter.pmSymbol = "PM"
-                      
-                      let defaultPlayer = [Recordline(id: UUID().uuidString, playerID: "0", playerOneEmoji: "👩🏻",playerOneName: "Player One", playerOneScore: 0, playerTwoEmoji: "👨🏻", playerTwoName: "Player Two", playerTwoScore: 0, recordName: "Player one and two", recordScore: "NA", recordReason: "Default players created", recordEntryTime: Date(), recordEntryTimeString: "recordEntryTimeString", recordAddEdit: true)]
-                        print(defaultPlayer)
-                        try! Disk.remove("scores.json", from: .documents)
-  
-                        try! Disk.save(defaultPlayer, to: .documents, as: "scores.json")
-                        print("emptied score.json and put in default value in the file")
-                    } else {
-                      print("There is no scores.json file")
-                  }
+                
+                self.apiLoader.remove()
 
                 
               })
@@ -233,31 +210,10 @@ struct ContentView: View {
                 Text("Start Over")
               }
               Button(action: {
-              
-//                let db = Firestore.firestore()
-//                db.collection("records").getDocuments { (snapshot, error) in
-//
-//                  if error == nil && snapshot != nil {
-//                    for document in snapshot!.documents {
-//                      let documentData = document.data()
-//                      print ("One example \(documentData)")
-//                    }
-//                  }
-//                }
+
                 self.apiLoader.fetchData()
                 print ("This is what I am looking for \(self.apiLoader.records)")
-//
-//                db.collection("records").order(by: "recordEntryTime").addSnapshotListener { (querySnapshot, error) in
-//                  if let querySnapshot = querySnapshot {
-//                    self.records = querySnapshot.documents.compactMap { document -> Recordline? in
-//                      try? document.data(as: Recordline.self)
-//
-//                    }
-//                  }
-//                }
-//                print("YOYO Here is the result \(self.records)")
-//
-//                print("YOYO Here is record3 \(self.records3)")
+
               })
               {
                 Text("file path")
@@ -268,7 +224,6 @@ struct ContentView: View {
       }
     }
     }
-   // .edgesIgnoringSafeArea(.all)
   }
   
   

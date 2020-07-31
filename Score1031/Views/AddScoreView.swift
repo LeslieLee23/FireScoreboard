@@ -26,9 +26,8 @@ struct AddScoreView: View {
   @EnvironmentObject var addScoreFunc: AddScoreFunc
   @EnvironmentObject private var userData: UserData
   @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-  
-  //Disk var
-  @State private var records3 = ZAPILoader.load().first!
+  @ObservedObject private var apiLoader = APILoader()
+  @State private var records3 = APILoader().records3
   
 
   
@@ -119,8 +118,8 @@ struct AddScoreView: View {
               self.nameAndScore.PlayerOneScore = self.records3.playerOneScore
               self.nameAndScore.PlayerTwoScore = self.records3.playerTwoScore
             
-            APILoader.saveData(record: self.records3)
-
+            //APILoader.saveData(record3: self.records3)
+              self.apiLoader.saveData(record3: self.records3)
           }) {
             if addEidtChoice.addViewSelected == true {
               Text("Add")
@@ -140,7 +139,7 @@ struct AddScoreView: View {
               {self.presentationMode.wrappedValue.dismiss() }
               )
             } else {
-              return Alert(title: Text("Score edited!"), message: Text("You edited \(self.selectedNameString)'s score to \(self.scoreEdited)"), dismissButton: Alert.Button.default(Text("Ok"))
+              return Alert(title: Text("Score edited!"), message: Text("You edited \(self.records3.recordName)'s score to \(self.scoreEdited)"), dismissButton: Alert.Button.default(Text("Ok"))
               {self.presentationMode.wrappedValue.dismiss() }
               )
             }

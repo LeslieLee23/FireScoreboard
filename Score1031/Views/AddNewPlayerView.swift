@@ -29,8 +29,10 @@ struct AddNewPlayerView: View {
     @Environment(\.managedObjectContext) var managedObjectContext
     
     //New repository change
-  @State var records3 = ZAPILoader.load().first!
-
+  @State private var records3 = APILoader().records3
+  
+  @ObservedObject private var apiLoader = APILoader()
+  
     var body: some View {
         VStack{
             Group{
@@ -85,7 +87,7 @@ struct AddNewPlayerView: View {
             Spacer()
             Button(action: {
                 
-                self.userData.maxPlayerID = ZAPILoader.findMaxPlayerID() + 1
+                self.userData.maxPlayerID = self.apiLoader.findMaxPlayerID() + 1
                 self.showAlert = true
                 self.records3.id = UUID().uuidString
                 self.records3.playerOneName = self.playerOneName
@@ -102,7 +104,7 @@ struct AddNewPlayerView: View {
                 self.records3.recordEntryTimeString = getDateString(Date: self.records3.recordEntryTime!)
                 self.records3.recordAddEdit = true
 
-                APILoader.saveData(record: self.records3)
+              self.apiLoader.saveData(record3: self.records3)
 
                 
                 self.nameAndScore.playerOneName = self.playerOneName
