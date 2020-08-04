@@ -9,6 +9,7 @@
 import Foundation
 import SwiftUI
 import Combine
+import Firebase
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 
@@ -29,6 +30,7 @@ struct Recordline: Codable , Identifiable
   var recordEntryTime: Date?
   var recordEntryTimeString: String
   var recordAddEdit: Bool
+  var userId: String?
 //  @ServerTimestamp var createdTime: Timestamp?
   
 }

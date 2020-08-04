@@ -10,7 +10,6 @@
 		5AAF387E8849555F0BBB8006 /* Pods_Score1031.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01D18C8DA08D01B06A0E91E2 /* Pods_Score1031.framework */; };
 		F50762E424B438AD00676F9C /* ChangePlayersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50762E324B438AD00676F9C /* ChangePlayersView.swift */; };
 		F50762E624BC244600676F9C /* RecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50762E524BC244600676F9C /* RecordViewModel.swift */; };
-		F50762EA24BEE00900676F9C /* ZAPILoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50762E924BEE00900676F9C /* ZAPILoader.swift */; };
 		F50762EC24C01D0100676F9C /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50762EB24C01D0100676F9C /* Functions.swift */; };
 		F508FB60244EA96A001C5C24 /* Recordline.swift in Sources */ = {isa = PBXBuildFile; fileRef = F508FB5F244EA96A001C5C24 /* Recordline.swift */; };
 		F508FB6424501144001C5C24 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F508FB6324501144001C5C24 /* HistoryView.swift */; };
@@ -37,7 +36,6 @@
 		20FA246B4855C4B139F8EDF9 /* Pods-Score1031.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Score1031.debug.xcconfig"; path = "Target Support Files/Pods-Score1031/Pods-Score1031.debug.xcconfig"; sourceTree = "<group>"; };
 		F50762E324B438AD00676F9C /* ChangePlayersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePlayersView.swift; sourceTree = "<group>"; };
 		F50762E524BC244600676F9C /* RecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewModel.swift; sourceTree = "<group>"; };
-		F50762E924BEE00900676F9C /* ZAPILoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZAPILoader.swift; sourceTree = "<group>"; };
 		F50762EB24C01D0100676F9C /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		F508FB5F244EA96A001C5C24 /* Recordline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recordline.swift; sourceTree = "<group>"; };
 		F508FB6324501144001C5C24 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
@@ -92,7 +90,6 @@
 		F508FB6524501FC1001C5C24 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				F50762E924BEE00900676F9C /* ZAPILoader.swift */,
 				F5D7FC6A24D0E7F7006BFC4A /* APILoader.swift */,
 			);
 			path = Repositories;
@@ -304,7 +301,6 @@
 				F53BE01B2384482700C3E203 /* UserData.swift in Sources */,
 				F50762E624BC244600676F9C /* RecordViewModel.swift in Sources */,
 				F51EE72223F12D9D0030B17C /* Score1031.xcdatamodeld in Sources */,
-				F50762EA24BEE00900676F9C /* ZAPILoader.swift in Sources */,
 				F53BDFD0236B44CC00C3E203 /* AppDelegate.swift in Sources */,
 				F59129502420368F0071E1D3 /* SelectViewModel.swift in Sources */,
 				F51C7A3623D4EB6300540B25 /* NameAndScore.swift in Sources */,

@@ -12,6 +12,9 @@ import Combine
 import UIKit
 import Resolver
 import Disk
+import Firebase
+import FirebaseFirestore
+import FirebaseFirestoreSwift
 
 struct AddNewPlayerView: View {
     
@@ -103,6 +106,7 @@ struct AddNewPlayerView: View {
                 self.records3.recordEntryTime = Date()
                 self.records3.recordEntryTimeString = getDateString(Date: self.records3.recordEntryTime!)
                 self.records3.recordAddEdit = true
+              self.records3.userId = Auth.auth().currentUser?.uid
 
               self.apiLoader.saveData(record3: self.records3)
 

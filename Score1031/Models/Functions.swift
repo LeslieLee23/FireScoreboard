@@ -12,6 +12,10 @@ import Combine
 import UIKit
 import Resolver
 import Disk
+import Firebase
+import FirebaseFirestore
+import FirebaseFirestoreSwift
+
 
 extension String {
 
@@ -55,7 +59,8 @@ class AddScoreFunc: ObservableObject {
     record.playerOneName = names[0]
     record.playerTwoName = names[1]
     record.recordEntryTimeString = getDateString(Date: record.recordEntryTime!)
-    
+    record.userId = Auth.auth().currentUser?.uid
+    print("&&&&&UserID\(String(describing: record.userId))")
   
     
 ///AddView
@@ -101,7 +106,9 @@ class AddScoreFunc: ObservableObject {
         record.recordScore = "+\(record.recordScore)"
       }
     }
+    print(record)
     return record
+    
   }
   
 }

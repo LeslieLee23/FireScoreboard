@@ -40,15 +40,19 @@ class APILoader: BaseScoreRepository, ScoreRepository, ObservableObject {
   }
   
   func fetchData() {
-    db.collection("records").addSnapshotListener {(querySnapshot, error) in
+    let userId = Auth.auth().currentUser?.uid
+  //  print ("%%%userId \(userId)")
+    db.collection("records")
+    .whereField("userId", isEqualTo: userId)
+      .addSnapshotListener {(querySnapshot, error) in
       guard let documents = querySnapshot?.documents else {
         print("No documents")
         return
       }
       self.records = documents.map {(queryDocumentSnapshot) -> Recordline in
         let data = queryDocumentSnapshot.data()
-      //  print ("%%%data \(data)")
         
+        let userId = data["userId"] as? String ?? ""
         let id = data["id"] as? String ?? ""
         let playerID = data["playerID"] as? String ?? ""
         let playerOneEmoji = data["playerOneEmoji"] as? String ?? ""
@@ -81,7 +85,8 @@ class APILoader: BaseScoreRepository, ScoreRepository, ObservableObject {
                   recordReason: recordReason,
                   recordEntryTime: recordEntryTime,
                   recordEntryTimeString: recordEntryTimeString,
-                  recordAddEdit: recordAddEdit
+                  recordAddEdit: recordAddEdit,
+                  userId: userId
         )
         return abc
       }.sorted(by: { $0.recordEntryTime! >= $1.recordEntryTime!})
@@ -121,7 +126,7 @@ class APILoader: BaseScoreRepository, ScoreRepository, ObservableObject {
   func saveData(record3: Recordline) {
     do {
 
-      db.collection("records").addDocument(data: ["id": record3.id, "playerID": record3.playerID, "playerOneEmoji": record3.playerOneEmoji,"playerOneName": record3.playerOneName, "playerOneScore": record3.playerOneScore, "playerTwoEmoji": record3.playerTwoEmoji, "playerTwoName": record3.playerTwoName, "playerTwoScore": record3.playerTwoScore, "recordName": record3.recordName, "recordScore": record3.recordScore, "recordReason": record3.recordReason, "recordEntryTime": Date(), "recordEntryTimeString": record3.recordEntryTimeString, "recordAddEdit": record3.recordAddEdit])
+      db.collection("records").addDocument(data: ["id": record3.id, "playerID": record3.playerID, "playerOneEmoji": record3.playerOneEmoji,"playerOneName": record3.playerOneName, "playerOneScore": record3.playerOneScore, "playerTwoEmoji": record3.playerTwoEmoji, "playerTwoName": record3.playerTwoName, "playerTwoScore": record3.playerTwoScore, "recordName": record3.recordName, "recordScore": record3.recordScore, "recordReason": record3.recordReason, "recordEntryTime": Date(), "recordEntryTimeString": record3.recordEntryTimeString, "recordAddEdit": record3.recordAddEdit, "userId": record3.userId! ])
       
       print("Yes yes yes this works!")
       

@@ -14,5 +14,6 @@ target 'Score1031' do
   pod 'FirebaseFirestoreSwift'
   pod 'Firebase/Core'
   pod 'Firebase/Database'
+  pod 'Firebase/Auth'
 end
 
