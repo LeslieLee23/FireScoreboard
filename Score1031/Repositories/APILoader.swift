@@ -120,7 +120,7 @@ class APILoader: BaseScoreRepository, ScoreRepository, ObservableObject {
     let maxPlayerIDInt = self.records.map{Int($0.playerID)!}.max()
     let maxPlayerID = String(maxPlayerIDInt ?? 0)
     print("&&&\(maxPlayerIDInt)")
-    return maxPlayerIDInt!
+    return maxPlayerIDInt ?? 0
   }
   
   func saveData(record3: Recordline) {

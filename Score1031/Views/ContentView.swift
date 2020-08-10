@@ -26,6 +26,8 @@ struct ContentView: View {
   @State var oneEmoji = [String]()
   @State var twoEmoji = [String]()
   @State var records = [Recordline]()
+  
+  @State var showSignInForm = false
 
   var body: some View {
     ZStack{
@@ -127,8 +129,6 @@ struct ContentView: View {
             .background(LinearGradient(gradient: Gradient(colors: [Color("isaacblue"), Color("destinygreen")]), startPoint: .leading, endPoint: .trailing))
            
             .cornerRadius(13)
-       //     .shadow(color: Color.black.opacity(0.2), radius: 5, x: 10, y: 10)
-       //     .shadow(color: Color.white.opacity(1), radius: 5, x: -5, y: -5)
             .simultaneousGesture(TapGesture().onEnded {
               self.addEidtChoice.addViewSelected = true
               self.emojiPlusName  = ["\(self.nameAndScore.playerOneEmoji!) \( self.nameAndScore.playerOneName!)","\( self.nameAndScore.playerTwoEmoji!) \( self.nameAndScore.playerTwoName!)"]
@@ -219,10 +219,23 @@ struct ContentView: View {
                 Text("file path")
               }
             }
+            
           }
         }
       }
     }
+
+    }
+    .onAppear() {
+      if self.nameAndScore.playerTwoName == nil {
+        self.nameAndScore.PlayerTwoScore = 0
+        self.nameAndScore.PlayerOneScore = 0
+        self.nameAndScore.playerTwoName = "%%%Player Two"
+        self.nameAndScore.playerOneName = "%%%Player One"
+        self.nameAndScore.playerOneEmoji = "👩🏻"
+        self.nameAndScore.playerTwoEmoji = "👨🏻"
+        self.userData.playerID = "0"
+      }
     }
   }
   

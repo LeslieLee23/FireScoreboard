@@ -27,6 +27,9 @@
 		F59129502420368F0071E1D3 /* SelectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F591294F2420368F0071E1D3 /* SelectViewModel.swift */; };
 		F5C95EA623FB4EB500D46C7A /* AddEditChoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C95EA523FB4EB500D46C7A /* AddEditChoice.swift */; };
 		F5D7FC6B24D0E7F7006BFC4A /* APILoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D7FC6A24D0E7F7006BFC4A /* APILoader.swift */; };
+		F5D7FC6F24D94087006BFC4A /* SigninWithAppleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D7FC6E24D94087006BFC4A /* SigninWithAppleButton.swift */; };
+		F5D7FC7524D942A6006BFC4A /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D7FC7424D942A6006BFC4A /* SignInView.swift */; };
+		F5D7FC7A24D9CEF4006BFC4A /* SigninWithAppleCoodinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D7FC7924D9CEF4006BFC4A /* SigninWithAppleCoodinator.swift */; };
 		F5F02578244427A20038A4FB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F5F02577244427A20038A4FB /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +58,10 @@
 		F591294F2420368F0071E1D3 /* SelectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectViewModel.swift; sourceTree = "<group>"; };
 		F5C95EA523FB4EB500D46C7A /* AddEditChoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditChoice.swift; sourceTree = "<group>"; };
 		F5D7FC6A24D0E7F7006BFC4A /* APILoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APILoader.swift; sourceTree = "<group>"; };
+		F5D7FC6E24D94087006BFC4A /* SigninWithAppleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninWithAppleButton.swift; sourceTree = "<group>"; };
+		F5D7FC7424D942A6006BFC4A /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		F5D7FC7924D9CEF4006BFC4A /* SigninWithAppleCoodinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninWithAppleCoodinator.swift; sourceTree = "<group>"; };
+		F5D7FC7B24D9E721006BFC4A /* FireScoreboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FireScoreboard.entitlements; sourceTree = "<group>"; };
 		F5F02577244427A20038A4FB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -117,6 +124,8 @@
 				F50762E324B438AD00676F9C /* ChangePlayersView.swift */,
 				F591294F2420368F0071E1D3 /* SelectViewModel.swift */,
 				F50762E524BC244600676F9C /* RecordViewModel.swift */,
+				F5D7FC6E24D94087006BFC4A /* SigninWithAppleButton.swift */,
+				F5D7FC7424D942A6006BFC4A /* SignInView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -157,9 +166,11 @@
 		F53BDFCE236B44CC00C3E203 /* Score1031 */ = {
 			isa = PBXGroup;
 			children = (
-				F508FB6524501FC1001C5C24 /* Repositories */,
+				F5D7FC7B24D9E721006BFC4A /* FireScoreboard.entitlements */,
 				F51C7A4023D972BC00540B25 /* Data */,
 				F51C7A3C23D96C3800540B25 /* Resource */,
+				F5D7FC7624D9CE07006BFC4A /* Services */,
+				F508FB6524501FC1001C5C24 /* Repositories */,
 				F53BDFCF236B44CC00C3E203 /* AppDelegate.swift */,
 				F53BDFD1236B44CC00C3E203 /* SceneDelegate.swift */,
 				F51C7A3B23D5715A00540B25 /* Views */,
@@ -179,6 +190,14 @@
 				F53BDFD8236B44CF00C3E203 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F5D7FC7624D9CE07006BFC4A /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				F5D7FC7924D9CEF4006BFC4A /* SigninWithAppleCoodinator.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -297,9 +316,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5D7FC7524D942A6006BFC4A /* SignInView.swift in Sources */,
 				F56E71922493505C007E8FF5 /* AddNewPlayerView.swift in Sources */,
 				F53BE01B2384482700C3E203 /* UserData.swift in Sources */,
+				F5D7FC7A24D9CEF4006BFC4A /* SigninWithAppleCoodinator.swift in Sources */,
 				F50762E624BC244600676F9C /* RecordViewModel.swift in Sources */,
+				F5D7FC6F24D94087006BFC4A /* SigninWithAppleButton.swift in Sources */,
 				F51EE72223F12D9D0030B17C /* Score1031.xcdatamodeld in Sources */,
 				F53BDFD0236B44CC00C3E203 /* AppDelegate.swift in Sources */,
 				F59129502420368F0071E1D3 /* SelectViewModel.swift in Sources */,
@@ -449,6 +471,8 @@
 			baseConfigurationReference = 20FA246B4855C4B139F8EDF9 /* Pods-Score1031.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Score1031/FireScoreboard.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Score1031/Preview Content\"";
 				DEVELOPMENT_TEAM = 4JD5KAP6P9;
@@ -461,6 +485,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hulu.Score1031;
 				PRODUCT_NAME = FireScoreboard;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -471,6 +496,8 @@
 			baseConfigurationReference = 0C286CC72021282DB2177955 /* Pods-Score1031.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Score1031/FireScoreboard.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Score1031/Preview Content\"";
 				DEVELOPMENT_TEAM = 4JD5KAP6P9;
@@ -483,6 +510,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hulu.Score1031;
 				PRODUCT_NAME = FireScoreboard;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
