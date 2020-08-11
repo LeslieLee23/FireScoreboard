@@ -22,7 +22,7 @@ struct HistoryView: View {
         List {
           ForEach (apiLoader.records) { records3 in
             if records3.playerID == self.userData.playerID {
-              RecordViewModel(name: records3.recordName, score: records3.recordScore, reason: records3.recordReason, entryTime: records3.recordEntryTimeString, playerID: records3.playerID)
+              RecordViewModel(name: records3.recordName, score: records3.recordScore, reason: records3.recordReason, entryTime: records3.recordEntryTimeString, playerID: records3.playerID, nameStr: "Destiny", nameEmo: "🐒")
             }
           }
         }
