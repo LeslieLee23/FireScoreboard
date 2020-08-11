@@ -31,6 +31,8 @@ struct Recordline: Codable , Identifiable
   var recordEntryTimeString: String
   var recordAddEdit: Bool
   var userId: String?
+  var recordNameStr: String?
+  var recordNameEmo: String?
 //  @ServerTimestamp var createdTime: Timestamp?
   
 }

@@ -170,7 +170,10 @@ struct ContentView: View {
             /// View History row
             HStack {
               VStack {
-                NavigationLink (destination: HistoryView()){
+                NavigationLink (destination: HistoryView()
+               //   .navigationBarTitle(Text("x"))
+                  .navigationBarHidden(true)
+                ){
                   Text("View History")
                     .fontWeight(.light)
                     .font(.system(size:15))

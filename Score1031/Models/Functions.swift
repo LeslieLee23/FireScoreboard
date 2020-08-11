@@ -47,7 +47,7 @@ extension Color {
 
 class AddScoreFunc: ObservableObject {
   func createRecord(playerID: String, oldscore: [String], emojiPlusName: [String], names: [String], emojis: [String], scoreEdited: String, addViewSelected: Bool, reason: String, selectedName: Int) -> (Recordline) {
-    var record = Recordline(playerID: "0", playerOneEmoji: "👩🏻",playerOneName: "Player One", playerOneScore: 0, playerTwoEmoji: "👨🏻", playerTwoName: "Player Two", playerTwoScore: 0, recordName: "Player one and two", recordScore: "NA", recordReason: "Default players created", recordEntryTime: Date(), recordEntryTimeString: "", recordAddEdit: true)
+    var record = Recordline(playerID: "0", playerOneEmoji: "👩🏻",playerOneName: "Player One", playerOneScore: 0, playerTwoEmoji: "👨🏻", playerTwoName: "Player Two", playerTwoScore: 0, recordName: "Player one and two", recordScore: "NA", recordReason: "Default players created", recordEntryTime: Date(), recordEntryTimeString: "", recordAddEdit: true, recordNameStr: "recordNameStr", recordNameEmo: "👩🏻")
     
     record.id = UUID().uuidString
     record.recordReason = reason
@@ -70,10 +70,15 @@ class AddScoreFunc: ObservableObject {
         record.playerOneScore = Int(oldscore[0])! + Int(scoreEdited)!
         record.playerTwoScore = Int(oldscore[1])!
         record.recordName = emojiPlusName[0]
+        record.recordNameStr = names[0]
+        record.recordNameEmo = emojis[0]
       } else if selectedName == 1 {
         record.playerTwoScore = Int(oldscore[1])! + Int(scoreEdited)!
         record.playerOneScore = Int(oldscore[0])!
         record.recordName = emojiPlusName[1]
+        record.recordNameStr = names[1]
+        record.recordNameEmo = emojis[1]
+
       }
       
       
@@ -92,6 +97,8 @@ class AddScoreFunc: ObservableObject {
         record.playerOneScore = Int(scoreEdited)!
         record.playerTwoScore = Int(oldscore[1])!
         record.recordName = emojiPlusName[0]
+        record.recordNameStr = names[0]
+        record.recordNameEmo = emojis[0]
         
         record.recordScore = String(Int(record.playerOneScore) - (Int(oldscore[0])!))
       }
@@ -99,6 +106,8 @@ class AddScoreFunc: ObservableObject {
         record.playerTwoScore = Int(scoreEdited)!
         record.playerOneScore = Int(oldscore[0])!
         record.recordName = emojiPlusName[1]
+        record.recordNameStr = names[1]
+        record.recordNameEmo = emojis[1]
         
         record.recordScore = String(Int(record.playerTwoScore) - (Int(oldscore[1])!))
       }
