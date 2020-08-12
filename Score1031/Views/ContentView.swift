@@ -40,10 +40,14 @@ struct ContentView: View {
             HStack{
               NavigationLink (destination: ChangePlayersView())
               {
+                VStack() {
+                Image(systemName: "person.2.square.stack").font(.system(size:20))
                 Text("Change Players")
                   .fontWeight(.light)
-                  .font(.system(size:15))
-                  .padding()
+                  .font(.system(size:12))
+                //  .padding()
+                }
+                .padding()
               }
               .disabled(self.apiLoader.queryPlayerList().count < 2)
  
@@ -171,12 +175,16 @@ struct ContentView: View {
             HStack {
               VStack {
                 NavigationLink (destination: HistoryView()
-               //   .navigationBarTitle(Text("x"))
+                  .navigationBarTitle(Text("x"))
                   .navigationBarHidden(true)
-                ){
+                )
+                {
+                  VStack() {
+                  Image(systemName: "eye").font(.system(size:20))
                   Text("View History")
                     .fontWeight(.light)
-                    .font(.system(size:15))
+                    .font(.system(size:12))
+                  }
                 }
                 .padding()
                 Spacer()
@@ -185,9 +193,12 @@ struct ContentView: View {
               VStack {
                 NavigationLink (destination: AddNewPlayerView())
                 {
+                  VStack() {
+                  Image(systemName: "person.crop.circle.badge.plus").font(.system(size:20))
                   Text("Add Players")
                     .fontWeight(.light)
-                    .font(.system(size:15))
+                    .font(.system(size:12))
+                  }
                 }
                 .padding()
                 Spacer()

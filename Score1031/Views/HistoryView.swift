@@ -15,6 +15,7 @@ struct HistoryView: View {
   
   @EnvironmentObject private var userData: UserData
   @ObservedObject private var apiLoader = APILoader()
+  @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
   
   var body: some View {
     NavigationView {
@@ -29,7 +30,16 @@ struct HistoryView: View {
         
       }
       .navigationBarTitle("History")
-      
+      .navigationBarItems(leading:
+      HStack {
+          Button(action: {
+             self.presentationMode.wrappedValue.dismiss()
+          }) {
+              Image(systemName: "chevron.left").font(.headline)
+              Text("Back")
+          }.foregroundColor(.blue)
+      })
+        
       .onAppear() {
         self.apiLoader.fetchData()
       }

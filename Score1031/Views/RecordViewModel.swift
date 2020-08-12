@@ -43,10 +43,10 @@ struct RecordViewModel: View {
             .font(.system(size: 11))
           }
           .frame(width:130, height: 20, alignment: .trailing)
-          .border(Color.purple)
+   //       .border(Color.purple)
         }
         .frame(width:335, height: 20, alignment: .leading)
-        .border(Color.blue)
+   //     .border(Color.blue)
         
         HStack(){
         VStack(alignment: .leading){
@@ -59,7 +59,7 @@ struct RecordViewModel: View {
             .foregroundColor(score.first == "-" ? .red : .green)
         }
         .frame(width:45,height: 35, alignment: .leading)
-         .border(Color.purple)
+   //     .border(Color.purple)
         
         
         VStack(alignment: .leading){
@@ -67,11 +67,10 @@ struct RecordViewModel: View {
           Text(reason)
             .font(.system(size: 13))
             .multilineTextAlignment(.leading)
-  //        Text(entryTime)
-  //          .font(.system(size: 13))
+
         }
         .frame(width:250, height: 35, alignment: .leading)
-          .border(Color.purple)
+    //      .border(Color.purple)
         
         VStack(alignment: .leading){
           Spacer()
@@ -82,7 +81,7 @@ struct RecordViewModel: View {
         .frame(width:335, height: 35, alignment: .leading)
       }
       .frame(width:355, height: 55, alignment: .leading)
-      .border(Color.blue)
+  //    .border(Color.blue)
     }
 }
 
