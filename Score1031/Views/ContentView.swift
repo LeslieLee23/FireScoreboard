@@ -28,14 +28,31 @@ struct ContentView: View {
   @State var records = [Recordline]()
   
   @State var showSignInForm = false
+  
+  var colors: [Color] = [ .babyPink, .white//, .green, .orange
+  ]
+  @State var index: Int = 0
+  @State var progress: CGFloat = 0
+
 
   var body: some View {
-    ZStack{
-      Color.offWhite
     
     NavigationView{
+      ZStack{
+        if self.userData.showEmoji == true {
+        Color.babyPink.edgesIgnoringSafeArea(.all)
+        } else {
+        Color.white.edgesIgnoringSafeArea(.all)
+        }
+//        VStack {
+//
+//             SplashView(animationType: .leftToRight, color: self.colors[self.index])
+//                 .frame(width: 280, height: 200, alignment: .top)
+//                 .cornerRadius(10)
+//                 .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 4)
+//         }
+      
       VStack {
-        VStack {
           VStack {
             HStack{
               NavigationLink (destination: ChangePlayersView())
@@ -45,34 +62,49 @@ struct ContentView: View {
                 Text("Change Players")
                   .fontWeight(.light)
                   .font(.system(size:12))
-                //  .padding()
                 }
                 .padding()
               }
               .disabled(self.apiLoader.queryPlayerList().count < 2)
- 
+              Spacer()
               
-              Spacer()
-              Text("Emoji Mode")
-                .font(.system(size:15))
-            }
-            .padding(.trailing, 35)
-            
-            HStack {
-              Spacer()
-              Toggle(isOn: $userData.showEmoji
-                .animation(
-                  Animation.spring(dampingFraction: 0.7)
-              )
-                
-              ) {
+                VStack {
+        //        Spacer()
                 Text("Emoji Mode")
-              }.padding(.trailing, 35)
+                  .font(.system(size:12))
+        //        Spacer()
+                Toggle(isOn: $userData.showEmoji
+                  .animation(
+                    Animation.spring(dampingFraction: 0.7)
+                )
+                  
+                ) {
+                  Text("Emoji Mode")
+                }
+            //    .padding(.trailing, 35)
                 .labelsHidden()
+            //      .border(Color.purple)
+                .simultaneousGesture(TapGesture().onEnded {
+                  self.index = (self.index + 1) % self.colors.count
+                  })
+              }
             }
-            
+            .padding(.trailing, 25)
+ 
+          } .border(Color.purple)
+     //     Spacer()
+        ZStack{
+          VStack {
+
+            SplashView(animationType: .angle(Angle(degrees: 30)), color: self.colors[self.index])
+                   .frame(width: 300, height: 250, alignment: .top)
+                   .cornerRadius(10)
+                   .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 4)
+           }
+          VStack {
             ///Title row
             Spacer()
+            
             Text("Scoreboard")
               .font(.headline)
               .fontWeight(.bold)
@@ -89,9 +121,6 @@ struct ContentView: View {
                 .font(.system(size: 25))
               Spacer()
             }
-            //Name row
-          }
-          VStack {
             Spacer()
             if self.userData.showEmoji == true {
             HStack {
@@ -120,8 +149,14 @@ struct ContentView: View {
             }
             Spacer()
             Spacer()
-          }
+            Spacer()
+            Spacer()
+          } .border(Color.orange)
+        }
           ///Add Score Button row
+        VStack {
+          Spacer()
+          VStack {
           VStack {
             NavigationLink (destination: AddScoreView(emojiPlusName: emojiPlusName, oldscore: oldscore, names: names, emojis: emojis)) {
               Text("Add Score!")
@@ -141,9 +176,9 @@ struct ContentView: View {
               self.names = [self.nameAndScore.playerOneName!, self.nameAndScore.playerTwoName!]
               })
             
-          }
-          Spacer()
-          Spacer()
+          }.border(Color.green)
+            .padding()
+        //  Spacer()
           
           ///Edit Score Button row
           VStack {
@@ -166,10 +201,13 @@ struct ContentView: View {
             })
             
           }
+          }.border(Color.blue)
+          Spacer()
+          Spacer()
+      }.border(Color.green)
           VStack {
             
-            Spacer()
-            Spacer()
+      //      Spacer()
             
             /// View History row
             HStack {
@@ -187,7 +225,7 @@ struct ContentView: View {
                   }
                 }
                 .padding()
-                Spacer()
+         //       Spacer()
               }
               Spacer()
               VStack {
@@ -201,10 +239,10 @@ struct ContentView: View {
                   }
                 }
                 .padding()
-                Spacer()
+           //     Spacer()
               }
             }
-            Spacer()
+          //  Spacer()
             HStack {
               
               Button(action: {
@@ -233,19 +271,17 @@ struct ContentView: View {
                 Text("file path")
               }
             }
-            
-          }
-        }
-      }
-    }
+          }.border(Color.red)
+        }.border(Color.purple)
+    }//.border(Color.purple)
 
     }
     .onAppear() {
       if self.nameAndScore.playerTwoName == nil {
         self.nameAndScore.PlayerTwoScore = 0
         self.nameAndScore.PlayerOneScore = 0
-        self.nameAndScore.playerTwoName = "%%%Player Two"
-        self.nameAndScore.playerOneName = "%%%Player One"
+        self.nameAndScore.playerTwoName = "Player Two"
+        self.nameAndScore.playerOneName = "Player One"
         self.nameAndScore.playerOneEmoji = "👩🏻"
         self.nameAndScore.playerTwoEmoji = "👨🏻"
         self.userData.playerID = "0"

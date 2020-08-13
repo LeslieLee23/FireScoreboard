@@ -15,5 +15,6 @@ target 'Score1031' do
   pod 'Firebase/Core'
   pod 'Firebase/Database'
   pod 'Firebase/Auth'
+  pod 'RAMPaperSwitch' 
 end
 
