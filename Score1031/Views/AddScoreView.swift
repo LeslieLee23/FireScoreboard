@@ -29,8 +29,6 @@ struct AddScoreView: View {
   @ObservedObject private var apiLoader = APILoader()
   @State private var records3 = APILoader().records3
   
-
-  
   var emojiPlusName = [String]()
   var oldscore = [String]()
   var names = [String]()

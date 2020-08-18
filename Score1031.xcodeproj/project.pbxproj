@@ -23,9 +23,12 @@
 		F53BDFDC236B44CF00C3E203 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F53BDFDA236B44CF00C3E203 /* LaunchScreen.storyboard */; };
 		F53BDFE42371E48500C3E203 /* AddScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53BDFE32371E48500C3E203 /* AddScoreView.swift */; };
 		F53BE01B2384482700C3E203 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53BE01A2384482700C3E203 /* UserData.swift */; };
+		F541995824EA3D6A00BF54EC /* NameEmojiRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F541995724EA3D6A00BF54EC /* NameEmojiRowView.swift */; };
+		F55DABD424EB303B0078452F /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55DABD324EB303B0078452F /* SwiftUIView.swift */; };
+		F55DABD624EBB9090078452F /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55DABD524EBB9090078452F /* SplashView.swift */; };
 		F56E71922493505C007E8FF5 /* AddNewPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56E71912493505C007E8FF5 /* AddNewPlayerView.swift */; };
 		F59129502420368F0071E1D3 /* SelectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F591294F2420368F0071E1D3 /* SelectViewModel.swift */; };
-		F5BA924324E3BD6000CA3519 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BA924224E3BD6000CA3519 /* TestView.swift */; };
+		F5BA924724E75A6900CA3519 /* EditModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BA924624E75A6900CA3519 /* EditModeView.swift */; };
 		F5C95EA623FB4EB500D46C7A /* AddEditChoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C95EA523FB4EB500D46C7A /* AddEditChoice.swift */; };
 		F5D7FC6B24D0E7F7006BFC4A /* APILoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D7FC6A24D0E7F7006BFC4A /* APILoader.swift */; };
 		F5D7FC6F24D94087006BFC4A /* SigninWithAppleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D7FC6E24D94087006BFC4A /* SigninWithAppleButton.swift */; };
@@ -55,9 +58,12 @@
 		F53BDFDD236B44CF00C3E203 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F53BDFE32371E48500C3E203 /* AddScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddScoreView.swift; sourceTree = "<group>"; };
 		F53BE01A2384482700C3E203 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		F541995724EA3D6A00BF54EC /* NameEmojiRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameEmojiRowView.swift; sourceTree = "<group>"; };
+		F55DABD324EB303B0078452F /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
+		F55DABD524EBB9090078452F /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		F56E71912493505C007E8FF5 /* AddNewPlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewPlayerView.swift; sourceTree = "<group>"; };
 		F591294F2420368F0071E1D3 /* SelectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectViewModel.swift; sourceTree = "<group>"; };
-		F5BA924224E3BD6000CA3519 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
+		F5BA924624E75A6900CA3519 /* EditModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditModeView.swift; sourceTree = "<group>"; };
 		F5C95EA523FB4EB500D46C7A /* AddEditChoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditChoice.swift; sourceTree = "<group>"; };
 		F5D7FC6A24D0E7F7006BFC4A /* APILoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APILoader.swift; sourceTree = "<group>"; };
 		F5D7FC6E24D94087006BFC4A /* SigninWithAppleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninWithAppleButton.swift; sourceTree = "<group>"; };
@@ -120,7 +126,9 @@
 			isa = PBXGroup;
 			children = (
 				F53BDFD3236B44CC00C3E203 /* ContentView.swift */,
-				F5BA924224E3BD6000CA3519 /* TestView.swift */,
+				F55DABD324EB303B0078452F /* SwiftUIView.swift */,
+				F5BA924624E75A6900CA3519 /* EditModeView.swift */,
+				F541995724EA3D6A00BF54EC /* NameEmojiRowView.swift */,
 				F53BDFE32371E48500C3E203 /* AddScoreView.swift */,
 				F508FB6324501144001C5C24 /* HistoryView.swift */,
 				F56E71912493505C007E8FF5 /* AddNewPlayerView.swift */,
@@ -129,6 +137,7 @@
 				F50762E524BC244600676F9C /* RecordViewModel.swift */,
 				F5D7FC6E24D94087006BFC4A /* SigninWithAppleButton.swift */,
 				F5D7FC7424D942A6006BFC4A /* SignInView.swift */,
+				F55DABD524EBB9090078452F /* SplashView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -324,18 +333,21 @@
 				F53BE01B2384482700C3E203 /* UserData.swift in Sources */,
 				F5D7FC7A24D9CEF4006BFC4A /* SigninWithAppleCoodinator.swift in Sources */,
 				F50762E624BC244600676F9C /* RecordViewModel.swift in Sources */,
+				F55DABD424EB303B0078452F /* SwiftUIView.swift in Sources */,
 				F5D7FC6F24D94087006BFC4A /* SigninWithAppleButton.swift in Sources */,
 				F51EE72223F12D9D0030B17C /* Score1031.xcdatamodeld in Sources */,
 				F53BDFD0236B44CC00C3E203 /* AppDelegate.swift in Sources */,
 				F59129502420368F0071E1D3 /* SelectViewModel.swift in Sources */,
 				F51C7A3623D4EB6300540B25 /* NameAndScore.swift in Sources */,
 				F508FB6424501144001C5C24 /* HistoryView.swift in Sources */,
+				F5BA924724E75A6900CA3519 /* EditModeView.swift in Sources */,
+				F541995824EA3D6A00BF54EC /* NameEmojiRowView.swift in Sources */,
 				F5D7FC6B24D0E7F7006BFC4A /* APILoader.swift in Sources */,
 				F50762EC24C01D0100676F9C /* Functions.swift in Sources */,
 				F5C95EA623FB4EB500D46C7A /* AddEditChoice.swift in Sources */,
+				F55DABD624EBB9090078452F /* SplashView.swift in Sources */,
 				F50762E424B438AD00676F9C /* ChangePlayersView.swift in Sources */,
 				F53BDFE42371E48500C3E203 /* AddScoreView.swift in Sources */,
-				F5BA924324E3BD6000CA3519 /* TestView.swift in Sources */,
 				F53BDFD2236B44CC00C3E203 /* SceneDelegate.swift in Sources */,
 				F53BDFD4236B44CC00C3E203 /* ContentView.swift in Sources */,
 				F508FB60244EA96A001C5C24 /* Recordline.swift in Sources */,

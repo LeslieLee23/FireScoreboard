@@ -28,4 +28,10 @@ class UserData: ObservableObject {
             UserDefaults.standard.set(self.maxPlayerID, forKey: "maxPlayerID")
         }
     }
+  
+    @Published var selectedName: Int = UserDefaults.standard.integer(forKey: "selectedName") {
+        didSet {
+            UserDefaults.standard.set(self.selectedName, forKey: "selectedName")
+        }
+    }
 }

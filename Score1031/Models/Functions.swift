@@ -41,7 +41,8 @@ extension String {
 }
 
 extension Color {
-    static let babyPink = Color(red: 255 / 255, green: 232 / 255, blue: 229 / 255)
+    static let babyPP = Color(red: 184 / 255, green: 200 / 255, blue: 243 / 255)
+    static let niceBlue = Color(red: 161 / 255, green: 217 / 255, blue: 241 / 255)
 }
 
 
@@ -270,6 +271,50 @@ struct SplashShape: Shape {
     }
 }
 
+struct FitToWidth: ViewModifier {
+    var fraction: CGFloat = 1.0
+    func body(content: Content) -> some View {
+        GeometryReader { g in
+        content
+            .font(.system(size: 1000))
+            .minimumScaleFactor(0.005)
+            .lineLimit(1)
+            .frame(width: g.size.width*self.fraction)
+        }
+    }
+}
+
+struct CircleStyle: ButtonStyle {
+    func makeBody(configuration: ButtonStyleConfiguration) -> some View {
+        Circle()
+            .fill()
+            .overlay(
+                Circle()
+                    .fill(Color.white)
+                    .opacity(configuration.isPressed ? 0.3 : 0)
+            )
+            .overlay(
+                configuration.label
+                    .foregroundColor(.white)
+            )
+    }
+}
+
+struct CircleStyleEmoji: ButtonStyle {
+    func makeBody(configuration: ButtonStyleConfiguration) -> some View {
+      
+      Circle()
+        .strokeBorder(Color.gray, lineWidth: 5)
+          .aspectRatio(contentMode: .fit)
+          .overlay(
+            configuration.label
+            .font(.system(size: 45))
+            .transition(.scale(scale: 5))
+            )
+          .modifier(FitToWidth(fraction: 3))
+          .frame(width: 160, height: 125, alignment: .center)
+    }
+}
 
 
 struct Functions_Previews: PreviewProvider {

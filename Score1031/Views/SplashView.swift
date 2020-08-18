@@ -1,21 +1,20 @@
 //
-//  TestView.swift
+//  SplashView.swift
 //  Score1031
 //
-//  Created by Danting Li on 8/11/20.
+//  Created by Danting Li on 8/18/20.
 //  Copyright © 2020 HULUCave. All rights reserved.
 //
 
 import SwiftUI
-import RAMPaperSwitch
-import UIKit
 
 struct SplashView: View {
+    @State var layers: [(Color,CGFloat)] = []
     
     var animationType: SplashShape.SplashAnimation
     @State private var prevColor: Color // Stores background color
     @ObservedObject var colorStore: ColorStore // Send new color updates
-    @State var layers: [(Color,CGFloat)] = []
+
     
     init(animationType: SplashShape.SplashAnimation, color: Color) {
         self.animationType = animationType
@@ -46,7 +45,6 @@ struct SplashView: View {
             }
     }
 
-
 }
 
 class ColorStore: ObservableObject {
@@ -56,3 +54,5 @@ class ColorStore: ObservableObject {
         self.color = color
     }
 }
+
+
