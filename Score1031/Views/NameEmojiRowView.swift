@@ -12,8 +12,8 @@ struct NameEmojiRowView: View {
   
   @EnvironmentObject private var nameAndScore: NameAndScore
   @EnvironmentObject var userData: UserData
-  @State var playerOneColors: Color = .gray
-  @State var playerTwoColors: Color = .gray
+  @State var playerOneColors: Color = .grayCircle
+  @State var playerTwoColors: Color = .grayCircle
   
   var body: some View {
     VStack() {
@@ -23,7 +23,7 @@ struct NameEmojiRowView: View {
           Button(action: {
             self.userData.selectedName = 0
             self.playerOneColors = .purple
-            self.playerTwoColors = .gray
+            self.playerTwoColors = .grayCircle
             print("Set selectedName to \(self.userData.selectedName)")
           }) {
             Text(self.nameAndScore.playerOneEmoji ?? "👩🏻")
@@ -34,7 +34,7 @@ struct NameEmojiRowView: View {
 
           Button(action: {
             self.userData.selectedName = 1
-            self.playerOneColors = .gray
+            self.playerOneColors = .grayCircle
             self.playerTwoColors = .purple
             print("Set selectedName to \(self.userData.selectedName)")
           }) {
@@ -54,20 +54,27 @@ struct NameEmojiRowView: View {
         HStack {
           Button(action: {
             self.userData.selectedName = 0
+            self.playerOneColors = .purple
+            self.playerTwoColors = .grayCircle
             print("Set selectedName to \(self.userData.selectedName)")
           }) {
             Text(self.nameAndScore.playerOneName ?? "Miu")
               .font(.system(size: 28))
           }
           .frame(width: 160, height: 125, alignment: .center)
+          .buttonStyle(SquareStyle(color: playerOneColors))
           Button(action: {
             self.userData.selectedName = 1
+            self.playerOneColors = .grayCircle
+            self.playerTwoColors = .purple
+
             print("Set selectedName to \(self.userData.selectedName)")
           }) {
             Text(self.nameAndScore.playerTwoName ?? "Whof")
               .font(.system(size: 28))
           }
           .frame(width: 160, height: 125, alignment: .center)
+          .buttonStyle(SquareStyle(color: playerTwoColors))
         }
         .frame(width: 340, height: 125, alignment: .center)
       }///NameEmojiRow (140) (Edit Mode) (Normal Mode)

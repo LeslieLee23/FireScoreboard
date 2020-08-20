@@ -43,6 +43,7 @@ extension String {
 extension Color {
     static let babyPP = Color(red: 184 / 255, green: 200 / 255, blue: 243 / 255)
     static let niceBlue = Color(red: 161 / 255, green: 217 / 255, blue: 241 / 255)
+    static let grayCircle = Color(red: 157 / 255, green: 157 / 255, blue: 157 / 255)
 }
 
 
@@ -305,19 +306,42 @@ struct CircleStyleEmoji: ButtonStyle {
   func makeBody(configuration: ButtonStyleConfiguration) -> some View {
     
       Circle()
-        .strokeBorder(color, lineWidth: 6)
+        .strokeBorder(color, lineWidth: 6.5)
         
         .opacity(configuration.isPressed ? 0.3 : 1)
         .aspectRatio(contentMode: .fit)
         .overlay(
           configuration.label
             .transition(.scale(scale: 5))
+            .opacity(configuration.isPressed ? 0.3 : 1)
       )
         .modifier(FitToWidth(fraction: 3))
         .frame(width: 160, height: 125, alignment: .center)
 
     }
   }
+
+struct SquareStyle: ButtonStyle {
+var color: Color = .green
+func makeBody(configuration: Self.Configuration) -> some View {
+  RoundedRectangle(cornerRadius: 13)
+    .stroke(color, lineWidth: 7.5)
+//    .frame(minWidth: 120, maxWidth: .infinity, minHeight: 50, maxHeight: 60, alignment: .center)
+      .frame(width: 120, height: 55, alignment: .center)
+      .cornerRadius(13)
+      .opacity(configuration.isPressed ? 0.3 : 1)
+      .aspectRatio(contentMode: .fit)
+      .overlay(
+        configuration.label
+          .transition(.scale(scale: 5))
+          .opacity(configuration.isPressed ? 0.3 : 1)
+    )
+      .modifier(FitToWidth(fraction: 3))
+      .frame(width: 120, height: 55, alignment: .center)
+  
+}
+
+}
 
 
 

@@ -126,14 +126,14 @@ struct ContentView: View {
                 VStack() {
                   Text("\(self.nameAndScore.PlayerOneScore)")
                     .font(.system(size: 45))
-                    .foregroundColor(self.editMode ? .gray : .black)
+                    .foregroundColor(self.editMode ? .grayCircle : .black)
                 }
                 .frame(width: 160, height: 55, alignment: .center)
 
                 VStack() {
                   Text("\(self.nameAndScore.PlayerTwoScore)")
                     .font(.system(size: 45))
-                    .foregroundColor(self.editMode ? .gray : .black)
+                    .foregroundColor(self.editMode ? .grayCircle : .black)
                 }
                 .frame(width: 160, height: 55, alignment: .center)
                 
@@ -148,7 +148,7 @@ struct ContentView: View {
                 VStack {
                   NameEmojiRowView()
                 }.frame(width: 340, height: 125, alignment: .center)
-                
+                Spacer()
               } ///NameEmojiRow (140) (Edit Mode)
                 
                 ///NameEmojiRow (140) (Normal Mode)
@@ -160,31 +160,33 @@ struct ContentView: View {
                         .font(.system(size: 55))
                         .transition(.scale(scale: 5))
                     }
-                    .frame(width: 160, height: 140, alignment: .center)
+                    .frame(width: 160, height: 125, alignment: .center)
                     VStack{
                       Text(self.nameAndScore.playerTwoEmoji ?? "👨🏻")
                         .font(.system(size: 55))
                     }
-                    .frame(width: 160, height: 140, alignment: .center)
+                    .frame(width: 160, height: 125, alignment: .center)
                   }
-                  .frame(width: 340, height: 140, alignment: .center)
+                  .frame(width: 340, height: 125, alignment: .center)
+                  Spacer()
                 } else {
                   HStack {
                     VStack{
                       Text(self.nameAndScore.playerOneName ?? "Miu")
                         .font(.system(size: 28))
                     }
-                    .frame(width: 160, height: 140, alignment: .center)
+                    .frame(width: 160, height: 125, alignment: .center)
                     VStack{
                       Text(self.nameAndScore.playerTwoName ?? "Whof")
                         .font(.system(size: 28))
                     }
-                    .frame(width: 160, height: 140, alignment: .center)
+                    .frame(width: 160, height: 125, alignment: .center)
                   }
-                  .frame(width: 340, height: 140, alignment: .center)
+                  .frame(width: 340, height: 125, alignment: .center)
+                  Spacer()
                 }
-                
               }///NameEmojiRow (140) (Normal Mode)
+              Spacer()
               Spacer()
             }///Scoreboard Content View
               .frame(width: 340, height: 275, alignment: .top)
@@ -301,34 +303,34 @@ struct ContentView: View {
               }
               
               //  Spacer()
-              HStack {
-                
-                Button(action: {
-                  self.nameAndScore.PlayerTwoScore = 0
-                  self.nameAndScore.PlayerOneScore = 0
-                  self.nameAndScore.playerTwoName = "Player Two"
-                  self.nameAndScore.playerOneName = "Player One"
-                  self.nameAndScore.playerOneEmoji = "👩🏻"
-                  self.nameAndScore.playerTwoEmoji = "👨🏻"
-                  self.userData.playerID = "0"
-                  
-                  self.apiLoader.remove()
-                  
-                  
-                })
-                {
-                  Text("Start Over")
-                }
-                Button(action: {
-                  
-                  self.apiLoader.fetchData()
-                  print ("This is what I am looking for \(self.apiLoader.records)")
-                  
-                })
-                {
-                  Text("file path")
-                }
-              }
+//              HStack {
+//                
+//                Button(action: {
+//                  self.nameAndScore.PlayerTwoScore = 0
+//                  self.nameAndScore.PlayerOneScore = 0
+//                  self.nameAndScore.playerTwoName = "Player Two"
+//                  self.nameAndScore.playerOneName = "Player One"
+//                  self.nameAndScore.playerOneEmoji = "👩🏻"
+//                  self.nameAndScore.playerTwoEmoji = "👨🏻"
+//                  self.userData.playerID = "0"
+//                  
+//                  self.apiLoader.remove()
+//                  
+//                  
+//                })
+//                {
+//                  Text("Start Over")
+//                }
+////                Button(action: {
+////
+////                  self.apiLoader.fetchData()
+////                  print ("This is what I am looking for \(self.apiLoader.records)")
+////
+////                })
+////                {
+////                  Text("file path")
+////                }
+//              }
             }.border(Color.red)
 //          } else {
 //            VStack() {
