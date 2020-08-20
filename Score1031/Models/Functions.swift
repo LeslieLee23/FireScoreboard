@@ -47,8 +47,8 @@ extension Color {
 
 
 class AddScoreFunc: ObservableObject {
-  func createRecord(playerID: String, oldscore: [String], emojiPlusName: [String], names: [String], emojis: [String], scoreEdited: String, addViewSelected: Bool, reason: String, selectedName: Int) -> (Recordline) {
-    var record = Recordline(playerID: "0", playerOneEmoji: "👩🏻",playerOneName: "Player One", playerOneScore: 0, playerTwoEmoji: "👨🏻", playerTwoName: "Player Two", playerTwoScore: 0, recordName: "Player one and two", recordScore: "NA", recordReason: "Default players created", recordEntryTime: Date(), recordEntryTimeString: "", recordAddEdit: true, recordNameStr: "recordNameStr", recordNameEmo: "👩🏻")
+  func createRecord(playerID: String, oldscore: [String], emojiPlusName: [String], names: [String], emojis: [String], editedScore: Int, addViewSelected: Bool, reason: String, selectedName: Int) -> (Recordline) {
+    var record = Recordline(playerID: "0", playerOneEmoji: "👩🏻",playerOneName: "Player One", playerOneScore: 0, playerTwoEmoji: "👨🏻", playerTwoName: "Player Two", playerTwoScore: 0, recordName: "Player one and two", recordScore: "NA", recordReason: "Default players created", recordEntryTime: Date(), recordEntryTimeString: "", recordAddEdit: true, recordNameStr: "recordNameStrGUAGUA", recordNameEmo: "💩")
     
     record.id = UUID().uuidString
     record.recordReason = reason
@@ -65,16 +65,16 @@ class AddScoreFunc: ObservableObject {
   
     
 ///AddView
-    if addViewSelected == true {
+ //   if addViewSelected == true {
       
       if selectedName == 0 {
-        record.playerOneScore = Int(oldscore[0])! + Int(scoreEdited)!
+        record.playerOneScore = Int(oldscore[0])! + editedScore
         record.playerTwoScore = Int(oldscore[1])!
         record.recordName = emojiPlusName[0]
         record.recordNameStr = names[0]
         record.recordNameEmo = emojis[0]
       } else if selectedName == 1 {
-        record.playerTwoScore = Int(oldscore[1])! + Int(scoreEdited)!
+        record.playerTwoScore = Int(oldscore[1])! + editedScore
         record.playerOneScore = Int(oldscore[0])!
         record.recordName = emojiPlusName[1]
         record.recordNameStr = names[1]
@@ -83,39 +83,39 @@ class AddScoreFunc: ObservableObject {
       }
       
       
-      if scoreEdited.first == "-" || scoreEdited == "0" {
-        record.recordScore = scoreEdited
+      if String(editedScore).first == "-" || String(editedScore) == "0" {
+        record.recordScore = String(editedScore)
       } else {
-        record.recordScore = "+\(scoreEdited)"
+        record.recordScore = "+\(String(editedScore))"
       }
       
-    }
+ //   }
     
 ///EditView
-    else {
-      
-      if selectedName == 0 {
-        record.playerOneScore = Int(scoreEdited)!
-        record.playerTwoScore = Int(oldscore[1])!
-        record.recordName = emojiPlusName[0]
-        record.recordNameStr = names[0]
-        record.recordNameEmo = emojis[0]
-        
-        record.recordScore = String(Int(record.playerOneScore) - (Int(oldscore[0])!))
-      }
-      else if selectedName == 1 {
-        record.playerTwoScore = Int(scoreEdited)!
-        record.playerOneScore = Int(oldscore[0])!
-        record.recordName = emojiPlusName[1]
-        record.recordNameStr = names[1]
-        record.recordNameEmo = emojis[1]
-        
-        record.recordScore = String(Int(record.playerTwoScore) - (Int(oldscore[1])!))
-      }
-      if record.recordScore.first != "-" && record.recordScore.first != "0" {
-        record.recordScore = "+\(record.recordScore)"
-      }
-    }
+//    else {
+//
+//      if selectedName == 0 {
+//        record.playerOneScore = Int(scoreEdited)!
+//        record.playerTwoScore = Int(oldscore[1])!
+//        record.recordName = emojiPlusName[0]
+//        record.recordNameStr = names[0]
+//        record.recordNameEmo = emojis[0]
+//
+//        record.recordScore = String(Int(record.playerOneScore) - (Int(oldscore[0])!))
+//      }
+//      else if selectedName == 1 {
+//        record.playerTwoScore = Int(scoreEdited)!
+//        record.playerOneScore = Int(oldscore[0])!
+//        record.recordName = emojiPlusName[1]
+//        record.recordNameStr = names[1]
+//        record.recordNameEmo = emojis[1]
+//
+//        record.recordScore = String(Int(record.playerTwoScore) - (Int(oldscore[1])!))
+//      }
+//      if record.recordScore.first != "-" && record.recordScore.first != "0" {
+//        record.recordScore = "+\(record.recordScore)"
+//      }
+//    }
     print(record)
     return record
     
@@ -301,20 +301,24 @@ struct CircleStyle: ButtonStyle {
 }
 
 struct CircleStyleEmoji: ButtonStyle {
-    func makeBody(configuration: ButtonStyleConfiguration) -> some View {
-      
+  var color: Color = .green
+  func makeBody(configuration: ButtonStyleConfiguration) -> some View {
+    
       Circle()
-        .strokeBorder(Color.gray, lineWidth: 5)
-          .aspectRatio(contentMode: .fit)
-          .overlay(
-            configuration.label
-            .font(.system(size: 45))
+        .strokeBorder(color, lineWidth: 6)
+        
+        .opacity(configuration.isPressed ? 0.3 : 1)
+        .aspectRatio(contentMode: .fit)
+        .overlay(
+          configuration.label
             .transition(.scale(scale: 5))
-            )
-          .modifier(FitToWidth(fraction: 3))
-          .frame(width: 160, height: 125, alignment: .center)
+      )
+        .modifier(FitToWidth(fraction: 3))
+        .frame(width: 160, height: 125, alignment: .center)
+
     }
-}
+  }
+
 
 
 struct Functions_Previews: PreviewProvider {

@@ -24,7 +24,6 @@
 		F53BDFE42371E48500C3E203 /* AddScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53BDFE32371E48500C3E203 /* AddScoreView.swift */; };
 		F53BE01B2384482700C3E203 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53BE01A2384482700C3E203 /* UserData.swift */; };
 		F541995824EA3D6A00BF54EC /* NameEmojiRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F541995724EA3D6A00BF54EC /* NameEmojiRowView.swift */; };
-		F55DABD424EB303B0078452F /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55DABD324EB303B0078452F /* SwiftUIView.swift */; };
 		F55DABD624EBB9090078452F /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55DABD524EBB9090078452F /* SplashView.swift */; };
 		F56E71922493505C007E8FF5 /* AddNewPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56E71912493505C007E8FF5 /* AddNewPlayerView.swift */; };
 		F59129502420368F0071E1D3 /* SelectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F591294F2420368F0071E1D3 /* SelectViewModel.swift */; };
@@ -59,7 +58,6 @@
 		F53BDFE32371E48500C3E203 /* AddScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddScoreView.swift; sourceTree = "<group>"; };
 		F53BE01A2384482700C3E203 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		F541995724EA3D6A00BF54EC /* NameEmojiRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameEmojiRowView.swift; sourceTree = "<group>"; };
-		F55DABD324EB303B0078452F /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 		F55DABD524EBB9090078452F /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		F56E71912493505C007E8FF5 /* AddNewPlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewPlayerView.swift; sourceTree = "<group>"; };
 		F591294F2420368F0071E1D3 /* SelectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectViewModel.swift; sourceTree = "<group>"; };
@@ -126,7 +124,6 @@
 			isa = PBXGroup;
 			children = (
 				F53BDFD3236B44CC00C3E203 /* ContentView.swift */,
-				F55DABD324EB303B0078452F /* SwiftUIView.swift */,
 				F5BA924624E75A6900CA3519 /* EditModeView.swift */,
 				F541995724EA3D6A00BF54EC /* NameEmojiRowView.swift */,
 				F53BDFE32371E48500C3E203 /* AddScoreView.swift */,
@@ -333,7 +330,6 @@
 				F53BE01B2384482700C3E203 /* UserData.swift in Sources */,
 				F5D7FC7A24D9CEF4006BFC4A /* SigninWithAppleCoodinator.swift in Sources */,
 				F50762E624BC244600676F9C /* RecordViewModel.swift in Sources */,
-				F55DABD424EB303B0078452F /* SwiftUIView.swift in Sources */,
 				F5D7FC6F24D94087006BFC4A /* SigninWithAppleButton.swift in Sources */,
 				F51EE72223F12D9D0030B17C /* Score1031.xcdatamodeld in Sources */,
 				F53BDFD0236B44CC00C3E203 /* AppDelegate.swift in Sources */,

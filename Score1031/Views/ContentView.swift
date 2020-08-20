@@ -57,11 +57,26 @@ struct ContentView: View {
                   .animation(
                     Animation.spring(dampingFraction: 0.7)
                   )
-                  
-                ) {
+                )
+                {
                   Text("Edit Mode")
                 }
                 .labelsHidden()
+                .simultaneousGesture(TapGesture().onEnded {
+                  if self.editMode == false {
+                    print("wwiwiwiwiwi")
+                  self.addEidtChoice.addViewSelected = true
+                  self.userData.selectedName = 5
+                  self.emojiPlusName  = ["\(self.nameAndScore.playerOneEmoji!) \( self.nameAndScore.playerOneName!)","\( self.nameAndScore.playerTwoEmoji!) \( self.nameAndScore.playerTwoName!)"]
+                    print("\(self.emojiPlusName)")
+                  self.oldscore = ["\(self.nameAndScore.PlayerOneScore)", "\(self.nameAndScore.PlayerTwoScore)"]
+                    print("\(self.emojis)")
+                  self.emojis = [self.nameAndScore.playerOneEmoji!, self.nameAndScore.playerTwoEmoji!]
+                  self.names = [self.nameAndScore.playerOneName!, self.nameAndScore.playerTwoName!]
+                  } else {
+                    
+                  }
+                })
               }
               Spacer()
               VStack {
@@ -142,13 +157,13 @@ struct ContentView: View {
                   HStack {
                     VStack{
                       Text(self.nameAndScore.playerOneEmoji ?? "👩🏻")
-                        .font(.system(size: 45))
+                        .font(.system(size: 55))
                         .transition(.scale(scale: 5))
                     }
                     .frame(width: 160, height: 140, alignment: .center)
                     VStack{
                       Text(self.nameAndScore.playerTwoEmoji ?? "👨🏻")
-                        .font(.system(size: 45))
+                        .font(.system(size: 55))
                     }
                     .frame(width: 160, height: 140, alignment: .center)
                   }
@@ -182,7 +197,7 @@ struct ContentView: View {
               VStack {
                 VStack {
                   NavigationLink (destination:
-                  AddScoreView(oldscore: oldscore, names: names, emojis: emojis)){
+                  AddScoreView(emojiPlusName:emojiPlusName, oldscore: oldscore, names: names, emojis: emojis)){
                     Text("Add Score!")
                       .fontWeight(.semibold)
                   }
@@ -230,32 +245,13 @@ struct ContentView: View {
               Spacer()
             }.border(Color.green)
           } else {
-            //            VStack {
-            //              if addEidtChoice.addViewSelected == true {
-            //                TextField("Score to add", text: $scoreEdited)
-            //                  .textFieldStyle(RoundedBorderTextFieldStyle())
-            //                  .keyboardType(.numberPad)
-            //                  .padding(.trailing, 35)
-            //                  .padding(.leading, 35)
-            //              } else {
-            //                TextField("New Score", text: $scoreEdited)
-            //                  .textFieldStyle(RoundedBorderTextFieldStyle())
-            //                  .keyboardType(.numberPad)
-            //                  .padding(.trailing, 35)
-            //                  .padding(.leading, 35)
-            //              }
-            //
-            //              TextField("What for?", text: $reason)
-            //                .textFieldStyle(RoundedBorderTextFieldStyle())
-            //                .padding(.trailing, 35)
-            //                .padding(.leading, 35)
-            //
-            //              Spacer()
-            //            } .border(Color.green)
+            VStack() {
+              EditModeView(emojiPlusName:emojiPlusName, oldscore: oldscore, names: names, emojis: emojis)
+            }.border(Color.red)
           }
-          if self.editMode == false {
+          
+ //         if self.editMode == false {
             VStack {
-              
               /// View History row
               HStack {
                 VStack {
@@ -265,10 +261,10 @@ struct ContentView: View {
                     )
                   {
                     VStack() {
-                      Image(systemName: "eye").font(.system(size:20))
-                      Text("View History")
+                      Image(systemName: "clock").font(.system(size:20))
+                      Text("History")
                         .fontWeight(.light)
-                        .font(.system(size:12))
+                        .font(.system(size:11))
                     }
                   }
                   .padding()
@@ -282,7 +278,7 @@ struct ContentView: View {
                       Image(systemName: "person.2.square.stack").font(.system(size:20))
                       Text("Change Players")
                         .fontWeight(.light)
-                        .font(.system(size:12))
+                        .font(.system(size:11))
                     }
                     .padding()
                   }
@@ -296,7 +292,7 @@ struct ContentView: View {
                       Image(systemName: "person.crop.circle.badge.plus").font(.system(size:20))
                       Text("Add Players")
                         .fontWeight(.light)
-                        .font(.system(size:12))
+                        .font(.system(size:11))
                     }
                   }
                   .padding()
@@ -334,11 +330,11 @@ struct ContentView: View {
                 }
               }
             }.border(Color.red)
-          } else {
-            VStack() {
-              EditModeView()
-            }.border(Color.red)
-          }
+//          } else {
+//            VStack() {
+//              EditModeView()
+//            }.border(Color.red)
+//          }
         }
       }//.border(Color.purple)
       

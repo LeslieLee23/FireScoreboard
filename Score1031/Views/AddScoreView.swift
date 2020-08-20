@@ -90,44 +90,44 @@ struct AddScoreView: View {
           }
           Spacer()
           
-          Button(action: {
-            self.showAlert = true
-            if Int(self.scoreEdited) == 1 {
-              self.pointGrammar = "point"
-            }
-            if Int(self.scoreEdited) == nil {
-            }
-            
-            self.records3 = self.addScoreFunc.createRecord(
-              playerID: self.userData.playerID!,
-              oldscore: self.oldscore,
-              emojiPlusName: self.emojiPlusName,
-              names: self.names,
-              emojis: self.emojis,
-              scoreEdited: self.scoreEdited,
-              addViewSelected: self.addEidtChoice.addViewSelected,
-              reason: self.reason,
-              selectedName: self.selectedName)
-            
-              self.nameAndScore.playerOneEmoji = self.records3.playerOneEmoji
-              self.nameAndScore.playerTwoEmoji = self.records3.playerTwoEmoji
-              self.nameAndScore.playerOneName = self.records3.playerOneName
-              self.nameAndScore.playerTwoName = self.records3.playerTwoName
-              self.nameAndScore.PlayerOneScore = self.records3.playerOneScore
-              self.nameAndScore.PlayerTwoScore = self.records3.playerTwoScore
-            
-            //APILoader.saveData(record3: self.records3)
-              self.apiLoader.saveData(record3: self.records3)
-          }) {
-            if addEidtChoice.addViewSelected == true {
-              Text("Add")
-            }
-            else {
-              Text("Confirm")
-            }
-          }
-          .disabled(scoreEdited.isEmpty)
-          .disabled(Double(scoreEdited)  == nil)
+//          Button(action: {
+//            self.showAlert = true
+//            if Int(self.scoreEdited) == 1 {
+//              self.pointGrammar = "point"
+//            }
+//            if Int(self.scoreEdited) == nil {
+//            }
+//
+//            self.records3 = self.addScoreFunc.createRecord(
+//              playerID: self.userData.playerID!,
+//              oldscore: self.oldscore,
+//              emojiPlusName: self.emojiPlusName,
+//              names: self.names,
+//              emojis: self.emojis,
+//              scoreEdited: self.scoreEdited,
+//              addViewSelected: self.addEidtChoice.addViewSelected,
+//              reason: self.reason,
+//              selectedName: self.selectedName)
+//
+//              self.nameAndScore.playerOneEmoji = self.records3.playerOneEmoji
+//              self.nameAndScore.playerTwoEmoji = self.records3.playerTwoEmoji
+//              self.nameAndScore.playerOneName = self.records3.playerOneName
+//              self.nameAndScore.playerTwoName = self.records3.playerTwoName
+//              self.nameAndScore.PlayerOneScore = self.records3.playerOneScore
+//              self.nameAndScore.PlayerTwoScore = self.records3.playerTwoScore
+//
+//            //APILoader.saveData(record3: self.records3)
+//              self.apiLoader.saveData(record3: self.records3)
+//          }) {
+//            if addEidtChoice.addViewSelected == true {
+//              Text("Add")
+//            }
+//            else {
+//              Text("Confirm")
+//            }
+//          }
+//          .disabled(scoreEdited.isEmpty)
+//          .disabled(Double(scoreEdited)  == nil)
             
           .alert(isPresented: $showAlert) { () ->
             Alert in

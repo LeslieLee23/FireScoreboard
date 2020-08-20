@@ -11,8 +11,9 @@ import SwiftUI
 struct NameEmojiRowView: View {
   
   @EnvironmentObject private var nameAndScore: NameAndScore
-  @EnvironmentObject private var userData: UserData
-  
+  @EnvironmentObject var userData: UserData
+  @State var playerOneColors: Color = .gray
+  @State var playerTwoColors: Color = .gray
   
   var body: some View {
     VStack() {
@@ -21,25 +22,30 @@ struct NameEmojiRowView: View {
         HStack {
           Button(action: {
             self.userData.selectedName = 0
-            print("Set selectedName to player 1")
+            self.playerOneColors = .purple
+            self.playerTwoColors = .gray
+            print("Set selectedName to \(self.userData.selectedName)")
           }) {
             Text(self.nameAndScore.playerOneEmoji ?? "👩🏻")
-              .font(.system(size: 45))
+              .font(.system(size: 55))
           }
           .frame(width: 160, height: 125, alignment: .center)
-          .foregroundColor(.gray)
-          
+          .buttonStyle(CircleStyleEmoji(color: playerOneColors))
+
           Button(action: {
             self.userData.selectedName = 1
-            print("Set selectedName to player 2")
+            self.playerOneColors = .gray
+            self.playerTwoColors = .purple
+            print("Set selectedName to \(self.userData.selectedName)")
           }) {
             Text(self.nameAndScore.playerTwoEmoji ?? "👨🏻")
-              .font(.system(size: 45))
+              .font(.system(size: 55))
           }
           .frame(width: 160, height: 125, alignment: .center)
-          .foregroundColor(.gray)
+          .buttonStyle(CircleStyleEmoji(color: playerTwoColors))
+
         }
-        .buttonStyle(CircleStyleEmoji())
+        
         
       }///NameEmojiRow (140) (Edit Mode) (Emoji Mode)
         
@@ -48,7 +54,7 @@ struct NameEmojiRowView: View {
         HStack {
           Button(action: {
             self.userData.selectedName = 0
-            print("Set selectedName to player 1")
+            print("Set selectedName to \(self.userData.selectedName)")
           }) {
             Text(self.nameAndScore.playerOneName ?? "Miu")
               .font(.system(size: 28))
@@ -56,7 +62,7 @@ struct NameEmojiRowView: View {
           .frame(width: 160, height: 125, alignment: .center)
           Button(action: {
             self.userData.selectedName = 1
-            print("Set selectedName to player 2")
+            print("Set selectedName to \(self.userData.selectedName)")
           }) {
             Text(self.nameAndScore.playerTwoName ?? "Whof")
               .font(.system(size: 28))
