@@ -9,16 +9,22 @@
 import SwiftUI
 
 struct TabBarView: View {
+  @EnvironmentObject var appState: AppState
+  
+  var userData = UserData()
     var body: some View {
-      TabView {
+      TabView(selection: $appState.selectedTab) {
         ContentView()
+          .onTapGesture {
+            self.appState.selectedTab = .home
+        }
           .tabItem {
             Image(systemName: "house")
             Text("Home")
             .fontWeight(.light)
             .font(.system(size:11))
-
         }
+        .tag(Tab.home)
         
         HistoryView()
           .tabItem {
@@ -27,6 +33,7 @@ struct TabBarView: View {
               .fontWeight(.light)
               .font(.system(size:11))
         }
+        .tag(Tab.HistoryView)
         
         ChangePlayersView()
           .tabItem {
@@ -35,6 +42,7 @@ struct TabBarView: View {
               .fontWeight(.light)
               .font(.system(size:11))
         }
+        .tag(Tab.ChangePlayersView)
         
         AddNewPlayerView()
            .tabItem {
@@ -43,7 +51,9 @@ struct TabBarView: View {
                .fontWeight(.light)
                .font(.system(size:11))
         }
+        .tag(Tab.AddNewPlayerView)
       }
+    .environmentObject(userData)
     }
 }
 
@@ -55,5 +65,14 @@ struct TabBarView_Previews: PreviewProvider {
       .environmentObject(UserData())
       .environmentObject(AddEidtChoice())
       .environmentObject(AddScoreFunc())
+    }
+}
+
+extension TabBarView {
+    enum Tab: Hashable {
+        case home
+        case HistoryView
+        case ChangePlayersView
+        case AddNewPlayerView
     }
 }

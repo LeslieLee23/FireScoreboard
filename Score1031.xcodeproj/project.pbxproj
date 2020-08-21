@@ -26,6 +26,7 @@
 		F541995824EA3D6A00BF54EC /* NameEmojiRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F541995724EA3D6A00BF54EC /* NameEmojiRowView.swift */; };
 		F55DABD624EBB9090078452F /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55DABD524EBB9090078452F /* SplashView.swift */; };
 		F55DABD824EF3B9B0078452F /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55DABD724EF3B9B0078452F /* TabBarView.swift */; };
+		F55DABDA24EFAF880078452F /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55DABD924EFAF880078452F /* AppState.swift */; };
 		F56E71922493505C007E8FF5 /* AddNewPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56E71912493505C007E8FF5 /* AddNewPlayerView.swift */; };
 		F59129502420368F0071E1D3 /* SelectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F591294F2420368F0071E1D3 /* SelectViewModel.swift */; };
 		F5BA924724E75A6900CA3519 /* EditModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BA924624E75A6900CA3519 /* EditModeView.swift */; };
@@ -61,6 +62,7 @@
 		F541995724EA3D6A00BF54EC /* NameEmojiRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameEmojiRowView.swift; sourceTree = "<group>"; };
 		F55DABD524EBB9090078452F /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		F55DABD724EF3B9B0078452F /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
+		F55DABD924EFAF880078452F /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		F56E71912493505C007E8FF5 /* AddNewPlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewPlayerView.swift; sourceTree = "<group>"; };
 		F591294F2420368F0071E1D3 /* SelectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectViewModel.swift; sourceTree = "<group>"; };
 		F5BA924624E75A6900CA3519 /* EditModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditModeView.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				F5C95EA523FB4EB500D46C7A /* AddEditChoice.swift */,
 				F508FB5F244EA96A001C5C24 /* Recordline.swift */,
 				F50762EB24C01D0100676F9C /* Functions.swift */,
+				F55DABD924EFAF880078452F /* AppState.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -125,6 +128,7 @@
 		F51C7A3B23D5715A00540B25 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F55DABD724EF3B9B0078452F /* TabBarView.swift */,
 				F53BDFD3236B44CC00C3E203 /* ContentView.swift */,
 				F5BA924624E75A6900CA3519 /* EditModeView.swift */,
 				F541995724EA3D6A00BF54EC /* NameEmojiRowView.swift */,
@@ -137,7 +141,6 @@
 				F5D7FC6E24D94087006BFC4A /* SigninWithAppleButton.swift */,
 				F5D7FC7424D942A6006BFC4A /* SignInView.swift */,
 				F55DABD524EBB9090078452F /* SplashView.swift */,
-				F55DABD724EF3B9B0078452F /* TabBarView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -331,6 +334,7 @@
 				F5D7FC7524D942A6006BFC4A /* SignInView.swift in Sources */,
 				F56E71922493505C007E8FF5 /* AddNewPlayerView.swift in Sources */,
 				F53BE01B2384482700C3E203 /* UserData.swift in Sources */,
+				F55DABDA24EFAF880078452F /* AppState.swift in Sources */,
 				F5D7FC7A24D9CEF4006BFC4A /* SigninWithAppleCoodinator.swift in Sources */,
 				F50762E624BC244600676F9C /* RecordViewModel.swift in Sources */,
 				F5D7FC6F24D94087006BFC4A /* SigninWithAppleButton.swift in Sources */,

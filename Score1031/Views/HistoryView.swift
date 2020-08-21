@@ -30,16 +30,11 @@ struct HistoryView: View {
         
       }
       .navigationBarTitle("History")
-      .navigationBarItems(leading:
-      HStack {
-          Button(action: {
-             self.presentationMode.wrappedValue.dismiss()
-          }) {
-              Image(systemName: "chevron.left").font(.headline)
-              Text("Back")
-          }.foregroundColor(.blue)
-      })
-        
+      .navigationBarItems(trailing:
+        HStack{
+        Spacer()
+        }
+      )
       .onAppear() {
         self.apiLoader.fetchData()
       }

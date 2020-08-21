@@ -14,9 +14,10 @@ import Firebase
 
 struct ContentView: View {
   
-  @EnvironmentObject private var nameAndScore: NameAndScore
-  @EnvironmentObject private var userData: UserData
-  @EnvironmentObject private var addEidtChoice: AddEidtChoice
+  @EnvironmentObject var nameAndScore: NameAndScore
+  @EnvironmentObject var userData: UserData
+  @EnvironmentObject var addEidtChoice: AddEidtChoice
+  @EnvironmentObject var appState: AppState
   @ObservedObject private var apiLoader = APILoader()
   
   @State var emojiPlusName = [String]()
@@ -253,91 +254,91 @@ struct ContentView: View {
           }
             
            ///Tab Bar Row
-            VStack {
-              HStack {
-                ///History Button
-                VStack {
-                  NavigationLink (destination: HistoryView()
-                    .navigationBarTitle(Text("x"))
-                    .navigationBarHidden(true)
-                    )
-                  {
-                    VStack() {
-                      Image(systemName: "clock").font(.system(size:20))
-                      Text("History")
-                        .fontWeight(.light)
-                        .font(.system(size:11))
-                    }
-                  }
-                  .padding()
-                }///History Button
-                
-                Spacer()
-                
-                ///Change Player Button
-                VStack() {
-                  NavigationLink (destination: ChangePlayersView())
-                  {
-                    VStack() {
-                      Image(systemName: "person.2.square.stack").font(.system(size:20))
-                      Text("Change Players")
-                        .fontWeight(.light)
-                        .font(.system(size:11))
-                    }
-                    .padding()
-                  }
-                  .disabled(self.apiLoader.queryPlayerList().count < 2)
-                }///Change Player Button
-                
-                Spacer()
-                
-                ///Add New Player Button
-                VStack {
-                  NavigationLink (destination: AddNewPlayerView())
-                  {
-                    VStack() {
-                      Image(systemName: "person.crop.circle.badge.plus").font(.system(size:20))
-                      Text("Add Players")
-                        .fontWeight(.light)
-                        .font(.system(size:11))
-                    }
-                  }
-                  .padding()
-                }///Add New Player Button
-                
-              }
-              
-              //  Spacer()
+//            VStack {
 //              HStack {
+//                ///History Button
+//                VStack {
+//                  NavigationLink (destination: HistoryView()
+//                    .navigationBarTitle(Text("x"))
+//                    .navigationBarHidden(true)
+//                    )
+//                  {
+//                    VStack() {
+//                      Image(systemName: "clock").font(.system(size:20))
+//                      Text("History")
+//                        .fontWeight(.light)
+//                        .font(.system(size:11))
+//                    }
+//                  }
+//                  .padding()
+//                }///History Button
 //
-//                Button(action: {
-//                  self.nameAndScore.PlayerTwoScore = 0
-//                  self.nameAndScore.PlayerOneScore = 0
-//                  self.nameAndScore.playerTwoName = "Player Two"
-//                  self.nameAndScore.playerOneName = "Player One"
-//                  self.nameAndScore.playerOneEmoji = "👩🏻"
-//                  self.nameAndScore.playerTwoEmoji = "👨🏻"
-//                  self.userData.playerID = "0"
+//                Spacer()
 //
-//                  self.apiLoader.remove()
+//                ///Change Player Button
+//                VStack() {
+//                  NavigationLink (destination: ChangePlayersView())
+//                  {
+//                    VStack() {
+//                      Image(systemName: "person.2.square.stack").font(.system(size:20))
+//                      Text("Change Players")
+//                        .fontWeight(.light)
+//                        .font(.system(size:11))
+//                    }
+//                    .padding()
+//                  }
+//                  .disabled(self.apiLoader.queryPlayerList().count < 2)
+//                }///Change Player Button
 //
+//                Spacer()
 //
-//                })
-//                {
-//                  Text("Start Over")
-//                }
-////                Button(action: {
+//                ///Add New Player Button
+//                VStack {
+//                  NavigationLink (destination: AddNewPlayerView())
+//                  {
+//                    VStack() {
+//                      Image(systemName: "person.crop.circle.badge.plus").font(.system(size:20))
+//                      Text("Add Players")
+//                        .fontWeight(.light)
+//                        .font(.system(size:11))
+//                    }
+//                  }
+//                  .padding()
+//                }///Add New Player Button
+//
+//              }
+//
+//              //  Spacer()
+////              HStack {
 ////
-////                  self.apiLoader.fetchData()
-////                  print ("This is what I am looking for \(self.apiLoader.records)")
+////                Button(action: {
+////                  self.nameAndScore.PlayerTwoScore = 0
+////                  self.nameAndScore.PlayerOneScore = 0
+////                  self.nameAndScore.playerTwoName = "Player Two"
+////                  self.nameAndScore.playerOneName = "Player One"
+////                  self.nameAndScore.playerOneEmoji = "👩🏻"
+////                  self.nameAndScore.playerTwoEmoji = "👨🏻"
+////                  self.userData.playerID = "0"
+////
+////                  self.apiLoader.remove()
+////
 ////
 ////                })
 ////                {
-////                  Text("file path")
+////                  Text("Start Over")
 ////                }
-//              }
-            }///Tab Bar Row
-            .border(Color.red)
+//////                Button(action: {
+//////
+//////                  self.apiLoader.fetchData()
+//////                  print ("This is what I am looking for \(self.apiLoader.records)")
+//////
+//////                })
+//////                {
+//////                  Text("file path")
+//////                }
+////              }
+//            }///Tab Bar Row
+ //           .border(Color.red)
 
         }
       }//.border(Color.purple)

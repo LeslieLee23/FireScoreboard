@@ -20,22 +20,22 @@ struct SelectViewModel: View {
     var body: some View {
         HStack {
             VStack(alignment: .leading){
-                Text(playerID)
+                Spacer()
                 }
-            .frame(width:80,height: 45, alignment: .leading)
+            .frame(width:15,height: 50, alignment: .leading)
                 
             VStack(alignment: .leading){
                 Text("\(playerOneEmoji) \(playerOneName)")
-                    //.font(.caption)
+                Spacer()
                 Text(String(playerOneScore))
             }
-            .frame(width:100, height: 45, alignment: .leading)
+            .frame(width:130, height: 50, alignment: .leading)
             VStack(alignment: .leading){
                 Text("\(playerTwoEmoji) \(playerTwoName)")
-                    //.font(.caption)
+                Spacer()
                 Text(String(playerTwoScore))
             }
-            .frame(width:100, height: 45, alignment: .leading)
+            .frame(width:130, height: 50, alignment: .leading)
 
         
             

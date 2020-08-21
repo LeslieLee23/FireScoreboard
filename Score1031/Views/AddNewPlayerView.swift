@@ -28,6 +28,7 @@ struct AddNewPlayerView: View {
     @EnvironmentObject var nameAndScore: NameAndScore
     @EnvironmentObject var addEidtChoice: AddEidtChoice
     @EnvironmentObject private var userData: UserData
+    @EnvironmentObject var appState: AppState
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @Environment(\.managedObjectContext) var managedObjectContext
     
@@ -135,7 +136,7 @@ struct AddNewPlayerView: View {
             .alert(isPresented: $showAlert) { () ->
                 Alert in
                 return Alert(title: Text("Player Changed!"), message: Text("You changed player one to \(self.playerOneName), with emoji \(self.playerOneEmoji). You changed player two to \(self.playerTwoName), with emoji \(self.playerTwoEmoji)."), dismissButton: Alert.Button.default(Text("Ok"))
-                    {self.presentationMode.wrappedValue.dismiss() }
+                    {self.appState.selectedTab = .home }
                     )
                 
             }
