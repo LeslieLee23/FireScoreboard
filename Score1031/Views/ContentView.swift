@@ -251,11 +251,11 @@ struct ContentView: View {
               EditModeView(emojiPlusName:emojiPlusName, oldscore: oldscore, names: names, emojis: emojis)
             }.border(Color.red)
           }
-          
- //         if self.editMode == false {
+            
+           ///Tab Bar Row
             VStack {
-              /// View History row
               HStack {
+                ///History Button
                 VStack {
                   NavigationLink (destination: HistoryView()
                     .navigationBarTitle(Text("x"))
@@ -270,9 +270,11 @@ struct ContentView: View {
                     }
                   }
                   .padding()
-                  //       Spacer()
-                }
+                }///History Button
+                
                 Spacer()
+                
+                ///Change Player Button
                 VStack() {
                   NavigationLink (destination: ChangePlayersView())
                   {
@@ -285,8 +287,11 @@ struct ContentView: View {
                     .padding()
                   }
                   .disabled(self.apiLoader.queryPlayerList().count < 2)
-                }
+                }///Change Player Button
+                
                 Spacer()
+                
+                ///Add New Player Button
                 VStack {
                   NavigationLink (destination: AddNewPlayerView())
                   {
@@ -298,13 +303,13 @@ struct ContentView: View {
                     }
                   }
                   .padding()
-                  //     Spacer()
-                }
+                }///Add New Player Button
+                
               }
               
               //  Spacer()
 //              HStack {
-//                
+//
 //                Button(action: {
 //                  self.nameAndScore.PlayerTwoScore = 0
 //                  self.nameAndScore.PlayerOneScore = 0
@@ -313,10 +318,10 @@ struct ContentView: View {
 //                  self.nameAndScore.playerOneEmoji = "👩🏻"
 //                  self.nameAndScore.playerTwoEmoji = "👨🏻"
 //                  self.userData.playerID = "0"
-//                  
+//
 //                  self.apiLoader.remove()
-//                  
-//                  
+//
+//
 //                })
 //                {
 //                  Text("Start Over")
@@ -331,12 +336,9 @@ struct ContentView: View {
 ////                  Text("file path")
 ////                }
 //              }
-            }.border(Color.red)
-//          } else {
-//            VStack() {
-//              EditModeView()
-//            }.border(Color.red)
-//          }
+            }///Tab Bar Row
+            .border(Color.red)
+
         }
       }//.border(Color.purple)
       

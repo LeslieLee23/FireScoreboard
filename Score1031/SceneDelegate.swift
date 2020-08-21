@@ -24,8 +24,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // Create the SwiftUI view that provides the window contents.
         
-        let contentView = ContentView()
-        .environment(\.managedObjectContext,managedObjectContext)
+        let contentView = TabBarView()
             .environmentObject(NameAndScore())
             .environmentObject(UserData())
             .environmentObject(AddEidtChoice())
