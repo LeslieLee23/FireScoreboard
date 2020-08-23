@@ -15,7 +15,6 @@ import FirebaseFirestoreSwift
 
 struct Recordline: Codable , Identifiable
 {
-//  @DocumentID var id2: String?
   var id: String = UUID().uuidString
   var playerID: String
   var playerOneEmoji: String
@@ -29,12 +28,9 @@ struct Recordline: Codable , Identifiable
   var recordReason: String
   var recordEntryTime: Date?
   var recordEntryTimeString: String
-  var recordAddEdit: Bool
   var userId: String?
   var recordNameStr: String?
   var recordNameEmo: String?
-//  @ServerTimestamp var createdTime: Timestamp?
-  
 }
 
 

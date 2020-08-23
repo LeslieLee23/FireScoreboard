@@ -26,7 +26,7 @@ struct AddNewPlayerView: View {
     @State var showAlert = false
 
     @EnvironmentObject var nameAndScore: NameAndScore
-    @EnvironmentObject var addEidtChoice: AddEidtChoice
+//    @EnvironmentObject var addEidtChoice: AddEidtChoice
     @EnvironmentObject private var userData: UserData
     @EnvironmentObject var appState: AppState
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
@@ -106,7 +106,6 @@ struct AddNewPlayerView: View {
                 self.records3.recordReason = "New Palyers Added"
                 self.records3.recordEntryTime = Date()
                 self.records3.recordEntryTimeString = getDateString(Date: self.records3.recordEntryTime!)
-                self.records3.recordAddEdit = true
               self.records3.userId = Auth.auth().currentUser?.uid
               self.records3.recordNameStr = "Player Pairs Created!"
               self.records3.recordNameEmo = self.playerTwoEmoji

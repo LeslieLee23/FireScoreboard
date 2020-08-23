@@ -36,9 +36,6 @@ struct SelectViewModel: View {
                 Text(String(playerTwoScore))
             }
             .frame(width:130, height: 50, alignment: .leading)
-
-        
-            
        }
     }
 }

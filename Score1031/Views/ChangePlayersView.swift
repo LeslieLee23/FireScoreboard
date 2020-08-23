@@ -11,10 +11,8 @@ import Disk
 
 struct ChangePlayersView: View {
   
-//  @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
   @EnvironmentObject var nameAndScore: NameAndScore
   @EnvironmentObject var userData: UserData
-  @EnvironmentObject var addEidtChoice: AddEidtChoice
   @EnvironmentObject var appState: AppState
   @ObservedObject private var apiLoader = APILoader()
   
@@ -28,7 +26,6 @@ struct ChangePlayersView: View {
             HStack{
               VStack{
                 SelectViewModel(playerID: record.playerID, playerOneName: record.playerOneName , playerTwoName: record.playerTwoName, playerOneScore: String(record.playerOneScore), playerTwoScore: String(record.playerTwoScore), playerOneEmoji: record.playerOneEmoji, playerTwoEmoji: record.playerTwoEmoji)
-                
               }
               VStack(alignment: .trailing) {
                 Button(action: {
@@ -40,7 +37,7 @@ struct ChangePlayersView: View {
                   self.nameAndScore.PlayerOneScore = record.playerOneScore
                   self.nameAndScore.PlayerTwoScore = record.playerTwoScore
                   self.appState.selectedTab = .home
-
+                  
                 })
                 {
                   Image(systemName: "arrow.right.circle")

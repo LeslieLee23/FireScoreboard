@@ -63,7 +63,6 @@ struct TabBarView_Previews: PreviewProvider {
         TabBarView()
       .environmentObject(NameAndScore())
       .environmentObject(UserData())
-      .environmentObject(AddEidtChoice())
       .environmentObject(AddScoreFunc())
     }
 }

@@ -17,7 +17,7 @@ import FirebaseDatabase
 
 class BaseScoreRepository {
   @Published var records = [Recordline]()
-  @Published var records3 = Recordline(playerID: "0", playerOneEmoji: "🍑",playerOneName: "Player One", playerOneScore: 0, playerTwoEmoji: "👨🏻", playerTwoName: "Player Two", playerTwoScore: 0, recordName: "Player one and two", recordScore: "NA", recordReason: "Default players created", recordEntryTime: Date(), recordEntryTimeString: "", recordAddEdit: true, recordNameStr: "recordNameStr", recordNameEmo: "👩🏻")
+  @Published var records3 = Recordline(playerID: "0", playerOneEmoji: "🍑",playerOneName: "Player One", playerOneScore: 0, playerTwoEmoji: "👨🏻", playerTwoName: "Player Two", playerTwoScore: 0, recordName: "Player one and two", recordScore: "NA", recordReason: "Default players created", recordEntryTime: Date(), recordEntryTimeString: "", recordNameStr: "recordNameStr", recordNameEmo: "👩🏻")
 }
 
 protocol ScoreRepository: BaseScoreRepository {
@@ -35,7 +35,8 @@ class APILoader: BaseScoreRepository, ScoreRepository, ObservableObject {
   }
   
   func defaultValue() -> [Recordline] {
-    let defaultValue = [Recordline(playerID: "0", playerOneEmoji: "🍇",playerOneName: "Player One", playerOneScore: 0, playerTwoEmoji: "👨🏻", playerTwoName: "Player Two", playerTwoScore: 0, recordName: "Player one and two", recordScore: "NA", recordReason: "Default players created", recordEntryTime: Date(), recordEntryTimeString: "", recordAddEdit: true, recordNameStr: "recordNameStr", recordNameEmo: "👩🏻")]
+    let defaultValue = [Recordline(playerID: "0", playerOneEmoji: "🍇",playerOneName: "Player One", playerOneScore: 0, playerTwoEmoji: "👨🏻", playerTwoName: "Player Two", playerTwoScore: 0, recordName: "Player one and two", recordScore: "NA", recordReason: "Default players created", recordEntryTime: Date(), recordEntryTimeString: "",
+      recordNameStr: "recordNameStr", recordNameEmo: "👩🏻")]
       return defaultValue
   }
   
@@ -68,7 +69,6 @@ class APILoader: BaseScoreRepository, ScoreRepository, ObservableObject {
         let recordEntryTime: Date = timestamp.dateValue()
        // let recordEntryTime = data["recordEntryTime"] as? Date??
         let recordEntryTimeString = data["recordEntryTimeString"] as? String ?? ""
-        let recordAddEdit = data["recordAddEdit"] as? Bool ?? true
         let recordNameStr = data["recordNameStr"] as? String ?? ""
         let recordNameEmo = data["recordNameEmo"] as? String ?? ""
         let abc = Recordline(
@@ -86,7 +86,6 @@ class APILoader: BaseScoreRepository, ScoreRepository, ObservableObject {
                   recordReason: recordReason,
                   recordEntryTime: recordEntryTime,
                   recordEntryTimeString: recordEntryTimeString,
-                  recordAddEdit: recordAddEdit,
                   userId: userId,
                   recordNameStr: recordNameStr,
                   recordNameEmo: recordNameEmo
@@ -112,7 +111,8 @@ class APILoader: BaseScoreRepository, ScoreRepository, ObservableObject {
       if let filtered = self.records.filter({$0.id == id}).first {
         filteredRecords3.append(filtered) }
       else {
-        let filteredRecords3 = [Recordline(playerID: "0", playerOneEmoji: "🎏",playerOneName: "Player One", playerOneScore: 0, playerTwoEmoji: "👨🏻", playerTwoName: "Player Two", playerTwoScore: 0, recordName: "Player one and two", recordScore: "NA", recordReason: "Default players created", recordEntryTime: Date(), recordEntryTimeString: "", recordAddEdit: true, recordNameStr: "recordNameStr", recordNameEmo: "👩🏻")]
+        let filteredRecords3 = [Recordline(playerID: "0", playerOneEmoji: "🎏",playerOneName: "Player One", playerOneScore: 0, playerTwoEmoji: "👨🏻", playerTwoName: "Player Two", playerTwoScore: 0, recordName: "Player one and two", recordScore: "NA", recordReason: "Default players created", recordEntryTime: Date(), recordEntryTimeString: "",
+          recordNameStr: "recordNameStr", recordNameEmo: "👩🏻")]
       }
     }
     return filteredRecords3.sorted(by: { $0.recordEntryTime! >= $1.recordEntryTime!})
@@ -129,7 +129,8 @@ class APILoader: BaseScoreRepository, ScoreRepository, ObservableObject {
   func saveData(record3: Recordline) {
     do {
 
-      db.collection("records").addDocument(data: ["id": record3.id, "playerID": record3.playerID, "playerOneEmoji": record3.playerOneEmoji,"playerOneName": record3.playerOneName, "playerOneScore": record3.playerOneScore, "playerTwoEmoji": record3.playerTwoEmoji, "playerTwoName": record3.playerTwoName, "playerTwoScore": record3.playerTwoScore, "recordName": record3.recordName, "recordScore": record3.recordScore, "recordReason": record3.recordReason, "recordEntryTime": Date(), "recordEntryTimeString": record3.recordEntryTimeString, "recordAddEdit": record3.recordAddEdit, "userId": record3.userId!, "recordNameStr": record3.recordNameStr!, "recordNameEmo": record3.recordNameEmo! ])
+      db.collection("records").addDocument(data: ["id": record3.id, "playerID": record3.playerID, "playerOneEmoji": record3.playerOneEmoji,"playerOneName": record3.playerOneName, "playerOneScore": record3.playerOneScore, "playerTwoEmoji": record3.playerTwoEmoji, "playerTwoName": record3.playerTwoName, "playerTwoScore": record3.playerTwoScore, "recordName": record3.recordName, "recordScore": record3.recordScore, "recordReason": record3.recordReason, "recordEntryTime": Date(), "recordEntryTimeString": record3.recordEntryTimeString,
+        "userId": record3.userId!, "recordNameStr": record3.recordNameStr!, "recordNameEmo": record3.recordNameEmo! ])
       
       print("Yes yes yes this works!")
       
