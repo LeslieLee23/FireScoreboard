@@ -17,7 +17,7 @@ import FirebaseDatabase
 
 class BaseScoreRepository {
   @Published var records = [Recordline]()
-  @Published var records3 = Recordline(playerID: "0", playerOneEmoji: "👩🏻",playerOneName: "Player One", playerOneScore: 0, playerTwoEmoji: "👨🏻", playerTwoName: "Player Two", playerTwoScore: 0, recordName: "Player one and two", recordScore: "NA", recordReason: "Default players created", recordEntryTime: Date(), recordEntryTimeString: "", recordAddEdit: true, recordNameStr: "recordNameStr", recordNameEmo: "👩🏻")
+  @Published var records3 = Recordline(playerID: "0", playerOneEmoji: "🍑",playerOneName: "Player One", playerOneScore: 0, playerTwoEmoji: "👨🏻", playerTwoName: "Player Two", playerTwoScore: 0, recordName: "Player one and two", recordScore: "NA", recordReason: "Default players created", recordEntryTime: Date(), recordEntryTimeString: "", recordAddEdit: true, recordNameStr: "recordNameStr", recordNameEmo: "👩🏻")
 }
 
 protocol ScoreRepository: BaseScoreRepository {
@@ -35,7 +35,7 @@ class APILoader: BaseScoreRepository, ScoreRepository, ObservableObject {
   }
   
   func defaultValue() -> [Recordline] {
-    let defaultValue = [Recordline(playerID: "0", playerOneEmoji: "👩🏻",playerOneName: "Player One", playerOneScore: 0, playerTwoEmoji: "👨🏻", playerTwoName: "Player Two", playerTwoScore: 0, recordName: "Player one and two", recordScore: "NA", recordReason: "Default players created", recordEntryTime: Date(), recordEntryTimeString: "", recordAddEdit: true, recordNameStr: "recordNameStr", recordNameEmo: "👩🏻")]
+    let defaultValue = [Recordline(playerID: "0", playerOneEmoji: "🍇",playerOneName: "Player One", playerOneScore: 0, playerTwoEmoji: "👨🏻", playerTwoName: "Player Two", playerTwoScore: 0, recordName: "Player one and two", recordScore: "NA", recordReason: "Default players created", recordEntryTime: Date(), recordEntryTimeString: "", recordAddEdit: true, recordNameStr: "recordNameStr", recordNameEmo: "👩🏻")]
       return defaultValue
   }
   
@@ -112,7 +112,7 @@ class APILoader: BaseScoreRepository, ScoreRepository, ObservableObject {
       if let filtered = self.records.filter({$0.id == id}).first {
         filteredRecords3.append(filtered) }
       else {
-        let filteredRecords3 = [Recordline(playerID: "0", playerOneEmoji: "👩🏻",playerOneName: "Player One", playerOneScore: 0, playerTwoEmoji: "👨🏻", playerTwoName: "Player Two", playerTwoScore: 0, recordName: "Player one and two", recordScore: "NA", recordReason: "Default players created", recordEntryTime: Date(), recordEntryTimeString: "", recordAddEdit: true, recordNameStr: "recordNameStr", recordNameEmo: "👩🏻")]
+        let filteredRecords3 = [Recordline(playerID: "0", playerOneEmoji: "🎏",playerOneName: "Player One", playerOneScore: 0, playerTwoEmoji: "👨🏻", playerTwoName: "Player Two", playerTwoScore: 0, recordName: "Player one and two", recordScore: "NA", recordReason: "Default players created", recordEntryTime: Date(), recordEntryTimeString: "", recordAddEdit: true, recordNameStr: "recordNameStr", recordNameEmo: "👩🏻")]
       }
     }
     return filteredRecords3.sorted(by: { $0.recordEntryTime! >= $1.recordEntryTime!})

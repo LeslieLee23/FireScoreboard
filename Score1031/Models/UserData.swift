@@ -10,6 +10,36 @@ import SwiftUI
 import Combine
 
 class UserData: ObservableObject {
+  
+  @Published var emojiPlusName: [String] = UserDefaults.standard.stringArray(forKey: "emojiPlusName") ?? ["A", "B"] {
+      didSet {
+          UserDefaults.standard.set(self.emojiPlusName, forKey: "emojiPlusName")
+      }
+  }
+  
+  @Published var oldscore: [String] = UserDefaults.standard.stringArray(forKey: "oldscore") ?? ["A", "B"] {
+      didSet {
+          UserDefaults.standard.set(self.oldscore, forKey: "oldscore")
+      }
+  }
+  
+  @Published var names: [String] = UserDefaults.standard.stringArray(forKey: "names") ?? ["A", "B"] {
+      didSet {
+          UserDefaults.standard.set(self.names, forKey: "names")
+      }
+  }
+  
+  @Published var emojis: [String] = UserDefaults.standard.stringArray(forKey: "emojis") ?? ["A", "B"] {
+      didSet {
+          UserDefaults.standard.set(self.emojis, forKey: "emojis")
+      }
+  }
+  
+   @Published var editMode: Bool = UserDefaults.standard.bool(forKey: "editMode") {
+       didSet {
+           UserDefaults.standard.set(self.editMode, forKey: "editMode")
+       }
+   }
 
     @Published var showEmoji: Bool = UserDefaults.standard.bool(forKey: "showEmoji") {
         didSet {

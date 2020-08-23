@@ -20,14 +20,14 @@ struct ContentView: View {
   @EnvironmentObject var appState: AppState
   @ObservedObject private var apiLoader = APILoader()
   
-  @State var emojiPlusName = [String]()
-  @State var oldscore = [String]()
-  @State var names = [String]()
-  @State var emojis = [String]()
+//  @State var emojiPlusName = [String]()
+//  @State var oldscore = [String]()
+//  @State var names = [String]()
+//  @State var emojis = [String]()
   @State var oneEmoji = [String]()
   @State var twoEmoji = [String]()
   @State var records = [Recordline]()
-  @State var editMode = false
+ // @State var editMode = false
   
   @State var showSignInForm = false
   
@@ -40,7 +40,7 @@ struct ContentView: View {
     
     NavigationView{
       ZStack{
-        if self.editMode == true {
+        if self.userData.editMode == true {
           Color.babyPP.edgesIgnoringSafeArea(.all)
         } else {
           Color.white.edgesIgnoringSafeArea(.all)
@@ -54,7 +54,7 @@ struct ContentView: View {
               VStack {
                 Text("Edit Mode")
                   .font(.system(size:12))
-                Toggle(isOn: $editMode
+                Toggle(isOn: $userData.editMode
                   .animation(
                     Animation.spring(dampingFraction: 0.7)
                   )
@@ -64,16 +64,16 @@ struct ContentView: View {
                 }
                 .labelsHidden()
                 .simultaneousGesture(TapGesture().onEnded {
-                  if self.editMode == false {
+                  if self.userData.editMode == false {
                     print("wwiwiwiwiwi")
                   self.addEidtChoice.addViewSelected = true
                   self.userData.selectedName = 5
-                  self.emojiPlusName  = ["\(self.nameAndScore.playerOneEmoji!) \( self.nameAndScore.playerOneName!)","\( self.nameAndScore.playerTwoEmoji!) \( self.nameAndScore.playerTwoName!)"]
-                    print("\(self.emojiPlusName)")
-                  self.oldscore = ["\(self.nameAndScore.PlayerOneScore)", "\(self.nameAndScore.PlayerTwoScore)"]
-                    print("\(self.emojis)")
-                  self.emojis = [self.nameAndScore.playerOneEmoji!, self.nameAndScore.playerTwoEmoji!]
-                  self.names = [self.nameAndScore.playerOneName!, self.nameAndScore.playerTwoName!]
+                    self.userData.emojiPlusName  = ["\(self.nameAndScore.playerOneEmoji!) \( self.nameAndScore.playerOneName!)","\( self.nameAndScore.playerTwoEmoji!) \( self.nameAndScore.playerTwoName!)"]
+                    print("\(self.userData.emojiPlusName)")
+                  self.userData.oldscore = ["\(self.nameAndScore.PlayerOneScore)", "\(self.nameAndScore.PlayerTwoScore)"]
+                    print("\(self.userData.emojis)")
+                  self.userData.emojis = [self.nameAndScore.playerOneEmoji!, self.nameAndScore.playerTwoEmoji!]
+                  self.userData.names = [self.nameAndScore.playerOneName!, self.nameAndScore.playerTwoName!]
                   } else {
                     
                   }
@@ -127,14 +127,14 @@ struct ContentView: View {
                 VStack() {
                   Text("\(self.nameAndScore.PlayerOneScore)")
                     .font(.system(size: 45))
-                    .foregroundColor(self.editMode ? .grayCircle : .black)
+                    .foregroundColor(self.userData.editMode ? .grayCircle : .black)
                 }
                 .frame(width: 160, height: 55, alignment: .center)
 
                 VStack() {
                   Text("\(self.nameAndScore.PlayerTwoScore)")
                     .font(.system(size: 45))
-                    .foregroundColor(self.editMode ? .grayCircle : .black)
+                    .foregroundColor(self.userData.editMode ? .grayCircle : .black)
                 }
                 .frame(width: 160, height: 55, alignment: .center)
                 
@@ -144,7 +144,7 @@ struct ContentView: View {
               Spacer()
               
               ///NameEmojiRow (140) (Edit Mode)
-              if self.editMode == true {
+              if self.userData.editMode == true {
                 
                 VStack {
                   NameEmojiRowView()
@@ -157,7 +157,7 @@ struct ContentView: View {
                 if self.userData.showEmoji == true {
                   HStack {
                     VStack{
-                      Text(self.nameAndScore.playerOneEmoji ?? "👩🏻")
+                      Text(self.nameAndScore.playerOneEmoji ?? "🦧")
                         .font(.system(size: 55))
                         .transition(.scale(scale: 5))
                     }
@@ -193,64 +193,69 @@ struct ContentView: View {
               .frame(width: 340, height: 275, alignment: .top)
           }///Scoreboard Section
           
-          if self.editMode == false {
-            ///Add Score Button row
+          if self.userData.editMode == false {
             VStack {
               Spacer()
-              VStack {
-                VStack {
-                  NavigationLink (destination:
-                  AddScoreView(emojiPlusName:emojiPlusName, oldscore: oldscore, names: names, emojis: emojis)){
-                    Text("Add Score!")
-                      .fontWeight(.semibold)
-                  }
-                  .frame(width: 89, height: 8, alignment: .center)
-                  .padding()
-                  .foregroundColor(.white)
-                  .background(LinearGradient(gradient: Gradient(colors: [Color("isaacblue"), Color("destinygreen")]), startPoint: .leading, endPoint: .trailing))
-                    
-                  .cornerRadius(13)
-                  .simultaneousGesture(TapGesture().onEnded {
-                    self.addEidtChoice.addViewSelected = true
-                    self.emojiPlusName  = ["\(self.nameAndScore.playerOneEmoji!) \( self.nameAndScore.playerOneName!)","\( self.nameAndScore.playerTwoEmoji!) \( self.nameAndScore.playerTwoName!)"]
-                    self.oldscore = ["\(self.nameAndScore.PlayerOneScore)", "\(self.nameAndScore.PlayerTwoScore)"]
-                    self.emojis = [self.nameAndScore.playerOneEmoji!, self.nameAndScore.playerTwoEmoji!]
-                    self.names = [self.nameAndScore.playerOneName!, self.nameAndScore.playerTwoName!]
-                  })
-                  
-                }.border(Color.green)
-                  .padding()
-                //  Spacer()
-                
-                ///Edit Score Button row
-                VStack {
-                  NavigationLink (destination: NameEmojiRowView()) {
-                    Text("Edit Score!")
-                      .fontWeight(.semibold)
-                  }
-                  .frame(width: 89, height: 8, alignment: .center)
-                  .padding()
-                  .foregroundColor(.white)
-                  .background(LinearGradient(gradient: Gradient(colors: [Color("destinygreen"), Color("isaacblue")]), startPoint: .leading, endPoint: .trailing))
-                  .cornerRadius(13)
-                    
-                  .simultaneousGesture(TapGesture().onEnded {
-                    self.addEidtChoice.addViewSelected = false
-                    self.emojiPlusName  = ["\(self.nameAndScore.playerOneEmoji!) \( self.nameAndScore.playerOneName!)","\( self.nameAndScore.playerTwoEmoji!) \( self.nameAndScore.playerTwoName!)"]
-                    self.oldscore = ["\(self.nameAndScore.PlayerOneScore)", "\(self.nameAndScore.PlayerTwoScore)"]
-                    self.emojis = [self.nameAndScore.playerOneEmoji!, self.nameAndScore.playerTwoEmoji!]
-                    self.names = [self.nameAndScore.playerOneName!, self.nameAndScore.playerTwoName!]
-                  })
-                  
-                }
-              }.border(Color.blue)
-              Spacer()
-              Spacer()
-            }.border(Color.green)
+            }
+//            ///Add Score Button row
+//            VStack {
+//              Spacer()
+//              VStack {
+//                VStack {
+//                  NavigationLink (destination:
+//                  AddScoreView(emojiPlusName:emojiPlusName, oldscore: oldscore, names: names, emojis: emojis)){
+//                    Text("Add Score!")
+//                      .fontWeight(.semibold)
+//                  }
+//                  .frame(width: 89, height: 8, alignment: .center)
+//                  .padding()
+//                  .foregroundColor(.white)
+//                  .background(LinearGradient(gradient: Gradient(colors: [Color("isaacblue"), Color("destinygreen")]), startPoint: .leading, endPoint: .trailing))
+//
+//                  .cornerRadius(13)
+//                  .simultaneousGesture(TapGesture().onEnded {
+//                    self.addEidtChoice.addViewSelected = true
+//                    self.emojiPlusName  = ["\(self.nameAndScore.playerOneEmoji!) \( self.nameAndScore.playerOneName!)","\( self.nameAndScore.playerTwoEmoji!) \( self.nameAndScore.playerTwoName!)"]
+//                    self.oldscore = ["\(self.nameAndScore.PlayerOneScore)", "\(self.nameAndScore.PlayerTwoScore)"]
+//                    self.emojis = [self.nameAndScore.playerOneEmoji!, self.nameAndScore.playerTwoEmoji!]
+//                    self.names = [self.nameAndScore.playerOneName!, self.nameAndScore.playerTwoName!]
+//                  })
+//
+//                }.border(Color.green)
+//                  .padding()
+//                //  Spacer()
+//
+//                ///Edit Score Button row
+//                VStack {
+//                  NavigationLink (destination: NameEmojiRowView()) {
+//                    Text("Edit Score!")
+//                      .fontWeight(.semibold)
+//                  }
+//                  .frame(width: 89, height: 8, alignment: .center)
+//                  .padding()
+//                  .foregroundColor(.white)
+//                  .background(LinearGradient(gradient: Gradient(colors: [Color("destinygreen"), Color("isaacblue")]), startPoint: .leading, endPoint: .trailing))
+//                  .cornerRadius(13)
+//
+//                  .simultaneousGesture(TapGesture().onEnded {
+//                    self.addEidtChoice.addViewSelected = false
+//                    self.emojiPlusName  = ["\(self.nameAndScore.playerOneEmoji!) \( self.nameAndScore.playerOneName!)","\( self.nameAndScore.playerTwoEmoji!) \( self.nameAndScore.playerTwoName!)"]
+//                    self.oldscore = ["\(self.nameAndScore.PlayerOneScore)", "\(self.nameAndScore.PlayerTwoScore)"]
+//                    self.emojis = [self.nameAndScore.playerOneEmoji!, self.nameAndScore.playerTwoEmoji!]
+//                    self.names = [self.nameAndScore.playerOneName!, self.nameAndScore.playerTwoName!]
+//                  })
+//
+//                }
+//              }.border(Color.blue)
+//              Spacer()
+//              Spacer()
+//            }.border(Color.green)
           } else {
             VStack() {
-              EditModeView(emojiPlusName:emojiPlusName, oldscore: oldscore, names: names, emojis: emojis)
-            }.border(Color.red)
+              EditModeView( //emojiPlusName:emojiPlusName, oldscore: oldscore, names: names, emojis: emojis
+              )
+            }
+           
           }
             
            ///Tab Bar Row
@@ -342,15 +347,23 @@ struct ContentView: View {
 
         }
       }//.border(Color.purple)
-      
+      .sheet(isPresented: $showSignInForm) {
+          SignInView()
+        }
+      .navigationBarItems(trailing:
+        Button(action: {self.showSignInForm.toggle() }) {
+          Image(systemName: "person.circle")
+        }
+        )
     }
+    
     .onAppear() {
       if self.nameAndScore.playerTwoName == nil {
         self.nameAndScore.PlayerTwoScore = 0
         self.nameAndScore.PlayerOneScore = 0
         self.nameAndScore.playerTwoName = "Player Two"
         self.nameAndScore.playerOneName = "Player One"
-        self.nameAndScore.playerOneEmoji = "👩🏻"
+        self.nameAndScore.playerOneEmoji = "🌋"
         self.nameAndScore.playerTwoEmoji = "👨🏻"
         self.userData.playerID = "0"
       }

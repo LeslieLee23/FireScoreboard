@@ -24,17 +24,17 @@ struct EditModeView: View {
   @EnvironmentObject var addEidtChoice: AddEidtChoice
   @EnvironmentObject var addScoreFunc: AddScoreFunc
   @EnvironmentObject var userData: UserData
-//  @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
   @ObservedObject private var apiLoader = APILoader()
   @State private var records3 = APILoader().records3
   
-  var emojiPlusName = [String]()
-  var oldscore = [String]()
-  var names = [String]()
-  var emojis = [String]()
+//  var emojiPlusName = [String]()
+//  var oldscore = [String]()
+//  var names = [String]()
+//  var emojis = [String]()
   
     var body: some View {
       VStack {
+        Spacer()
         ///Add and minus button row
         HStack {
           Spacer()
@@ -93,13 +93,13 @@ struct EditModeView: View {
             if self.editedScore == 1 {
               self.pointGrammar = "point"
             }
-            
+            self.userData.editMode = false
             self.records3 = self.addScoreFunc.createRecord(
               playerID: self.userData.playerID!,
-              oldscore: self.oldscore,
-              emojiPlusName: self.emojiPlusName,
-              names: self.names,
-              emojis: self.emojis,
+              oldscore: self.userData.oldscore,
+              emojiPlusName: self.userData.emojiPlusName,
+              names: self.userData.names,
+              emojis: self.userData.emojis,
               editedScore: self.editedScore,
               addViewSelected: self.addEidtChoice.addViewSelected,
               reason: self.reason,
@@ -112,8 +112,9 @@ struct EditModeView: View {
             self.nameAndScore.PlayerOneScore = self.records3.playerOneScore
             self.nameAndScore.PlayerTwoScore = self.records3.playerTwoScore
             
-            //APILoader.saveData(record3: self.records3)
             self.apiLoader.saveData(record3: self.records3)
+            
+            
           }) {
             if addEidtChoice.addViewSelected == true {
               Text("Add")
@@ -123,6 +124,7 @@ struct EditModeView: View {
             }
           }
           .disabled(editedScore == 0 && reason.isEmpty)
+          .disabled(self.userData.selectedName == 5)
             
           .alert(isPresented: $showAlert) { () ->
             Alert in
@@ -137,9 +139,26 @@ struct EditModeView: View {
               )
             }
           }
+               Button(action: {
+                            self.nameAndScore.PlayerTwoScore = 0
+                            self.nameAndScore.PlayerOneScore = 0
+                            self.nameAndScore.playerTwoName = "Player Two"
+                            self.nameAndScore.playerOneName = "Player One"
+                            self.nameAndScore.playerOneEmoji = "👩🏻"
+                            self.nameAndScore.playerTwoEmoji = "👨🏻"
+                            self.userData.playerID = "0"
+          
+                            self.apiLoader.remove()
+          
+          
+                          })
+                          {
+                            Text("Start Over")
+                          }
           Spacer()
         }
-      }//.border(Color.purple)
+        Spacer()
+      }
     }
 }
 

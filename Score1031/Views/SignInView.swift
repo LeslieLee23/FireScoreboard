@@ -15,7 +15,7 @@ struct SignInView: View {
       VStack{
         Text("Thanks fo using FireScoreboard. Please sign in here.")
         SignInWithAppleButton()
-          .frame(width: 280, height: 45)
+          .frame(width: 260, height: 45)
           .onTapGesture {
             self.coordinator = SignInWithAppleCoordinator()
             if let coordinator = self.coordinator {
