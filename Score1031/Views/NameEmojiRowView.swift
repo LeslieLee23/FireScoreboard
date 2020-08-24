@@ -29,7 +29,7 @@ struct NameEmojiRowView: View {
             Text(self.nameAndScore.playerOneEmoji ?? "👩🏻")
               .font(.system(size: 55))
           }
-          .frame(width: 160, height: 125, alignment: .center)
+          .frame(width: 165, height: 125, alignment: .center)
           .buttonStyle(CircleStyleEmoji(color: playerOneColors))
 
           Button(action: {
@@ -41,7 +41,7 @@ struct NameEmojiRowView: View {
             Text(self.nameAndScore.playerTwoEmoji ?? "👨🏻")
               .font(.system(size: 55))
           }
-          .frame(width: 160, height: 125, alignment: .center)
+          .frame(width: 165, height: 125, alignment: .center)
           .buttonStyle(CircleStyleEmoji(color: playerTwoColors))
 
         }
@@ -61,7 +61,7 @@ struct NameEmojiRowView: View {
             Text(self.nameAndScore.playerOneName ?? "Miu")
               .font(.system(size: 28))
           }
-          .frame(width: 160, height: 125, alignment: .center)
+          .frame(width: 165, height: 125, alignment: .center)
           .buttonStyle(SquareStyle(color: playerOneColors))
           Button(action: {
             self.userData.selectedName = 1
@@ -73,10 +73,10 @@ struct NameEmojiRowView: View {
             Text(self.nameAndScore.playerTwoName ?? "Whof")
               .font(.system(size: 28))
           }
-          .frame(width: 160, height: 125, alignment: .center)
+          .frame(width: 165, height: 125, alignment: .center)
           .buttonStyle(SquareStyle(color: playerTwoColors))
         }
-        .frame(width: 340, height: 125, alignment: .center)
+        .frame(width: 350, height: 125, alignment: .center)
       }///NameEmojiRow (140) (Edit Mode) (Normal Mode)
     }
   }

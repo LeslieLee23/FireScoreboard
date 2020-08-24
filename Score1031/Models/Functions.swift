@@ -45,6 +45,9 @@ extension Color {
   static let niceBlue = Color(red: 161 / 255, green: 217 / 255, blue: 241 / 255)
   static let grayCircle = Color(red: 157 / 255, green: 157 / 255, blue: 157 / 255)
   static let offWhite = Color(red: 225 / 255, green: 225 / 255, blue: 235 / 255)
+  static let darkGray = Color(red: 70 / 255, green: 70 / 255, blue: 70 / 255)
+  static let darkStart = Color(red: 50 / 255, green: 60 / 255, blue: 65 / 255)
+  static let darkEnd = Color(red: 25 / 255, green: 25 / 255, blue: 30 / 255)
 }
 
 
@@ -257,18 +260,42 @@ struct FitToWidth: ViewModifier {
 }
 
 struct CircleStyle: ButtonStyle {
+  var color: Color = .white
   func makeBody(configuration: ButtonStyleConfiguration) -> some View {
-    Circle()
-      .fill()
-      .overlay(
+    
+    Group {
+      if configuration.isPressed {
+  
+          Circle()
+          .stroke(Color.gray, lineWidth: 4)
+          .blur(radius: 3)
+          .offset(x: 2, y: 2)
+          .mask(Circle().fill(LinearGradient(Color.black, Color.clear)))
+            
+          .overlay(
+              Circle()
+                  .stroke(color, lineWidth: 8)
+                  .blur(radius: 3)
+                  .offset(x: -2, y: -2)
+                  .mask(Circle().fill(LinearGradient(Color.clear, Color.black)))
+          )
+          .overlay(
+            configuration.label
+              .foregroundColor(.white)
+        )
+      } else {
         Circle()
-          .fill(Color.white)
-          .opacity(configuration.isPressed ? 0.3 : 0)
-    )
-      .overlay(
-        configuration.label
-          .foregroundColor(.white)
-    )
+          .fill()
+          .shadow(color: Color.black.opacity(0.2), radius: 8, x: 8, y: 8)
+          .shadow(color: Color.white.opacity(0.7), radius: 8, x: -4, y: -4)
+          .overlay(
+            configuration.label
+              .foregroundColor(.white)
+        )
+      }
+    }
+    
+    
   }
 }
 
@@ -297,7 +324,7 @@ struct SquareStyle: ButtonStyle {
   func makeBody(configuration: Self.Configuration) -> some View {
     RoundedRectangle(cornerRadius: 13)
       .stroke(color, lineWidth: 7.5)
-      .frame(width: 120, height: 55, alignment: .center)
+      .frame(width: 135, height: 60, alignment: .center)
       .cornerRadius(13)
       .opacity(configuration.isPressed ? 0.3 : 1)
       .aspectRatio(contentMode: .fit)
@@ -307,8 +334,47 @@ struct SquareStyle: ButtonStyle {
           .opacity(configuration.isPressed ? 0.3 : 1)
     )
       .modifier(FitToWidth(fraction: 3))
-      .frame(width: 120, height: 55, alignment: .center)
+      .frame(width: 135, height: 60, alignment: .center)
   }
+}
+
+extension LinearGradient {
+    init(_ colors: Color...) {
+        self.init(gradient: Gradient(colors: colors), startPoint: .topLeading, endPoint: .bottomTrailing)
+    }
+}
+
+struct DarkBackground<S: Shape>: View {
+    var isHighlighted: Bool
+    var shape: S
+
+    var body: some View {
+        ZStack {
+            if isHighlighted {
+                shape
+                    .fill(Color.darkEnd)
+                    .shadow(color: Color.darkStart, radius: 10, x: 5, y: 5)
+                    .shadow(color: Color.darkEnd, radius: 10, x: -5, y: -5)
+
+            } else {
+                shape
+                    .fill(Color.darkEnd)
+                    .shadow(color: Color.darkStart, radius: 10, x: -10, y: -10)
+                    .shadow(color: Color.darkEnd, radius: 10, x: 10, y: 10)
+            }
+        }
+    }
+}
+
+struct DarkButtonStyle: ButtonStyle {
+    func makeBody(configuration: Self.Configuration) -> some View {
+        configuration.label
+            .padding(30)
+            .contentShape(Circle())
+            .background(
+                DarkBackground(isHighlighted: configuration.isPressed, shape: Circle())
+            )
+    }
 }
 
 struct Functions_Previews: PreviewProvider {
@@ -316,3 +382,4 @@ struct Functions_Previews: PreviewProvider {
     /*@START_MENU_TOKEN@*/Text("Hello, World!")/*@END_MENU_TOKEN@*/
   }
 }
+

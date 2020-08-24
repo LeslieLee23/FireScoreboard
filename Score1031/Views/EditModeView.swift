@@ -37,15 +37,17 @@ struct EditModeView: View {
         }) {
           Text("-")
             .fontWeight(.medium)
-            .foregroundColor(Color.white)
+            .foregroundColor(Color.darkGray)
             .font(.system(size: 25))
         }
         .frame(width: 35, height: 35)
-        .foregroundColor(.red)
+        .foregroundColor(.offWhite)
+        .buttonStyle(DarkButtonStyle())
         
         Text("\(self.editedScore)")
           .font(.system(size: 25))
           .padding()
+          .foregroundColor(Color.darkGray)
         
         Button(action: {
           self.editedScore += 1
@@ -56,10 +58,11 @@ struct EditModeView: View {
             .font(.system(size: 25))
         }
         .frame(width: 35, height: 35)
-        .foregroundColor(.green)
+        .foregroundColor(.purple)
+        .buttonStyle(CircleStyle(color: .purple))
         Spacer()
       }///Add and minus button row
-        .buttonStyle(CircleStyle())
+        
       
       ///Reason text input row
       Spacer()
@@ -149,5 +152,9 @@ struct EditModeView: View {
 struct EditModeView_Previews: PreviewProvider {
   static var previews: some View {
     EditModeView()
+    .environmentObject(NameAndScore())
+    .environmentObject(UserData())
+    .environmentObject(AddScoreFunc())
+    .environmentObject(AppState())
   }
 }

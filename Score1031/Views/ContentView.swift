@@ -25,7 +25,7 @@ struct ContentView: View {
   
   @State var showSignInForm = false
   
-  var colors: [Color] = [ .niceBlue, .white]
+  var colors: [Color] = [.offWhite, .niceBlue]
   @State var index: Int = 0
   @State var progress: CGFloat = 0
   
@@ -34,12 +34,14 @@ struct ContentView: View {
     
     NavigationView{
       ZStack{
-        if self.userData.editMode == true {
-          Color.babyPP.edgesIgnoringSafeArea(.all)
-        } else {
-          Color.white.edgesIgnoringSafeArea(.all)
-        }
         
+//        Color.offWhite.edgesIgnoringSafeArea(.all)
+        
+        if self.userData.editMode == true {
+          LinearGradient(Color.darkStart, Color.darkEnd).edgesIgnoringSafeArea(.all)
+        } else {
+          Color.offWhite.edgesIgnoringSafeArea(.all)
+        }
         
         VStack {
           ///Edit Mode Row (60)
@@ -100,10 +102,19 @@ struct ContentView: View {
           ZStack{
             ///Color Change View
             VStack {
-              SplashView(animationType: .angle(Angle(degrees: 40)), color: self.colors[self.index])
+              if self.userData.editMode == true {
+                SplashView(animationType: .angle(Angle(degrees: 40)), color: .darkEnd)
                 .frame(width: 340, height: 275, alignment: .top)
-                .cornerRadius(20)
-                .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 4)
+                .cornerRadius(30)
+                .shadow(color: Color.darkStart, radius: 10, x: -10, y: -10)
+                .shadow(color: Color.darkEnd, radius: 10, x: 10, y: 10)
+              } else {
+              SplashView(animationType: .angle(Angle(degrees: 40)), color: .offWhite)
+                .frame(width: 340, height: 275, alignment: .top)
+                .cornerRadius(30)
+                .shadow(color: Color.black.opacity(0.2), radius: 10, x: 10, y: 10)
+                .shadow(color: Color.white.opacity(0.7), radius: 10, x: -5, y: -5)
+              }
             }///Color Change View
             
             ///Scoreboard Content View
@@ -123,14 +134,14 @@ struct ContentView: View {
                     .font(.system(size: 45))
                     .foregroundColor(self.userData.editMode ? .grayCircle : .black)
                 }
-                .frame(width: 160, height: 55, alignment: .center)
+                .frame(width: 165, height: 55, alignment: .center)
                 
                 VStack() {
                   Text("\(self.nameAndScore.PlayerTwoScore)")
                     .font(.system(size: 45))
                     .foregroundColor(self.userData.editMode ? .grayCircle : .black)
                 }
-                .frame(width: 160, height: 55, alignment: .center)
+                .frame(width: 165, height: 55, alignment: .center)
                 
               }///Score row
                 .frame(width: 340, height: 60, alignment: .top)
@@ -155,12 +166,12 @@ struct ContentView: View {
                         .font(.system(size: 55))
                         .transition(.scale(scale: 5))
                     }
-                    .frame(width: 160, height: 125, alignment: .center)
+                    .frame(width: 165, height: 125, alignment: .center)
                     VStack{
                       Text(self.nameAndScore.playerTwoEmoji ?? "👨🏻")
                         .font(.system(size: 55))
                     }
-                    .frame(width: 160, height: 125, alignment: .center)
+                    .frame(width: 165, height: 125, alignment: .center)
                   }
                   .frame(width: 340, height: 125, alignment: .center)
                   Spacer()
