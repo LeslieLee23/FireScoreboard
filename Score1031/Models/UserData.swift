@@ -64,4 +64,28 @@ class UserData: ObservableObject {
             UserDefaults.standard.set(self.selectedName, forKey: "selectedName")
         }
     }
+  
+     @Published var addPlayerOneName = UserDefaults.standard.string(forKey: "addPlayerOneName") ?? ("") {
+           didSet {
+               UserDefaults.standard.set(self.addPlayerOneName, forKey: "addPlayerOneName")
+           }
+       }
+  
+    @Published var addPlayerOneEmoji = UserDefaults.standard.string(forKey: "addPlayerOneEmoji") ?? ("") {
+          didSet {
+              UserDefaults.standard.set(self.addPlayerOneEmoji, forKey: "addPlayerOneEmoji")
+          }
+      }
+  
+    @Published var addPlayerTwoName = UserDefaults.standard.string(forKey: "addPlayerTwoName") ?? ("") {
+          didSet {
+              UserDefaults.standard.set(self.addPlayerTwoName, forKey: "addPlayerTwoName")
+          }
+      }
+  
+    @Published var addPlayerTwoEmoji = UserDefaults.standard.string(forKey: "addPlayerTwoEmoji") ?? ("") {
+          didSet {
+              UserDefaults.standard.set(self.addPlayerTwoEmoji, forKey: "addPlayerTwoEmoji")
+          }
+      }
 }

@@ -18,15 +18,14 @@ import FirebaseFirestoreSwift
 
 struct AddNewPlayerView: View {
     
-    @State var playerOneName = ""
-    @State var playerOneEmoji = ""
-    @State var playerTwoName = ""
-    @State var playerTwoEmoji = ""
+//    @State var playerOneName = "abc"
+//    @State var playerOneEmoji = ""
+//    @State var playerTwoName = "def"
+//    @State var playerTwoEmoji = ""
     @State var id = ""
     @State var showAlert = false
 
     @EnvironmentObject var nameAndScore: NameAndScore
-//    @EnvironmentObject var addEidtChoice: AddEidtChoice
     @EnvironmentObject private var userData: UserData
     @EnvironmentObject var appState: AppState
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
@@ -38,6 +37,7 @@ struct AddNewPlayerView: View {
   @ObservedObject private var apiLoader = APILoader()
   
     var body: some View {
+      NavigationView {
         VStack{
             Group{
         HStack{
@@ -46,7 +46,7 @@ struct AddNewPlayerView: View {
         Spacer()
         }
         HStack{
-        TextField("Player One Name", text: $playerOneName)
+          TextField("Player One Name", text: $userData.addPlayerOneName)
         .textFieldStyle(RoundedBorderTextFieldStyle())
         .padding(.trailing, 35)
         .padding(.leading, 35)
@@ -57,7 +57,7 @@ struct AddNewPlayerView: View {
         Spacer()
         }
         HStack{
-        TextField("Player One Emoji", text: $playerOneEmoji)
+        TextField("Player One Emoji", text: $userData.addPlayerOneEmoji)
         .textFieldStyle(RoundedBorderTextFieldStyle())
         .padding(.trailing, 35)
         .padding(.leading, 35)
@@ -68,7 +68,7 @@ struct AddNewPlayerView: View {
         Spacer()
         }
         HStack{
-        TextField("Player Two Name", text: $playerTwoName)
+        TextField("Player Two Name", text: $userData.addPlayerTwoName)
         .textFieldStyle(RoundedBorderTextFieldStyle())
         .padding(.trailing, 35)
         .padding(.leading, 35)
@@ -79,7 +79,7 @@ struct AddNewPlayerView: View {
         Spacer()
         }
         HStack{
-        TextField("Player Two Emoji", text: $playerTwoEmoji)
+        TextField("Player Two Emoji", text: $userData.addPlayerTwoEmoji)
         .textFieldStyle(RoundedBorderTextFieldStyle())
         .padding(.trailing, 35)
         .padding(.leading, 35)
@@ -94,48 +94,54 @@ struct AddNewPlayerView: View {
                 self.userData.maxPlayerID = self.apiLoader.findMaxPlayerID() + 1
                 self.showAlert = true
                 self.records3.id = UUID().uuidString
-                self.records3.playerOneName = self.playerOneName
-                self.records3.playerTwoName = self.playerTwoName
-                self.records3.playerOneEmoji = self.playerOneEmoji
-                self.records3.playerTwoEmoji = self.playerTwoEmoji
+                self.records3.playerOneName = self.userData.addPlayerOneName
+                self.records3.playerTwoName = self.userData.addPlayerTwoName
+                self.records3.playerOneEmoji = self.userData.addPlayerOneEmoji
+                self.records3.playerTwoEmoji = self.userData.addPlayerTwoEmoji
                 self.records3.playerOneScore = 0
                 self.records3.playerTwoScore = 0
                 self.records3.playerID = String(self.userData.maxPlayerID)
-                self.records3.recordName = "\(self.playerOneName)+\(self.playerTwoName)"
-                self.records3.recordScore = self.playerOneEmoji
+              self.records3.recordName = "\(self.userData.addPlayerOneName)+\(self.userData.addPlayerTwoName)"
+                self.records3.recordScore = self.userData.addPlayerOneEmoji
                 self.records3.recordReason = "New Palyers Added"
                 self.records3.recordEntryTime = Date()
                 self.records3.recordEntryTimeString = getDateString(Date: self.records3.recordEntryTime!)
-              self.records3.userId = Auth.auth().currentUser?.uid
-              self.records3.recordNameStr = "Player Pairs Created!"
-              self.records3.recordNameEmo = self.playerTwoEmoji
+                self.records3.userId = Auth.auth().currentUser?.uid
+                self.records3.recordNameStr = "Player Pairs Created!"
+                self.records3.recordNameEmo = self.userData.addPlayerTwoEmoji
 
               self.apiLoader.saveData(record3: self.records3)
 
-                
-                self.nameAndScore.playerOneName = self.playerOneName
-                self.nameAndScore.playerTwoName = self.playerTwoName
-                self.nameAndScore.playerOneEmoji = self.playerOneEmoji
-                self.nameAndScore.playerTwoEmoji = self.playerTwoEmoji
-                self.nameAndScore.PlayerOneScore = 0
-                self.nameAndScore.PlayerTwoScore = 0
-                self.userData.playerID = String(self.userData.maxPlayerID)
+
+              self.nameAndScore.playerOneName = self.userData.addPlayerOneName
+              self.nameAndScore.playerTwoName = self.userData.addPlayerTwoName
+              self.nameAndScore.playerOneEmoji = self.userData.addPlayerOneEmoji
+              self.nameAndScore.playerTwoEmoji = self.userData.addPlayerTwoEmoji
+              self.nameAndScore.PlayerOneScore = 0
+              self.nameAndScore.PlayerTwoScore = 0
+              self.userData.playerID = String(self.userData.maxPlayerID)
                 
             }) {
                 Text("Change Players")
                 .padding(.trailing, 35)
             }
-                .disabled(playerOneName.isEmpty)
-                .disabled(playerOneEmoji.isEmpty)
-                .disabled(playerTwoName.isEmpty)
-                .disabled(playerTwoEmoji.isEmpty)
-                .disabled(playerOneEmoji.containsEmoji == false)
-                .disabled(playerTwoEmoji.containsEmoji == false)
+                .disabled(self.userData.addPlayerOneName.isEmpty)
+                .disabled(self.userData.addPlayerOneEmoji.isEmpty)
+                .disabled(self.userData.addPlayerTwoName.isEmpty)
+                .disabled(self.userData.addPlayerTwoEmoji.isEmpty)
+                .disabled(self.userData.addPlayerOneEmoji.containsEmoji == false)
+                .disabled(self.userData.addPlayerTwoEmoji.containsEmoji == false)
 
             .alert(isPresented: $showAlert) { () ->
                 Alert in
-                return Alert(title: Text("Player Changed!"), message: Text("You changed player one to \(self.playerOneName), with emoji \(self.playerOneEmoji). You changed player two to \(self.playerTwoName), with emoji \(self.playerTwoEmoji)."), dismissButton: Alert.Button.default(Text("Ok"))
-                    {self.appState.selectedTab = .home }
+                return Alert(title: Text("Player Changed!"), message: Text("You changed player one to \(self.userData.addPlayerOneName), with emoji \(self.userData.addPlayerOneEmoji). You changed player two to \(self.userData.addPlayerTwoName), with emoji \(self.userData.addPlayerTwoEmoji)."), dismissButton: Alert.Button.default(Text("Ok"))
+                    {self.appState.selectedTab = .home
+                    self.userData.addPlayerOneName = ""
+                    self.userData.addPlayerTwoName = ""
+                    self.userData.addPlayerOneEmoji = ""
+                    self.userData.addPlayerTwoEmoji = ""
+                    
+                  }
                     )
                 
             }
@@ -146,7 +152,13 @@ struct AddNewPlayerView: View {
             Spacer()
             Spacer()
         }
-    
+      }
+        .navigationBarItems(trailing:
+          HStack{
+          Spacer()
+          }
+        )
+      
     }
 }
 
