@@ -233,6 +233,8 @@ struct ContentView: View {
       }
       .environmentObject(NameAndScore())
       .environmentObject(UserData())
+      .environmentObject(AddScoreFunc())
+      .environmentObject(AppState())
       
     }
   }

@@ -44,6 +44,7 @@ extension Color {
   static let babyPP = Color(red: 184 / 255, green: 200 / 255, blue: 243 / 255)
   static let niceBlue = Color(red: 161 / 255, green: 217 / 255, blue: 241 / 255)
   static let grayCircle = Color(red: 157 / 255, green: 157 / 255, blue: 157 / 255)
+  static let offWhite = Color(red: 225 / 255, green: 225 / 255, blue: 235 / 255)
 }
 
 

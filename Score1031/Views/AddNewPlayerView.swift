@@ -17,12 +17,8 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 
 struct AddNewPlayerView: View {
-    
-//    @State var playerOneName = "abc"
-//    @State var playerOneEmoji = ""
-//    @State var playerTwoName = "def"
-//    @State var playerTwoEmoji = ""
-    @State var id = ""
+
+  @State var id = ""
     @State var showAlert = false
 
     @EnvironmentObject var nameAndScore: NameAndScore
