@@ -8,8 +8,6 @@
 import Foundation
 import SwiftUI
 import Combine
-import CoreData
-import Disk
 import Firebase
 
 struct ContentView: View {

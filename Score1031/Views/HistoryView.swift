@@ -8,8 +8,7 @@
 
 import SwiftUI
 import Foundation
-import Resolver
-import Disk
+
 
 struct HistoryView: View {
   
