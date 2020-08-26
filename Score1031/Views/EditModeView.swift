@@ -9,6 +9,8 @@
 import Foundation
 import SwiftUI
 import Combine
+import CoreData
+import Disk
 import Firebase
 
 struct EditModeView: View {
@@ -40,7 +42,7 @@ struct EditModeView: View {
         }
         .frame(width: 35, height: 35)
         .foregroundColor(.offWhite)
-        .buttonStyle(DarkButtonStyle())
+        .buttonStyle(CircleStyle())
         
         Text("\(self.editedScore)")
           .font(.system(size: 25))
@@ -52,12 +54,15 @@ struct EditModeView: View {
         }) {
           Text("+")
             .fontWeight(.medium)
-            .foregroundColor(Color.white)
+         //   .foregroundColor(Color.white)
+            .foregroundColor(Color.darkGray)
             .font(.system(size: 25))
         }
         .frame(width: 35, height: 35)
-        .foregroundColor(.purple)
-        .buttonStyle(CircleStyle(color: .purple))
+     //   .foregroundColor(.purple)
+     //   .buttonStyle(CircleStyle(color: .purple))
+        .foregroundColor(.offWhite)
+        .buttonStyle(CircleStyle())
         Spacer()
       }///Add and minus button row
         

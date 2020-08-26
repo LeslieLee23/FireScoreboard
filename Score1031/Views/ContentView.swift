@@ -33,13 +33,13 @@ struct ContentView: View {
     NavigationView{
       ZStack{
         
-//        Color.offWhite.edgesIgnoringSafeArea(.all)
+        Color.offWhite.edgesIgnoringSafeArea(.all)
         
-        if self.userData.editMode == true {
-          LinearGradient(Color.darkStart, Color.darkEnd).edgesIgnoringSafeArea(.all)
-        } else {
-          Color.offWhite.edgesIgnoringSafeArea(.all)
-        }
+//        if self.userData.editMode == true {
+//          LinearGradient(Color.darkStart, Color.darkEnd).edgesIgnoringSafeArea(.all)
+//        } else {
+//          Color.offWhite.edgesIgnoringSafeArea(.all)
+//        }
         
         VStack {
           ///Edit Mode Row (60)
@@ -100,19 +100,19 @@ struct ContentView: View {
           ZStack{
             ///Color Change View
             VStack {
-              if self.userData.editMode == true {
-                SplashView(animationType: .angle(Angle(degrees: 40)), color: .darkEnd)
-                .frame(width: 340, height: 275, alignment: .top)
-                .cornerRadius(30)
-                .shadow(color: Color.darkStart, radius: 10, x: -10, y: -10)
-                .shadow(color: Color.darkEnd, radius: 10, x: 10, y: 10)
-              } else {
+   //           if self.userData.editMode == true {
+   //             SplashView(animationType: .angle(Angle(degrees: 40)), color: .darkEnd)
+   //             .frame(width: 340, height: 275, alignment: .top)
+   //             .cornerRadius(30)
+   //             .shadow(color: Color.darkStart, radius: 10, x: -10, y: -10)
+   //             .shadow(color: Color.darkEnd, radius: 10, x: 10, y: 10)
+   //           } else {
               SplashView(animationType: .angle(Angle(degrees: 40)), color: .offWhite)
                 .frame(width: 340, height: 275, alignment: .top)
                 .cornerRadius(30)
                 .shadow(color: Color.black.opacity(0.2), radius: 10, x: 10, y: 10)
                 .shadow(color: Color.white.opacity(0.7), radius: 10, x: -5, y: -5)
-              }
+    //          }
             }///Color Change View
             
             ///Scoreboard Content View
