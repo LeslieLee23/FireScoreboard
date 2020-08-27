@@ -130,7 +130,7 @@ class APILoader: BaseScoreRepository, ScoreRepository, ObservableObject {
     do {
 
       db.collection("records").addDocument(data: ["id": record3.id, "playerID": record3.playerID, "playerOneEmoji": record3.playerOneEmoji,"playerOneName": record3.playerOneName, "playerOneScore": record3.playerOneScore, "playerTwoEmoji": record3.playerTwoEmoji, "playerTwoName": record3.playerTwoName, "playerTwoScore": record3.playerTwoScore, "recordName": record3.recordName, "recordScore": record3.recordScore, "recordReason": record3.recordReason, "recordEntryTime": Date(), "recordEntryTimeString": record3.recordEntryTimeString,
-        "userId": record3.userId!, "recordNameStr": record3.recordNameStr!, "recordNameEmo": record3.recordNameEmo! ])
+        "userId": record3.userId ?? "0", "recordNameStr": record3.recordNameStr!, "recordNameEmo": record3.recordNameEmo! ])
       
       print("Yes yes yes this works!")
       

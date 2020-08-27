@@ -14,7 +14,6 @@ struct HistoryView: View {
   
   @EnvironmentObject private var userData: UserData
   @ObservedObject private var apiLoader = APILoader()
-  @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
   
   var body: some View {
     NavigationView {
