@@ -24,6 +24,7 @@ struct EditModeView: View {
   @EnvironmentObject var userData: UserData
   @ObservedObject private var apiLoader = APILoader()
   @State private var records3 = APILoader().records3
+  @ObservedObject private var keyboard = KeyboardResponder()
   
   
   var body: some View {
@@ -69,10 +70,15 @@ struct EditModeView: View {
       
       ///Reason text input row
       Spacer()
+      VStack() {
       TextField("What for?", text: $reason)
         .textFieldStyle(RoundedBorderTextFieldStyle())
         .padding(.trailing, 35)
         .padding(.leading, 35)
+      }.padding()
+      .padding(.bottom, keyboard.currentHeight)
+      .edgesIgnoringSafeArea(.bottom)
+      .animation(.easeOut(duration: 0.16))
       ///Reason text input row
       
       Spacer()

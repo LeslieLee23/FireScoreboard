@@ -26,6 +26,8 @@ struct AddNewPlayerView: View {
     @EnvironmentObject var appState: AppState
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @Environment(\.managedObjectContext) var managedObjectContext
+  
+  @ObservedObject var keyboardResponder = KeyboardResponder()
     
     //New repository change
   @State private var records3 = APILoader().records3
@@ -35,12 +37,19 @@ struct AddNewPlayerView: View {
     var body: some View {
       NavigationView {
         VStack{
+          Spacer()
+                     Spacer()
+                     Spacer()
+                     Spacer()
+                     Spacer()
             Group{
         HStack{
         Text("Enter name for player one:")
             .padding(.leading)
         Spacer()
         }
+              
+              
         HStack{
           TextField("Player One Name", text: $userData.addPlayerOneName)
         .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -142,13 +151,13 @@ struct AddNewPlayerView: View {
                 
             }
             }
-            Spacer()
-            Spacer()
-            Spacer()
-            Spacer()
-            Spacer()
+//            Spacer()
+//            Spacer()
+//            Spacer()
+//            Spacer()
+//            Spacer()
         }
-      }
+      }.offset(y: -keyboardResponder.currentHeight*0.9)
         .navigationBarItems(trailing:
           HStack{
           Spacer()

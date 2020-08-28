@@ -44,12 +44,15 @@ extension Color {
   static let babyPP = Color(red: 184 / 255, green: 200 / 255, blue: 243 / 255)
   static let niceBlue = Color(red: 161 / 255, green: 217 / 255, blue: 241 / 255)
   static let grayCircle = Color(red: 157 / 255, green: 157 / 255, blue: 157 / 255)
-  static let offWhite = Color(red: 225 / 255, green: 225 / 255, blue: 235 / 255)
+  static let offWhite = Color(red: 223 / 255, green: 228 / 255, blue: 235 / 255)
   static let darkGray = Color(red: 70 / 255, green: 70 / 255, blue: 70 / 255)
   static let darkStart = Color(red: 50 / 255, green: 60 / 255, blue: 65 / 255)
   static let darkEnd = Color(red: 25 / 255, green: 25 / 255, blue: 30 / 255)
   static let lightStart = Color(red: 60 / 255, green: 160 / 255, blue: 240 / 255)
   static let lightEnd = Color(red: 30 / 255, green: 80 / 255, blue: 120 / 255)
+  static let kDarkShadow = Color(red: 162 / 255, green: 176 / 255, blue: 197 / 255)
+  static let kLightShadow = Color(red: 255 / 255, green: 255 / 255, blue: 255 / 255)
+  
 }
 extension UIColor {
     convenience init(red: Int, green: Int, blue: Int) {
@@ -59,7 +62,7 @@ extension UIColor {
         
         self.init(red: newRed, green: newGreen, blue: newBlue, alpha: 1.0)
     }
-  static let offWhite = UIColor(red: 225, green: 225, blue: 235)
+  static let offWhite = UIColor(red: 223, green: 228, blue: 235)
    
 }
 
@@ -310,6 +313,7 @@ struct SquareStyle: ButtonStyle {
       .frame(width: 135, height: 60, alignment: .center)
   }
 }
+
 
 
 struct Functions_Previews: PreviewProvider {

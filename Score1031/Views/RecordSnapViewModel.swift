@@ -20,39 +20,42 @@ struct RecordSnapViewModel: View {
     
     VStack(){
       HStack(){
-      VStack(alignment: .leading){
-        Spacer()
-      }.frame(width:25, height: 40, alignment: .topLeading)
         
       VStack(alignment: .leading){
         Text(nameEmo)
           //  .font(.headline)
           .font(.system(size: 28))
-      }.frame(width:45, height: 40, alignment: .topLeading)
+      }.frame(width:40, height: 50, alignment: .leading)
         
         VStack(alignment: .leading) {
-//          Text(nameStr)
-//            .font(.headline)
-//          Spacer()
+          VStack(alignment: .leading) {
           Text(reason)
           .font(.system(size: 13))
           .multilineTextAlignment(.leading)
-          Spacer()
+          }//.frame(width:165, height: 40, alignment: .leading)
+            .frame(minWidth: 165, maxWidth: .infinity, minHeight: 20, maxHeight: .infinity, alignment: .leading)
+
+        //  Spacer()
+          VStack(alignment: .leading) {
           Text(entryTime)
           .font(.system(size: 11))
+            .foregroundColor(Color.darkGray)
+          }//.frame(width:165, height: 40, alignment: .leading)
+          .frame(minWidth: 150, maxWidth: .infinity, minHeight: 10, maxHeight: 10, alignment: .leading)
         }
-        .frame(width:165, height: 40, alignment: .leading)
+        
         
         VStack(alignment: .leading) {
           Text(score)
           .font(.system(size: 20))
           .fontWeight(.medium)
           .foregroundColor(score.first == "-" ? .red : .green)
-        }.frame(width:50, height: 40, alignment: .topLeading)
+        }.frame(width:45, height: 50, alignment: .center)
       
       }
     }
-    .frame(width:300, height: 45, alignment: .leading)
+    .frame(width:270, height: 50, alignment: .center)
+  //  .border(Color.blue)
   }
 }
 

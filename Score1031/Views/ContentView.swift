@@ -12,14 +12,26 @@ import Firebase
 
 struct ContentView: View {
   
-  @EnvironmentObject var nameAndScore: NameAndScore
-  @EnvironmentObject var userData: UserData
+//  @EnvironmentObject var nameAndScore: NameAndScore
+//  @EnvironmentObject var userData: UserData
   @EnvironmentObject var appState: AppState
-  @ObservedObject private var apiLoader = APILoader()
+//  @ObservedObject private var apiLoader = APILoader()
   
   @State var oneEmoji = [String]()
   @State var twoEmoji = [String]()
   @State var records = [Recordline]()
+  
+  @State var reason = ""
+  @State var editedScore = 0
+  @State var selectedNameString = ""
+  @State var pointGrammar = "points"
+  @State var showAlert = false
+  @EnvironmentObject var nameAndScore: NameAndScore
+  @EnvironmentObject var addScoreFunc: AddScoreFunc
+  @EnvironmentObject var userData: UserData
+  @ObservedObject private var apiLoader = APILoader()
+  @State private var records3 = APILoader().records3
+  @ObservedObject var keyboardResponder = KeyboardResponder()
   
   @State var showSignInForm = false
   
@@ -110,8 +122,8 @@ struct ContentView: View {
               SplashView(animationType: .angle(Angle(degrees: 40)), color: .offWhite)
                 .frame(width: 340, height: 275, alignment: .top)
                 .cornerRadius(25)
-                .shadow(color: Color.black.opacity(0.2), radius: 10, x: 10, y: 10)
-                .shadow(color: Color.white.opacity(0.7), radius: 10, x: -5, y: -5)
+                .shadow(color: Color.black.opacity(0.2), radius: 6, x: 8, y: 8)
+                .shadow(color: Color.white.opacity(0.6), radius: 6, x: -4, y: -4)
     //          }
             }///Color Change View
             
@@ -199,7 +211,130 @@ struct ContentView: View {
           if self.userData.editMode == false {
             VStack {
               Spacer()
-              HistorySnapView()
+               VStack {
+                Spacer()
+                ///Add and minus button row
+                HStack {
+                  Spacer()
+                  Button(action: {
+                    self.editedScore -= 1
+                  }) {
+                    Text("-")
+                      .fontWeight(.medium)
+                      .foregroundColor(Color.darkGray)
+                      .font(.system(size: 25))
+                  }
+                  .frame(width: 35, height: 35)
+                  .foregroundColor(.offWhite)
+                  .buttonStyle(CircleStyle())
+                  
+                  Text("\(self.editedScore)")
+                    .font(.system(size: 25))
+                    .padding()
+                    .foregroundColor(Color.darkGray)
+                  
+                  Button(action: {
+                    self.editedScore += 1
+                  }) {
+                    Text("+")
+                      .fontWeight(.medium)
+                   //   .foregroundColor(Color.white)
+                      .foregroundColor(Color.darkGray)
+                      .font(.system(size: 25))
+                  }
+                  .frame(width: 35, height: 35)
+               //   .foregroundColor(.purple)
+               //   .buttonStyle(CircleStyle(color: .purple))
+                  .foregroundColor(.offWhite)
+                  .buttonStyle(CircleStyle())
+                  Spacer()
+                }///Add and minus button row
+                  
+                
+                ///Reason text input row
+                Spacer()
+                VStack() {
+                TextField("What for?", text: $reason)
+                  .textFieldStyle(RoundedBorderTextFieldStyle())
+                  .padding(.trailing, 35)
+                  .padding(.leading, 35)
+                }.border(Color.red)
+                ///Reason text input row
+                
+                Spacer()
+                
+                HStack {
+                  Spacer()
+                  Button(action: {
+                    print("Name is \(self.userData.selectedName)")
+                  }) {
+                    Text("Cancel")
+                    
+                  }
+                  Spacer()
+                  
+                  Button(action: {
+                    self.showAlert = true
+                    if self.editedScore == 1 {
+                      self.pointGrammar = "point"
+                    }
+                    self.userData.editMode = false
+                    self.records3 = self.addScoreFunc.createRecord(
+                      playerID: self.userData.playerID!,
+                      oldscore: self.userData.oldscore,
+                      emojiPlusName: self.userData.emojiPlusName,
+                      names: self.userData.names,
+                      emojis: self.userData.emojis,
+                      editedScore: self.editedScore,
+                      reason: self.reason,
+                      selectedName: self.userData.selectedName)
+                    
+                    self.nameAndScore.playerOneEmoji = self.records3.playerOneEmoji
+                    self.nameAndScore.playerTwoEmoji = self.records3.playerTwoEmoji
+                    self.nameAndScore.playerOneName = self.records3.playerOneName
+                    self.nameAndScore.playerTwoName = self.records3.playerTwoName
+                    self.nameAndScore.PlayerOneScore = self.records3.playerOneScore
+                    self.nameAndScore.PlayerTwoScore = self.records3.playerTwoScore
+                    
+                    self.apiLoader.saveData(record3: self.records3)
+                    
+                    
+                  }) {
+                    Text("Confirm")
+                  }
+                  .disabled(editedScore == 0 && reason.isEmpty)
+                  .disabled(self.userData.selectedName == 5)
+                    
+                  .alert(isPresented: $showAlert) { () ->
+                    Alert in
+                 
+                    return Alert(title: Text("Score edited!"), message: Text("You edited \(self.records3.recordName)'s score to \(self.editedScore)"), dismissButton: Alert.Button.default(Text("Ok"))
+                    )
+                  }
+                  Button(action: {
+                    self.nameAndScore.PlayerTwoScore = 0
+                    self.nameAndScore.PlayerOneScore = 0
+                    self.nameAndScore.playerTwoName = "Player Two"
+                    self.nameAndScore.playerOneName = "Player One"
+                    self.nameAndScore.playerOneEmoji = "👩🏻"
+                    self.nameAndScore.playerTwoEmoji = "👨🏻"
+                    self.userData.playerID = "0"
+                    
+                    self.userData.emojiPlusName = ["👩🏻 Player One", "👨🏻 Player Two"]
+                    self.userData.oldscore = ["0", "0"]
+                    self.userData.names = ["Player One", "Player Two"]
+                    self.userData.emojis = ["👩🏻", "👨🏻"]
+                    self.apiLoader.remove()
+                    
+                    
+                  })
+                  {
+                    Text("Start Over")
+                  }
+                  Spacer()
+                }
+                Spacer()
+              }
               Spacer()
             }
           } else {
@@ -218,6 +353,7 @@ struct ContentView: View {
         }
       )
     }
+    .offset(y: -keyboardResponder.currentHeight*0.9)
       
     .onAppear() {
       if self.nameAndScore.playerTwoName == nil {

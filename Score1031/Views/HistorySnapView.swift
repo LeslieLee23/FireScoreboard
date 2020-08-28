@@ -21,18 +21,26 @@ struct HistorySnapView: View {
     
     ZStack{
       VStack() {
-        
-        Rectangle()
-          .frame(width: 340, height: 155, alignment: .top)
+
+            RoundedRectangle(cornerRadius: 20)
+              .stroke(Color.offWhite, lineWidth: 5)
+              .shadow(color: Color.black.opacity(0.2), radius: 5, x: 5, y: 5)
+              .clipShape(
+                RoundedRectangle(cornerRadius: 20)
+            )
+              .shadow(color: Color.white, radius: 5, x: -3, y: -3)
+              .clipShape(
+                RoundedRectangle(cornerRadius: 20)
+            )
+          .frame(width: 320, height: 155, alignment: .top)
+          .background(Color.offWhite)
           .cornerRadius(25)
-          .shadow(color: Color.black.opacity(0.2), radius: 10, x: 10, y: 10)
-          .shadow(color: Color.white.opacity(0.7), radius: 10, x: -5, y: -5)
-          .foregroundColor(Color.offWhite)
       }
+
       VStack(alignment: .center) {
         HStack {
         Text("History")
-          .padding(.leading, 35)
+          .padding(.leading, 25)
           Spacer()
         Button(action: {
           self.appState.selectedTab = .HistoryView
@@ -40,7 +48,7 @@ struct HistorySnapView: View {
         {
           Image(systemName: "chevron.right")
             .font(.system(size:17))
-            .padding(.trailing, 35)
+            .padding(.trailing, 25)
         }
         }
         List {
@@ -53,7 +61,7 @@ struct HistorySnapView: View {
         
       }//.border(Color.red)
       
-      .frame(width: 340, height: 100, alignment: .center)
+      .frame(width: 290, height: 100, alignment: .leading)
       .onAppear() {
         self.apiLoader.fetchData()
       }
