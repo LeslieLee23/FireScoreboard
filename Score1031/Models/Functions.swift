@@ -51,7 +51,17 @@ extension Color {
   static let lightStart = Color(red: 60 / 255, green: 160 / 255, blue: 240 / 255)
   static let lightEnd = Color(red: 30 / 255, green: 80 / 255, blue: 120 / 255)
 }
-
+extension UIColor {
+    convenience init(red: Int, green: Int, blue: Int) {
+        let newRed = CGFloat(red)/255
+        let newGreen = CGFloat(green)/255
+        let newBlue = CGFloat(blue)/255
+        
+        self.init(red: newRed, green: newGreen, blue: newBlue, alpha: 1.0)
+    }
+  static let offWhite = UIColor(red: 225, green: 225, blue: 235)
+   
+}
 
 class AddScoreFunc: ObservableObject {
   func createRecord(playerID: String, oldscore: [String], emojiPlusName: [String], names: [String], emojis: [String], editedScore: Int, reason: String, selectedName: Int) -> (Recordline) {

@@ -109,7 +109,7 @@ struct ContentView: View {
    //           } else {
               SplashView(animationType: .angle(Angle(degrees: 40)), color: .offWhite)
                 .frame(width: 340, height: 275, alignment: .top)
-                .cornerRadius(30)
+                .cornerRadius(25)
                 .shadow(color: Color.black.opacity(0.2), radius: 10, x: 10, y: 10)
                 .shadow(color: Color.white.opacity(0.7), radius: 10, x: -5, y: -5)
     //          }
@@ -198,6 +198,8 @@ struct ContentView: View {
           
           if self.userData.editMode == false {
             VStack {
+              Spacer()
+              HistorySnapView()
               Spacer()
             }
           } else {

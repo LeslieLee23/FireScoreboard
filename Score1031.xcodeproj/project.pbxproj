@@ -25,6 +25,7 @@
 		F541995824EA3D6A00BF54EC /* NameEmojiRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F541995724EA3D6A00BF54EC /* NameEmojiRowView.swift */; };
 		F5441EB624F701BB00F8DBDF /* Neumorphic.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5441EB524F701BB00F8DBDF /* Neumorphic.swift */; };
 		F5441EB824F7091900F8DBDF /* HistorySnapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5441EB724F7091900F8DBDF /* HistorySnapView.swift */; };
+		F5441EBA24F8726900F8DBDF /* RecordSnapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5441EB924F8726900F8DBDF /* RecordSnapViewModel.swift */; };
 		F55DABD624EBB9090078452F /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55DABD524EBB9090078452F /* SplashView.swift */; };
 		F55DABD824EF3B9B0078452F /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55DABD724EF3B9B0078452F /* TabBarView.swift */; };
 		F55DABDA24EFAF880078452F /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55DABD924EFAF880078452F /* AppState.swift */; };
@@ -61,6 +62,7 @@
 		F541995724EA3D6A00BF54EC /* NameEmojiRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameEmojiRowView.swift; sourceTree = "<group>"; };
 		F5441EB524F701BB00F8DBDF /* Neumorphic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Neumorphic.swift; sourceTree = "<group>"; };
 		F5441EB724F7091900F8DBDF /* HistorySnapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistorySnapView.swift; sourceTree = "<group>"; };
+		F5441EB924F8726900F8DBDF /* RecordSnapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordSnapViewModel.swift; sourceTree = "<group>"; };
 		F55DABD524EBB9090078452F /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		F55DABD724EF3B9B0078452F /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		F55DABD924EFAF880078452F /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 				F50762E324B438AD00676F9C /* ChangePlayersView.swift */,
 				F591294F2420368F0071E1D3 /* SelectViewModel.swift */,
 				F50762E524BC244600676F9C /* RecordViewModel.swift */,
+				F5441EB924F8726900F8DBDF /* RecordSnapViewModel.swift */,
 				F5D7FC6E24D94087006BFC4A /* SigninWithAppleButton.swift */,
 				F5D7FC7424D942A6006BFC4A /* SignInView.swift */,
 				F55DABD524EBB9090078452F /* SplashView.swift */,
@@ -347,6 +350,7 @@
 				F541995824EA3D6A00BF54EC /* NameEmojiRowView.swift in Sources */,
 				F5D7FC6B24D0E7F7006BFC4A /* APILoader.swift in Sources */,
 				F5441EB824F7091900F8DBDF /* HistorySnapView.swift in Sources */,
+				F5441EBA24F8726900F8DBDF /* RecordSnapViewModel.swift in Sources */,
 				F50762EC24C01D0100676F9C /* Functions.swift in Sources */,
 				F55DABD624EBB9090078452F /* SplashView.swift in Sources */,
 				F50762E424B438AD00676F9C /* ChangePlayersView.swift in Sources */,
