@@ -255,9 +255,9 @@ struct ContentView: View {
                 Spacer()
                 VStack() {
                 TextField("What for?", text: $reason)
-                  .textFieldStyle(RoundedBorderTextFieldStyle())
-                  .padding(.trailing, 35)
-                  .padding(.leading, 35)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .padding(.trailing, 35)
+                .padding(.leading, 35)
                 }.border(Color.red)
                 ///Reason text input row
                 
@@ -343,17 +343,18 @@ struct ContentView: View {
             }
           }
         }
-      }//.border(Color.purple)
+      }
         .sheet(isPresented: $showSignInForm) {
           SignInView()
       }
-      .navigationBarItems(trailing:
-        Button(action: {self.showSignInForm.toggle() }) {
-          Image(systemName: "person.circle")
-        }
-      )
+      
+//      .navigationBarItems(trailing:
+//        Button(action: {self.showSignInForm.toggle() }) {
+//          Image(systemName: "person.circle")
+//        }
+//      )
     }
-    .offset(y: -keyboardResponder.currentHeight*0.9)
+    .offset(y: -keyboardResponder.currentHeight*0.5)
       
     .onAppear() {
       if self.nameAndScore.playerTwoName == nil {

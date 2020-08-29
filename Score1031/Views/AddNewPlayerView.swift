@@ -38,10 +38,160 @@ struct AddNewPlayerView: View {
       NavigationView {
         VStack{
           Spacer()
+//                     Spacer()
+//                     Spacer()
+//                     Spacer()
+//                     Spacer()
+          VStack {
+            HStack{
+              VStack {
+                Text("Edit Mode")
+                  .font(.system(size:12))
+                Toggle(isOn: $userData.editMode
+                  .animation(
+                    Animation.spring(dampingFraction: 0.7)
+                  )
+                  )
+                {
+                  Text("Edit Mode")
+                }
+                .labelsHidden()
+                .simultaneousGesture(TapGesture().onEnded {
+                  if self.userData.editMode == false {
+                    print("wwiwiwiwiwi")
+                //    self.addEidtChoice.addViewSelected = true
+                    self.userData.selectedName = 5
+                    self.userData.emojiPlusName  = ["\(self.nameAndScore.playerOneEmoji!) \( self.nameAndScore.playerOneName!)","\( self.nameAndScore.playerTwoEmoji!) \( self.nameAndScore.playerTwoName!)"]
+                    print("\(self.userData.emojiPlusName)")
+                    self.userData.oldscore = ["\(self.nameAndScore.PlayerOneScore)", "\(self.nameAndScore.PlayerTwoScore)"]
+                    print("\(self.userData.emojis)")
+                    self.userData.emojis = [self.nameAndScore.playerOneEmoji!, self.nameAndScore.playerTwoEmoji!]
+                    self.userData.names = [self.nameAndScore.playerOneName!, self.nameAndScore.playerTwoName!]
+                  } else {
+                    
+                  }
+                })
+              }
+              Spacer()
+              VStack {
+                Text("Emoji Mode")
+                  .font(.system(size:12))
+                Toggle(isOn: $userData.showEmoji
+                  .animation(
+                    Animation.spring(dampingFraction: 0.7)
+                  )
+                  
+                ) {
+                  Text("Emoji Mode")
+                }
+                .labelsHidden()
+    
+              }
+            }
+            .padding(.trailing, 25)
+            .padding(.leading, 25)
+          }///Edit Mode Row
+            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 60, maxHeight: 60)
+          ZStack {
+                   ///Color Change View
+                   VStack {
+          //           if self.userData.editMode == true {
+          //             SplashView(animationType: .angle(Angle(degrees: 40)), color: .darkEnd)
+          //             .frame(width: 340, height: 275, alignment: .top)
+          //             .cornerRadius(30)
+          //             .shadow(color: Color.darkStart, radius: 10, x: -10, y: -10)
+          //             .shadow(color: Color.darkEnd, radius: 10, x: 10, y: 10)
+          //           } else {
+                     SplashView(animationType: .angle(Angle(degrees: 40)), color: .offWhite)
+                       .frame(width: 340, height: 275, alignment: .top)
+                       .cornerRadius(25)
+                       .shadow(color: Color.black.opacity(0.2), radius: 6, x: 8, y: 8)
+                       .shadow(color: Color.white.opacity(0.6), radius: 6, x: -4, y: -4)
+           //          }
+                   }///Color Change View
+                   
+                   ///Scoreboard Content View
+                   VStack {
+                     ///Title row (60)
+                     VStack {
+                       Text("Scoreboard")
+                         .font(.system(size: 23))
+                         .fontWeight(.bold)
+                     } ///Title row
+                       .frame(width: 340, height: 60, alignment: .center)
+                     
+                     ///Score row (60)
+                     HStack {
+                       VStack() {
+                         Text("\(self.nameAndScore.PlayerOneScore)")
+                           .font(.system(size: 45))
+                           .foregroundColor(self.userData.editMode ? .grayCircle : .black)
+                       }
+                       .frame(width: 165, height: 55, alignment: .center)
+                       
+                       VStack() {
+                         Text("\(self.nameAndScore.PlayerTwoScore)")
+                           .font(.system(size: 45))
+                           .foregroundColor(self.userData.editMode ? .grayCircle : .black)
+                       }
+                       .frame(width: 165, height: 55, alignment: .center)
+                       
+                     }///Score row
+                       .frame(width: 340, height: 60, alignment: .top)
+                     
+                     Spacer()
+                     
+                     ///NameEmojiRow (140) (Edit Mode)
+                     if self.userData.editMode == true {
+                       
+                       VStack {
+                         NameEmojiRowView()
+                       }.frame(width: 340, height: 125, alignment: .center)
+                       Spacer()
+                     } ///NameEmojiRow (140) (Edit Mode)
+                       
+                       ///NameEmojiRow (140) (Normal Mode)
+                     else {
+                       if self.userData.showEmoji == true {
+                         HStack {
+                           VStack{
+                             Text(self.nameAndScore.playerOneEmoji ?? "🦧")
+                               .font(.system(size: 55))
+                               .transition(.scale(scale: 5))
+                           }
+                           .frame(width: 165, height: 125, alignment: .center)
+                           VStack{
+                             Text(self.nameAndScore.playerTwoEmoji ?? "👨🏻")
+                               .font(.system(size: 55))
+                           }
+                           .frame(width: 165, height: 125, alignment: .center)
+                         }
+                         .frame(width: 340, height: 125, alignment: .center)
+                         Spacer()
+                       } else {
+                         HStack {
+                           VStack{
+                             Text(self.nameAndScore.playerOneName ?? "Miu")
+                               .font(.system(size: 28))
+                           }
+                           .frame(width: 160, height: 125, alignment: .center)
+                           VStack{
+                             Text(self.nameAndScore.playerTwoName ?? "Whof")
+                               .font(.system(size: 28))
+                           }
+                           .frame(width: 160, height: 125, alignment: .center)
+                         }
+                         .frame(width: 340, height: 125, alignment: .center)
+                         Spacer()
+                       }
+                     }///NameEmojiRow (140) (Normal Mode)
                      Spacer()
                      Spacer()
-                     Spacer()
-                     Spacer()
+                   }///Scoreboard Content View
+                     .frame(width: 340, height: 275, alignment: .top)
+                 }
+          
+         if self.userData.editMode == false {
             Group{
         HStack{
         Text("Enter name for player one:")
@@ -90,6 +240,11 @@ struct AddNewPlayerView: View {
         .padding(.leading, 35)
         }
             }
+          } else {
+          VStack() {
+            EditModeView()
+          }
+          }
         Spacer()
         HStack{
            
@@ -157,12 +312,13 @@ struct AddNewPlayerView: View {
 //            Spacer()
 //            Spacer()
         }
-      }.offset(y: -keyboardResponder.currentHeight*0.9)
         .navigationBarItems(trailing:
           HStack{
           Spacer()
           }
         )
+      }.offset(y: -keyboardResponder.currentHeight*0.5)
+
       
     }
 }
