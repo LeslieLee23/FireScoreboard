@@ -114,26 +114,56 @@ struct CircleStyle: ButtonStyle {
                     configuration.label
                       .foregroundColor(.white)
         )
-//        Circle()
-//          .stroke(Color.gray, lineWidth: 3)
-//          .blur(radius: 3)
-//          .offset(x: 2, y: 2)
-//          .mask(Circle().fill(LinearGradient(Color.black, Color.clear)))
-//
-//          .overlay(
-//            Circle()
-//              .stroke(color, lineWidth: 8)
-//              .blur(radius: 3)
-//              .offset(x: -2, y: -2)
-//              .mask(Circle().fill(LinearGradient(Color.clear, Color.black)))
-//        )
-//          .overlay(
-//            configuration.label
-//              .foregroundColor(.white)
-//        )
       }
     }
     
+    
+  }
+}
+
+public struct NeuTextStyle : TextFieldStyle {
+  var color: Color = .white
+  public func _body(configuration: TextField<Self._Label>) -> some View {
+    
+    RoundedRectangle(cornerRadius: 30)
+      .stroke(Color.offWhite, lineWidth: 5)
+      .shadow(color: Color.black.opacity(0.2), radius: 4, x: 5, y: 5)
+      .frame(width: 270, height: 50)
+      .clipShape(
+        RoundedRectangle(cornerRadius: 30)
+    )
+      .shadow(color: Color.white, radius: 4, x: -3, y: -3)
+      .frame(width: 270, height: 50)
+      .clipShape(
+        RoundedRectangle(cornerRadius: 30)
+    )
+      .background(Color.offWhite)
+      .cornerRadius(40)
+      .frame(width: 270, height: 50)
+      .overlay(
+        configuration
+          .foregroundColor(.darkGray)
+          .frame(width: 250, height: 50)
+        , alignment: .trailing
+    )
+    
+    //    RoundedRectangle(cornerRadius: 25)
+    //              .stroke(Color.gray, lineWidth: 3)
+    //              .blur(radius: 3)
+    //              .offset(x: 2, y: 2)
+    //              .mask(RoundedRectangle(cornerRadius: 13).fill(LinearGradient(Color.black, Color.clear)))
+    //
+    //              .overlay(
+    //                  RoundedRectangle(cornerRadius: 13)
+    //                      .stroke(color, lineWidth: 8)
+    //                      .blur(radius: 3)
+    //                      .offset(x: -2, y: -2)
+    //                      .mask(RoundedRectangle(cornerRadius: 13).fill(LinearGradient(Color.clear, Color.black)))
+    //              )
+    //              .overlay(
+    //                configuration
+    //                  .foregroundColor(.white)
+    //            )
     
   }
 }

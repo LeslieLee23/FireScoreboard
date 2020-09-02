@@ -72,10 +72,15 @@ struct EditModeView: View {
       Spacer()
       VStack() {
       TextField("What for?", text: $reason)
-        .textFieldStyle(RoundedBorderTextFieldStyle())
-        .padding(.trailing, 35)
-        .padding(.leading, 35)
+        .textFieldStyle(NeuTextStyle())
+       // .textFieldStyle(RoundedBorderTextFieldStyle())
+        .frame(width: 260, height: 50)
+        .multilineTextAlignment(.leading)
+        
+//        .padding(.trailing, 35)
+//        .padding(.leading, 35)
       }.padding()
+        
       .padding(.bottom, keyboard.currentHeight)
       .edgesIgnoringSafeArea(.bottom)
       .animation(.easeOut(duration: 0.16))
