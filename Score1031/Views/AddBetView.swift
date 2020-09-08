@@ -14,16 +14,16 @@ import Disk
 import Firebase
 
 struct AddBetView: View {
-  @State var reason = ""
-  @State var editedScore = 0
+  @State var bet = ""
+  @State var betScore = 0
   @State var selectedNameString = ""
   @State var pointGrammar = "points"
   @State var showAlert = false
   @EnvironmentObject var nameAndScore: NameAndScore
-  @EnvironmentObject var addScoreFunc: AddScoreFunc
+  @EnvironmentObject var addBetFunc: AddBetFunc
   @EnvironmentObject var userData: UserData
-  @ObservedObject private var apiLoader = APILoader()
-  @State private var records3 = APILoader().records3
+  @ObservedObject private var betLoader = BetLoader()
+  @State private var bets = BetLoader().bets3
   @ObservedObject private var keyboard = KeyboardResponder()
   
   
@@ -33,9 +33,13 @@ struct AddBetView: View {
 
     VStack {
       Spacer()
-      VStack() {
+      HStack{
       Text("Enter bet:")
-      TextField("Bet description", text: $reason)
+        .padding(.leading, 50)
+      Spacer()
+      }
+      VStack() {
+      TextField("Bet description", text: $bet)
         .textFieldStyle(NeuTextStyle(w: 290, h: 120, cr: 15))
        // .textFieldStyle(RoundedBorderTextFieldStyle())
         .frame(width: 290, height: 120)
@@ -52,7 +56,7 @@ struct AddBetView: View {
       HStack {
         Spacer()
         Button(action: {
-          self.editedScore -= 1
+          self.betScore -= 1
         }) {
           Text("-")
             .fontWeight(.medium)
@@ -63,13 +67,13 @@ struct AddBetView: View {
         .foregroundColor(.offWhite)
         .buttonStyle(CircleStyle())
         
-        Text("\(self.editedScore)")
+        Text("\(self.betScore)")
           .font(.system(size: 25))
           .padding()
           .foregroundColor(Color.darkGray)
         
         Button(action: {
-          self.editedScore += 1
+          self.betScore += 1
         }) {
           Text("+")
             .fontWeight(.medium)
@@ -100,65 +104,34 @@ struct AddBetView: View {
         
         Button(action: {
           self.showAlert = true
-          if self.editedScore == 1 {
+          if self.betScore == 1 {
             self.pointGrammar = "point"
           }
-          self.records3 = self.addScoreFunc.createRecord(
+          self.bets = self.addBetFunc.createBet(
             playerID: self.userData.playerID!,
-            oldscore: self.userData.oldscore,
-            emojiPlusName: self.userData.emojiPlusName,
-            names: self.userData.names,
-            emojis: self.userData.emojis,
-            editedScore: self.editedScore,
-            reason: self.reason,
-            selectedName: self.userData.selectedName)
+            betScore: self.betScore,
+            betDescription: self.bet)
           
-          self.nameAndScore.playerOneEmoji = self.records3.playerOneEmoji
-          self.nameAndScore.playerTwoEmoji = self.records3.playerTwoEmoji
-          self.nameAndScore.playerOneName = self.records3.playerOneName
-          self.nameAndScore.playerTwoName = self.records3.playerTwoName
-          self.nameAndScore.PlayerOneScore = self.records3.playerOneScore
-          self.nameAndScore.PlayerTwoScore = self.records3.playerTwoScore
           
-          self.apiLoader.saveData(record3: self.records3)
+          self.betLoader.saveData(bets3: self.bets)
           
           
         }) {
           Text("Confirm")
         }
-        .buttonStyle(NeuButtonStyle(editedScore: editedScore, reason: reason, selectedName: self.userData.selectedName))
-        .disabled(editedScore == 0 && reason.isEmpty)
-        .disabled(self.userData.selectedName == 5)
+        .buttonStyle(NeuButtonStyle(editedScore: betScore, reason: bet, selectedName: 4))
+        .disabled(betScore == 0 && bet.isEmpty)
+        
           
         .alert(isPresented: $showAlert) { () ->
           Alert in
        
-          return Alert(title: Text("Score edited!"), message: Text("You edited \(self.records3.recordName)'s score to \(self.editedScore)"), dismissButton: Alert.Button.default(Text("Ok"))
+          return Alert(title: Text("New bet added!"), message: Text("You added a bet and set the stake to \(self.betScore)"), dismissButton: Alert.Button.default(Text("Ok"))
             {
-              self.userData.editMode = false
+             
             }
           )
         }
-//        Button(action: {
-//          self.nameAndScore.PlayerTwoScore = 0
-//          self.nameAndScore.PlayerOneScore = 0
-//          self.nameAndScore.playerTwoName = "Player Two"
-//          self.nameAndScore.playerOneName = "Player One"
-//          self.nameAndScore.playerOneEmoji = "👩🏻"
-//          self.nameAndScore.playerTwoEmoji = "👨🏻"
-//          self.userData.playerID = "0"
-//
-//          self.userData.emojiPlusName = ["👩🏻 Player One", "👨🏻 Player Two"]
-//          self.userData.oldscore = ["0", "0"]
-//          self.userData.names = ["Player One", "Player Two"]
-//          self.userData.emojis = ["👩🏻", "👨🏻"]
-//          self.apiLoader.remove()
-//
-//
-//        })
-//        {
-//          Text("Start Over")
-//        }
         Spacer()
       }
       Spacer()

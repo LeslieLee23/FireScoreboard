@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		5AAF387E8849555F0BBB8006 /* Pods_Score1031.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01D18C8DA08D01B06A0E91E2 /* Pods_Score1031.framework */; };
 		F500DA67250732BA003E60F3 /* AddBetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F500DA66250732BA003E60F3 /* AddBetView.swift */; };
+		F500DA6925074C3F003E60F3 /* BetRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = F500DA6825074C3F003E60F3 /* BetRecord.swift */; };
+		F500DA6B25075F60003E60F3 /* BetLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F500DA6A25075F60003E60F3 /* BetLoader.swift */; };
 		F50762E424B438AD00676F9C /* ChangePlayersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50762E324B438AD00676F9C /* ChangePlayersView.swift */; };
 		F50762E624BC244600676F9C /* RecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50762E524BC244600676F9C /* RecordViewModel.swift */; };
 		F50762EC24C01D0100676F9C /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50762EB24C01D0100676F9C /* Functions.swift */; };
@@ -46,6 +48,8 @@
 		0C286CC72021282DB2177955 /* Pods-Score1031.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Score1031.release.xcconfig"; path = "Target Support Files/Pods-Score1031/Pods-Score1031.release.xcconfig"; sourceTree = "<group>"; };
 		20FA246B4855C4B139F8EDF9 /* Pods-Score1031.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Score1031.debug.xcconfig"; path = "Target Support Files/Pods-Score1031/Pods-Score1031.debug.xcconfig"; sourceTree = "<group>"; };
 		F500DA66250732BA003E60F3 /* AddBetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBetView.swift; sourceTree = "<group>"; };
+		F500DA6825074C3F003E60F3 /* BetRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetRecord.swift; sourceTree = "<group>"; };
+		F500DA6A25075F60003E60F3 /* BetLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetLoader.swift; sourceTree = "<group>"; };
 		F50762E324B438AD00676F9C /* ChangePlayersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePlayersView.swift; sourceTree = "<group>"; };
 		F50762E524BC244600676F9C /* RecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewModel.swift; sourceTree = "<group>"; };
 		F50762EB24C01D0100676F9C /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
@@ -114,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				F5D7FC6A24D0E7F7006BFC4A /* APILoader.swift */,
+				F500DA6A25075F60003E60F3 /* BetLoader.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -127,6 +132,7 @@
 				F50762EB24C01D0100676F9C /* Functions.swift */,
 				F55DABD924EFAF880078452F /* AppState.swift */,
 				F5441EB524F701BB00F8DBDF /* Neumorphic.swift */,
+				F500DA6825074C3F003E60F3 /* BetRecord.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -344,7 +350,9 @@
 				F56E71922493505C007E8FF5 /* ContentView.swift in Sources */,
 				F53BE01B2384482700C3E203 /* UserData.swift in Sources */,
 				F55DABDA24EFAF880078452F /* AppState.swift in Sources */,
+				F500DA6925074C3F003E60F3 /* BetRecord.swift in Sources */,
 				F5441EBE24FAFAB700F8DBDF /* AddNewPlayerView.swift in Sources */,
+				F500DA6B25075F60003E60F3 /* BetLoader.swift in Sources */,
 				F5D7FC7A24D9CEF4006BFC4A /* SigninWithAppleCoodinator.swift in Sources */,
 				F50762E624BC244600676F9C /* RecordViewModel.swift in Sources */,
 				F5D7FC6F24D94087006BFC4A /* SigninWithAppleButton.swift in Sources */,

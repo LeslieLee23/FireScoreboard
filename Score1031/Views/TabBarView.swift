@@ -35,6 +35,15 @@ struct TabBarView: View {
         }
         .tag(Tab.HistoryView)
         
+        AddBetView()
+          .tabItem {
+            Image(systemName: "suit.spade.fill").font(.system(size:20))
+            Text("Bets")
+              .fontWeight(.light)
+              .font(.system(size:11))
+        }
+        .tag(Tab.AddBetView)
+        
         ChangePlayersView()
           .tabItem {
             Image(systemName: "person.2.square.stack").font(.system(size:20))
@@ -64,6 +73,7 @@ struct TabBarView_Previews: PreviewProvider {
       .environmentObject(NameAndScore())
       .environmentObject(UserData())
       .environmentObject(AddScoreFunc())
+      .environmentObject(AddBetFunc())
       .environmentObject(AppState())
     }
 }
@@ -74,5 +84,6 @@ extension TabBarView {
         case HistoryView
         case ChangePlayersView
         case AddNewPlayerView
+        case AddBetView
     }
 }

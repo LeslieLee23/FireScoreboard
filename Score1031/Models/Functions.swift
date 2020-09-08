@@ -115,6 +115,23 @@ class AddScoreFunc: ObservableObject {
   
 }
 
+class AddBetFunc: ObservableObject {
+  func createBet(playerID: String, betScore: Int, betDescription: String) -> (BetRecord) {
+    var bet = BetRecord(playerID: "0", betDescription: "Default Bet Description", betScore: "0", betEntryTime: Date(), betEntryTimeString: "")
+    
+    bet.id = UUID().uuidString
+    bet.betDescription = betDescription
+    bet.betEntryTime = Date()
+    bet.playerID = playerID
+    bet.betScore = String(betScore)
+    bet.betEntryTimeString = getDateString(Date: bet.betEntryTime!)
+    bet.userId = Auth.auth().currentUser?.uid
+    print("&&&&&UserID\(String(describing: bet.userId))")
+    print(bet)
+    return bet
+}
+}
+
 func getDateString(Date: Date) -> String {
   let dateFormatter = DateFormatter()
   dateFormatter.dateFormat = "MMM d, yyyy h:mm a"

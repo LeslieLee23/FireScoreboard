@@ -181,19 +181,9 @@ struct NeuButtonStyle: ButtonStyle {
         
       } else if ((editedScore == 0 && reason.isEmpty) || selectedName == 5) {
         RoundedRectangle(cornerRadius: 30)
-          .stroke(Color.offWhite, lineWidth: 5)
-          .shadow(color: Color.black.opacity(0.2), radius: 4, x: 5, y: 5)
-          .frame(width: w, height: h)
-          .clipShape(
-            RoundedRectangle(cornerRadius: 30)
-        )
-          .shadow(color: Color.white, radius: 4, x: -3, y: -3)
-          .frame(width: w, height: h)
-          .clipShape(
-            RoundedRectangle(cornerRadius: 30)
-        )
-          .background(Color.offWhite)
-          .cornerRadius(40)
+          .fill(Color.offWhite)
+          .shadow(color: Color.black.opacity(0.2), radius: 6, x: 6, y: 6)
+          .shadow(color: Color.white.opacity(0.8), radius: 6, x: -3, y: -3)
           .frame(width: w, height: h)
           .overlay(
             configuration.label
@@ -216,3 +206,4 @@ struct NeuButtonStyle: ButtonStyle {
     
   }
 }
+
