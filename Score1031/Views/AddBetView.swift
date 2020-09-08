@@ -1,8 +1,8 @@
 //
-//  EditModeView.swift
+//  AddBetView.swift
 //  Score1031
 //
-//  Created by Danting Li on 8/14/20.
+//  Created by Danting Li on 9/7/20.
 //  Copyright © 2020 HULUCave. All rights reserved.
 //
 
@@ -13,7 +13,7 @@ import CoreData
 import Disk
 import Firebase
 
-struct EditModeView: View {
+struct AddBetView: View {
   @State var reason = ""
   @State var editedScore = 0
   @State var selectedNameString = ""
@@ -28,8 +28,26 @@ struct EditModeView: View {
   
   
   var body: some View {
+    ZStack{
+      Color.offWhite.edgesIgnoringSafeArea(.all)
+
     VStack {
       Spacer()
+      VStack() {
+      Text("Enter bet:")
+      TextField("Bet description", text: $reason)
+        .textFieldStyle(NeuTextStyle(w: 290, h: 120, cr: 15))
+       // .textFieldStyle(RoundedBorderTextFieldStyle())
+        .frame(width: 290, height: 120)
+        .multilineTextAlignment(.leading)
+        
+//        .padding(.trailing, 35)
+//        .padding(.leading, 35)
+      }.padding()
+              
+      VStack() {
+        Text("Enter stake:")
+      }
       ///Add and minus button row
       HStack {
         Spacer()
@@ -66,25 +84,6 @@ struct EditModeView: View {
         .buttonStyle(CircleStyle())
         Spacer()
       }///Add and minus button row
-        
-      
-      ///Reason text input row
-      Spacer()
-      VStack() {
-      TextField("What for?", text: $reason)
-        .textFieldStyle(NeuTextStyle())
-       // .textFieldStyle(RoundedBorderTextFieldStyle())
-        .frame(width: 260, height: 50)
-        .multilineTextAlignment(.leading)
-        
-//        .padding(.trailing, 35)
-//        .padding(.leading, 35)
-      }.padding()
-        
-      .padding(.bottom, keyboard.currentHeight)
-      .edgesIgnoringSafeArea(.bottom)
-      .animation(.easeOut(duration: 0.16))
-      ///Reason text input row
       
       Spacer()
       
@@ -164,15 +163,17 @@ struct EditModeView: View {
       }
       Spacer()
     }
+          }
   }
-} 
+}
 
-struct EditModeView_Previews: PreviewProvider {
+struct AddBetView_Previews: PreviewProvider {
   static var previews: some View {
-    EditModeView()
+    AddBetView()
     .environmentObject(NameAndScore())
     .environmentObject(UserData())
     .environmentObject(AddScoreFunc())
     .environmentObject(AppState())
   }
 }
+

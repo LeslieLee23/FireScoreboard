@@ -68,8 +68,6 @@ struct ContentView: View {
                   .labelsHidden()
                   .simultaneousGesture(TapGesture().onEnded {
                     if self.userData.editMode == false {
-                      print("wwiwiwiwiwi")
-                  //    self.addEidtChoice.addViewSelected = true
                       self.userData.selectedName = 5
                       self.userData.emojiPlusName  = ["\(self.nameAndScore.playerOneEmoji!) \( self.nameAndScore.playerOneName!)","\( self.nameAndScore.playerTwoEmoji!) \( self.nameAndScore.playerTwoName!)"]
                       print("\(self.userData.emojiPlusName)")
@@ -122,9 +120,16 @@ struct ContentView: View {
               VStack {
                 ///Title row (60)
                 VStack {
+                  if self.userData.editMode == true {
+                    Text("Select one:")
+                    .font(.system(size: 22))
+                  //  .fontWeight(.bold)
+                      .foregroundColor(Color.darkGray)
+                  } else {
                   Text("Scoreboard")
                     .font(.system(size: 23))
                     .fontWeight(.bold)
+                  }
                 } ///Title row
                   .frame(width: 340, height: 60, alignment: .center)
                 
@@ -230,6 +235,7 @@ struct ContentView: View {
           self.nameAndScore.playerOneEmoji = "🌋"
           self.nameAndScore.playerTwoEmoji = "👨🏻"
           self.userData.playerID = "0"
+          self.userData.selectedName = 5
         }
       }
 }

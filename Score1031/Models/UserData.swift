@@ -88,4 +88,5 @@ class UserData: ObservableObject {
               UserDefaults.standard.set(self.addPlayerTwoEmoji, forKey: "addPlayerTwoEmoji")
           }
       }
+
 }

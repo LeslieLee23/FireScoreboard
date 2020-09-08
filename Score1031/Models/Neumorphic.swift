@@ -15,61 +15,61 @@ import UIKit
 
 
 extension LinearGradient {
-    init(_ colors: Color...) {
-        self.init(gradient: Gradient(colors: colors), startPoint: .topLeading, endPoint: .bottomTrailing)
-    }
+  init(_ colors: Color...) {
+    self.init(gradient: Gradient(colors: colors), startPoint: .topLeading, endPoint: .bottomTrailing)
+  }
 }
- 
+
 
 struct ColorfulBackground<S: Shape>: View {
-    var isHighlighted: Bool
-    var shape: S
-
-    var body: some View {
-        ZStack {
-            if isHighlighted {
-                shape
-                    .fill(LinearGradient(Color.lightEnd, Color.lightStart))
-                    .overlay(shape.stroke(LinearGradient(Color.lightStart, Color.lightEnd), lineWidth: 4))
-                    .shadow(color: Color.darkStart, radius: 10, x: 5, y: 5)
-                    .shadow(color: Color.darkEnd, radius: 10, x: -5, y: -5)
-            } else {
-                shape
-                    .fill(LinearGradient(Color.darkStart, Color.darkEnd))
-                    .overlay(shape.stroke(LinearGradient(Color.lightStart, Color.lightEnd), lineWidth: 4))
-                    .shadow(color: Color.darkStart, radius: 10, x: -10, y: -10)
-                    .shadow(color: Color.darkEnd, radius: 10, x: 10, y: 10)
-            }
-        }
+  var isHighlighted: Bool
+  var shape: S
+  
+  var body: some View {
+    ZStack {
+      if isHighlighted {
+        shape
+          .fill(LinearGradient(Color.lightEnd, Color.lightStart))
+          .overlay(shape.stroke(LinearGradient(Color.lightStart, Color.lightEnd), lineWidth: 4))
+          .shadow(color: Color.darkStart, radius: 10, x: 5, y: 5)
+          .shadow(color: Color.darkEnd, radius: 10, x: -5, y: -5)
+      } else {
+        shape
+          .fill(LinearGradient(Color.darkStart, Color.darkEnd))
+          .overlay(shape.stroke(LinearGradient(Color.lightStart, Color.lightEnd), lineWidth: 4))
+          .shadow(color: Color.darkStart, radius: 10, x: -10, y: -10)
+          .shadow(color: Color.darkEnd, radius: 10, x: 10, y: 10)
+      }
     }
+  }
 }
 
 
 struct ColorfulButtonStyle: ButtonStyle {
-    func makeBody(configuration: Self.Configuration) -> some View {
-        configuration.label
-            .padding(25)
-            .contentShape(Circle())
-            .background(
-                ColorfulBackground(isHighlighted: configuration.isPressed, shape: Circle())
-            )
-            .animation(nil)
-    }
+  func makeBody(configuration: Self.Configuration) -> some View {
+    configuration.label
+      .padding(25)
+      .contentShape(Circle())
+      .background(
+        ColorfulBackground(isHighlighted: configuration.isPressed, shape: Circle())
+    )
+      .animation(nil)
+  }
 }
 
 struct ColorfulToggleStyle: ToggleStyle {
-    func makeBody(configuration: Self.Configuration) -> some View {
-        Button(action: {
-            configuration.isOn.toggle()
-        }) {
-            configuration.label
-                .padding(25)
-                .contentShape(Circle())
-        }
-        .background(
-            ColorfulBackground(isHighlighted: configuration.isOn, shape: Circle())
-        )
+  func makeBody(configuration: Self.Configuration) -> some View {
+    Button(action: {
+      configuration.isOn.toggle()
+    }) {
+      configuration.label
+        .padding(25)
+        .contentShape(Circle())
     }
+    .background(
+      ColorfulBackground(isHighlighted: configuration.isOn, shape: Circle())
+    )
+  }
 }
 
 struct CircleStyle: ButtonStyle {
@@ -78,41 +78,33 @@ struct CircleStyle: ButtonStyle {
     
     Group {
       if configuration.isPressed {
-//        Circle()
-//          .fill()
-//          .shadow(color: Color.black.opacity(0.3), radius: 6, x: 6, y: 6)
-//          .shadow(color: Color.white.opacity(0.8), radius: 6, x: -3, y: -3)
-//          .overlay(
-//            configuration.label
-//              .foregroundColor(.white)
-//        )
         
-                  Circle()
-                  .stroke(Color.gray, lineWidth: 3)
-                  .blur(radius: 3)
-                  .offset(x: 2, y: 2)
-                  .mask(Circle().fill(LinearGradient(Color.black, Color.clear)))
-        
-                  .overlay(
-                      Circle()
-                          .stroke(color, lineWidth: 8)
-                          .blur(radius: 3)
-                          .offset(x: -2, y: -2)
-                          .mask(Circle().fill(LinearGradient(Color.clear, Color.black)))
-                  )
-                  .overlay(
-                    configuration.label
-                      .foregroundColor(.white)
-                )
+        Circle()
+          .stroke(Color.gray, lineWidth: 3)
+          .blur(radius: 3)
+          .offset(x: 2, y: 2)
+          .mask(Circle().fill(LinearGradient(Color.black, Color.clear)))
+          
+          .overlay(
+            Circle()
+              .stroke(color, lineWidth: 8)
+              .blur(radius: 3)
+              .offset(x: -2, y: -2)
+              .mask(Circle().fill(LinearGradient(Color.clear, Color.black)))
+        )
+          .overlay(
+            configuration.label
+              .foregroundColor(.white)
+        )
         
       } else {
-                Circle()
-                  .fill()
-                  .shadow(color: Color.black.opacity(0.3), radius: 6, x: 6, y: 6)
-                  .shadow(color: Color.white.opacity(0.8), radius: 6, x: -3, y: -3)
-                  .overlay(
-                    configuration.label
-                      .foregroundColor(.white)
+        Circle()
+          .fill()
+          .shadow(color: Color.black.opacity(0.3), radius: 6, x: 6, y: 6)
+          .shadow(color: Color.white.opacity(0.8), radius: 6, x: -3, y: -3)
+          .overlay(
+            configuration.label
+              .foregroundColor(.white)
         )
       }
     }
@@ -123,49 +115,104 @@ struct CircleStyle: ButtonStyle {
 
 public struct NeuTextStyle : TextFieldStyle {
   var color: Color = .white
+  var w: CGFloat = 270
+  var h:CGFloat = 50
+  var cr:CGFloat = 30
+  
   public func _body(configuration: TextField<Self._Label>) -> some View {
     
-    RoundedRectangle(cornerRadius: 30)
+    RoundedRectangle(cornerRadius: cr)
       .stroke(Color.offWhite, lineWidth: 5)
       .shadow(color: Color.black.opacity(0.2), radius: 4, x: 5, y: 5)
-      .frame(width: 270, height: 50)
+      .frame(width: w, height: h)
       .clipShape(
-        RoundedRectangle(cornerRadius: 30)
+        RoundedRectangle(cornerRadius: cr)
     )
       .shadow(color: Color.white, radius: 4, x: -3, y: -3)
-      .frame(width: 270, height: 50)
+      .frame(width: w, height: h)
       .clipShape(
-        RoundedRectangle(cornerRadius: 30)
+        RoundedRectangle(cornerRadius: cr)
     )
       .background(Color.offWhite)
-      .cornerRadius(40)
-      .frame(width: 270, height: 50)
+      .cornerRadius(cr + 10)
+      .frame(width: w, height: h)
       .overlay(
         configuration
           .foregroundColor(.darkGray)
-          .frame(width: 250, height: 50)
+          .frame(width: w - 20, height: h)
         , alignment: .trailing
     )
-    
-    //    RoundedRectangle(cornerRadius: 25)
-    //              .stroke(Color.gray, lineWidth: 3)
-    //              .blur(radius: 3)
-    //              .offset(x: 2, y: 2)
-    //              .mask(RoundedRectangle(cornerRadius: 13).fill(LinearGradient(Color.black, Color.clear)))
-    //
-    //              .overlay(
-    //                  RoundedRectangle(cornerRadius: 13)
-    //                      .stroke(color, lineWidth: 8)
-    //                      .blur(radius: 3)
-    //                      .offset(x: -2, y: -2)
-    //                      .mask(RoundedRectangle(cornerRadius: 13).fill(LinearGradient(Color.clear, Color.black)))
-    //              )
-    //              .overlay(
-    //                configuration
-    //                  .foregroundColor(.white)
-    //            )
     
   }
 }
 
-
+struct NeuButtonStyle: ButtonStyle {
+  var color: Color = .white
+  var editedScore: Int = 0
+  var reason: String = "ABC"
+  var selectedName: Int = 3
+  var w: CGFloat = 85
+  var h:CGFloat = 45
+  
+  func makeBody(configuration: ButtonStyleConfiguration) -> some View {
+    
+    Group {
+      if configuration.isPressed {
+        
+        RoundedRectangle(cornerRadius: 30)
+          .stroke(Color.offWhite, lineWidth: 5)
+          .shadow(color: Color.black.opacity(0.2), radius: 4, x: 5, y: 5)
+          .frame(width: w, height: h)
+          .clipShape(
+            RoundedRectangle(cornerRadius: 30)
+        )
+          .shadow(color: Color.white, radius: 4, x: -3, y: -3)
+          .frame(width: w, height: h)
+          .clipShape(
+            RoundedRectangle(cornerRadius: 30)
+        )
+          .background(Color.offWhite)
+          .cornerRadius(40)
+          .frame(width: w, height: h)
+          .overlay(
+            configuration.label
+              .foregroundColor(.darkGray)
+        )
+        
+      } else if ((editedScore == 0 && reason.isEmpty) || selectedName == 5) {
+        RoundedRectangle(cornerRadius: 30)
+          .stroke(Color.offWhite, lineWidth: 5)
+          .shadow(color: Color.black.opacity(0.2), radius: 4, x: 5, y: 5)
+          .frame(width: w, height: h)
+          .clipShape(
+            RoundedRectangle(cornerRadius: 30)
+        )
+          .shadow(color: Color.white, radius: 4, x: -3, y: -3)
+          .frame(width: w, height: h)
+          .clipShape(
+            RoundedRectangle(cornerRadius: 30)
+        )
+          .background(Color.offWhite)
+          .cornerRadius(40)
+          .frame(width: w, height: h)
+          .overlay(
+            configuration.label
+              .foregroundColor(.lightGray)
+        )
+      }
+      else {
+        RoundedRectangle(cornerRadius: 30)
+          .fill(Color.offWhite)
+          .shadow(color: Color.black.opacity(0.2), radius: 6, x: 6, y: 6)
+          .shadow(color: Color.white.opacity(0.8), radius: 6, x: -3, y: -3)
+          .frame(width: w, height: h)
+          .overlay(
+            configuration.label
+              .foregroundColor(.darkGray)
+        )
+      }
+    }
+    
+    
+  }
+}
