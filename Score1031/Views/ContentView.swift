@@ -215,6 +215,9 @@ struct ContentView: View {
             }
           }
         }
+          .onTapGesture {
+              endEditing()
+          }
           .sheet(isPresented: $showSignInForm) {
             SignInView()
         }

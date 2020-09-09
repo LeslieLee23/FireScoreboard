@@ -71,11 +71,15 @@ struct EditModeView: View {
       ///Reason text input row
       Spacer()
       VStack() {
-      TextField("What for?", text: $reason)
-        .textFieldStyle(NeuTextStyle())
-       // .textFieldStyle(RoundedBorderTextFieldStyle())
-        .frame(width: 260, height: 50)
-        .multilineTextAlignment(.leading)
+//      TextField("What for?", text: $reason)
+//        .textFieldStyle(NeuTextStyle())
+//        .frame(width: 260, height: 50)
+//        .multilineTextAlignment(.leading)
+        MultilineTextField("What for?", text: $reason) {
+          UIApplication.shared.endEditing()
+        }
+         .overlay(RoundedRectangle(cornerRadius: 5).stroke(Color.gray))
+        .frame(width: 290, height: 50)
         
 //        .padding(.trailing, 35)
 //        .padding(.leading, 35)

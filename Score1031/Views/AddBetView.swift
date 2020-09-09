@@ -24,7 +24,8 @@ struct AddBetView: View {
   @EnvironmentObject var userData: UserData
   @ObservedObject private var betLoader = BetLoader()
   @State private var bets = BetLoader().bets3
-  @ObservedObject private var keyboard = KeyboardResponder()
+  static var test:String = ""
+  static var testBinding = Binding<String>(get: { test }, set: { test = $0 } )
   
   
   var body: some View {
@@ -39,11 +40,34 @@ struct AddBetView: View {
       Spacer()
       }
       VStack() {
-      TextField("Bet description", text: $bet)
-        .textFieldStyle(NeuTextStyle(w: 290, h: 120, cr: 15))
-       // .textFieldStyle(RoundedBorderTextFieldStyle())
-        .frame(width: 290, height: 120)
-        .multilineTextAlignment(.leading)
+    //  TextField("Bet description", text: $bet)
+    //    .textFieldStyle(NeuTextStyle(w: 290, h: 120, cr: 15))
+        RoundedRectangle(cornerRadius: 25)
+          .stroke(Color.offWhite, lineWidth: 5)
+          .shadow(color: Color.black.opacity(0.2), radius: 4, x: 5, y: 5)
+          .frame(width: 290, height: 120)
+          .clipShape(
+            RoundedRectangle(cornerRadius: 25)
+        )
+          .shadow(color: Color.white, radius: 4, x: -3, y: -3)
+          .frame(width: 290, height: 120)
+          .clipShape(
+            RoundedRectangle(cornerRadius: 25)
+        )
+          .background(Color.offWhite)
+          .cornerRadius(30)
+          .frame(width: 290, height: 120)
+       
+        .overlay(
+          MultilineTextField("Type here", text: $bet) {
+            UIApplication.shared.endEditing()
+          }
+            .frame(minWidth: 270, maxWidth: 270, minHeight: 0, maxHeight: 120),
+           // .border(Color.red),
+          alignment: .top
+        )
+     
+
         
 //        .padding(.trailing, 35)
 //        .padding(.leading, 35)
@@ -136,6 +160,8 @@ struct AddBetView: View {
       }
       Spacer()
     }
+          }.onTapGesture {
+              endEditing()
           }
   }
 }
