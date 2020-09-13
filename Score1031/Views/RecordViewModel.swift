@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct RecordViewModel: View {
-  var name: String = ""
-  var score: String = ""
-  var reason: String = ""
-  var entryTime: String = ""
+  var name: String = "Dudu"
+  var score: String = "+2"
+  var reason: String = "being a cute monkey"
+  var entryTime: String = "Sep 10, 2020 9:20 PM"
   var playerID: String = ""
   var nameStr: String = "Player Default"
   var nameEmo: String = "🐒"

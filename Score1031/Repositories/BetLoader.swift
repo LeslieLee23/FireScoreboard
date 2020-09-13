@@ -44,7 +44,6 @@ class BetLoader: BaseBetRepository, BetRepository, ObservableObject {
       }
       self.bets = documents.map {(queryDocumentSnapshot) -> BetRecord in
         let data = queryDocumentSnapshot.data()
-        
         let userId = data["userId"] as? String ?? ""
         let id = data["id"] as? String ?? ""
         let playerID = data["playerID"] as? String ?? ""
@@ -64,7 +63,9 @@ class BetLoader: BaseBetRepository, BetRepository, ObservableObject {
                   betEntryTimeString: betEntryTimeString,
                   userId: userId
         )
+        print(abc)
         return abc
+        
       }.sorted(by: { $0.betEntryTime! >= $1.betEntryTime!})
     }
   }
@@ -81,7 +82,7 @@ class BetLoader: BaseBetRepository, BetRepository, ObservableObject {
         "betEntryTimeString": bets3.betEntryTimeString,
         "userId": bets3.userId ?? "0"])
       
-      print("Yes yes bet this works!")
+      print("Yes yes this bet works!")
       
     } catch{
       print("NONONO This didn't work!")

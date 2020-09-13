@@ -135,7 +135,7 @@ struct AddBetView: View {
             playerID: self.userData.playerID!,
             betScore: self.betScore,
             betDescription: self.bet)
-          
+          print(self.bets)
           
           self.betLoader.saveData(bets3: self.bets)
           
@@ -159,6 +159,9 @@ struct AddBetView: View {
         Spacer()
       }
       Spacer()
+      Spacer()
+      Spacer()
+
     }
           }.onTapGesture {
               endEditing()

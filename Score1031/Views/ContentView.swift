@@ -34,7 +34,7 @@ struct ContentView: View {
     @EnvironmentObject var userData: UserData
     @ObservedObject private var apiLoader = APILoader()
     @State private var records3 = APILoader().records3
-    @ObservedObject var keyboardResponder = KeyboardResponder()
+  //  @ObservedObject var keyboardResponder = KeyboardResponder()
     
     @State var showSignInForm = false
     
@@ -228,7 +228,7 @@ struct ContentView: View {
           }
         )
       }
-      .offset(y: -keyboardResponder.currentHeight*0.5)
+    //  .offset(y: -keyboardResponder.currentHeight*0.5)
       .onAppear() {
         if self.nameAndScore.playerTwoName == nil {
           self.nameAndScore.PlayerTwoScore = 0
