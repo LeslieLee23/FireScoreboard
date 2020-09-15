@@ -96,6 +96,9 @@ struct EditModeView: View {
         Spacer()
         Button(action: {
           print("Name is \(self.userData.selectedName)")
+          self.userData.selectedName = 5
+          self.reason = ""
+          self.editedScore = 0
         }) {
           Text("Cancel")
           
@@ -144,26 +147,6 @@ struct EditModeView: View {
             }
           )
         }
-//        Button(action: {
-//          self.nameAndScore.PlayerTwoScore = 0
-//          self.nameAndScore.PlayerOneScore = 0
-//          self.nameAndScore.playerTwoName = "Player Two"
-//          self.nameAndScore.playerOneName = "Player One"
-//          self.nameAndScore.playerOneEmoji = "👩🏻"
-//          self.nameAndScore.playerTwoEmoji = "👨🏻"
-//          self.userData.playerID = "0"
-//
-//          self.userData.emojiPlusName = ["👩🏻 Player One", "👨🏻 Player Two"]
-//          self.userData.oldscore = ["0", "0"]
-//          self.userData.names = ["Player One", "Player Two"]
-//          self.userData.emojis = ["👩🏻", "👨🏻"]
-//          self.apiLoader.remove()
-//
-//
-//        })
-//        {
-//          Text("Start Over")
-//        }
         Spacer()
       }
       Spacer()

@@ -12,8 +12,8 @@ struct NameEmojiRowView: View {
   
   @EnvironmentObject private var nameAndScore: NameAndScore
   @EnvironmentObject var userData: UserData
-  @State var playerOneColors: Color = .grayCircle
-  @State var playerTwoColors: Color = .grayCircle
+//  @State var playerOneColors: Color = .grayCircle
+//  @State var playerTwoColors: Color = .grayCircle
   
   var body: some View {
     VStack() {
@@ -22,27 +22,27 @@ struct NameEmojiRowView: View {
         HStack {
           Button(action: {
             self.userData.selectedName = 0
-            self.playerOneColors = .purple
-            self.playerTwoColors = .grayCircle
+//            self.playerOneColors = .purple
+//            self.playerTwoColors = .grayCircle
             print("Set selectedName to \(self.userData.selectedName)")
           }) {
             Text(self.nameAndScore.playerOneEmoji ?? "👩🏻")
               .font(.system(size: 55))
           }
           .frame(width: 165, height: 125, alignment: .center)
-          .buttonStyle(CircleStyleEmoji(color: playerOneColors))
+          .buttonStyle(CircleStyleEmoji(player: 0, selectedPlayer: self.userData.selectedName))
 
           Button(action: {
             self.userData.selectedName = 1
-            self.playerOneColors = .grayCircle
-            self.playerTwoColors = .purple
+//            self.playerOneColors = .grayCircle
+//            self.playerTwoColors = .purple
             print("Set selectedName to \(self.userData.selectedName)")
           }) {
             Text(self.nameAndScore.playerTwoEmoji ?? "👨🏻")
               .font(.system(size: 55))
           }
           .frame(width: 165, height: 125, alignment: .center)
-          .buttonStyle(CircleStyleEmoji(color: playerTwoColors))
+          .buttonStyle(CircleStyleEmoji(player: 1, selectedPlayer: self.userData.selectedName))
 
         }
         
@@ -54,27 +54,22 @@ struct NameEmojiRowView: View {
         HStack {
           Button(action: {
             self.userData.selectedName = 0
-            self.playerOneColors = .purple
-            self.playerTwoColors = .grayCircle
             print("Set selectedName to \(self.userData.selectedName)")
           }) {
             Text(self.nameAndScore.playerOneName ?? "Miu")
               .font(.system(size: 28))
           }
           .frame(width: 165, height: 125, alignment: .center)
-          .buttonStyle(SquareStyle(color: playerOneColors))
+          .buttonStyle(SquareStyle(player: 0, selectedPlayer: 0))
           Button(action: {
             self.userData.selectedName = 1
-            self.playerOneColors = .grayCircle
-            self.playerTwoColors = .purple
-
             print("Set selectedName to \(self.userData.selectedName)")
           }) {
             Text(self.nameAndScore.playerTwoName ?? "Whof")
               .font(.system(size: 28))
           }
           .frame(width: 165, height: 125, alignment: .center)
-          .buttonStyle(SquareStyle(color: playerTwoColors))
+          .buttonStyle(SquareStyle(player: 1, selectedPlayer: 1))
         }
         .frame(width: 350, height: 125, alignment: .center)
       }///NameEmojiRow (140) (Edit Mode) (Normal Mode)

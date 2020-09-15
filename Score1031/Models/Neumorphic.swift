@@ -21,57 +21,6 @@ extension LinearGradient {
 }
 
 
-struct ColorfulBackground<S: Shape>: View {
-  var isHighlighted: Bool
-  var shape: S
-  
-  var body: some View {
-    ZStack {
-      if isHighlighted {
-        shape
-          .fill(LinearGradient(Color.lightEnd, Color.lightStart))
-          .overlay(shape.stroke(LinearGradient(Color.lightStart, Color.lightEnd), lineWidth: 4))
-          .shadow(color: Color.darkStart, radius: 10, x: 5, y: 5)
-          .shadow(color: Color.darkEnd, radius: 10, x: -5, y: -5)
-      } else {
-        shape
-          .fill(LinearGradient(Color.darkStart, Color.darkEnd))
-          .overlay(shape.stroke(LinearGradient(Color.lightStart, Color.lightEnd), lineWidth: 4))
-          .shadow(color: Color.darkStart, radius: 10, x: -10, y: -10)
-          .shadow(color: Color.darkEnd, radius: 10, x: 10, y: 10)
-      }
-    }
-  }
-}
-
-
-struct ColorfulButtonStyle: ButtonStyle {
-  func makeBody(configuration: Self.Configuration) -> some View {
-    configuration.label
-      .padding(25)
-      .contentShape(Circle())
-      .background(
-        ColorfulBackground(isHighlighted: configuration.isPressed, shape: Circle())
-    )
-      .animation(nil)
-  }
-}
-
-struct ColorfulToggleStyle: ToggleStyle {
-  func makeBody(configuration: Self.Configuration) -> some View {
-    Button(action: {
-      configuration.isOn.toggle()
-    }) {
-      configuration.label
-        .padding(25)
-        .contentShape(Circle())
-    }
-    .background(
-      ColorfulBackground(isHighlighted: configuration.isOn, shape: Circle())
-    )
-  }
-}
-
 struct CircleStyle: ButtonStyle {
   var color: Color = .white
   func makeBody(configuration: ButtonStyleConfiguration) -> some View {

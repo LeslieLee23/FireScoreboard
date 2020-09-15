@@ -293,11 +293,12 @@ struct FitToWidth: ViewModifier {
 
 
 struct CircleStyleEmoji: ButtonStyle {
-  var color: Color = .green
+  var player: Int = 5
+  var selectedPlayer: Int = 6
   func makeBody(configuration: ButtonStyleConfiguration) -> some View {
     
     Circle()
-      .strokeBorder(color, lineWidth: 6.5)
+      .strokeBorder(player == selectedPlayer ? Color.purple : Color.grayCircle, lineWidth: 6.5)
       
       .opacity(configuration.isPressed ? 0.3 : 1)
       .aspectRatio(contentMode: .fit)
@@ -313,10 +314,13 @@ struct CircleStyleEmoji: ButtonStyle {
 }
 
 struct SquareStyle: ButtonStyle {
-  var color: Color = .green
+ // var color: Color = .green
+  var player: Int = 5
+  var selectedPlayer: Int = 6
+  
   func makeBody(configuration: Self.Configuration) -> some View {
     RoundedRectangle(cornerRadius: 13)
-      .stroke(color, lineWidth: 7.5)
+      .stroke(player == selectedPlayer ? Color.purple : Color.grayCircle, lineWidth: 7.5)
       .frame(width: 135, height: 60, alignment: .center)
       .cornerRadius(13)
       .opacity(configuration.isPressed ? 0.3 : 1)
@@ -401,9 +405,9 @@ private struct UITextViewWrapper: UIViewRepresentable {
         if uiView.text != self.text {
             uiView.text = self.text
         }
-        if uiView.window != nil, !uiView.isFirstResponder {
-            uiView.becomeFirstResponder()
-        }
+//        if uiView.window != nil, !uiView.isFirstResponder {
+//            uiView.becomeFirstResponder()
+//        }
         UITextViewWrapper.recalculateHeight(view: uiView, result: $calculatedHeight)
     }
 

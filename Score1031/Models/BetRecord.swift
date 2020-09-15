@@ -22,5 +22,8 @@ struct BetRecord: Codable , Identifiable
   var betEntryTime: Date?
   var betEntryTimeString: String
   var userId: String?
+  var winnerName: String?
+  var winnerNameStr: String?
+  var winnerNameEmo: String?
 }
 

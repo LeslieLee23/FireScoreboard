@@ -89,4 +89,9 @@ class UserData: ObservableObject {
           }
       }
 
+    @Published var betWinnerName: Int = UserDefaults.standard.integer(forKey: "betWinnerName") {
+        didSet {
+            UserDefaults.standard.set(self.betWinnerName, forKey: "betWinnerName")
+        }
+    }
 }

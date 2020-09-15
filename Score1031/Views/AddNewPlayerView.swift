@@ -122,6 +122,7 @@ struct AddNewPlayerView: View {
               self.nameAndScore.PlayerTwoScore = 0
               self.userData.playerID = String(self.userData.maxPlayerID)
                 
+
             }) {
                 Text("Change Players")
                 .padding(.trailing, 35)

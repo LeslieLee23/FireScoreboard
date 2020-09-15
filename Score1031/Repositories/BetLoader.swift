@@ -20,8 +20,8 @@ class BaseBetRepository {
 }
 
 protocol BetRepository: BaseBetRepository {
-//  func findMaxPlayerID() -> Int
   func saveData(bets3: BetRecord)
+  func updateData(bets: BetRecord)
 }
 
 class BetLoader: BaseBetRepository, BetRepository, ObservableObject {
@@ -63,7 +63,6 @@ class BetLoader: BaseBetRepository, BetRepository, ObservableObject {
                   betEntryTimeString: betEntryTimeString,
                   userId: userId
         )
-        print(abc)
         return abc
         
       }.sorted(by: { $0.betEntryTime! >= $1.betEntryTime!})
@@ -72,8 +71,8 @@ class BetLoader: BaseBetRepository, BetRepository, ObservableObject {
 
   func saveData(bets3: BetRecord) {
     do {
-
-      db.collection("bets").addDocument(data: [
+      let newDocumentID = bets3.id
+      db.collection("bets").document(newDocumentID).setData([
         "id": bets3.id,
         "playerID": bets3.playerID,
         "betDescription": bets3.betDescription,
@@ -92,6 +91,16 @@ class BetLoader: BaseBetRepository, BetRepository, ObservableObject {
    
   }
   
+  func updateData(bets: BetRecord) {
+    let betID = bets.id
+    do {
+      try db.collection("bets").document(betID).setData(from: bets)
+    }
+    catch {
+      fatalError("Unable to update data: \(error.localizedDescription)")
+    }
+    
+  }
    func remove() -> Void {
     db.collection("bets").getDocuments { (querySnapshot, error) in
       if error != nil {
