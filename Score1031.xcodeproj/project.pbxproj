@@ -120,18 +120,11 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		F508FB6524501FC1001C5C24 /* Repositories */ = {
+		F51C7A3023C78AED00540B25 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				F5D7FC6A24D0E7F7006BFC4A /* APILoader.swift */,
 				F500DA6A25075F60003E60F3 /* BetLoader.swift */,
-			);
-			path = Repositories;
-			sourceTree = "<group>";
-		};
-		F51C7A3023C78AED00540B25 /* Models */ = {
-			isa = PBXGroup;
-			children = (
 				F53BE01A2384482700C3E203 /* UserData.swift */,
 				F51C7A3523D4EB6300540B25 /* NameAndScore.swift */,
 				F508FB5F244EA96A001C5C24 /* Recordline.swift */,
@@ -148,23 +141,15 @@
 			children = (
 				F55DABD724EF3B9B0078452F /* TabBarView.swift */,
 				F56E71912493505C007E8FF5 /* ContentView.swift */,
-				F5BA924624E75A6900CA3519 /* EditModeView.swift */,
-				F541995724EA3D6A00BF54EC /* NameEmojiRowView.swift */,
 				F508FB6324501144001C5C24 /* HistoryView.swift */,
 				F5441EBD24FAFAB700F8DBDF /* AddNewPlayerView.swift */,
 				F50762E324B438AD00676F9C /* ChangePlayersView.swift */,
-				F5CD313F250DD30F00B67510 /* BetViewModel.swift */,
-				F591294F2420368F0071E1D3 /* SelectViewModel.swift */,
-				F50762E524BC244600676F9C /* RecordViewModel.swift */,
-				F5441EB924F8726900F8DBDF /* RecordSnapViewModel.swift */,
-				F5D7FC6E24D94087006BFC4A /* SigninWithAppleButton.swift */,
-				F5D7FC7424D942A6006BFC4A /* SignInView.swift */,
-				F55DABD524EBB9090078452F /* SplashView.swift */,
-				F5441EB724F7091900F8DBDF /* HistorySnapView.swift */,
-				F5441EBB24F9047800F8DBDF /* KeyboardResponder.swift */,
 				F500DA66250732BA003E60F3 /* AddBetView.swift */,
 				F500DA6C25089247003E60F3 /* BetsHomeView.swift */,
 				F5CD3141250EB6B500B67510 /* BetAssignResultView.swift */,
+				F5D7FC7424D942A6006BFC4A /* SignInView.swift */,
+				F5441EBB24F9047800F8DBDF /* KeyboardResponder.swift */,
+				F5CD314625116ACA00B67510 /* SubViews */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -209,9 +194,9 @@
 				F51C7A4023D972BC00540B25 /* Data */,
 				F51C7A3C23D96C3800540B25 /* Resource */,
 				F5D7FC7624D9CE07006BFC4A /* Services */,
-				F508FB6524501FC1001C5C24 /* Repositories */,
 				F53BDFCF236B44CC00C3E203 /* AppDelegate.swift */,
 				F53BDFD1236B44CC00C3E203 /* SceneDelegate.swift */,
+				F5CD31432511689700B67510 /* ViewModels */,
 				F51C7A3B23D5715A00540B25 /* Views */,
 				F51C7A3023C78AED00540B25 /* Models */,
 				F53BDFD5236B44CF00C3E203 /* Assets.xcassets */,
@@ -229,6 +214,29 @@
 				F53BDFD8236B44CF00C3E203 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F5CD31432511689700B67510 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				F5CD313F250DD30F00B67510 /* BetViewModel.swift */,
+				F50762E524BC244600676F9C /* RecordViewModel.swift */,
+				F5441EB924F8726900F8DBDF /* RecordSnapViewModel.swift */,
+				F591294F2420368F0071E1D3 /* SelectViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		F5CD314625116ACA00B67510 /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				F5BA924624E75A6900CA3519 /* EditModeView.swift */,
+				F541995724EA3D6A00BF54EC /* NameEmojiRowView.swift */,
+				F55DABD524EBB9090078452F /* SplashView.swift */,
+				F5441EB724F7091900F8DBDF /* HistorySnapView.swift */,
+				F5D7FC6E24D94087006BFC4A /* SigninWithAppleButton.swift */,
+			);
+			path = SubViews;
 			sourceTree = "<group>";
 		};
 		F5D7FC7624D9CE07006BFC4A /* Services */ = {
