@@ -19,10 +19,9 @@ struct HistoryView: View {
     NavigationView {
       VStack(alignment: .leading) {
         List {
-          ForEach (apiLoader.records) { records3 in
-            if records3.playerID == self.userData.playerID {
+          ForEach (apiLoader.fetchPlayerData(self.userData.playerID ?? "0")) { records3 in
               RecordViewModel(name: records3.recordName, score: records3.recordScore, reason: records3.recordReason, entryTime: records3.recordEntryTimeString, playerID: records3.playerID, nameStr: records3.recordNameStr ?? "Wowo", nameEmo: records3.recordNameEmo ?? "🐒")
-            }
+
           }.listRowBackground(Color.offWhite)
         }
         
@@ -33,9 +32,6 @@ struct HistoryView: View {
         Spacer()
         }
       )
-      .onAppear() {
-        self.apiLoader.fetchData()
-      }
     }
  
   }

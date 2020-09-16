@@ -52,20 +52,15 @@ struct HistorySnapView: View {
         }
         }
         List {
-          ForEach (apiLoader.filteredPlayerData) { records3 in
-           // if records3.playerID == self.userData.playerID {
+          ForEach (apiLoader.fetchPlayerData(self.userData.playerID ?? "0").prefix(3)) { records3 in
+
               RecordSnapViewModel(name: records3.recordName, score: records3.recordScore, reason: records3.recordReason, entryTime: records3.recordEntryTimeString, playerID: records3.playerID, nameStr: records3.recordNameStr ?? "Wowo", nameEmo: records3.recordNameEmo ?? "🐒")
-        //    }
+
           }.listRowBackground(Color.offWhite)
         }
       }//.border(Color.red)
       
       .frame(width: 290, height: 100, alignment: .leading)
-      .onAppear() {
-        self.apiLoader.fetchData()
-        self.apiLoader.fetchPlayerData(self.userData.playerID ?? "0")
-      }
-      
     }
 
   }

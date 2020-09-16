@@ -16,7 +16,6 @@ import FirebaseDatabase
 
 class BaseScoreRepository {
   @Published var records = [Recordline]()
-  @Published var filteredPlayerData = [Recordline]()
   @Published var records3 = Recordline(playerID: "0", playerOneEmoji: "🍑",playerOneName: "Player One", playerOneScore: 0, playerTwoEmoji: "👨🏻", playerTwoName: "Player Two", playerTwoScore: 0, recordName: "Player one and two", recordScore: "NA", recordReason: "Default players created", recordEntryTime: Date(), recordEntryTimeString: "", recordNameStr: "recordNameStr", recordNameEmo: "👩🏻")
 }
 
@@ -94,59 +93,16 @@ class APILoader: BaseScoreRepository, ScoreRepository, ObservableObject {
     }
   }
   
-  func fetchPlayerData(_ playerID: String) {
-    let userId = Auth.auth().currentUser?.uid
-    db.collection("records")
-  //  .whereField("userId", isEqualTo: userId)
-    .whereField("playerID", isEqualTo: playerID)
-      .addSnapshotListener {(querySnapshot, error) in
-      guard let documents = querySnapshot?.documents else {
-        print("No documents")
-        return
+  func fetchPlayerData(_ playerID: String) -> [Recordline] {
+    let recordsCopy = self.records
+    var filteredPlayerData = [Recordline]()
+    
+    for item in recordsCopy {
+      if item.playerID == playerID {
+        filteredPlayerData.append(item)
       }
-      self.filteredPlayerData = documents.map {(queryDocumentSnapshot) -> Recordline in
-        let data = queryDocumentSnapshot.data()
-
-        let userId = data["userId"] as? String ?? ""
-        let id = data["id"] as? String ?? ""
-        let playerID = data["playerID"] as? String ?? ""
-        let playerOneEmoji = data["playerOneEmoji"] as? String ?? ""
-        let playerOneName = data["playerOneName"] as? String ?? ""
-        let playerOneScore = data["playerOneScore"] as? Int ?? 0
-        let playerTwoEmoji = data["playerTwoEmoji"] as? String ?? ""
-        let playerTwoName = data["playerTwoName"] as? String ?? ""
-        let playerTwoScore = data["playerTwoScore"] as? Int ?? 0
-        let recordName = data["recordName"] as? String ?? ""
-        let recordScore = data["recordScore"] as? String ?? ""
-        let recordReason = data["recordReason"] as? String ?? ""
-        let timestamp: Timestamp = data["recordEntryTime"] as! Timestamp
-        let recordEntryTime: Date = timestamp.dateValue()
-       // let recordEntryTime = data["recordEntryTime"] as? Date??
-        let recordEntryTimeString = data["recordEntryTimeString"] as? String ?? ""
-        let recordNameStr = data["recordNameStr"] as? String ?? ""
-        let recordNameEmo = data["recordNameEmo"] as? String ?? ""
-        let filteredPlayerData = Recordline(
-                  id: id,
-                  playerID: playerID,
-                  playerOneEmoji: playerOneEmoji,
-                  playerOneName: playerOneName,
-                  playerOneScore: playerOneScore,
-                  playerTwoEmoji: playerTwoEmoji,
-                  playerTwoName: playerTwoName,
-                  playerTwoScore: playerTwoScore,
-
-                  recordName: recordName,
-                  recordScore: recordScore,
-                  recordReason: recordReason,
-                  recordEntryTime: recordEntryTime,
-                  recordEntryTimeString: recordEntryTimeString,
-                  userId: userId,
-                  recordNameStr: recordNameStr,
-                  recordNameEmo: recordNameEmo
-        )
-        return filteredPlayerData
-      }//.sorted(by: { $0.recordEntryTime! >= $1.recordEntryTime!})
     }
+    return filteredPlayerData.sorted(by: { $0.recordEntryTime! >= $1.recordEntryTime!})
   }
   
   func queryPlayerList() -> [Recordline] {
