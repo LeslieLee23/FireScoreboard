@@ -43,6 +43,7 @@
 		F5D7FC6F24D94087006BFC4A /* SigninWithAppleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D7FC6E24D94087006BFC4A /* SigninWithAppleButton.swift */; };
 		F5D7FC7524D942A6006BFC4A /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D7FC7424D942A6006BFC4A /* SignInView.swift */; };
 		F5D7FC7A24D9CEF4006BFC4A /* SigninWithAppleCoodinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D7FC7924D9CEF4006BFC4A /* SigninWithAppleCoodinator.swift */; };
+		F5EAA41B2511C08D00584E86 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EAA41A2511C08D00584E86 /* Styles.swift */; };
 		F5F02578244427A20038A4FB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F5F02577244427A20038A4FB /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -88,6 +89,7 @@
 		F5D7FC7424D942A6006BFC4A /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		F5D7FC7924D9CEF4006BFC4A /* SigninWithAppleCoodinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninWithAppleCoodinator.swift; sourceTree = "<group>"; };
 		F5D7FC7B24D9E721006BFC4A /* FireScoreboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FireScoreboard.entitlements; sourceTree = "<group>"; };
+		F5EAA41A2511C08D00584E86 /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		F5F02577244427A20038A4FB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -128,10 +130,11 @@
 				F53BE01A2384482700C3E203 /* UserData.swift */,
 				F51C7A3523D4EB6300540B25 /* NameAndScore.swift */,
 				F508FB5F244EA96A001C5C24 /* Recordline.swift */,
-				F50762EB24C01D0100676F9C /* Functions.swift */,
 				F55DABD924EFAF880078452F /* AppState.swift */,
-				F5441EB524F701BB00F8DBDF /* Neumorphic.swift */,
 				F500DA6825074C3F003E60F3 /* BetRecord.swift */,
+				F50762EB24C01D0100676F9C /* Functions.swift */,
+				F5EAA41A2511C08D00584E86 /* Styles.swift */,
+				F5441EB524F701BB00F8DBDF /* Neumorphic.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -363,6 +366,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5EAA41B2511C08D00584E86 /* Styles.swift in Sources */,
 				F5D7FC7524D942A6006BFC4A /* SignInView.swift in Sources */,
 				F56E71922493505C007E8FF5 /* ContentView.swift in Sources */,
 				F53BE01B2384482700C3E203 /* UserData.swift in Sources */,
