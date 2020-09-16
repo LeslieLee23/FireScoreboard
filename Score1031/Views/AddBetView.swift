@@ -23,6 +23,7 @@ struct AddBetView: View {
   @EnvironmentObject var addBetFunc: AddBetFunc
   @EnvironmentObject var userData: UserData
   @ObservedObject private var betLoader = BetLoader()
+  @Environment(\.presentationMode) var presentationMode
   @State private var bets = BetLoader().bets3
   static var test:String = ""
   static var testBinding = Binding<String>(get: { test }, set: { test = $0 } )
@@ -152,7 +153,7 @@ struct AddBetView: View {
        
           return Alert(title: Text("New bet added!"), message: Text("You added a bet and set the stake to \(self.betScore)"), dismissButton: Alert.Button.default(Text("Ok"))
             {
-             
+             self.presentationMode.wrappedValue.dismiss()
             }
           )
         }

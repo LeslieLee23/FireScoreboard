@@ -72,8 +72,9 @@ struct ContentView: View {
                       self.userData.emojiPlusName  = ["\(self.nameAndScore.playerOneEmoji!) \( self.nameAndScore.playerOneName!)","\( self.nameAndScore.playerTwoEmoji!) \( self.nameAndScore.playerTwoName!)"]
                       print("\(self.userData.emojiPlusName)")
                       self.userData.oldscore = ["\(self.nameAndScore.PlayerOneScore)", "\(self.nameAndScore.PlayerTwoScore)"]
-                      print("\(self.userData.emojis)")
+                      
                       self.userData.emojis = [self.nameAndScore.playerOneEmoji!, self.nameAndScore.playerTwoEmoji!]
+                      print("\(self.userData.emojis)")
                       self.userData.names = [self.nameAndScore.playerOneName!, self.nameAndScore.playerTwoName!]
                     } else {
                       
@@ -206,7 +207,7 @@ struct ContentView: View {
             
             if self.userData.editMode == false {
               Spacer()
-              HistorySnapView()
+              HistorySnapView().environmentObject(self.userData)
               Spacer()
             } else {
               VStack() {

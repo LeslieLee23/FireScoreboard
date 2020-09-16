@@ -17,6 +17,8 @@ struct BetsHomeView: View {
   
   var body: some View {
     NavigationView {
+      ZStack{
+           Color.offWhite.edgesIgnoringSafeArea(.all)
       VStack {
         HStack {
           VStack(alignment: .leading) {
@@ -40,7 +42,7 @@ struct BetsHomeView: View {
                   }
                 }
               }
-            }
+            }.listRowBackground(Color.offWhite)
           }
         }
         .frame(width:370, height: 400, alignment: .leading)
@@ -56,19 +58,11 @@ struct BetsHomeView: View {
         Spacer()
       }
       .frame(minWidth: 370, maxWidth: 370, minHeight: 0, maxHeight: .infinity, alignment: .leading)
-      .border(Color.red)
-      //        .navigationBarItems(trailing:
-      //          NavigationLink(destination: AddBetView()) {
-      //                 Text("Add Bet")
-      //          }
-      //            .buttonStyle(NeuButtonStyle())
-      //          .padding(30)
-      //        )
-      
       
     }
     .onAppear() {
       self.betLoader.fetchBetData()
+    }
     }
   }
 }

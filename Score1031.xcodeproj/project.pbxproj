@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5AAF387E8849555F0BBB8006 /* Pods_Score1031.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01D18C8DA08D01B06A0E91E2 /* Pods_Score1031.framework */; };
 		F500DA67250732BA003E60F3 /* AddBetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F500DA66250732BA003E60F3 /* AddBetView.swift */; };
 		F500DA6925074C3F003E60F3 /* BetRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = F500DA6825074C3F003E60F3 /* BetRecord.swift */; };
 		F500DA6B25075F60003E60F3 /* BetLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F500DA6A25075F60003E60F3 /* BetLoader.swift */; };
@@ -29,7 +28,6 @@
 		F5441EB624F701BB00F8DBDF /* Neumorphic.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5441EB524F701BB00F8DBDF /* Neumorphic.swift */; };
 		F5441EB824F7091900F8DBDF /* HistorySnapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5441EB724F7091900F8DBDF /* HistorySnapView.swift */; };
 		F5441EBA24F8726900F8DBDF /* RecordSnapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5441EB924F8726900F8DBDF /* RecordSnapViewModel.swift */; };
-		F5441EBC24F9047800F8DBDF /* KeyboardResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5441EBB24F9047800F8DBDF /* KeyboardResponder.swift */; };
 		F5441EBE24FAFAB700F8DBDF /* AddNewPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5441EBD24FAFAB700F8DBDF /* AddNewPlayerView.swift */; };
 		F55DABD624EBB9090078452F /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55DABD524EBB9090078452F /* SplashView.swift */; };
 		F55DABD824EF3B9B0078452F /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55DABD724EF3B9B0078452F /* TabBarView.swift */; };
@@ -44,8 +42,24 @@
 		F5D7FC7524D942A6006BFC4A /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D7FC7424D942A6006BFC4A /* SignInView.swift */; };
 		F5D7FC7A24D9CEF4006BFC4A /* SigninWithAppleCoodinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D7FC7924D9CEF4006BFC4A /* SigninWithAppleCoodinator.swift */; };
 		F5EAA41B2511C08D00584E86 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EAA41A2511C08D00584E86 /* Styles.swift */; };
+		F5EAA41C2511CEC000584E86 /* Pods_Score1031.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01D18C8DA08D01B06A0E91E2 /* Pods_Score1031.framework */; };
+		F5EAA41D2511CEC000584E86 /* Pods_Score1031.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 01D18C8DA08D01B06A0E91E2 /* Pods_Score1031.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F5F02578244427A20038A4FB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F5F02577244427A20038A4FB /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F5EAA41E2511CEC000584E86 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				F5EAA41D2511CEC000584E86 /* Pods_Score1031.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		01D18C8DA08D01B06A0E91E2 /* Pods_Score1031.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Score1031.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -74,7 +88,6 @@
 		F5441EB524F701BB00F8DBDF /* Neumorphic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Neumorphic.swift; sourceTree = "<group>"; };
 		F5441EB724F7091900F8DBDF /* HistorySnapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistorySnapView.swift; sourceTree = "<group>"; };
 		F5441EB924F8726900F8DBDF /* RecordSnapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordSnapViewModel.swift; sourceTree = "<group>"; };
-		F5441EBB24F9047800F8DBDF /* KeyboardResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardResponder.swift; sourceTree = "<group>"; };
 		F5441EBD24FAFAB700F8DBDF /* AddNewPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewPlayerView.swift; sourceTree = "<group>"; };
 		F55DABD524EBB9090078452F /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		F55DABD724EF3B9B0078452F /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
@@ -98,7 +111,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5AAF387E8849555F0BBB8006 /* Pods_Score1031.framework in Frameworks */,
+				F5EAA41C2511CEC000584E86 /* Pods_Score1031.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,6 +155,7 @@
 		F51C7A3B23D5715A00540B25 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F5D7FC7424D942A6006BFC4A /* SignInView.swift */,
 				F55DABD724EF3B9B0078452F /* TabBarView.swift */,
 				F56E71912493505C007E8FF5 /* ContentView.swift */,
 				F508FB6324501144001C5C24 /* HistoryView.swift */,
@@ -150,8 +164,6 @@
 				F500DA66250732BA003E60F3 /* AddBetView.swift */,
 				F500DA6C25089247003E60F3 /* BetsHomeView.swift */,
 				F5CD3141250EB6B500B67510 /* BetAssignResultView.swift */,
-				F5D7FC7424D942A6006BFC4A /* SignInView.swift */,
-				F5441EBB24F9047800F8DBDF /* KeyboardResponder.swift */,
 				F5CD314625116ACA00B67510 /* SubViews */,
 			);
 			path = Views;
@@ -262,6 +274,7 @@
 				F53BDFC9236B44CC00C3E203 /* Frameworks */,
 				F53BDFCA236B44CC00C3E203 /* Resources */,
 				6FCDE50AEAB3774C301BDC67 /* [CP] Embed Pods Frameworks */,
+				F5EAA41E2511CEC000584E86 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -388,7 +401,6 @@
 				F5BA924724E75A6900CA3519 /* EditModeView.swift in Sources */,
 				F541995824EA3D6A00BF54EC /* NameEmojiRowView.swift in Sources */,
 				F5D7FC6B24D0E7F7006BFC4A /* APILoader.swift in Sources */,
-				F5441EBC24F9047800F8DBDF /* KeyboardResponder.swift in Sources */,
 				F5441EB824F7091900F8DBDF /* HistorySnapView.swift in Sources */,
 				F5441EBA24F8726900F8DBDF /* RecordSnapViewModel.swift in Sources */,
 				F50762EC24C01D0100676F9C /* Functions.swift in Sources */,

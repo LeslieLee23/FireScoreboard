@@ -46,7 +46,7 @@ struct ChangePlayersView: View {
                 }
               }
             }
-          }
+          }.listRowBackground(Color.offWhite)
         }
       }
       .navigationBarItems(trailing:

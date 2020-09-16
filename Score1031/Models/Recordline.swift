@@ -13,6 +13,7 @@ import Firebase
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 
+
 struct Recordline: Codable , Identifiable
 {
   var id: String = UUID().uuidString
