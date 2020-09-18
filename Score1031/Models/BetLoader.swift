@@ -73,6 +73,34 @@ class BetLoader: BaseBetRepository, BetRepository, ObservableObject {
       }.sorted(by: { $0.betEntryTime! >= $1.betEntryTime!})
     }
   }
+  
+  func fetchOngoingBet(_ playerID: String) -> [BetRecord] {
+    let betsCopy = self.bets
+    var pastPlayerData = [BetRecord]()
+    
+    for item in betsCopy {
+      if item.winnerName == nil && item.playerID == playerID {
+        pastPlayerData.append(item)
+      }
+    }
+    return pastPlayerData.sorted(by: {
+      $0.betEntryTime! >= $1.betEntryTime!
+    })
+  }
+  
+  func fetchPastBet(_ playerID: String) -> [BetRecord] {
+    let betsCopy = self.bets
+    var pastPlayerData = [BetRecord]()
+    
+    for item in betsCopy {
+      if item.winnerName != nil && item.playerID == playerID {
+        pastPlayerData.append(item)
+      }
+    }
+    return pastPlayerData.sorted(by: {
+      $0.betEntryTime! >= $1.betEntryTime!
+    })
+  }
 
   func saveData(bets3: BetRecord) {
     do {

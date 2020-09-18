@@ -34,8 +34,7 @@ struct BetsHomeView: View {
           VStack(alignment: .leading) {
             //Ongoing Bet
             List {
-              ForEach (betLoader.bets) { bets3 in
-                if bets3.playerID == self.userData.playerID && bets3.winnerName == nil {
+              ForEach (betLoader.fetchOngoingBet(self.userData.playerID!)) { bets3 in
                   if self.userData.deleteMode == false {
                     NavigationLink(destination: BetAssignResultView(bets3: bets3)) {
                       HStack(){
@@ -79,9 +78,7 @@ struct BetsHomeView: View {
                           {
                             self.betLoader.remove(id: bets3.id)
                             self.userData.deleteMode = false
-                            }, secondaryButton: .cancel()
-                              
-                              {
+                            }, secondaryButton: .cancel(){
                                 self.userData.deleteMode = false
                             })
                         }
@@ -89,7 +86,6 @@ struct BetsHomeView: View {
                     }
                     .frame(minWidth: 350, maxWidth: 350, minHeight: 85, maxHeight: 95, alignment: .leading)
                   }
-                }
               }.listRowBackground(Color.offWhite)
             }
           }//Ongoing Bet
@@ -104,8 +100,7 @@ struct BetsHomeView: View {
           }
           
           VStack(alignment: .leading) {
-            //PastBetView()
-            Spacer()
+            PastBetView()
           }
           .frame(width:370, height: 190, alignment: .leading)
         }
