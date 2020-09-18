@@ -12,8 +12,6 @@ struct NameEmojiRowView: View {
   
   @EnvironmentObject private var nameAndScore: NameAndScore
   @EnvironmentObject var userData: UserData
-//  @State var playerOneColors: Color = .grayCircle
-//  @State var playerTwoColors: Color = .grayCircle
   
   var body: some View {
     VStack() {
@@ -22,8 +20,6 @@ struct NameEmojiRowView: View {
         HStack {
           Button(action: {
             self.userData.selectedName = 0
-//            self.playerOneColors = .purple
-//            self.playerTwoColors = .grayCircle
             print("Set selectedName to \(self.userData.selectedName)")
           }) {
             Text(self.nameAndScore.playerOneEmoji ?? "👩🏻")
@@ -34,8 +30,6 @@ struct NameEmojiRowView: View {
 
           Button(action: {
             self.userData.selectedName = 1
-//            self.playerOneColors = .grayCircle
-//            self.playerTwoColors = .purple
             print("Set selectedName to \(self.userData.selectedName)")
           }) {
             Text(self.nameAndScore.playerTwoEmoji ?? "👨🏻")

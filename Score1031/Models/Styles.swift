@@ -230,6 +230,19 @@ struct SquareStyle: ButtonStyle {
   }
 }
 
+struct DeleteToggleStyle: ToggleStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        return HStack {
+          //  configuration.label
+            Spacer()
+            Image(systemName: configuration.isOn ? "minus.circle.fill" : "minus.circle")
+                .resizable()
+                .frame(width: 21, height: 21)
+                .onTapGesture { configuration.isOn.toggle() }
+        }
+    }
+}
+
 struct MultilineTextField: View {
 
     private var placeholder: String

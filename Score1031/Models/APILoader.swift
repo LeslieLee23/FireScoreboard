@@ -153,8 +153,8 @@ class APILoader: BaseScoreRepository, ScoreRepository, ObservableObject {
    
   }
   
-   func remove() -> Void {
-    db.collection("records").getDocuments { (querySnapshot, error) in
+  func remove(_ playerID: String) -> Void {
+    db.collection("records").whereField("playerID", isEqualTo: playerID).getDocuments { (querySnapshot, error) in
       if error != nil {
         print(error)
       } else {

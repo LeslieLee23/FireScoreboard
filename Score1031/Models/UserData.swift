@@ -94,4 +94,10 @@ class UserData: ObservableObject {
             UserDefaults.standard.set(self.betWinnerName, forKey: "betWinnerName")
         }
     }
+  
+    @Published var deleteMode: Bool = UserDefaults.standard.bool(forKey: "deleteMode") {
+        didSet {
+            UserDefaults.standard.set(self.deleteMode, forKey: "deleteMode")
+        }
+    }
 }

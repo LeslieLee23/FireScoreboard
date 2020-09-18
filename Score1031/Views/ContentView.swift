@@ -34,7 +34,6 @@ struct ContentView: View {
     @EnvironmentObject var userData: UserData
     @ObservedObject private var apiLoader = APILoader()
     @State private var records3 = APILoader().records3
-  //  @ObservedObject var keyboardResponder = KeyboardResponder()
     
     @State var showSignInForm = false
     

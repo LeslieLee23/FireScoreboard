@@ -41,8 +41,6 @@ struct AddBetView: View {
       Spacer()
       }
       VStack() {
-    //  TextField("Bet description", text: $bet)
-    //    .textFieldStyle(NeuTextStyle(w: 290, h: 120, cr: 15))
         RoundedRectangle(cornerRadius: 25)
           .stroke(Color.offWhite, lineWidth: 5)
           .shadow(color: Color.black.opacity(0.2), radius: 4, x: 5, y: 5)
@@ -67,11 +65,6 @@ struct AddBetView: View {
            // .border(Color.red),
           alignment: .top
         )
-     
-
-        
-//        .padding(.trailing, 35)
-//        .padding(.leading, 35)
       }.padding()
               
       VStack() {
@@ -107,8 +100,6 @@ struct AddBetView: View {
             .font(.system(size: 25))
         }
         .frame(width: 35, height: 35)
-     //   .foregroundColor(.purple)
-     //   .buttonStyle(CircleStyle(color: .purple))
         .foregroundColor(.offWhite)
         .buttonStyle(CircleStyle())
         Spacer()

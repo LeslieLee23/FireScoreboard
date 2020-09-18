@@ -11,7 +11,7 @@
 		F500DA6925074C3F003E60F3 /* BetRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = F500DA6825074C3F003E60F3 /* BetRecord.swift */; };
 		F500DA6B25075F60003E60F3 /* BetLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F500DA6A25075F60003E60F3 /* BetLoader.swift */; };
 		F500DA6D25089247003E60F3 /* BetsHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F500DA6C25089247003E60F3 /* BetsHomeView.swift */; };
-		F50762E424B438AD00676F9C /* ChangePlayersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50762E324B438AD00676F9C /* ChangePlayersView.swift */; };
+		F50762E424B438AD00676F9C /* PlayersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50762E324B438AD00676F9C /* PlayersView.swift */; };
 		F50762E624BC244600676F9C /* RecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50762E524BC244600676F9C /* RecordViewModel.swift */; };
 		F50762EC24C01D0100676F9C /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50762EB24C01D0100676F9C /* Functions.swift */; };
 		F508FB60244EA96A001C5C24 /* Recordline.swift in Sources */ = {isa = PBXBuildFile; fileRef = F508FB5F244EA96A001C5C24 /* Recordline.swift */; };
@@ -33,6 +33,7 @@
 		F55DABD824EF3B9B0078452F /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55DABD724EF3B9B0078452F /* TabBarView.swift */; };
 		F55DABDA24EFAF880078452F /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55DABD924EFAF880078452F /* AppState.swift */; };
 		F56E71922493505C007E8FF5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56E71912493505C007E8FF5 /* ContentView.swift */; };
+		F5776DC825141DA50017858D /* PastBetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5776DC725141DA50017858D /* PastBetView.swift */; };
 		F59129502420368F0071E1D3 /* SelectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F591294F2420368F0071E1D3 /* SelectViewModel.swift */; };
 		F5BA924724E75A6900CA3519 /* EditModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BA924624E75A6900CA3519 /* EditModeView.swift */; };
 		F5CD3140250DD30F00B67510 /* BetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CD313F250DD30F00B67510 /* BetViewModel.swift */; };
@@ -69,7 +70,7 @@
 		F500DA6825074C3F003E60F3 /* BetRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetRecord.swift; sourceTree = "<group>"; };
 		F500DA6A25075F60003E60F3 /* BetLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetLoader.swift; sourceTree = "<group>"; };
 		F500DA6C25089247003E60F3 /* BetsHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetsHomeView.swift; sourceTree = "<group>"; };
-		F50762E324B438AD00676F9C /* ChangePlayersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePlayersView.swift; sourceTree = "<group>"; };
+		F50762E324B438AD00676F9C /* PlayersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersView.swift; sourceTree = "<group>"; };
 		F50762E524BC244600676F9C /* RecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewModel.swift; sourceTree = "<group>"; };
 		F50762EB24C01D0100676F9C /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		F508FB5F244EA96A001C5C24 /* Recordline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recordline.swift; sourceTree = "<group>"; };
@@ -93,6 +94,7 @@
 		F55DABD724EF3B9B0078452F /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		F55DABD924EFAF880078452F /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		F56E71912493505C007E8FF5 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		F5776DC725141DA50017858D /* PastBetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastBetView.swift; sourceTree = "<group>"; };
 		F591294F2420368F0071E1D3 /* SelectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectViewModel.swift; sourceTree = "<group>"; };
 		F5BA924624E75A6900CA3519 /* EditModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditModeView.swift; sourceTree = "<group>"; };
 		F5CD313F250DD30F00B67510 /* BetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetViewModel.swift; sourceTree = "<group>"; };
@@ -159,8 +161,8 @@
 				F55DABD724EF3B9B0078452F /* TabBarView.swift */,
 				F56E71912493505C007E8FF5 /* ContentView.swift */,
 				F508FB6324501144001C5C24 /* HistoryView.swift */,
+				F50762E324B438AD00676F9C /* PlayersView.swift */,
 				F5441EBD24FAFAB700F8DBDF /* AddNewPlayerView.swift */,
-				F50762E324B438AD00676F9C /* ChangePlayersView.swift */,
 				F500DA66250732BA003E60F3 /* AddBetView.swift */,
 				F500DA6C25089247003E60F3 /* BetsHomeView.swift */,
 				F5CD3141250EB6B500B67510 /* BetAssignResultView.swift */,
@@ -250,6 +252,7 @@
 				F55DABD524EBB9090078452F /* SplashView.swift */,
 				F5441EB724F7091900F8DBDF /* HistorySnapView.swift */,
 				F5D7FC6E24D94087006BFC4A /* SigninWithAppleButton.swift */,
+				F5776DC725141DA50017858D /* PastBetView.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -399,13 +402,14 @@
 				F500DA67250732BA003E60F3 /* AddBetView.swift in Sources */,
 				F508FB6424501144001C5C24 /* HistoryView.swift in Sources */,
 				F5BA924724E75A6900CA3519 /* EditModeView.swift in Sources */,
+				F5776DC825141DA50017858D /* PastBetView.swift in Sources */,
 				F541995824EA3D6A00BF54EC /* NameEmojiRowView.swift in Sources */,
 				F5D7FC6B24D0E7F7006BFC4A /* APILoader.swift in Sources */,
 				F5441EB824F7091900F8DBDF /* HistorySnapView.swift in Sources */,
 				F5441EBA24F8726900F8DBDF /* RecordSnapViewModel.swift in Sources */,
 				F50762EC24C01D0100676F9C /* Functions.swift in Sources */,
 				F55DABD624EBB9090078452F /* SplashView.swift in Sources */,
-				F50762E424B438AD00676F9C /* ChangePlayersView.swift in Sources */,
+				F50762E424B438AD00676F9C /* PlayersView.swift in Sources */,
 				F55DABD824EF3B9B0078452F /* TabBarView.swift in Sources */,
 				F5441EB624F701BB00F8DBDF /* Neumorphic.swift in Sources */,
 				F5CD3140250DD30F00B67510 /* BetViewModel.swift in Sources */,

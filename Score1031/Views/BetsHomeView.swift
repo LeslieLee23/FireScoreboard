@@ -14,58 +14,135 @@ struct BetsHomeView: View {
   @EnvironmentObject var userData: UserData
   @ObservedObject var betLoader = BetLoader()
   @ObservedObject private var apiLoader = APILoader()
+  @State var showAlert = false
   
   var body: some View {
     NavigationView {
       ZStack{
-           Color.offWhite.edgesIgnoringSafeArea(.all)
-      VStack {
-        HStack {
-          VStack(alignment: .leading) {
-            Text("Ongoing Bets:")
+        Color.offWhite.edgesIgnoringSafeArea(.all)
+        VStack {
+          HStack {
+            VStack(alignment: .leading) {
+              Text("Ongoing Bets:")
+            }
+            .frame(width:200, height: 15, alignment: .leading)
+            .padding()
+            // .border(Color.red)
+            Spacer()
           }
-          .frame(width:200, height: 30, alignment: .leading)
-          .padding()
-          // .border(Color.red)
-          Spacer()
-        }
-        
-        
-        VStack(alignment: .leading) {
-          List {
-            ForEach (betLoader.bets) { bets3 in
-              if bets3.playerID == self.userData.playerID {
-                //            HStack{
-                NavigationLink(destination: BetAssignResultView(bets3: bets3)) {
-                  VStack{
-                    BetViewModel(betDescription: bets3.betDescription, betScore: bets3.betScore, betEntryTimeString: bets3.betEntryTimeString)
+          
+          VStack(alignment: .leading) {
+            //Ongoing Bet
+            List {
+              ForEach (betLoader.bets) { bets3 in
+                if bets3.playerID == self.userData.playerID && bets3.winnerName == nil {
+                  if self.userData.deleteMode == false {
+                    NavigationLink(destination: BetAssignResultView(bets3: bets3)) {
+                      HStack(){
+                        VStack{
+                          BetViewModel(bets3: bets3)
+                        }
+                        VStack() {
+                          VStack() {
+                            Text("Stake:")
+                              .font(.system(size: 14))
+                          }
+                          .frame(width:50, height: 20, alignment: .top)
+                          VStack() {
+                            Text(bets3.betScore)
+                              .font(.system(size: 20))
+                          }
+                          .frame(width:50, height: 30, alignment: .center)
+                        }
+                        .frame(width:50, height: 80, alignment: .leading)
+                      }
+                      .frame(minWidth: 350, maxWidth: 350, minHeight: 85, maxHeight: 95, alignment: .leading)
+                    }
+                  } else {
+                    HStack(){
+                      VStack{
+                        BetViewModel(bets3: bets3)
+                      }
+                      VStack(alignment: .leading) {
+                        Button(action: {
+                          self.showAlert = true
+                        })
+                        {
+                          Image(systemName: "minus.circle.fill")
+                            .foregroundColor(.red)
+                            .font(.system(size:20))
+                        }
+                        .alert(isPresented: self.$showAlert) { () ->
+                          Alert in
+                          
+                          return Alert(title: Text("Confirm your action:"), message: Text("Are you sure you want to delete the bet \(bets3.betDescription) from the app?"), primaryButton: .destructive(Text("Confirm"))
+                          {
+                            self.betLoader.remove(id: bets3.id)
+                            self.userData.deleteMode = false
+                            }, secondaryButton: .cancel()
+                              
+                              {
+                                self.userData.deleteMode = false
+                            })
+                        }
+                      }.frame(width:50, height: 80, alignment: .center)
+                    }
+                    .frame(minWidth: 350, maxWidth: 350, minHeight: 85, maxHeight: 95, alignment: .leading)
                   }
                 }
-              }
-            }.listRowBackground(Color.offWhite)
+              }.listRowBackground(Color.offWhite)
+            }
+          }//Ongoing Bet
+          .frame(width:370, height: 190, alignment: .leading)
+          HStack {
+            VStack(alignment: .leading) {
+              Text("Past Bets:")
+            }
+            .frame(width:200, height: 15, alignment: .leading)
+            .padding()
+            Spacer()
           }
-        }
-        .frame(width:370, height: 400, alignment: .leading)
-        HStack{
-          Spacer()
-          NavigationLink(destination: AddBetView()) {
-            Text("Add Bet")
-          }
-          .buttonStyle(NeuButtonStyle())
-          .padding(30)
           
+          VStack(alignment: .leading) {
+            //PastBetView()
+            Spacer()
+          }
+          .frame(width:370, height: 190, alignment: .leading)
         }
-        Spacer()
       }
       .frame(minWidth: 370, maxWidth: 370, minHeight: 0, maxHeight: .infinity, alignment: .leading)
-      
+        
+      .onAppear() {
+        self.betLoader.fetchBetData()
+      }
+      .navigationBarItems(leading:
+        HStack(spacing: 81){
+          Button(action: {
+            self.userData.deleteMode = true
+          })
+          {
+            Toggle(isOn: $userData.deleteMode) {
+              Text("")
+            }
+            .toggleStyle(DeleteToggleStyle())
+            .padding(.leading, 18)
+          }
+          Spacer()
+          Spacer()
+          NavigationLink(destination: AddBetView()) {
+            Image(systemName: "plus.circle.fill")
+              .font(.system(size:21))
+              .padding(.trailing, 18)
+          }
+        }
+      )
     }
-    .onAppear() {
-      self.betLoader.fetchBetData()
-    }
+     .onAppear() {
+      self.userData.deleteMode = false
     }
   }
 }
+
 
 
 struct BetsHomeView_Previews: PreviewProvider {

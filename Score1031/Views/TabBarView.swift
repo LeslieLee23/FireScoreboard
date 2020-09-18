@@ -44,14 +44,14 @@ struct TabBarView: View {
         }
         .tag(Tab.BetsHomeView)
         
-        ChangePlayersView()
+        PlayersView()
           .tabItem {
             Image(systemName: "person.2.square.stack").font(.system(size:20))
-            Text("Change Players")
+            Text("Players")
               .fontWeight(.light)
               .font(.system(size:11))
         }
-        .tag(Tab.ChangePlayersView)
+        .tag(Tab.PlayersView)
         
         AddNewPlayerView()
            .tabItem {
@@ -82,7 +82,7 @@ extension TabBarView {
     enum Tab: Hashable {
         case home
         case HistoryView
-        case ChangePlayersView
+        case PlayersView
         case AddNewPlayerView
         case BetsHomeView
     }

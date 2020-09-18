@@ -52,7 +52,9 @@ class BetLoader: BaseBetRepository, BetRepository, ObservableObject {
         let timestamp: Timestamp = data["betEntryTime"] as! Timestamp
         let betEntryTime: Date = timestamp.dateValue()
         let betEntryTimeString = data["betEntryTimeString"] as? String ?? ""
-        
+        let winnerName = data["winnerName"] as? String
+        let winnerNameStr = data["winnerNameStr"] as? String
+        let winnerNameEmo = data["winnerNameEmo"] as? String
         
         let abc = BetRecord(
                   id: id,
@@ -61,7 +63,10 @@ class BetLoader: BaseBetRepository, BetRepository, ObservableObject {
                   betScore: betScore,
                   betEntryTime: betEntryTime,
                   betEntryTimeString: betEntryTimeString,
-                  userId: userId
+                  userId: userId,
+                  winnerName: winnerName,
+                  winnerNameStr: winnerNameStr,
+                  winnerNameEmo: winnerNameEmo
         )
         return abc
         
@@ -101,8 +106,8 @@ class BetLoader: BaseBetRepository, BetRepository, ObservableObject {
     }
     
   }
-   func remove() -> Void {
-    db.collection("bets").getDocuments { (querySnapshot, error) in
+  func remove(id: String) -> Void {
+    db.collection("bets").whereField("id", isEqualTo: id).getDocuments { (querySnapshot, error) in
       if error != nil {
         print(error)
       } else {
