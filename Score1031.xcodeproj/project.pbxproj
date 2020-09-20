@@ -33,6 +33,8 @@
 		F55DABD824EF3B9B0078452F /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55DABD724EF3B9B0078452F /* TabBarView.swift */; };
 		F55DABDA24EFAF880078452F /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55DABD924EFAF880078452F /* AppState.swift */; };
 		F56E71922493505C007E8FF5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56E71912493505C007E8FF5 /* ContentView.swift */; };
+		F56F88AB2517307C00FD3CF7 /* BetSnapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56F88AA2517307C00FD3CF7 /* BetSnapView.swift */; };
+		F56F88AD2517376C00FD3CF7 /* BetSnapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56F88AC2517376C00FD3CF7 /* BetSnapViewModel.swift */; };
 		F5776DC825141DA50017858D /* PastBetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5776DC725141DA50017858D /* PastBetView.swift */; };
 		F59129502420368F0071E1D3 /* SelectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F591294F2420368F0071E1D3 /* SelectViewModel.swift */; };
 		F5BA924724E75A6900CA3519 /* EditModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BA924624E75A6900CA3519 /* EditModeView.swift */; };
@@ -94,6 +96,8 @@
 		F55DABD724EF3B9B0078452F /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		F55DABD924EFAF880078452F /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		F56E71912493505C007E8FF5 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		F56F88AA2517307C00FD3CF7 /* BetSnapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetSnapView.swift; sourceTree = "<group>"; };
+		F56F88AC2517376C00FD3CF7 /* BetSnapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetSnapViewModel.swift; sourceTree = "<group>"; };
 		F5776DC725141DA50017858D /* PastBetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastBetView.swift; sourceTree = "<group>"; };
 		F591294F2420368F0071E1D3 /* SelectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectViewModel.swift; sourceTree = "<group>"; };
 		F5BA924624E75A6900CA3519 /* EditModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditModeView.swift; sourceTree = "<group>"; };
@@ -239,6 +243,7 @@
 				F5CD313F250DD30F00B67510 /* BetViewModel.swift */,
 				F50762E524BC244600676F9C /* RecordViewModel.swift */,
 				F5441EB924F8726900F8DBDF /* RecordSnapViewModel.swift */,
+				F56F88AC2517376C00FD3CF7 /* BetSnapViewModel.swift */,
 				F591294F2420368F0071E1D3 /* SelectViewModel.swift */,
 			);
 			path = ViewModels;
@@ -251,6 +256,7 @@
 				F541995724EA3D6A00BF54EC /* NameEmojiRowView.swift */,
 				F55DABD524EBB9090078452F /* SplashView.swift */,
 				F5441EB724F7091900F8DBDF /* HistorySnapView.swift */,
+				F56F88AA2517307C00FD3CF7 /* BetSnapView.swift */,
 				F5D7FC6E24D94087006BFC4A /* SigninWithAppleButton.swift */,
 				F5776DC725141DA50017858D /* PastBetView.swift */,
 			);
@@ -402,6 +408,8 @@
 				F500DA67250732BA003E60F3 /* AddBetView.swift in Sources */,
 				F508FB6424501144001C5C24 /* HistoryView.swift in Sources */,
 				F5BA924724E75A6900CA3519 /* EditModeView.swift in Sources */,
+				F56F88AB2517307C00FD3CF7 /* BetSnapView.swift in Sources */,
+				F56F88AD2517376C00FD3CF7 /* BetSnapViewModel.swift in Sources */,
 				F5776DC825141DA50017858D /* PastBetView.swift in Sources */,
 				F541995824EA3D6A00BF54EC /* NameEmojiRowView.swift in Sources */,
 				F5D7FC6B24D0E7F7006BFC4A /* APILoader.swift in Sources */,

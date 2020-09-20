@@ -1,18 +1,18 @@
 //
-//  HistorySnapView.swift
+//  BetSnapView.swift
 //  Score1031
 //
-//  Created by Danting Li on 8/26/20.
+//  Created by Danting Li on 9/19/20.
 //  Copyright © 2020 HULUCave. All rights reserved.
 //
 
 import SwiftUI
-import Foundation
 
-struct HistorySnapView: View {
+struct BetSnapView: View {
   
   @EnvironmentObject var userData: UserData
   @ObservedObject var apiLoader = APILoader()
+  @ObservedObject var betLoader = BetLoader()
   @EnvironmentObject var appState: AppState
   
   init(){
@@ -32,7 +32,7 @@ struct HistorySnapView: View {
               .clipShape(
                 RoundedRectangle(cornerRadius: 20)
             )
-          .frame(width: 320, height: 130, alignment: .top)
+          .frame(width: 320, height: 140, alignment: .top)
           .background(Color.offWhite)
           .cornerRadius(25)
       }
@@ -40,11 +40,11 @@ struct HistorySnapView: View {
       VStack(alignment: .center) {
         Spacer()
         HStack {
-        Text("History")
+        Text("Bet")
           .padding(.leading, 25)
           Spacer()
         Button(action: {
-          self.appState.selectedTab = .HistoryView
+          self.appState.selectedTab = .BetsHomeView
         })
         {
           Image(systemName: "chevron.right")
@@ -53,22 +53,40 @@ struct HistorySnapView: View {
         }
         }
         List {
-          ForEach (apiLoader.fetchPlayerData(self.userData.playerID ?? "0").prefix(3)) { records3 in
+          ForEach (betLoader.fetchOngoingBet(self.userData.playerID!).prefix(3)) { bets3 in
 
-              RecordSnapViewModel(name: records3.recordName, score: records3.recordScore, reason: records3.recordReason, entryTime: records3.recordEntryTimeString, playerID: records3.playerID, nameStr: records3.recordNameStr ?? "Wowo", nameEmo: records3.recordNameEmo ?? "🐒")
+              HStack(){
+                VStack{
+                  BetViewModel(bets3: bets3)
+                }
+                VStack() {
+                  VStack() {
+                    Text("Stake:")
+                      .font(.system(size: 14))
+                  }
+                  .frame(width:50, height: 20, alignment: .top)
+                  VStack() {
+                    Text(bets3.betScore)
+                      .font(.system(size: 20))
+                  }
+                  .frame(width:50, height: 30, alignment: .center)
+                }
+                .frame(width:50, height: 80, alignment: .leading)
+              }
+              .frame(minWidth: 350, maxWidth: 350, minHeight: 85, maxHeight: 95, alignment: .leading)
 
           }.listRowBackground(Color.offWhite)
         }
       }//.border(Color.red)
       
-      .frame(width: 290, height: 100, alignment: .leading)
+      .frame(width: 290, height: 110, alignment: .leading)
     }
 
   }
 }
 
-struct HistorySnapView_Previews: PreviewProvider {
-  static var previews: some View {
-    HistorySnapView()
-  }
+struct BetSnapView_Previews: PreviewProvider {
+    static var previews: some View {
+        BetSnapView()
+    }
 }

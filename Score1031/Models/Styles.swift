@@ -243,6 +243,28 @@ struct DeleteToggleStyle: ToggleStyle {
     }
 }
 
+struct EditToggleStyle: ToggleStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        return HStack {
+          //  configuration.label
+            Image(systemName: configuration.isOn ? "multiply.circle" : "pencil.circle")
+              .font(Font.system(size: 25, weight: .regular))
+                .onTapGesture { configuration.isOn.toggle() }
+        }
+    }
+}
+
+struct EmojiToggleStyle: ToggleStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        return HStack {
+          //  configuration.label
+            Image(systemName: configuration.isOn ? "a.circle" : "smiley" )
+              .font(Font.system(size: 20, weight: .regular))
+              .onTapGesture { configuration.isOn.toggle() }
+        }
+    }
+}
+
 struct MultilineTextField: View {
 
     private var placeholder: String

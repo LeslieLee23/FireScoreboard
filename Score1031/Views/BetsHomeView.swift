@@ -112,16 +112,11 @@ struct BetsHomeView: View {
       }
       .navigationBarItems(leading:
         HStack(spacing: 81){
-          Button(action: {
-            self.userData.deleteMode = true
-          })
-          {
             Toggle(isOn: $userData.deleteMode) {
               Text("")
             }
             .toggleStyle(DeleteToggleStyle())
             .padding(.leading, 18)
-          }
           Spacer()
           Spacer()
           NavigationLink(destination: AddBetView()) {
