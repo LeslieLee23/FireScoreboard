@@ -22,7 +22,7 @@ extension Color {
   static let darkEnd = Color(red: 25 / 255, green: 25 / 255, blue: 30 / 255)
   static let lightStart = Color(red: 60 / 255, green: 160 / 255, blue: 240 / 255)
   static let lightEnd = Color(red: 30 / 255, green: 80 / 255, blue: 120 / 255)
-  static let darkPurple = Color(red: 38 / 255, green: 0 / 255, blue: 50 / 255)
+  static let darkPurple = Color(red: 130 / 255, green: 0 / 255, blue: 174 / 255)
 
   static let offWhite = Color(red: 228 / 255, green: 232 / 255, blue: 240 / 255)
   static let lightOffWhite = Color(red: 240 / 255, green: 245 / 255, blue: 251 / 255)
@@ -252,7 +252,8 @@ struct EditToggleStyle: ToggleStyle {
         return HStack {
           //  configuration.label
             Image(systemName: configuration.isOn ? "multiply.circle" : "pencil.circle")
-              .font(Font.system(size: 25, weight: .regular))
+              .font(Font.system(size: configuration.isOn ? 25 : 32))
+              .foregroundColor(configuration.isOn ? .black : Color.darkPurple)
                 .onTapGesture { configuration.isOn.toggle() }
         }
     }
@@ -393,4 +394,13 @@ extension UIApplication {
 
 func endEditing() {
     UIApplication.shared.endEditing()
+}
+
+struct tabItemHighlight: View {
+
+    var body: some View {
+        Rectangle()
+          .foregroundColor(Color.darkPurple)
+    }
+
 }

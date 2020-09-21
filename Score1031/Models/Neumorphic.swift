@@ -22,7 +22,7 @@ extension LinearGradient {
 
 
 struct CircleStyle: ButtonStyle {
-  var color: Color = .white
+  var color: Color = .lightOffWhite
   func makeBody(configuration: ButtonStyleConfiguration) -> some View {
     
     Group {
@@ -43,7 +43,7 @@ struct CircleStyle: ButtonStyle {
         )
           .overlay(
             configuration.label
-              .foregroundColor(.white)
+              .foregroundColor(.lightOffWhite)
         )
         
       } else {
@@ -53,7 +53,7 @@ struct CircleStyle: ButtonStyle {
           .shadow(color: Color.white.opacity(0.8), radius: 5, x: -3, y: -3)
           .overlay(
             configuration.label
-              .foregroundColor(.white)
+              .foregroundColor(.lightOffWhite)
         )
       }
     }

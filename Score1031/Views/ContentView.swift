@@ -58,27 +58,14 @@ struct ContentView: View {
               SplashView(animationType: .angle(Angle(degrees: 40)), color: .lightOffWhite)
                 .frame(width: 340, height: 250, alignment: .top)
                 .cornerRadius(25)
-                .shadow(color: Color.black.opacity(0.12), radius: 2, x: 7, y: 7)
-                .shadow(color: Color.white.opacity(0.6), radius: 4, x: -4, y: -4)
+                .shadow(color: Color.black.opacity(0.1), radius: 2, x: 7, y: 7)
+      //          .shadow(color: Color.white.opacity(0.6), radius: 4, x: -4, y: -4)
               //          }
             }///Color Change View
             
             ///Scoreboard Content View
             VStack {
-//              ///Title row (60)
-//              VStack {
-//                if self.userData.editMode == true {
-//                  Text("Select one:")
-//                    .font(.system(size: 22))
-//                    //  .fontWeight(.bold)
-//                    .foregroundColor(Color.darkGray)
-//                } else {
-//                  Text("Scoreboard")
-//                    .font(.system(size: 23))
-//                    .fontWeight(.bold)
-//                }
-//              } ///Title row
-//                .frame(width: 340, height: 60, alignment: .center)
+
                VStack {
                 Spacer()
               }
