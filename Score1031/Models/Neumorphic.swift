@@ -49,8 +49,8 @@ struct CircleStyle: ButtonStyle {
       } else {
         Circle()
           .fill()
-          .shadow(color: Color.black.opacity(0.3), radius: 6, x: 6, y: 6)
-          .shadow(color: Color.white.opacity(0.8), radius: 6, x: -3, y: -3)
+          .shadow(color: Color.black.opacity(0.2), radius: 5, x: 6, y: 6)
+          .shadow(color: Color.white.opacity(0.8), radius: 5, x: -3, y: -3)
           .overlay(
             configuration.label
               .foregroundColor(.white)
@@ -72,7 +72,7 @@ public struct NeuTextStyle : TextFieldStyle {
     
     RoundedRectangle(cornerRadius: cr)
       .stroke(Color.offWhite, lineWidth: 5)
-      .shadow(color: Color.black.opacity(0.2), radius: 4, x: 5, y: 5)
+      .shadow(color: Color.black.opacity(0.15), radius: 4, x: 5, y: 5)
       .frame(width: w, height: h)
       .clipShape(
         RoundedRectangle(cornerRadius: cr)
@@ -110,7 +110,7 @@ struct NeuButtonStyle: ButtonStyle {
         
         RoundedRectangle(cornerRadius: 30)
           .stroke(Color.offWhite, lineWidth: 5)
-          .shadow(color: Color.black.opacity(0.2), radius: 4, x: 5, y: 5)
+          .shadow(color: Color.black.opacity(0.18), radius: 3.5, x: 5, y: 5)
           .frame(width: w, height: h)
           .clipShape(
             RoundedRectangle(cornerRadius: 30)
@@ -131,7 +131,7 @@ struct NeuButtonStyle: ButtonStyle {
       } else if ((editedScore == 0 && reason.isEmpty) || selectedName == 5) {
         RoundedRectangle(cornerRadius: 30)
           .fill(Color.offWhite)
-          .shadow(color: Color.black.opacity(0.2), radius: 6, x: 6, y: 6)
+          .shadow(color: Color.black.opacity(0.18), radius: 5, x: 6, y: 6)
           .shadow(color: Color.white.opacity(0.8), radius: 6, x: -3, y: -3)
           .frame(width: w, height: h)
           .overlay(
@@ -142,7 +142,7 @@ struct NeuButtonStyle: ButtonStyle {
       else {
         RoundedRectangle(cornerRadius: 30)
           .fill(Color.offWhite)
-          .shadow(color: Color.black.opacity(0.2), radius: 6, x: 6, y: 6)
+          .shadow(color: Color.black.opacity(0.18), radius: 5, x: 6, y: 6)
           .shadow(color: Color.white.opacity(0.8), radius: 6, x: -3, y: -3)
           .frame(width: w, height: h)
           .overlay(

@@ -15,15 +15,17 @@ extension Color {
   static let babyPP = Color(red: 184 / 255, green: 200 / 255, blue: 243 / 255)
   static let niceBlue = Color(red: 161 / 255, green: 217 / 255, blue: 241 / 255)
   static let grayCircle = Color(red: 157 / 255, green: 157 / 255, blue: 157 / 255)
-  static let offWhite = Color(red: 223 / 255, green: 228 / 255, blue: 235 / 255)
+//  static let offWhite = Color(red: 223 / 255, green: 228 / 255, blue: 235 / 255)
   static let darkGray = Color(red: 70 / 255, green: 70 / 255, blue: 70 / 255)
   static let lightGray = Color(red: 206 / 255, green: 206 / 255, blue: 206 / 255)
   static let darkStart = Color(red: 50 / 255, green: 60 / 255, blue: 65 / 255)
   static let darkEnd = Color(red: 25 / 255, green: 25 / 255, blue: 30 / 255)
   static let lightStart = Color(red: 60 / 255, green: 160 / 255, blue: 240 / 255)
   static let lightEnd = Color(red: 30 / 255, green: 80 / 255, blue: 120 / 255)
+  static let darkPurple = Color(red: 38 / 255, green: 0 / 255, blue: 50 / 255)
 
-  
+  static let offWhite = Color(red: 228 / 255, green: 232 / 255, blue: 240 / 255)
+  static let lightOffWhite = Color(red: 240 / 255, green: 245 / 255, blue: 251 / 255)
 }
 extension UIColor {
     convenience init(red: Int, green: Int, blue: Int) {
@@ -33,8 +35,10 @@ extension UIColor {
         
         self.init(red: newRed, green: newGreen, blue: newBlue, alpha: 1.0)
     }
-  static let offWhite = UIColor(red: 223, green: 228, blue: 235)
-   
+
+  static let offWhite = UIColor(red: 228, green: 232, blue: 240)
+  static let lightOffWhite = UIColor(red: 240, green: 245, blue: 251)
+  static let darkPurple = UIColor(red: 38, green: 0, blue: 50)
 }
 
 struct SplashShape: Shape {

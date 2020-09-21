@@ -55,11 +55,11 @@ struct ContentView: View {
           ZStack{
             ///Color Change View
             VStack {
-              SplashView(animationType: .angle(Angle(degrees: 40)), color: .offWhite)
+              SplashView(animationType: .angle(Angle(degrees: 40)), color: .lightOffWhite)
                 .frame(width: 340, height: 250, alignment: .top)
                 .cornerRadius(25)
-                .shadow(color: Color.black.opacity(0.2), radius: 6, x: 8, y: 8)
-                .shadow(color: Color.white.opacity(0.6), radius: 6, x: -4, y: -4)
+                .shadow(color: Color.black.opacity(0.12), radius: 2, x: 7, y: 7)
+                .shadow(color: Color.white.opacity(0.6), radius: 4, x: -4, y: -4)
               //          }
             }///Color Change View
             

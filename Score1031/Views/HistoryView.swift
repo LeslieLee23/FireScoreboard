@@ -32,8 +32,9 @@ struct HistoryView: View {
         Spacer()
         }
       )
+      
     }
- 
+    .background(Color.offWhite)
   }
 }
 

@@ -10,10 +10,15 @@ import SwiftUI
 
 struct TabBarView: View {
   @EnvironmentObject var appState: AppState
-  
   var userData = UserData()
+  init() {
+      UITabBar.appearance().barTintColor = UIColor.lightOffWhite
+      UITableView.appearance().backgroundColor = UIColor.offWhite
+           UITableViewCell.appearance().backgroundColor = UIColor.offWhite
+  }
     var body: some View {
       TabView(selection: $appState.selectedTab) {
+        
         ContentView()
           .onTapGesture {
             self.appState.selectedTab = .home
@@ -56,12 +61,13 @@ struct TabBarView: View {
         AddNewPlayerView()
            .tabItem {
              Image(systemName: "person.crop.circle.badge.plus").font(.system(size:20))
-             Text("Add Players")
+             Text("Add")
                .fontWeight(.light)
                .font(.system(size:11))
         }
         .tag(Tab.AddNewPlayerView)
       }
+      .accentColor(Color.darkPurple)
     .environmentObject(userData)
     }
 }

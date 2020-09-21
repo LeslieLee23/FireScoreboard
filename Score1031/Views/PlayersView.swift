@@ -104,7 +104,7 @@ struct PlayersView: View {
           }
         }
       )
-    }
+  }
   }
 }
 
