@@ -22,7 +22,7 @@ struct BetSnapViewModel: View {
               .font(.system(size: 13))
               .multilineTextAlignment(.leading)
               }
-                .frame(minWidth: 165, maxWidth: .infinity, minHeight: 15, maxHeight: .infinity, alignment: .leading)
+                .frame(minWidth: 200, maxWidth: 200, minHeight: 20, maxHeight: .infinity, alignment: .leading)
 
             //  Spacer()
               VStack(alignment: .leading) {
@@ -30,26 +30,28 @@ struct BetSnapViewModel: View {
               .font(.system(size: 11))
                 .foregroundColor(Color.darkGray)
               }//.frame(width:165, height: 40, alignment: .leading)
-              .frame(minWidth: 150, maxWidth: .infinity, minHeight: 10, maxHeight: 10, alignment: .leading)
+              .frame(width:200, height: 25, alignment: .leading)
             }
-            
-            
+ 
             VStack() {
               VStack() {
                 Text("Stake:")
                   .font(.system(size: 14))
               }
-              .frame(width:50, height: 20, alignment: .top)
+              .frame(minWidth: 50, maxWidth: 50, minHeight: 20, maxHeight: .infinity, alignment: .center)
               VStack() {
                 Text(bets3.betScore)
                   .font(.system(size: 20))
               }
-              .frame(width:50, height: 30, alignment: .center)
+              .frame(minWidth: 50, maxWidth: 50, minHeight: 40, maxHeight: .infinity, alignment: .center)
+         //     .frame(width:60, height: 20, alignment: .center)
             }
-            .frame(width:50, height: 80, alignment: .leading)
+            .frame(minWidth: 60, maxWidth: 60, minHeight: 50, maxHeight: .infinity, alignment: .top)
           }
         }
-        .frame(width:270, height: 50, alignment: .center)
+        .frame(minWidth: 270, maxWidth: 270, minHeight: 50, maxHeight: 80, alignment: .center)
+
+  //      .frame(width:270, height: 50, alignment: .center)
     }
 }
 

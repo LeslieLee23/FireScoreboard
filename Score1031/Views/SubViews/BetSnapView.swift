@@ -32,15 +32,16 @@ struct BetSnapView: View {
               .clipShape(
                 RoundedRectangle(cornerRadius: 20)
             )
-          .frame(width: 320, height: 148, alignment: .top)
+          .frame(width: 320, height: 145, alignment: .top)
           .background(Color.offWhite)
           .cornerRadius(25)
       }
       Spacer()
       VStack(alignment: .center) {
         Spacer()
+        Spacer()
         HStack {
-        Text("Bet")
+        Text("Bets")
           .padding(.leading, 25)
           Spacer()
         Button(action: {
@@ -56,32 +57,17 @@ struct BetSnapView: View {
         List {
           ForEach (betLoader.fetchOngoingBet(self.userData.playerID!).prefix(3)) { bets3 in
 
-              HStack(){
                 VStack{
                   BetSnapViewModel(bets3: bets3)
                 }
-                VStack() {
-                  VStack() {
-                    Text("Stake:")
-                      .font(.system(size: 14))
-                  }
-                  .frame(width:50, height: 20, alignment: .top)
-                  VStack() {
-                    Text(bets3.betScore)
-                      .font(.system(size: 20))
-                  }
-                  .frame(width:50, height: 30, alignment: .center)
-                }
-                .frame(width:50, height: 80, alignment: .leading)
-              }
-              .frame(minWidth: 350, maxWidth: 350, minHeight: 85, maxHeight: 110, alignment: .leading)
 
           }.listRowBackground(Color.offWhite)
         }
-      }.frame(width: 290, height: 100, alignment: .leading)
-      }//.border(Color.red)
+      }.frame(width: 290, height: 80, alignment: .leading)
+        //.border(Color.red)
+      }
       
-      .frame(width: 290, height: 110, alignment: .leading)
+      .frame(width: 290, height: 90, alignment: .leading)
     }
 
   }
