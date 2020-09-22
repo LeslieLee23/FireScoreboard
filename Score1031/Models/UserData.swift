@@ -100,4 +100,13 @@ class UserData: ObservableObject {
             UserDefaults.standard.set(self.deleteMode, forKey: "deleteMode")
         }
     }
+  
+    @Published var betState: Int = UserDefaults.standard.integer(forKey: "betState") {
+        didSet {
+            UserDefaults.standard.set(self.betState, forKey: "betState")
+          // 0 stands for no ongoing or past bet
+          // 1 stands for ongoing bet avaliable
+          // 2 stands for no ongoing bet avaliable but past bet is avaliable
+        }
+    }
 }

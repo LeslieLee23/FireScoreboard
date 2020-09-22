@@ -321,7 +321,6 @@ private struct UITextViewWrapper: UIViewRepresentable {
     func makeUIView(context: UIViewRepresentableContext<UITextViewWrapper>) -> UITextView {
         let textField = UITextView()
         textField.delegate = context.coordinator
-
         textField.isEditable = true
         textField.font = UIFont.preferredFont(forTextStyle: .body)
         textField.isSelectable = true

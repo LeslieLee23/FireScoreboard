@@ -96,6 +96,8 @@ struct BetAssignResultView: View {
               self.bets3.winnerNameStr = self.userData.names[1]
               self.bets3.winnerNameEmo = self.userData.emojis[1]
             }
+            self.bets3.betEntryTime = Date()
+            self.bets3.betEntryTimeString = getDateString(Date: self.bets3.betEntryTime!)
           }) {
             Text("Assign")
           }

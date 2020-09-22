@@ -34,7 +34,7 @@ struct ContentView: View {
   @EnvironmentObject var userData: UserData
   @ObservedObject private var apiLoader = APILoader()
   @State private var records3 = APILoader().records3
-  
+  @ObservedObject var betLoader = BetLoader()
   @State var showSignInForm = false
   
   var colors: [Color] = [.offWhite, .niceBlue]
@@ -48,9 +48,16 @@ struct ContentView: View {
       ZStack{
         
         Color.offWhite.edgesIgnoringSafeArea(.all)
-        
+         VStack {
         VStack {
-          
+          if  betLoader.fetchOngoingBet(self.userData.playerID!).count < 1 {
+            VStack {
+            Spacer()
+            }.frame(width: 340, height: 50, alignment: .top)
+          } else {
+            
+          }
+          }
           ///Scoreboard Section
           ZStack{
             ///Color Change View
@@ -142,11 +149,20 @@ struct ContentView: View {
           }///Scoreboard Section
           
           if self.userData.editMode == false {
-            Spacer()
-            HistorySnapView().environmentObject(self.userData)
-            Spacer()
-            BetSnapView().environmentObject(self.userData)
-            Spacer()
+            if  betLoader.fetchOngoingBet(self.userData.playerID!).count < 1 {
+              Spacer()
+              Spacer()
+              HistorySnapView().environmentObject(self.userData)
+              Spacer()
+              Spacer()
+              Spacer()
+            } else {
+              Spacer()
+              HistorySnapView().environmentObject(self.userData)
+              Spacer()
+              BetSnapView().environmentObject(self.userData)
+              Spacer()
+            }
           } else {
             VStack() {
               EditModeView()
@@ -230,23 +246,20 @@ struct ContentView: View {
           }
         } ///Title row
           .frame(width: 340, height: 25, alignment: .center)
-         
         }
       )
-      
     }
-      //  .offset(y: -keyboardResponder.currentHeight*0.5)
-      .onAppear() {
-        if self.nameAndScore.playerTwoName == nil {
-          self.nameAndScore.PlayerTwoScore = 0
-          self.nameAndScore.PlayerOneScore = 0
-          self.nameAndScore.playerTwoName = "Player Two"
-          self.nameAndScore.playerOneName = "Player One"
-          self.nameAndScore.playerOneEmoji = "🌋"
-          self.nameAndScore.playerTwoEmoji = "👨🏻"
-          self.userData.playerID = "0"
-          self.userData.selectedName = 5
-        }
+    .onAppear() {
+      if self.nameAndScore.playerTwoName == nil {
+        self.nameAndScore.PlayerTwoScore = 0
+        self.nameAndScore.PlayerOneScore = 0
+        self.nameAndScore.playerTwoName = "Player Two"
+        self.nameAndScore.playerOneName = "Player One"
+        self.nameAndScore.playerOneEmoji = "🌋"
+        self.nameAndScore.playerTwoEmoji = "👨🏻"
+        self.userData.playerID = "0"
+        self.userData.selectedName = 5
+      }
     }
   }
 }

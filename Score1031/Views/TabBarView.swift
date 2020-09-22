@@ -13,6 +13,7 @@ import UIKit
 
 struct TabBarView: View {
   @EnvironmentObject var appState: AppState
+  @ObservedObject var betLoader = BetLoader()
   var userData = UserData()
   init() {
     UITabBar.appearance().barTintColor = UIColor.lightOffWhite
@@ -85,7 +86,7 @@ struct TabBarView: View {
                .fontWeight(.light)
                .font(.system(size:11))
            } else {
-             Image(systemName: "suit.spade")
+             Image(systemName: "suit.spade.fill")
             .font(.system(size:22))
              Text("Bets")
                .fontWeight(.light)
@@ -136,6 +137,20 @@ struct TabBarView: View {
           }
       }
       .tag(Tab.AddNewPlayerView)
+    }
+    .onAppear() {
+      
+      if self.betLoader.fetchPastBet(self.userData.playerID!).count < 1 && self.betLoader.fetchOngoingBet(self.userData.playerID!).count < 1 {
+        self.userData.betState = 0
+      }
+      else if self.betLoader.fetchOngoingBet(self.userData.playerID!).count > 0 {
+        self.userData.betState = 1
+      } else if self.betLoader.fetchPastBet(self.userData.playerID!).count > 0 {
+        self.userData.betState = 2
+      }
+      print("count fetchOngoingBet \(self.betLoader.fetchOngoingBet(self.userData.playerID!).count)")
+      print("playerID \(self.userData.playerID)")
+      print("betState \(self.userData.betState)")
     }
     .accentColor(Color.darkPurple)
     .environmentObject(userData)

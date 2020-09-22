@@ -31,10 +31,17 @@ struct BetsHomeView: View {
             Spacer()
           }
           
-          VStack(alignment: .leading) {
-            //Ongoing Bet
-            List {
-              ForEach (betLoader.fetchOngoingBet(self.userData.playerID!)) { bets3 in
+          if betLoader.fetchOngoingBet(self.userData.playerID!).count < 1 {
+            VStack {
+              Text("No ongoing bet. Add a bet!")
+                .foregroundColor(Color.darkGray)
+            }.frame(width:350, height: 150, alignment: .leading)
+          }
+          else {
+            VStack(alignment: .leading) {
+              //Ongoing Bet
+              List {
+                ForEach (betLoader.fetchOngoingBet(self.userData.playerID!)) { bets3 in
                   if self.userData.deleteMode == false {
                     NavigationLink(destination: BetAssignResultView(bets3: bets3)) {
                       HStack(){
@@ -79,30 +86,36 @@ struct BetsHomeView: View {
                             self.betLoader.remove(id: bets3.id)
                             self.userData.deleteMode = false
                             }, secondaryButton: .cancel(){
-                                self.userData.deleteMode = false
+                              self.userData.deleteMode = false
                             })
                         }
                       }.frame(width:50, height: 80, alignment: .center)
                     }
                     .frame(minWidth: 350, maxWidth: 350, minHeight: 85, maxHeight: 95, alignment: .leading)
                   }
-              }.listRowBackground(Color.offWhite)
+                }.listRowBackground(Color.offWhite)
+              }
+            }//Ongoing Bet
+              .frame(width:370, height: 190, alignment: .leading)
+          }
+          if betLoader.fetchPastBet(self.userData.playerID!).count < 1 {
+
+          }
+          else {
+            HStack {
+              VStack(alignment: .leading) {
+                Text("Past Bets:")
+              }
+              .frame(width:200, height: 15, alignment: .leading)
+              .padding()
+              Spacer()
             }
-          }//Ongoing Bet
-          .frame(width:370, height: 190, alignment: .leading)
-          HStack {
+            
             VStack(alignment: .leading) {
-              Text("Past Bets:")
+              PastBetView()
             }
-            .frame(width:200, height: 15, alignment: .leading)
-            .padding()
-            Spacer()
+            .frame(width:370, height: 190, alignment: .leading)
           }
-          
-          VStack(alignment: .leading) {
-            PastBetView()
-          }
-          .frame(width:370, height: 190, alignment: .leading)
         }
       }
       .frame(minWidth: 370, maxWidth: 370, minHeight: 0, maxHeight: .infinity, alignment: .leading)
@@ -112,14 +125,16 @@ struct BetsHomeView: View {
       }
       .navigationBarItems(leading:
         HStack(spacing: 81){
-            Toggle(isOn: $userData.deleteMode) {
-              Text("")
-            }
-            .toggleStyle(DeleteToggleStyle())
-            .padding(.leading, 18)
+          Toggle(isOn: $userData.deleteMode) {
+            Text("")
+          }
+          .toggleStyle(DeleteToggleStyle())
+          .padding(.leading, 18)
           Spacer()
           Spacer()
-          NavigationLink(destination: AddBetView()) {
+          NavigationLink(destination: AddBetView()
+          .environmentObject(UserData())
+          ) {
             Image(systemName: "plus.circle.fill")
               .font(.system(size:21))
               .padding(.trailing, 18)
@@ -127,7 +142,7 @@ struct BetsHomeView: View {
         }
       )
     }
-     .onAppear() {
+    .onAppear() {
       self.userData.deleteMode = false
     }
   }

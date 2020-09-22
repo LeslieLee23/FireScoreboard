@@ -1,14 +1,14 @@
 //
-//  BetSnapView.swift
+//  BetSnapPastView.swift
 //  Score1031
 //
-//  Created by Danting Li on 9/19/20.
+//  Created by Danting Li on 9/21/20.
 //  Copyright © 2020 HULUCave. All rights reserved.
 //
 
 import SwiftUI
 
-struct BetSnapView: View {
+struct BetSnapPastView: View {
   
   @EnvironmentObject var userData: UserData
   @ObservedObject var apiLoader = APILoader()
@@ -32,17 +32,16 @@ struct BetSnapView: View {
               .clipShape(
                 RoundedRectangle(cornerRadius: 20)
             )
-          .frame(width: 320, height: 150, alignment: .top)
+          .frame(width: 320, height: 145, alignment: .top)
           .background(Color.offWhite)
           .cornerRadius(25)
       }
       Spacer()
       VStack(alignment: .center) {
         Spacer()
-
+        Spacer()
         HStack {
         Text("Bets")
-          .font(.system(size: 16))
           .padding(.leading, 25)
           Spacer()
         Button(action: {
@@ -54,27 +53,27 @@ struct BetSnapView: View {
             .padding(.trailing, 25)
         }
         }
-        Divider()
+        
         VStack {
         List {
           ForEach (betLoader.fetchOngoingBet(self.userData.playerID!).prefix(3)) { bets3 in
                 VStack{
-                  BetSnapViewModel(bets3: bets3)
+                  BetSnapPastViewModel(bets3: bets3)
                 }
           }.listRowBackground(Color.offWhite)
         }
-      }.frame(width: 290, height: 75, alignment: .leading)
+      }.frame(width: 290, height: 80, alignment: .leading)
         //.border(Color.red)
       }
       
-      .frame(width: 290, height: 85, alignment: .leading)
+      .frame(width: 290, height: 90, alignment: .leading)
     }
 
   }
 }
 
-struct BetSnapView_Previews: PreviewProvider {
+struct BetSnapPastView_Previews: PreviewProvider {
     static var previews: some View {
-        BetSnapView()
+        BetSnapPastView()
     }
 }

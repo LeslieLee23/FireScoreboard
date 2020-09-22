@@ -55,13 +55,10 @@ struct EditModeView: View {
         }) {
           Text("+")
             .fontWeight(.medium)
-         //   .foregroundColor(Color.white)
             .foregroundColor(Color.darkGray)
             .font(.system(size: 25))
         }
         .frame(width: 35, height: 35)
-     //   .foregroundColor(.purple)
-     //   .buttonStyle(CircleStyle(color: .purple))
         .foregroundColor(.offWhite)
         .buttonStyle(CircleStyle())
         Spacer()
@@ -71,15 +68,15 @@ struct EditModeView: View {
       ///Reason text input row
       Spacer()
       VStack() {
-//      TextField("What for?", text: $reason)
-//        .textFieldStyle(NeuTextStyle())
-//        .frame(width: 260, height: 50)
-//        .multilineTextAlignment(.leading)
-        MultilineTextField("What for?", text: $reason) {
-          UIApplication.shared.endEditing()
-        }
-         .overlay(RoundedRectangle(cornerRadius: 5).stroke(Color.gray))
-        .frame(width: 290, height: 50)
+      TextField("What for?", text: $reason)
+        .textFieldStyle(NeuTextStyle())
+        .frame(width: 260, height: 50)
+        .multilineTextAlignment(.leading)
+//        MultilineTextField("What for?", text: $reason) {
+//          UIApplication.shared.endEditing()
+//        }
+//         .overlay(RoundedRectangle(cornerRadius: 5).stroke(Color.gray))
+//        .frame(width: 290, height: 50)
         
 //        .padding(.trailing, 35)
 //        .padding(.leading, 35)

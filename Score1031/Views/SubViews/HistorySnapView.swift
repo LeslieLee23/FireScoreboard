@@ -32,7 +32,7 @@ struct HistorySnapView: View {
               .clipShape(
                 RoundedRectangle(cornerRadius: 20)
             )
-          .frame(width: 320, height: 130, alignment: .top)
+          .frame(width: 320, height: 135, alignment: .top)
           .background(Color.offWhite)
           .cornerRadius(25)
       }
@@ -52,6 +52,7 @@ struct HistorySnapView: View {
             .padding(.trailing, 25)
         }
         }
+        Divider()
         List {
           ForEach (apiLoader.fetchPlayerData(self.userData.playerID ?? "0").prefix(3)) { records3 in
 
@@ -61,7 +62,7 @@ struct HistorySnapView: View {
         }
       }//.border(Color.red)
       
-      .frame(width: 290, height: 100, alignment: .leading)
+      .frame(width: 290, height: 110, alignment: .leading)
     }
 
   }

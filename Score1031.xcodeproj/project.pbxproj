@@ -161,6 +161,7 @@
 		F51C7A3B23D5715A00540B25 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F5CD314625116ACA00B67510 /* SubViews */,
 				F5D7FC7424D942A6006BFC4A /* SignInView.swift */,
 				F55DABD724EF3B9B0078452F /* TabBarView.swift */,
 				F56E71912493505C007E8FF5 /* ContentView.swift */,
@@ -170,7 +171,6 @@
 				F500DA66250732BA003E60F3 /* AddBetView.swift */,
 				F500DA6C25089247003E60F3 /* BetsHomeView.swift */,
 				F5CD3141250EB6B500B67510 /* BetAssignResultView.swift */,
-				F5CD314625116ACA00B67510 /* SubViews */,
 			);
 			path = Views;
 			sourceTree = "<group>";
