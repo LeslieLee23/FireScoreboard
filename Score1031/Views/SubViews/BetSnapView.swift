@@ -16,15 +16,15 @@ struct BetSnapView: View {
   @EnvironmentObject var appState: AppState
 
   init(){
-      UITableView.appearance().backgroundColor = UIColor.offWhite
+      UITableView.appearance().backgroundColor = UIColor.offWhite02
   }
   
   var body: some View {
     ZStack{
       VStack() {
             RoundedRectangle(cornerRadius: 20)
-              .stroke(Color.offWhite, lineWidth: 5)
-              .shadow(color: Color.black.opacity(0.2), radius: 5, x: 5, y: 5)
+              .stroke(Color.offWhite02, lineWidth: 5)
+              .shadow(color: Color.offGray01, radius: 5, x: 5, y: 5)
               .clipShape(
                 RoundedRectangle(cornerRadius: 20)
             )
@@ -33,7 +33,7 @@ struct BetSnapView: View {
                 RoundedRectangle(cornerRadius: 20)
             )
           .frame(width: 320, height: 150, alignment: .top)
-          .background(Color.offWhite)
+          .background(Color.offWhite02)
           .cornerRadius(25)
       }
       Spacer()
@@ -61,7 +61,7 @@ struct BetSnapView: View {
                 VStack{
                   BetSnapViewModel(bets3: bets3)
                 }
-          }.listRowBackground(Color.offWhite)
+          }.listRowBackground(Color.offWhite02)
         }
       }.frame(width: 290, height: 75, alignment: .leading)
         //.border(Color.red)

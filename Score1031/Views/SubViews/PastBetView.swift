@@ -17,7 +17,7 @@ struct PastBetView: View {
   var body: some View {
 
     ZStack{
-      Color.offWhite.edgesIgnoringSafeArea(.all)
+      Color.offWhite02.edgesIgnoringSafeArea(.all)
         VStack(alignment: .leading) {
           List {
             ForEach (betLoader.fetchPastBet(self.userData.playerID!)) { bets3 in
@@ -75,7 +75,7 @@ struct PastBetView: View {
                 }
 
        //       }
-            }.listRowBackground(Color.offWhite)
+            }.listRowBackground(Color.offWhite02)
           }
         }//Past Bet
 

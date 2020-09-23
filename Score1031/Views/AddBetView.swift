@@ -29,7 +29,7 @@ struct AddBetView: View {
   
   var body: some View {
     ZStack{
-      Color.offWhite.edgesIgnoringSafeArea(.all)
+      Color.offWhite02.edgesIgnoringSafeArea(.all)
 
     VStack {
       Spacer()
@@ -38,30 +38,7 @@ struct AddBetView: View {
         .padding(.leading, 50)
       Spacer()
       }
-//      VStack() {
-//        RoundedRectangle(cornerRadius: 15)
-//          .stroke(Color.offWhite, lineWidth: 5)
-//          .shadow(color: Color.black.opacity(0.2), radius: 4, x: 5, y: 5)
-//          .frame(width: 300, height: 140)
-//          .clipShape(
-//            RoundedRectangle(cornerRadius: 15)
-//        )
-//          .shadow(color: Color.white, radius: 4, x: -3, y: -3)
-//          .frame(width: 300, height: 130)
-//          .clipShape(
-//            RoundedRectangle(cornerRadius: 15)
-//        )
-//          .background(Color.offWhite)
-//          .cornerRadius(18)
-//          .frame(width: 300, height: 130)
-//
-//        .overlay(
-//          MultiTextField(text: $bet)
-//            .frame(width: 280, height: 110)
-//          .padding(10)
-//          .cornerRadius(15)
-//        )
-//      }.padding()
+
       MultiTextField2("  Enter bet here:", text: $bet)
       
       VStack() {
@@ -75,17 +52,17 @@ struct AddBetView: View {
         }) {
           Text("-")
             .fontWeight(.medium)
-            .foregroundColor(Color.darkGray)
+            .foregroundColor(Color.offblack01)
             .font(.system(size: 25))
         }
         .frame(width: 35, height: 35)
-        .foregroundColor(.offWhite)
+        .foregroundColor(.offWhite02)
         .buttonStyle(CircleStyle())
         
         Text("\(self.betScore)")
           .font(.system(size: 25))
           .padding()
-          .foregroundColor(Color.darkGray)
+          .foregroundColor(Color.offblack02)
         
         Button(action: {
           self.betScore += 1
@@ -93,11 +70,11 @@ struct AddBetView: View {
           Text("+")
             .fontWeight(.medium)
          //   .foregroundColor(Color.white)
-            .foregroundColor(Color.darkGray)
+            .foregroundColor(Color.offblack01)
             .font(.system(size: 25))
         }
         .frame(width: 35, height: 35)
-        .foregroundColor(.offWhite)
+        .foregroundColor(.offWhite02)
         .buttonStyle(CircleStyle())
         Spacer()
       }///Add and minus button row

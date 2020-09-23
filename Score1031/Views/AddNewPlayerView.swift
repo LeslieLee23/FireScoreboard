@@ -36,7 +36,7 @@ struct AddNewPlayerView: View {
   var body: some View {
     NavigationView {
       ZStack {
-        Color.offWhite.edgesIgnoringSafeArea(.all)
+        Color.offWhite02.edgesIgnoringSafeArea(.all)
         VStack{
           Group{
             HStack{

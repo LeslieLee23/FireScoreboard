@@ -16,15 +16,15 @@ struct HistorySnapView: View {
   @EnvironmentObject var appState: AppState
   
   init(){
-      UITableView.appearance().backgroundColor = UIColor.offWhite
+      UITableView.appearance().backgroundColor = UIColor.offWhite02
   }
   
   var body: some View {
     ZStack{
       VStack() {
             RoundedRectangle(cornerRadius: 20)
-              .stroke(Color.offWhite, lineWidth: 5)
-              .shadow(color: Color.black.opacity(0.2), radius: 5, x: 5, y: 5)
+              .stroke(Color.offWhite02, lineWidth: 5)
+              .shadow(color: Color.offGray01, radius: 5, x: 5, y: 5)
               .clipShape(
                 RoundedRectangle(cornerRadius: 20)
             )
@@ -33,7 +33,7 @@ struct HistorySnapView: View {
                 RoundedRectangle(cornerRadius: 20)
             )
           .frame(width: 320, height: 135, alignment: .top)
-          .background(Color.offWhite)
+          .background(Color.offWhite02)
           .cornerRadius(25)
       }
 
@@ -58,7 +58,7 @@ struct HistorySnapView: View {
 
               RecordSnapViewModel(name: records3.recordName, score: records3.recordScore, reason: records3.recordReason, entryTime: records3.recordEntryTimeString, playerID: records3.playerID, nameStr: records3.recordNameStr ?? "Wowo", nameEmo: records3.recordNameEmo ?? "🐒")
 
-          }.listRowBackground(Color.offWhite)
+          }.listRowBackground(Color.offWhite02)
         }
       }//.border(Color.red)
       

@@ -76,7 +76,7 @@ struct PlayersView: View {
                 }
               }
             }
-          }.listRowBackground(Color.offWhite)
+          }.listRowBackground(Color.offWhite02)
         }
       }
         

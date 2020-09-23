@@ -14,11 +14,12 @@ import UIKit
 struct TabBarView: View {
   @EnvironmentObject var appState: AppState
   @ObservedObject var betLoader = BetLoader()
+  @EnvironmentObject var obj : observed
   var userData = UserData()
   init() {
-    UITabBar.appearance().barTintColor = UIColor.lightOffWhite
-    UITableView.appearance().backgroundColor = UIColor.offWhite
-    UITableViewCell.appearance().backgroundColor = UIColor.offWhite
+    UITabBar.appearance().barTintColor = UIColor.offWhite01
+    UITableView.appearance().backgroundColor = UIColor.offWhite02
+    UITableViewCell.appearance().backgroundColor = UIColor.offWhite02
   }
   var body: some View {
     TabView(selection: $appState.selectedTab) {
@@ -166,7 +167,7 @@ struct TabBarView_Previews: PreviewProvider {
       .environmentObject(AddScoreFunc())
       .environmentObject(AddBetFunc())
       .environmentObject(AppState())
-   //   .environmentObject(obj)
+ //     .environmentObject(obj)
   }
 }
 

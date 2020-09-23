@@ -21,7 +21,7 @@ struct BetAssignResultView: View {
   
   var body: some View {
     ZStack{
-      Color.offWhite.edgesIgnoringSafeArea(.all)
+      Color.offWhite02.edgesIgnoringSafeArea(.all)
       VStack {
         VStack {
           HStack{
@@ -34,9 +34,9 @@ struct BetAssignResultView: View {
         VStack() {
           
           RoundedRectangle(cornerRadius: 15)
-            .fill(Color.offWhite)
+            .fill(Color.offWhite02)
             .frame(width: 290, height: 120)
-            .shadow(color: Color.black.opacity(0.2), radius: 6, x: 8, y: 8)
+            .shadow(color: Color.offGray01.opacity(1), radius: 6, x: 8, y: 8)
             .shadow(color: Color.white.opacity(0.6), radius: 6, x: -4, y: -4)
             
             .overlay(

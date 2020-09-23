@@ -38,28 +38,28 @@ struct EditModeView: View {
         }) {
           Text("-")
             .fontWeight(.medium)
-            .foregroundColor(Color.darkGray)
+            .foregroundColor(Color.offblack01)
             .font(.system(size: 25))
         }
         .frame(width: 35, height: 35)
-        .foregroundColor(.offWhite)
+        .foregroundColor(.offWhite02)
         .buttonStyle(CircleStyle())
         
         Text("\(self.editedScore)")
           .font(.system(size: 25))
           .padding()
-          .foregroundColor(Color.darkGray)
+          .foregroundColor(Color.offblack02)
         
         Button(action: {
           self.editedScore += 1
         }) {
           Text("+")
             .fontWeight(.medium)
-            .foregroundColor(Color.darkGray)
+            .foregroundColor(Color.offblack01)
             .font(.system(size: 25))
         }
         .frame(width: 35, height: 35)
-        .foregroundColor(.offWhite)
+        .foregroundColor(.offWhite02)
         .buttonStyle(CircleStyle())
         Spacer()
       }///Add and minus button row

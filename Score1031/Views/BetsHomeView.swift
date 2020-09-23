@@ -20,7 +20,7 @@ struct BetsHomeView: View {
   var body: some View {
     NavigationView {
       ZStack{
-        Color.offWhite.edgesIgnoringSafeArea(.all)
+        Color.offWhite02.edgesIgnoringSafeArea(.all)
         VStack {
           HStack {
             VStack(alignment: .leading) {
@@ -35,7 +35,7 @@ struct BetsHomeView: View {
           if betLoader.fetchOngoingBet(self.userData.playerID!).count < 1 {
             VStack {
               Text("No ongoing bet. Add a bet!")
-                .foregroundColor(Color.darkGray)
+                .foregroundColor(Color.offGray02)
             }.frame(width:350, height: 150, alignment: .leading)
           }
           else {
@@ -94,7 +94,7 @@ struct BetsHomeView: View {
                     }
                     .frame(minWidth: 350, maxWidth: 350, minHeight: 85, maxHeight: 95, alignment: .leading)
                   }
-                }.listRowBackground(Color.offWhite)
+                }.listRowBackground(Color.offWhite02)
               }
             }//Ongoing Bet
               .frame(width:370, height: 190, alignment: .leading)
@@ -135,6 +135,7 @@ struct BetsHomeView: View {
           Spacer()
           NavigationLink(destination: AddBetView()
           .environmentObject(UserData())
+            .environmentObject(obj)
           ) {
             Image(systemName: "plus.circle.fill")
               .font(.system(size:21))

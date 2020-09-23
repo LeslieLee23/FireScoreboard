@@ -35,6 +35,7 @@
 		F56E71922493505C007E8FF5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56E71912493505C007E8FF5 /* ContentView.swift */; };
 		F56F88AB2517307C00FD3CF7 /* BetSnapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56F88AA2517307C00FD3CF7 /* BetSnapView.swift */; };
 		F56F88AD2517376C00FD3CF7 /* BetSnapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56F88AC2517376C00FD3CF7 /* BetSnapViewModel.swift */; };
+		F56F88B3251BEBF000FD3CF7 /* NeupbuttonText.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56F88B2251BEBF000FD3CF7 /* NeupbuttonText.swift */; };
 		F5776DC825141DA50017858D /* PastBetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5776DC725141DA50017858D /* PastBetView.swift */; };
 		F59129502420368F0071E1D3 /* SelectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F591294F2420368F0071E1D3 /* SelectViewModel.swift */; };
 		F5BA924724E75A6900CA3519 /* EditModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BA924624E75A6900CA3519 /* EditModeView.swift */; };
@@ -98,6 +99,7 @@
 		F56E71912493505C007E8FF5 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F56F88AA2517307C00FD3CF7 /* BetSnapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetSnapView.swift; sourceTree = "<group>"; };
 		F56F88AC2517376C00FD3CF7 /* BetSnapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetSnapViewModel.swift; sourceTree = "<group>"; };
+		F56F88B2251BEBF000FD3CF7 /* NeupbuttonText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeupbuttonText.swift; sourceTree = "<group>"; };
 		F5776DC725141DA50017858D /* PastBetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastBetView.swift; sourceTree = "<group>"; };
 		F591294F2420368F0071E1D3 /* SelectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectViewModel.swift; sourceTree = "<group>"; };
 		F5BA924624E75A6900CA3519 /* EditModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditModeView.swift; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 				F56F88AA2517307C00FD3CF7 /* BetSnapView.swift */,
 				F5D7FC6E24D94087006BFC4A /* SigninWithAppleButton.swift */,
 				F5776DC725141DA50017858D /* PastBetView.swift */,
+				F56F88B2251BEBF000FD3CF7 /* NeupbuttonText.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -388,6 +391,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F56F88B3251BEBF000FD3CF7 /* NeupbuttonText.swift in Sources */,
 				F5EAA41B2511C08D00584E86 /* Styles.swift in Sources */,
 				F5D7FC7524D942A6006BFC4A /* SignInView.swift in Sources */,
 				F56E71922493505C007E8FF5 /* ContentView.swift in Sources */,

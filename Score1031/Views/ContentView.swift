@@ -36,8 +36,9 @@ struct ContentView: View {
   @State private var records3 = APILoader().records3
   @ObservedObject var betLoader = BetLoader()
   @State var showSignInForm = false
+  @EnvironmentObject var obj : observed
   
-  var colors: [Color] = [.offWhite, .niceBlue]
+  var colors: [Color] = [.offWhite02, .niceBlue]
   @State var index: Int = 0
   @State var progress: CGFloat = 0
   
@@ -47,7 +48,7 @@ struct ContentView: View {
     NavigationView{
       ZStack{
         
-        Color.offWhite.edgesIgnoringSafeArea(.all)
+        Color.offWhite02.edgesIgnoringSafeArea(.all)
          VStack {
         VStack {
           if  betLoader.fetchOngoingBet(self.userData.playerID!).count < 1 {
@@ -62,12 +63,10 @@ struct ContentView: View {
           ZStack{
             ///Color Change View
             VStack {
-              SplashView(animationType: .angle(Angle(degrees: 40)), color: .lightOffWhite)
-                .frame(width: 340, height: 250, alignment: .top)
-                .cornerRadius(25)
-                .shadow(color: Color.black.opacity(0.1), radius: 2, x: 7, y: 7)
-      //          .shadow(color: Color.white.opacity(0.6), radius: 4, x: -4, y: -4)
-              //          }
+              SplashView(animationType: .angle(Angle(degrees: 40)), color: .offWhite01)
+              .frame(width: 340, height: 250, alignment: .top)
+              .cornerRadius(25)
+              .shadow(color: Color.offGray01.opacity(0.8), radius: 5, x: 5, y: 5)
             }///Color Change View
             
             ///Scoreboard Content View
@@ -82,14 +81,14 @@ struct ContentView: View {
                 VStack() {
                   Text("\(self.nameAndScore.PlayerOneScore)")
                     .font(.system(size: 50))
-                    .foregroundColor(self.userData.editMode ? .grayCircle : .black)
+                    .foregroundColor(self.userData.editMode ? .offGray00 : .offblack03)
                 }
                 .frame(width: 165, height: 55, alignment: .center)
                 
                 VStack() {
                   Text("\(self.nameAndScore.PlayerTwoScore)")
                     .font(.system(size: 50))
-                    .foregroundColor(self.userData.editMode ? .grayCircle : .black)
+                    .foregroundColor(self.userData.editMode ? .offGray00 : .offblack03)
                 }
                 .frame(width: 165, height: 55, alignment: .center)
                 
@@ -238,11 +237,12 @@ struct ContentView: View {
             Text("Select one:")
               .font(.system(size: 22))
               //  .fontWeight(.bold)
-              .foregroundColor(Color.darkGray)
+              .foregroundColor(Color.offblack01)
           } else {
             Text("Scoreboard")
               .font(.system(size: 23))
               .fontWeight(.bold)
+              .foregroundColor(Color.offblack03)
           }
         } ///Title row
           .frame(width: 340, height: 25, alignment: .center)
@@ -274,6 +274,7 @@ struct ContentView_Previews: PreviewProvider {
     .environmentObject(UserData())
     .environmentObject(AddScoreFunc())
     .environmentObject(AppState())
+
     
   }
 }

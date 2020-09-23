@@ -22,7 +22,7 @@ extension LinearGradient {
 
 
 struct CircleStyle: ButtonStyle {
-  var color: Color = .lightOffWhite
+  var color: Color = .offWhite01
   func makeBody(configuration: ButtonStyleConfiguration) -> some View {
     
     Group {
@@ -32,28 +32,28 @@ struct CircleStyle: ButtonStyle {
           .stroke(Color.gray, lineWidth: 3)
           .blur(radius: 3)
           .offset(x: 2, y: 2)
-          .mask(Circle().fill(LinearGradient(Color.black, Color.clear)))
+          .mask(Circle().fill(LinearGradient(Color.offblack03, Color.clear)))
           
           .overlay(
             Circle()
               .stroke(color, lineWidth: 8)
               .blur(radius: 3)
               .offset(x: -2, y: -2)
-              .mask(Circle().fill(LinearGradient(Color.clear, Color.black)))
+              .mask(Circle().fill(LinearGradient(Color.clear, Color.offblack03)))
         )
           .overlay(
             configuration.label
-              .foregroundColor(.lightOffWhite)
+              .foregroundColor(.offWhite01)
         )
         
       } else {
         Circle()
           .fill()
-          .shadow(color: Color.black.opacity(0.2), radius: 5, x: 6, y: 6)
+          .shadow(color: Color.offGray01.opacity(1), radius: 5, x: 6, y: 6)
           .shadow(color: Color.white.opacity(0.8), radius: 5, x: -3, y: -3)
           .overlay(
             configuration.label
-              .foregroundColor(.lightOffWhite)
+              .foregroundColor(.offWhite01)
         )
       }
     }
@@ -71,8 +71,8 @@ public struct NeuTextStyle : TextFieldStyle {
   public func _body(configuration: TextField<Self._Label>) -> some View {
     
     RoundedRectangle(cornerRadius: cr)
-      .stroke(Color.offWhite, lineWidth: 5)
-      .shadow(color: Color.black.opacity(0.2), radius: 4, x: 5, y: 5)
+      .stroke(Color.offWhite02, lineWidth: 5)
+      .shadow(color: Color.offGray01.opacity(1), radius: 4, x: 5, y: 5)
       .frame(width: w, height: h)
       .clipShape(
         RoundedRectangle(cornerRadius: cr)
@@ -82,12 +82,12 @@ public struct NeuTextStyle : TextFieldStyle {
       .clipShape(
         RoundedRectangle(cornerRadius: cr)
     )
-      .background(Color.offWhite)
+      .background(Color.offWhite02)
       .cornerRadius(cr + 5)
       .frame(width: w, height: h)
       .overlay(
         configuration
-          .foregroundColor(.darkGray)
+          .foregroundColor(.offblack01)
           .frame(width: w - 20, height: h)
         , alignment: .trailing
     )
@@ -108,8 +108,8 @@ struct NeuButtonStyle: ButtonStyle {
       if configuration.isPressed {
         
         RoundedRectangle(cornerRadius: 30)
-          .stroke(Color.offWhite, lineWidth: 5)
-          .shadow(color: Color.black.opacity(0.18), radius: 3.5, x: 5, y: 5)
+          .stroke(Color.offWhite02, lineWidth: 5)
+          .shadow(color: Color.offGray01.opacity(1), radius: 3.5, x: 5, y: 5)
           .frame(width: w, height: h)
           .clipShape(
             RoundedRectangle(cornerRadius: 30)
@@ -119,34 +119,34 @@ struct NeuButtonStyle: ButtonStyle {
           .clipShape(
             RoundedRectangle(cornerRadius: 30)
         )
-          .background(Color.offWhite)
+          .background(Color.offWhite02)
           .cornerRadius(40)
           .frame(width: w, height: h)
           .overlay(
             configuration.label
-              .foregroundColor(.darkGray)
+              .foregroundColor(.offblack02)
         )
         
       } else if ((editedScore == 0 && reason.isEmpty) || selectedName == 5) {
         RoundedRectangle(cornerRadius: 30)
-          .fill(Color.offWhite)
+          .fill(Color.offWhite02)
           .shadow(color: Color.black.opacity(0.18), radius: 5, x: 6, y: 6)
           .shadow(color: Color.white.opacity(0.8), radius: 6, x: -3, y: -3)
           .frame(width: w, height: h)
           .overlay(
             configuration.label
-              .foregroundColor(.lightGray)
+              .foregroundColor(.offGray01)
         )
       }
       else {
         RoundedRectangle(cornerRadius: 30)
-          .fill(Color.offWhite)
-          .shadow(color: Color.black.opacity(0.18), radius: 5, x: 6, y: 6)
+          .fill(Color.offWhite02)
+          .shadow(color: Color.offGray01.opacity(1), radius: 5, x: 6, y: 6)
           .shadow(color: Color.white.opacity(0.8), radius: 6, x: -3, y: -3)
           .frame(width: w, height: h)
           .overlay(
             configuration.label
-              .foregroundColor(.darkGray)
+              .foregroundColor(.offblack02)
         )
       }
     }
@@ -170,8 +170,8 @@ struct NeuButtonStyle2: ButtonStyle {
       if configuration.isPressed {
         
         RoundedRectangle(cornerRadius: 30)
-          .stroke(Color.offWhite, lineWidth: 5)
-          .shadow(color: Color.black.opacity(0.18), radius: 3.5, x: 5, y: 5)
+          .stroke(Color.offWhite02, lineWidth: 5)
+          .shadow(color: Color.offGray01.opacity(1), radius: 3.5, x: 5, y: 5)
           .frame(width: w, height: h)
           .clipShape(
             RoundedRectangle(cornerRadius: 30)
@@ -181,12 +181,12 @@ struct NeuButtonStyle2: ButtonStyle {
           .clipShape(
             RoundedRectangle(cornerRadius: 30)
         )
-          .background(Color.offWhite)
+          .background(Color.offWhite02)
           .cornerRadius(40)
           .frame(width: w, height: h)
           .overlay(
             configuration.label
-              .foregroundColor(.darkGray)
+              .foregroundColor(.offblack02)
         )
         
       } else if
@@ -198,24 +198,24 @@ struct NeuButtonStyle2: ButtonStyle {
         addPlayerTwoEmoji.containsEmoji == false
     {
         RoundedRectangle(cornerRadius: 30)
-          .fill(Color.offWhite)
-          .shadow(color: Color.black.opacity(0.18), radius: 5, x: 6, y: 6)
+          .fill(Color.offWhite02)
+          .shadow(color: Color.offGray01.opacity(1), radius: 5, x: 6, y: 6)
           .shadow(color: Color.white.opacity(0.8), radius: 6, x: -3, y: -3)
           .frame(width: w, height: h)
           .overlay(
             configuration.label
-              .foregroundColor(.lightGray)
+              .foregroundColor(.offGray01)
         )
       }
       else {
         RoundedRectangle(cornerRadius: 30)
-          .fill(Color.offWhite)
-          .shadow(color: Color.black.opacity(0.18), radius: 5, x: 6, y: 6)
+          .fill(Color.offWhite02)
+          .shadow(color: Color.offGray01.opacity(1), radius: 5, x: 6, y: 6)
           .shadow(color: Color.white.opacity(0.8), radius: 6, x: -3, y: -3)
           .frame(width: w, height: h)
           .overlay(
             configuration.label
-              .foregroundColor(.darkGray)
+              .foregroundColor(.offblack02)
         )
       }
     }

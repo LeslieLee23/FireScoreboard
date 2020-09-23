@@ -29,7 +29,7 @@ struct BetSnapViewModel: View {
               VStack(alignment: .leading) {
               Text(self.bets3.betEntryTimeString)
               .font(.system(size: 11))
-                .foregroundColor(Color.darkGray)
+                .foregroundColor(Color.offGray02)
               }//.frame(width:165, height: 40, alignment: .leading)
               .frame(width:200, height: 25, alignment: .leading)
             }
