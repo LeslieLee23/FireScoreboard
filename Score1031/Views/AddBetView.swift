@@ -25,9 +25,7 @@ struct AddBetView: View {
   @ObservedObject private var betLoader = BetLoader()
   @Environment(\.presentationMode) var presentationMode
   @State private var bets = BetLoader().bets3
-  static var test:String = ""
-  static var testBinding = Binding<String>(get: { test }, set: { test = $0 } )
-  
+  @EnvironmentObject var obj : observed
   
   var body: some View {
     ZStack{
@@ -40,33 +38,32 @@ struct AddBetView: View {
         .padding(.leading, 50)
       Spacer()
       }
-      VStack() {
-        RoundedRectangle(cornerRadius: 25)
-          .stroke(Color.offWhite, lineWidth: 5)
-          .shadow(color: Color.black.opacity(0.2), radius: 4, x: 5, y: 5)
-          .frame(width: 290, height: 120)
-          .clipShape(
-            RoundedRectangle(cornerRadius: 25)
-        )
-          .shadow(color: Color.white, radius: 4, x: -3, y: -3)
-          .frame(width: 290, height: 120)
-          .clipShape(
-            RoundedRectangle(cornerRadius: 25)
-        )
-          .background(Color.offWhite)
-          .cornerRadius(30)
-          .frame(width: 290, height: 120)
-       
-        .overlay(
-          MultilineTextField("Type here", text: $bet) {
-            UIApplication.shared.endEditing()
-          }
-            .frame(minWidth: 270, maxWidth: 270, minHeight: 0, maxHeight: 120),
-           // .border(Color.red),
-          alignment: .top
-        )
-      }.padding()
-              
+//      VStack() {
+//        RoundedRectangle(cornerRadius: 15)
+//          .stroke(Color.offWhite, lineWidth: 5)
+//          .shadow(color: Color.black.opacity(0.2), radius: 4, x: 5, y: 5)
+//          .frame(width: 300, height: 140)
+//          .clipShape(
+//            RoundedRectangle(cornerRadius: 15)
+//        )
+//          .shadow(color: Color.white, radius: 4, x: -3, y: -3)
+//          .frame(width: 300, height: 130)
+//          .clipShape(
+//            RoundedRectangle(cornerRadius: 15)
+//        )
+//          .background(Color.offWhite)
+//          .cornerRadius(18)
+//          .frame(width: 300, height: 130)
+//
+//        .overlay(
+//          MultiTextField(text: $bet)
+//            .frame(width: 280, height: 110)
+//          .padding(10)
+//          .cornerRadius(15)
+//        )
+//      }.padding()
+      MultiTextField2("  Enter bet here:", text: $bet)
+      
       VStack() {
         Text("Enter stake:")
       }

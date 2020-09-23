@@ -270,121 +270,123 @@ struct EmojiToggleStyle: ToggleStyle {
     }
 }
 
-struct MultilineTextField: View {
-
-    private var placeholder: String
-    private var onCommit: (() -> Void)?
-    @State private var viewHeight: CGFloat = 40 //start with one line
-    @State private var shouldShowPlaceholder = false
-    @Binding private var text: String
-    
-    private var internalText: Binding<String> {
-        Binding<String>(get: { self.text } ) {
-            self.text = $0
-            self.shouldShowPlaceholder = $0.isEmpty
-        }
-    }
-
-    var body: some View {
-        UITextViewWrapper(text: self.internalText, calculatedHeight: $viewHeight, onDone: onCommit)
-            .frame(minHeight: viewHeight, maxHeight: viewHeight)
-            .background(placeholderView, alignment: .topLeading)
-    }
-
-    var placeholderView: some View {
-        Group {
-            if shouldShowPlaceholder {
-                Text(placeholder).foregroundColor(.gray)
-                    .padding(.leading, 4)
-                    .padding(.top, 8)
-            }
-        }
-    }
-    
-    init (_ placeholder: String = "", text: Binding<String>, onCommit: (() -> Void)? = nil) {
-        self.placeholder = placeholder
-        self.onCommit = onCommit
-        self._text = text
-        self._shouldShowPlaceholder = State<Bool>(initialValue: self.text.isEmpty)
-    }
-
-}
-
-
-private struct UITextViewWrapper: UIViewRepresentable {
-    typealias UIViewType = UITextView
-
-    @Binding var text: String
-    @Binding var calculatedHeight: CGFloat
-    var onDone: (() -> Void)?
-
-    func makeUIView(context: UIViewRepresentableContext<UITextViewWrapper>) -> UITextView {
-        let textField = UITextView()
-        textField.delegate = context.coordinator
-        textField.isEditable = true
-        textField.font = UIFont.preferredFont(forTextStyle: .body)
-        textField.isSelectable = true
-        textField.isUserInteractionEnabled = true
-        textField.isScrollEnabled = false
-        textField.backgroundColor = UIColor.clear
-        if nil != onDone {
-            textField.returnKeyType = .done
-        }
-
-        textField.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
-        return textField
-    }
-
-    func updateUIView(_ uiView: UITextView, context: UIViewRepresentableContext<UITextViewWrapper>) {
-        if uiView.text != self.text {
-            uiView.text = self.text
-        }
-//        if uiView.window != nil, !uiView.isFirstResponder {
-//            uiView.becomeFirstResponder()
+//struct MultilineTextField: View {
+//
+//    private var placeholder: String
+//    private var onCommit: (() -> Void)?
+//    @State private var viewHeight: CGFloat = 40 //start with one line
+//    @State private var shouldShowPlaceholder = false
+//    @Binding private var text: String
+//
+//    private var internalText: Binding<String> {
+//        Binding<String>(get: { self.text } ) {
+//            self.text = $0
+//            self.shouldShowPlaceholder = $0.isEmpty
 //        }
-        UITextViewWrapper.recalculateHeight(view: uiView, result: $calculatedHeight)
-    }
+//    }
+//
+//    var body: some View {
+//        UITextViewWrapper(text: self.internalText, calculatedHeight: $viewHeight, onDone: onCommit)
+//            .frame(minHeight: viewHeight, maxHeight: 120)
+//            .background(placeholderView, alignment: .topLeading)
+//    }
+//
+//    var placeholderView: some View {
+//        Group {
+//            if shouldShowPlaceholder {
+//                Text(placeholder).foregroundColor(.gray)
+//                    .padding(.leading, 4)
+//                    .padding(.top, 8)
+//            }
+//        }
+//    }
+//
+//    init (_ placeholder: String = "", text: Binding<String>, onCommit: (() -> Void)? = nil) {
+//        self.placeholder = placeholder
+//        self.onCommit = onCommit
+//        self._text = text
+//        self._shouldShowPlaceholder = State<Bool>(initialValue: self.text.isEmpty)
+//    }
+//
+//}
+//
+//
+//private struct UITextViewWrapper: UIViewRepresentable {
+//    typealias UIViewType = UITextView
+//
+//    @Binding var text: String
+//    @Binding var calculatedHeight: CGFloat
+//    var onDone: (() -> Void)?
+//
+//    func makeUIView(context: UIViewRepresentableContext<UITextViewWrapper>) ->
+//      UITextView {
+//        let textField = UITextView()
+//        textField.delegate = context.coordinator
+//        textField.isEditable = true
+//        textField.font = UIFont.preferredFont(forTextStyle: .body)
+//        textField.isSelectable = true
+//        textField.isUserInteractionEnabled = true
+//        textField.isScrollEnabled = true
+//        textField.backgroundColor = UIColor.clear
+//        if nil != onDone {
+//            textField.returnKeyType = .done
+//        }
+//
+//        textField.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+//        return textField
+//    }
+//
+//    func updateUIView(_ uiView: UITextView, context: UIViewRepresentableContext<UITextViewWrapper>) {
+//        if uiView.text != self.text {
+//            uiView.text = self.text
+//        }
+////        if uiView.window != nil, !uiView.isFirstResponder {
+////            uiView.becomeFirstResponder()
+////        }
+//        UITextViewWrapper.recalculateHeight(view: uiView, result: $calculatedHeight)
+//    }
+//
+//    private static func recalculateHeight(view: UIView, result: Binding<CGFloat>) {
+//        let newSize = view.sizeThatFits(CGSize(width: view.frame.size.width, height: CGFloat.greatestFiniteMagnitude))
+//        if result.wrappedValue != newSize.height {
+//            DispatchQueue.main.async {
+//                result.wrappedValue = newSize.height // call in next render cycle.
+//            }
+//        }
+//    }
+//
+//    func makeCoordinator() -> Coordinator {
+//        return Coordinator(text: $text, height: $calculatedHeight, onDone: onDone)
+//    }
+//
+//    final class Coordinator: NSObject, UITextViewDelegate {
+//        var text: Binding<String>
+//        var calculatedHeight: Binding<CGFloat>
+//        var onDone: (() -> Void)?
+//
+//        init(text: Binding<String>, height: Binding<CGFloat>, onDone: (() -> Void)? = nil) {
+//            self.text = text
+//            self.calculatedHeight = height
+//            self.onDone = onDone
+//        }
+//
+//        func textViewDidChange(_ uiView: UITextView) {
+//            text.wrappedValue = uiView.text
+//            UITextViewWrapper.recalculateHeight(view: uiView, result: calculatedHeight)
+//        }
+//
+//        func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+//            if let onDone = self.onDone, text == "\n" {
+//                textView.resignFirstResponder()
+//                onDone()
+//                return false
+//            }
+//            return true
+//        }
+//    }
+//
+//}
 
-    private static func recalculateHeight(view: UIView, result: Binding<CGFloat>) {
-        let newSize = view.sizeThatFits(CGSize(width: view.frame.size.width, height: CGFloat.greatestFiniteMagnitude))
-        if result.wrappedValue != newSize.height {
-            DispatchQueue.main.async {
-                result.wrappedValue = newSize.height // call in next render cycle.
-            }
-        }
-    }
-
-    func makeCoordinator() -> Coordinator {
-        return Coordinator(text: $text, height: $calculatedHeight, onDone: onDone)
-    }
-
-    final class Coordinator: NSObject, UITextViewDelegate {
-        var text: Binding<String>
-        var calculatedHeight: Binding<CGFloat>
-        var onDone: (() -> Void)?
-
-        init(text: Binding<String>, height: Binding<CGFloat>, onDone: (() -> Void)? = nil) {
-            self.text = text
-            self.calculatedHeight = height
-            self.onDone = onDone
-        }
-
-        func textViewDidChange(_ uiView: UITextView) {
-            text.wrappedValue = uiView.text
-            UITextViewWrapper.recalculateHeight(view: uiView, result: calculatedHeight)
-        }
-
-        func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-            if let onDone = self.onDone, text == "\n" {
-                textView.resignFirstResponder()
-                onDone()
-                return false
-            }
-            return true
-        }
-    }
-
-}
 extension UIApplication {
     func endEditing() {
         sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
@@ -395,11 +397,194 @@ func endEditing() {
     UIApplication.shared.endEditing()
 }
 
-struct tabItemHighlight: View {
+struct MultiTextField: UIViewRepresentable {
+  
+  @Binding var text: String
+  @EnvironmentObject var obj : observed
+  var onDone: (() -> Void)?
+  
+  func makeUIView(context: UIViewRepresentableContext<MultiTextField>) -> UITextView {
+    let view = UITextView()
+    view.delegate = context.coordinator
+    view.isEditable = true
+    view.isSelectable = true
+    view.isUserInteractionEnabled = true
+    view.isScrollEnabled = true
+    view.backgroundColor = .clear
+    
+    view.font = .systemFont(ofSize: 17)
+    view.text = "Type the bet here"
+    view.textColor = UIColor.black.withAlphaComponent(0.35)
+
+    self.obj.size = view.contentSize.height
+    
+    if nil != onDone {
+        view.returnKeyType = .done
+    }
+
+    view.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+    
+    return view
+  }
+  func updateUIView(_ uiView: UITextView, context: UIViewRepresentableContext<MultiTextField>) {
+    if uiView.text != self.text {
+        uiView.text = self.text
+    }
+  }
+  
+  func makeCoordinator() -> Coordinator {
+    return MultiTextField.Coordinator(text: $text, parent1: self, onDone: onDone)
+   }
+   
+  
+  class Coordinator : NSObject,UITextViewDelegate{
+    var text: Binding<String>
+    var parent : MultiTextField
+    var onDone: (() -> Void)?
+    
+    init(text: Binding<String>, parent1 : MultiTextField, onDone: (() -> Void)? = nil) {
+      self.text = text
+      parent = parent1
+      self.onDone = onDone
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+   //   textView.text = ""textView.text
+      
+      textView.textColor = .black
+    }
+    func textViewDidChange(_ textView: UITextView) {
+      text.wrappedValue = textView.text
+      self.parent.obj.size = textView.contentSize.height
+    }
+  }
+}
+
+class observed : ObservableObject {
+  @Published var size : CGFloat = 0
+}
+
+struct MultiTextField1: View {
+
+    private var placeholder: String
+    private var onCommit: (() -> Void)?
+    @State private var viewHeight: CGFloat = 25 //start with one line
+    @State private var shouldShowPlaceholder = false
+    @Binding private var text: String
+    @EnvironmentObject var obj : observed
+  
+    private var internalText: Binding<String> {
+        Binding<String>(get: { self.text } ) {
+            self.text = $0
+            self.shouldShowPlaceholder = $0.isEmpty
+        }
+    }
 
     var body: some View {
-        Rectangle()
-          .foregroundColor(Color.darkPurple)
+      VStack() {
+         RoundedRectangle(cornerRadius: 15)
+           .stroke(Color.offWhite, lineWidth: 5)
+           .shadow(color: Color.black.opacity(0.2), radius: 4, x: 5, y: 5)
+           .frame(width: 290, height: self.obj.size < 100 ? self.obj.size + 15  : 120)
+           .clipShape(
+             RoundedRectangle(cornerRadius: 15)
+         )
+           .shadow(color: Color.white, radius: 4, x: -3, y: -3)
+           .frame(width: 290, height: self.obj.size < 100 ? self.obj.size + 15 : 120)
+           .clipShape(
+             RoundedRectangle(cornerRadius: 15)
+         )
+           .background(Color.offWhite)
+           .cornerRadius(18)
+           .frame(width: 290, height: self.obj.size < 100 ? self.obj.size + 15 : 120)
+
+           .overlay(
+           MultiTextField(text: self.internalText, onDone: onCommit)
+           .frame(width: 265, height: self.obj.size < 100 ? self.obj.size : 100)
+           .padding(10)
+           .cornerRadius(15)
+           .background(placeholderView, alignment: .leading)
+         )
+       }.padding()
+    }
+
+    var placeholderView: some View {
+        Group {
+            if shouldShowPlaceholder {
+                Text(placeholder).foregroundColor(.gray)
+                    .padding(.leading, 10)
+                    .font(Font.system(size: 17))
+            }
+        }
+    }
+
+    init (_ placeholder: String = "", text: Binding<String>, onCommit: (() -> Void)? = nil) {
+        self.placeholder = placeholder
+        self.onCommit = onCommit
+        self._text = text
+        self._shouldShowPlaceholder = State<Bool>(initialValue: self.text.isEmpty)
+    }
+
+}
+
+struct MultiTextField2: View {
+
+    private var placeholder: String
+    private var onCommit: (() -> Void)?
+    @State private var viewHeight: CGFloat = 25 //start with one line
+    @State private var shouldShowPlaceholder = false
+    @Binding private var text: String
+    @EnvironmentObject var obj : observed
+  
+    private var internalText: Binding<String> {
+        Binding<String>(get: { self.text } ) {
+            self.text = $0
+            self.shouldShowPlaceholder = $0.isEmpty
+        }
+    }
+
+    var body: some View {
+      VStack() {
+        RoundedRectangle(cornerRadius: 15)
+          .stroke(Color.offWhite, lineWidth: 5)
+          .shadow(color: Color.black.opacity(0.2), radius: 4, x: 5, y: 5)
+          .frame(width: 300, height: 140)
+          .clipShape(
+            RoundedRectangle(cornerRadius: 15)
+        )
+          .shadow(color: Color.white, radius: 4, x: -3, y: -3)
+          .frame(width: 300, height: 130)
+          .clipShape(
+            RoundedRectangle(cornerRadius: 15)
+        )
+          .background(Color.offWhite)
+          .cornerRadius(18)
+          .frame(width: 300, height: 130)
+
+        .overlay(
+          MultiTextField(text: self.internalText, onDone: onCommit)
+            .frame(width: 280, height: 110)
+          .padding(10)
+          .cornerRadius(15)
+        )
+      }.padding()
+    }
+
+    var placeholderView: some View {
+        Group {
+            if shouldShowPlaceholder {
+                Text(placeholder).foregroundColor(.gray)
+                    .padding(.leading, 10)
+                    .font(Font.system(size: 17))
+            }
+        }
+    }
+
+    init (_ placeholder: String = "Enter bet here:", text: Binding<String>, onCommit: (() -> Void)? = nil) {
+        self.placeholder = placeholder
+        self.onCommit = onCommit
+        self._text = text
+        self._shouldShowPlaceholder = State<Bool>(initialValue: self.text.isEmpty)
     }
 
 }

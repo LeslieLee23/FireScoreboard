@@ -166,6 +166,7 @@ struct TabBarView_Previews: PreviewProvider {
       .environmentObject(AddScoreFunc())
       .environmentObject(AddBetFunc())
       .environmentObject(AppState())
+   //   .environmentObject(obj)
   }
 }
 

@@ -25,7 +25,7 @@ struct EditModeView: View {
   @ObservedObject private var apiLoader = APILoader()
   @State private var records3 = APILoader().records3
   @ObservedObject private var keyboard = KeyboardResponder()
-  
+  @EnvironmentObject var obj : observed
   
   var body: some View {
     VStack {
@@ -67,20 +67,8 @@ struct EditModeView: View {
       
       ///Reason text input row
       Spacer()
-      VStack() {
-      TextField("What for?", text: $reason)
-        .textFieldStyle(NeuTextStyle())
-        .frame(width: 260, height: 50)
-        .multilineTextAlignment(.leading)
-//        MultilineTextField("What for?", text: $reason) {
-//          UIApplication.shared.endEditing()
-//        }
-//         .overlay(RoundedRectangle(cornerRadius: 5).stroke(Color.gray))
-//        .frame(width: 290, height: 50)
-        
-//        .padding(.trailing, 35)
-//        .padding(.leading, 35)
-      }.padding()
+
+      MultiTextField1("  What for?", text: $reason)
         
       .padding(.bottom, keyboard.currentHeight)
       .edgesIgnoringSafeArea(.bottom)
@@ -126,8 +114,6 @@ struct EditModeView: View {
           self.nameAndScore.PlayerTwoScore = self.records3.playerTwoScore
           
           self.apiLoader.saveData(record3: self.records3)
-          
-          
         }) {
           Text("Confirm")
         }

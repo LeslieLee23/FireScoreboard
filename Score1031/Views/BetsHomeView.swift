@@ -15,6 +15,7 @@ struct BetsHomeView: View {
   @ObservedObject var betLoader = BetLoader()
   @ObservedObject private var apiLoader = APILoader()
   @State var showAlert = false
+  @EnvironmentObject var obj : observed
   
   var body: some View {
     NavigationView {

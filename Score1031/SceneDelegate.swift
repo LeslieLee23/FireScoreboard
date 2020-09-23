@@ -18,19 +18,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        
         // Get the managed object context from the shared persistent container.
         let managedObjectContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
         // Create the SwiftUI view that provides the window contents.
-        
+        let obj = observed()
+      
         let contentView = TabBarView()
             .environmentObject(NameAndScore())
             .environmentObject(UserData())
             .environmentObject(AddScoreFunc())
             .environmentObject(appState)
             .environmentObject(AddBetFunc())
-      
+            .environmentObject(obj)
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)

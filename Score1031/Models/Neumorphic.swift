@@ -66,13 +66,13 @@ public struct NeuTextStyle : TextFieldStyle {
   var color: Color = .white
   var w: CGFloat = 270
   var h:CGFloat = 50
-  var cr:CGFloat = 30
+  var cr:CGFloat = 15
   
   public func _body(configuration: TextField<Self._Label>) -> some View {
     
     RoundedRectangle(cornerRadius: cr)
       .stroke(Color.offWhite, lineWidth: 5)
-      .shadow(color: Color.black.opacity(0.15), radius: 4, x: 5, y: 5)
+      .shadow(color: Color.black.opacity(0.2), radius: 4, x: 5, y: 5)
       .frame(width: w, height: h)
       .clipShape(
         RoundedRectangle(cornerRadius: cr)
@@ -83,7 +83,7 @@ public struct NeuTextStyle : TextFieldStyle {
         RoundedRectangle(cornerRadius: cr)
     )
       .background(Color.offWhite)
-      .cornerRadius(cr + 10)
+      .cornerRadius(cr + 5)
       .frame(width: w, height: h)
       .overlay(
         configuration
@@ -91,7 +91,6 @@ public struct NeuTextStyle : TextFieldStyle {
           .frame(width: w - 20, height: h)
         , alignment: .trailing
     )
-    
   }
 }
 
