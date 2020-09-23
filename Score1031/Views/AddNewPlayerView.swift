@@ -40,55 +40,43 @@ struct AddNewPlayerView: View {
         VStack{
           Group{
             HStack{
-              Text("Enter name for player one:")
-                .padding(.leading)
-              Spacer()
-            }
-            HStack{
               TextField("Player One Name", text: $userData.addPlayerOneName)
                 .textFieldStyle(NeuTextStyle())
                 .padding(.trailing, 35)
+                .padding(.bottom, 8)
+                .padding(.top, 10)
               //  .padding(.leading, 15)
               
             }
+
             HStack{
-              Text("Enter Emoji for player one:")
-                .padding(.leading)
-              Spacer()
-            }
-            HStack{
-              TextField("Player One Emoji", text: $userData.addPlayerOneEmoji)
+              TextField("Player One Emoji 🧜‍♀️", text: $userData.addPlayerOneEmoji)
                 .textFieldStyle(NeuTextStyle())
                 .padding(.trailing, 35)
+                .padding(.bottom, 8)
               //  .padding(.leading, 15)
             }
-            HStack{
-              Text("Enter name for player two:")
-                .padding(.leading)
-              Spacer()
-            }
+
             HStack{
               TextField("Player Two Name", text: $userData.addPlayerTwoName)
                 .textFieldStyle(NeuTextStyle())
                 .padding(.trailing, 35)
+                .padding(.bottom, 8)
               //  .padding(.leading, 15)
             }
+
             HStack{
-              Text("Enter emoji for player two:")
-                .padding(.leading)
-              Spacer()
-            }
-            HStack{
-              TextField("Player Two Emoji", text: $userData.addPlayerTwoEmoji)
+              TextField("Player Two Emoji 🧞‍♂️", text: $userData.addPlayerTwoEmoji)
                 .textFieldStyle(NeuTextStyle())
                 .padding(.trailing, 35)
+                .padding(.bottom, 10)
               //  .padding(.leading, 15)
             }
           }
-          Spacer()
+    //      Spacer()
           HStack{
             
-            Spacer()
+        //    Spacer()
             Button(action: {
               
               self.userData.maxPlayerID = self.apiLoader.findMaxPlayerID() + 1
@@ -113,9 +101,14 @@ struct AddNewPlayerView: View {
               self.apiLoader.saveData(record3: self.records3)
               
             }) {
-              Text("Change Players")
-                .padding(.trailing, 35)
+              Text("Confirm")
             }
+            .padding(.trailing, 35)
+            .buttonStyle(NeuButtonStyle2(
+              addPlayerOneName: self.userData.addPlayerOneName,
+              addPlayerOneEmoji: self.userData.addPlayerOneEmoji,
+              addPlayerTwoName: self.userData.addPlayerTwoName,
+              addPlayerTwoEmoji: self.userData.addPlayerTwoEmoji))
             .disabled(self.userData.addPlayerOneName.isEmpty)
             .disabled(self.userData.addPlayerOneEmoji.isEmpty)
             .disabled(self.userData.addPlayerTwoName.isEmpty)
@@ -151,15 +144,22 @@ struct AddNewPlayerView: View {
           Spacer()
           Spacer()
           Spacer()
-          Spacer()
-          Spacer()
+ 
         }
       }
+      .navigationBarTitle("Add New Players")
       .onTapGesture {
           endEditing()
       }
     }
+    .onAppear() {
+        self.userData.addPlayerOneName = ""
+        self.userData.addPlayerTwoName = ""
+        self.userData.addPlayerOneEmoji = ""
+        self.userData.addPlayerTwoEmoji = ""
     
+    }
+
     
   }
 }

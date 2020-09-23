@@ -155,3 +155,72 @@ struct NeuButtonStyle: ButtonStyle {
   }
 }
 
+struct NeuButtonStyle2: ButtonStyle {
+  var addPlayerOneName = ""
+  var addPlayerOneEmoji = ""
+  var addPlayerTwoName = ""
+  var addPlayerTwoEmoji = ""
+
+  var w: CGFloat = 85
+  var h:CGFloat = 45
+  
+  func makeBody(configuration: ButtonStyleConfiguration) -> some View {
+    
+    Group {
+      if configuration.isPressed {
+        
+        RoundedRectangle(cornerRadius: 30)
+          .stroke(Color.offWhite, lineWidth: 5)
+          .shadow(color: Color.black.opacity(0.18), radius: 3.5, x: 5, y: 5)
+          .frame(width: w, height: h)
+          .clipShape(
+            RoundedRectangle(cornerRadius: 30)
+        )
+          .shadow(color: Color.white, radius: 4, x: -3, y: -3)
+          .frame(width: w, height: h)
+          .clipShape(
+            RoundedRectangle(cornerRadius: 30)
+        )
+          .background(Color.offWhite)
+          .cornerRadius(40)
+          .frame(width: w, height: h)
+          .overlay(
+            configuration.label
+              .foregroundColor(.darkGray)
+        )
+        
+      } else if
+        addPlayerOneName.isEmpty ||
+        addPlayerOneEmoji.isEmpty ||
+        addPlayerTwoName.isEmpty ||
+        addPlayerTwoEmoji.isEmpty ||
+        addPlayerOneEmoji.containsEmoji == false ||
+        addPlayerTwoEmoji.containsEmoji == false
+    {
+        RoundedRectangle(cornerRadius: 30)
+          .fill(Color.offWhite)
+          .shadow(color: Color.black.opacity(0.18), radius: 5, x: 6, y: 6)
+          .shadow(color: Color.white.opacity(0.8), radius: 6, x: -3, y: -3)
+          .frame(width: w, height: h)
+          .overlay(
+            configuration.label
+              .foregroundColor(.lightGray)
+        )
+      }
+      else {
+        RoundedRectangle(cornerRadius: 30)
+          .fill(Color.offWhite)
+          .shadow(color: Color.black.opacity(0.18), radius: 5, x: 6, y: 6)
+          .shadow(color: Color.white.opacity(0.8), radius: 6, x: -3, y: -3)
+          .frame(width: w, height: h)
+          .overlay(
+            configuration.label
+              .foregroundColor(.darkGray)
+        )
+      }
+    }
+    
+    
+  }
+}
+
