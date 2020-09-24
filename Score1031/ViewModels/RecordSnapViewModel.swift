@@ -39,7 +39,7 @@ struct RecordSnapViewModel: View {
           VStack(alignment: .leading) {
           Text(entryTime)
           .font(.system(size: 11))
-            .foregroundColor(Color.offGray02)
+            .foregroundColor(Color.offGray03)
           }//.frame(width:165, height: 40, alignment: .leading)
           .frame(minWidth: 150, maxWidth: .infinity, minHeight: 10, maxHeight: 10, alignment: .leading)
         }

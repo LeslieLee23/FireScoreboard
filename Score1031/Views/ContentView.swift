@@ -129,11 +129,13 @@ struct ContentView: View {
                     VStack{
                       Text(self.nameAndScore.playerOneName ?? "Miu")
                         .font(.system(size: 28))
+                        .foregroundColor(.offblack03)
                     }
                     .frame(width: 160, height: 125, alignment: .center)
                     VStack{
                       Text(self.nameAndScore.playerTwoName ?? "Whof")
                         .font(.system(size: 28))
+                        .foregroundColor(.offblack03)
                     }
                     .frame(width: 160, height: 125, alignment: .center)
                   }

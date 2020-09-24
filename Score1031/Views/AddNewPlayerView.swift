@@ -148,6 +148,7 @@ struct AddNewPlayerView: View {
         }
       }
       .navigationBarTitle("Add New Players")
+        .foregroundColor(.offblack04)
       .onTapGesture {
           endEditing()
       }

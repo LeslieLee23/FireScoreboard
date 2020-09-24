@@ -44,6 +44,7 @@ struct BetSnapView: View {
         Text("Bets")
           .font(.system(size: 16))
           .padding(.leading, 25)
+          .foregroundColor(Color.offblack03)
           Spacer()
         Button(action: {
           self.appState.selectedTab = .BetsHomeView

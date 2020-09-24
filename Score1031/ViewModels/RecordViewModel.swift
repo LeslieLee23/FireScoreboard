@@ -24,15 +24,14 @@ struct RecordViewModel: View {
           VStack(alignment: .leading) {
           Spacer()
           Text(nameEmo)
-          //  .font(.headline)
             .font(.system(size: 25))
           }
           .frame(width:45, height: 20, alignment: .leading)
-      //    .border(Color.purple)
           VStack(alignment: .leading) {
           Spacer()
           Text(nameStr)
             .font(.headline)
+            .foregroundColor(Color.offblack04)
             
           }
           .frame(width:165, height: 20, alignment: .leading)
@@ -41,6 +40,7 @@ struct RecordViewModel: View {
           Spacer()
           Text(entryTime)
             .font(.system(size: 11))
+            .foregroundColor(Color.offGray03)
           }
           .frame(width:130, height: 20, alignment: .trailing)
    //       .border(Color.purple)
@@ -67,6 +67,7 @@ struct RecordViewModel: View {
           Text(reason)
             .font(.system(size: 13))
             .multilineTextAlignment(.leading)
+            .foregroundColor(Color.offblack04)
 
         }
         .frame(width:250, height: 35, alignment: .leading)

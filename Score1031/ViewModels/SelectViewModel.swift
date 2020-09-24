@@ -28,15 +28,17 @@ struct SelectViewModel: View {
                 Text("\(playerOneEmoji) \(playerOneName)")
                 Spacer()
                 Text(String(playerOneScore))
+              
             }
             .frame(width:130, height: 50, alignment: .leading)
             VStack(alignment: .leading){
                 Text("\(playerTwoEmoji) \(playerTwoName)")
+              
                 Spacer()
                 Text(String(playerTwoScore))
             }
             .frame(width:130, height: 50, alignment: .leading)
-       }
+       }.foregroundColor(.offblack04)
     }
 }
 

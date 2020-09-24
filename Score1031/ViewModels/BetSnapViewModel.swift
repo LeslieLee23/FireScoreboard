@@ -22,6 +22,7 @@ struct BetSnapViewModel: View {
               Text(self.bets3.betDescription)
               .font(.system(size: 13))
               .multilineTextAlignment(.leading)
+              .foregroundColor(Color.offblack03)
               }
                 .frame(minWidth: 200, maxWidth: 200, minHeight: 20, maxHeight: .infinity, alignment: .leading)
 
@@ -29,7 +30,7 @@ struct BetSnapViewModel: View {
               VStack(alignment: .leading) {
               Text(self.bets3.betEntryTimeString)
               .font(.system(size: 11))
-                .foregroundColor(Color.offGray02)
+                .foregroundColor(Color.offGray03)
               }//.frame(width:165, height: 40, alignment: .leading)
               .frame(width:200, height: 25, alignment: .leading)
             }
@@ -38,11 +39,13 @@ struct BetSnapViewModel: View {
               VStack() {
                 Text("Stake:")
                   .font(.system(size: 14))
+                  .foregroundColor(Color.offblack01)
               }
               .frame(minWidth: 50, maxWidth: 50, minHeight: 20, maxHeight: .infinity, alignment: .center)
               VStack() {
                 Text(bets3.betScore)
                   .font(.system(size: 20))
+                  .foregroundColor(Color.offblack04)
               }
               .frame(minWidth: 50, maxWidth: 50, minHeight: 40, maxHeight: .infinity, alignment: .center)
             }

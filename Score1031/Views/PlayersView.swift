@@ -78,7 +78,7 @@ struct PlayersView: View {
             }
           }.listRowBackground(Color.offWhite02)
         }
-      }
+      }.foregroundColor(.offblack04)
         
       .navigationBarItems(leading:
         HStack(spacing: 81){
@@ -102,7 +102,7 @@ struct PlayersView: View {
               .font(.system(size:21))
               .padding(.trailing, 18)
           }
-        }
+        }.foregroundColor(.offblack04)
       )
   }
   }

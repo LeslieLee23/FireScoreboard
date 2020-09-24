@@ -32,11 +32,13 @@ struct PastBetView: View {
                         VStack() {
                           Text("Winner:")
                             .font(.system(size: 14))
+                            .foregroundColor(Color.offblack01)
                         }
                         .frame(width:50, height: 20, alignment: .top)
                         VStack() {
                           Text(bets3.winnerNameEmo ?? "No player")
                             .font(.system(size: 20))
+                            .foregroundColor(Color.offblack03)
                         }
                         .frame(width:50, height: 30, alignment: .center)
                       }

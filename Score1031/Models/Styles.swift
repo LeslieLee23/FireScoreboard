@@ -29,12 +29,14 @@ extension Color {
   
   static let offWhite01 = Color(red: 243 / 255, green: 245 / 255, blue: 248 / 255)
   static let offWhite02 = Color(red: 231 / 255, green: 234 / 255, blue: 240 / 255)
-  static let offGray00 = Color(red: 206 / 255, green: 213 / 255, blue: 224 / 255)
+  static let offGray00 = Color(red: 185 / 255, green: 195 / 255, blue: 211 / 255)
   static let offGray01 = Color(red: 163 / 255, green: 177 / 255, blue: 198 / 255)
   static let offGray02 = Color(red: 136 / 255, green: 148 / 255, blue: 165 / 255)
+  static let offGray03 = Color(red: 109 / 255, green: 119 / 255, blue: 132 / 255)
   static let offblack01 = Color(red: 82 / 255, green: 89 / 255, blue: 99 / 255)
   static let offblack02 = Color(red: 66 / 255, green: 71 / 255, blue: 79 / 255)
   static let offblack03 = Color(red: 55 / 255, green: 59 / 255, blue: 66 / 255)
+  static let offblack04 = Color(red: 39 / 255, green: 41 / 255, blue: 47 / 255)
 }
 extension UIColor {
     convenience init(red: Int, green: Int, blue: Int) {
@@ -51,12 +53,12 @@ extension UIColor {
   
   static let offWhite01 = UIColor(red: 243, green: 245, blue: 248)
   static let offWhite02 = UIColor(red: 231, green: 234, blue: 240)
-  static let offGray00 = UIColor(red: 206, green: 213, blue: 224)
+  static let offGray00 = UIColor(red: 185, green: 195, blue: 211)
   static let offGray01 = UIColor(red: 163, green: 177, blue: 198)
   static let offGray02 = UIColor(red: 136, green: 148, blue: 165)
   static let offblack01 = UIColor(red: 82, green: 89, blue: 99)
   static let offblack02 = UIColor(red: 66, green: 71, blue: 79)
-  static let offblack03 = UIColor(red: 33, green: 35, blue: 40)
+  static let offblack03 = UIColor(red: 55, green: 59, blue: 66)
 }
 
 struct SplashShape: Shape {
@@ -231,7 +233,6 @@ struct CircleStyleEmoji: ButtonStyle {
 }
 
 struct SquareStyle: ButtonStyle {
- // var color: Color = .green
   var player: Int = 5
   var selectedPlayer: Int = 6
   
@@ -246,6 +247,7 @@ struct SquareStyle: ButtonStyle {
         configuration.label
           .transition(.scale(scale: 5))
           .opacity(configuration.isPressed ? 0.3 : 1)
+          .foregroundColor(.offblack04)
     )
       .modifier(FitToWidth(fraction: 3))
       .frame(width: 135, height: 60, alignment: .center)

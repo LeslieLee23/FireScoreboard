@@ -25,6 +25,7 @@ struct BetsHomeView: View {
           HStack {
             VStack(alignment: .leading) {
               Text("Ongoing Bets:")
+              .foregroundColor(Color.offblack03)
             }
             .frame(width:200, height: 15, alignment: .leading)
             .padding()
@@ -53,11 +54,13 @@ struct BetsHomeView: View {
                           VStack() {
                             Text("Stake:")
                               .font(.system(size: 14))
+                              .foregroundColor(Color.offblack01)
                           }
                           .frame(width:50, height: 20, alignment: .top)
                           VStack() {
                             Text(bets3.betScore)
                               .font(.system(size: 20))
+                              .foregroundColor(Color.offblack03)
                           }
                           .frame(width:50, height: 30, alignment: .center)
                         }
@@ -106,6 +109,7 @@ struct BetsHomeView: View {
             HStack {
               VStack(alignment: .leading) {
                 Text("Past Bets:")
+                .foregroundColor(Color.offblack03)
               }
               .frame(width:200, height: 15, alignment: .leading)
               .padding()

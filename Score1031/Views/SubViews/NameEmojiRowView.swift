@@ -54,7 +54,7 @@ struct NameEmojiRowView: View {
               .font(.system(size: 28))
           }
           .frame(width: 165, height: 125, alignment: .center)
-          .buttonStyle(SquareStyle(player: 0, selectedPlayer: 0))
+          .buttonStyle(SquareStyle(player: 0, selectedPlayer: self.userData.selectedName))
           Button(action: {
             self.userData.selectedName = 1
             print("Set selectedName to \(self.userData.selectedName)")
@@ -63,7 +63,7 @@ struct NameEmojiRowView: View {
               .font(.system(size: 28))
           }
           .frame(width: 165, height: 125, alignment: .center)
-          .buttonStyle(SquareStyle(player: 1, selectedPlayer: 1))
+          .buttonStyle(SquareStyle(player: 1, selectedPlayer: self.userData.selectedName))
         }
         .frame(width: 350, height: 125, alignment: .center)
       }///NameEmojiRow (140) (Edit Mode) (Normal Mode)
