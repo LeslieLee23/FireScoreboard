@@ -72,7 +72,7 @@ struct EditModeView: View {
         
       .padding(.bottom, keyboard.currentHeight)
       .edgesIgnoringSafeArea(.bottom)
-      .animation(.easeOut(duration: 0.16))
+   //   .animation(.easeOut(duration: 0.12))
       ///Reason text input row
       
       Spacer()

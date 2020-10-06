@@ -18,18 +18,37 @@ struct BetAssignResultView: View {
   @EnvironmentObject var appState: AppState
   @State var showAlert = false
   @State var bets3: BetRecord
+  @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
   
   var body: some View {
     ZStack{
       Color.offWhite02.edgesIgnoringSafeArea(.all)
       VStack {
         VStack {
-          HStack{
-            Text("Enter bet:")
-              .padding(.leading, 50)
+          Spacer()
+          HStack {
+            Button(action:
+              {self.presentationMode.wrappedValue.dismiss()})
+            {
+              Image(systemName: "chevron.left")
+                .font(Font.system(size: 20, weight: .regular))
+            }.foregroundColor(Color.darkPurple)
+              .padding(.leading)
+            
             Spacer()
           }
-        }
+          Spacer()
+        }.frame(width:350, height: 65, alignment: .top)
+        // .border(Color.blue)
+        VStack {
+          HStack{
+            Text("Bet:")
+              .foregroundColor(Color.offblack03)
+              .font(Font.headline.weight(.medium))
+            Spacer()
+          }
+        }.frame(width:270, height: 20, alignment: .top)
+        //    .border(Color.red)
         
         VStack() {
           
@@ -41,23 +60,28 @@ struct BetAssignResultView: View {
             
             .overlay(
               Text(self.bets3.betDescription)
+                .foregroundColor(Color.offblack03)
+                .font(.system(size: 15))
                 .frame(minWidth: 270, maxWidth: 270, minHeight: 0, maxHeight: 120),
-              // .border(Color.red),
               alignment: .top
           )
           
-        }.padding()
+        }.padding(.bottom, 20)
         
         VStack() {
           HStack() {
             Text("Stake: \(self.bets3.betScore)")
-              .padding(.leading, 50)
+              .foregroundColor(Color.offblack03)
+              .font(Font.headline.weight(.medium))
+              .padding(.leading, 60)
+              .padding(.bottom, 40)
             Spacer()
           }
         }
-        Spacer()
         VStack() {
           Text("Pick the Winner:")
+            .foregroundColor(Color.offblack03)
+            .padding(.bottom, 30)
         }
         VStack {
           NameEmojiRowView()
@@ -133,14 +157,16 @@ struct BetAssignResultView: View {
           Spacer()
         }
         Spacer()
-        
+        Spacer()
       }
+      .navigationBarBackButtonHidden(true)
+      .navigationBarHidden(true)
+      .navigationBarTitle("")
     }
     .onAppear() {
       self.userData.selectedName = 5
     }
   }
-  
 }
 
 struct BetAssignResultView_Previews: PreviewProvider {

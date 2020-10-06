@@ -47,18 +47,8 @@ struct ContentView: View {
     
     NavigationView{
       ZStack{
-        
         Color.offWhite02.edgesIgnoringSafeArea(.all)
          VStack {
-//        VStack {
-//          if  betLoader.fetchOngoingBet(self.userData.playerID!).count < 1 {
-//            VStack {
-//            Spacer()
-//            }.frame(width: 340, height: 50, alignment: .top)
-//          } else {
-//
-//          }
-//          }
           ///Scoreboard Section
           ZStack{
             ///Color Change View
@@ -186,9 +176,10 @@ struct ContentView: View {
           Spacer()
         HStack(spacing: 62){
             Toggle(isOn: $userData.editMode
-              .animation(
-                Animation.spring(dampingFraction: 0.7)
-              ))
+//              .animation(
+//                Animation.spring(dampingFraction: 0.7)
+//              )
+              )
             {
               Text("x")
             }
@@ -211,9 +202,9 @@ struct ContentView: View {
             })
           Spacer()
               Toggle(isOn: $userData.showEmoji
-                .animation(
-                  Animation.spring(dampingFraction: 0.7)
-                )
+//                .animation(
+//                  Animation.spring(dampingFraction: 0.7)
+//                )
                 
               ) {
                 Text("Emoji Mode")

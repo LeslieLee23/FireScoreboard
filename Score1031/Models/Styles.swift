@@ -305,7 +305,7 @@ func endEditing() {
 struct MultiTextField: UIViewRepresentable {
   
   @Binding var text: String
-//  @EnvironmentObject var obj : observed
+  @EnvironmentObject var obj : observed
   var onDone: (() -> Void)?
   
   func makeUIView(context: UIViewRepresentableContext<MultiTextField>) -> UITextView {
@@ -321,7 +321,7 @@ struct MultiTextField: UIViewRepresentable {
     view.text = "Type the bet here"
     view.textColor = UIColor.offblack03.withAlphaComponent(0.35)
 
-  //  self.obj.size = view.contentSize.height
+    self.obj.size = view.contentSize.height
     
     if nil != onDone {
         view.returnKeyType = .done
@@ -359,7 +359,7 @@ struct MultiTextField: UIViewRepresentable {
     }
     func textViewDidChange(_ textView: UITextView) {
       text.wrappedValue = textView.text
-  //    self.parent.obj.size = textView.contentSize.height
+      self.parent.obj.size = textView.contentSize.height
     }
   }
 }

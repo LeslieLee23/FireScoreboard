@@ -189,6 +189,8 @@ struct BetsHomeView: View {
             }
           }
           Spacer()
+          Spacer()
+          Spacer()
         }
       }//ZStack Color Die
         //  .frame(minWidth: 370, maxWidth: 370, minHeight: 0, maxHeight: .infinity, alignment: .leading)

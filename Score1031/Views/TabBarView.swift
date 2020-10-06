@@ -29,9 +29,9 @@ struct TabBarView: View {
           self.appState.selectedTab = .home
           
       }
-      .animation(
-        Animation.spring(dampingFraction: 1.5)
-      )
+//      .animation(
+//        Animation.spring(dampingFraction: 1.5)
+//      )
         .tabItem {
           if self.appState.selectedTab == .home {
             VStack{
@@ -55,9 +55,9 @@ struct TabBarView: View {
       .tag(Tab.home)
       
       HistoryView()
-        .animation(
-          Animation.spring(dampingFraction: 1.5)
-        )
+//        .animation(
+//          Animation.spring(dampingFraction: 1.5)
+//        )
         .tabItem {
           if self.appState.selectedTab == .HistoryView {
             Image(systemName: "clock.fill")
@@ -76,9 +76,9 @@ struct TabBarView: View {
       .tag(Tab.HistoryView)
       
       BetsHomeView()
-        .animation(
-          Animation.spring(dampingFraction: 1.5)
-        )
+//        .animation(
+//          Animation.spring(dampingFraction: 1.5)
+//        )
         .tabItem {
           if self.appState.selectedTab == .BetsHomeView {
              Image(systemName: "suit.spade.fill")
@@ -97,9 +97,9 @@ struct TabBarView: View {
       .tag(Tab.BetsHomeView)
       
       PlayersView()
-        .animation(
-          Animation.spring(dampingFraction: 1.5)
-        )
+//        .animation(
+//          Animation.spring(dampingFraction: 1.5)
+//        )
         .tabItem {
           if self.appState.selectedTab == .PlayersView {
             Image(systemName: "person.2.square.stack.fill")
@@ -118,9 +118,9 @@ struct TabBarView: View {
       .tag(Tab.PlayersView)
       
       AddNewPlayerView()
-        .animation(
-          Animation.spring(dampingFraction: 1.5)
-        )
+//        .animation(
+//          Animation.spring(dampingFraction: 1.5)
+//        )
         .tabItem {
           
           if self.appState.selectedTab == .AddNewPlayerView {
