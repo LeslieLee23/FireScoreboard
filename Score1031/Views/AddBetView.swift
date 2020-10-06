@@ -25,17 +25,17 @@ struct AddBetView: View {
   @ObservedObject private var betLoader = BetLoader()
   @Environment(\.presentationMode) var presentationMode
   @State private var bets = BetLoader().bets3
-  @EnvironmentObject var obj : observed
   
   var body: some View {
     ZStack{
       Color.offWhite02.edgesIgnoringSafeArea(.all)
 
     VStack {
-      Spacer()
+      
       HStack{
       Text("Enter bet:")
         .padding(.leading, 50)
+        .foregroundColor(.offblack03)
       Spacer()
       }
 
@@ -43,6 +43,7 @@ struct AddBetView: View {
       
       VStack() {
         Text("Enter stake:")
+        .foregroundColor(.offblack03)
       }
       ///Add and minus button row
       HStack {
@@ -124,6 +125,7 @@ struct AddBetView: View {
         }
         Spacer()
       }
+      Spacer()
       Spacer()
       Spacer()
       Spacer()

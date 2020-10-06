@@ -16,11 +16,12 @@ struct BetViewModel: View {
     VStack(){
       VStack(){
         Text(self.bets3.betDescription)
+          .font(.system(size: 15))
           .multilineTextAlignment(.leading)
           .foregroundColor(.offblack04)
       }
       .padding(1)
-      .frame(minWidth: 270, maxWidth: 270, minHeight: 40, maxHeight: .infinity, alignment: .leading)
+      .frame(minWidth: 260, maxWidth: 260, minHeight: 40, maxHeight: .infinity, alignment: .leading)
       //.border(Color.green)
       VStack() {
         Text(self.bets3.betEntryTimeString)
@@ -28,10 +29,10 @@ struct BetViewModel: View {
           .foregroundColor(Color.offGray03)
           .padding()
       }
-      .frame(width:270, height: 15, alignment: .leading)
+      .frame(width:260, height: 15, alignment: .leading)
       //     .border(Color.purple)
     }
-    .frame(minWidth: 270, maxWidth: 270, minHeight: 55, maxHeight: .infinity, alignment: .leading)
+    .frame(minWidth: 260, maxWidth: 260, minHeight: 55, maxHeight: .infinity, alignment: .leading)
   }
 }
 

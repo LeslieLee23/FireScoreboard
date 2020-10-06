@@ -50,15 +50,15 @@ struct ContentView: View {
         
         Color.offWhite02.edgesIgnoringSafeArea(.all)
          VStack {
-        VStack {
-          if  betLoader.fetchOngoingBet(self.userData.playerID!).count < 1 {
-            VStack {
-            Spacer()
-            }.frame(width: 340, height: 50, alignment: .top)
-          } else {
-            
-          }
-          }
+//        VStack {
+//          if  betLoader.fetchOngoingBet(self.userData.playerID!).count < 1 {
+//            VStack {
+//            Spacer()
+//            }.frame(width: 340, height: 50, alignment: .top)
+//          } else {
+//
+//          }
+//          }
           ///Scoreboard Section
           ZStack{
             ///Color Change View
@@ -148,7 +148,7 @@ struct ContentView: View {
             }///Scoreboard Content View
               .frame(width: 340, height: 250, alignment: .top)
           }///Scoreboard Section
-          
+            .padding(.top, betLoader.fetchOngoingBet(self.userData.playerID!).count < 1 ? 50 : 0)
           if self.userData.editMode == false {
             if  betLoader.fetchOngoingBet(self.userData.playerID!).count < 1 {
               Spacer()
@@ -184,7 +184,7 @@ struct ContentView: View {
           Spacer()
           Spacer()
           Spacer()
-        HStack(spacing: 65){
+        HStack(spacing: 62){
             Toggle(isOn: $userData.editMode
               .animation(
                 Animation.spring(dampingFraction: 0.7)

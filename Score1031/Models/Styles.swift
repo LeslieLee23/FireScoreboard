@@ -28,6 +28,7 @@ extension Color {
   static let lightOffWhite = Color(red: 240 / 255, green: 245 / 255, blue: 251 / 255)
   
   static let offWhite01 = Color(red: 243 / 255, green: 245 / 255, blue: 248 / 255)
+  static let offWhite015 = Color(red: 237 / 255, green: 240 / 255, blue: 244 / 255)
   static let offWhite02 = Color(red: 231 / 255, green: 234 / 255, blue: 240 / 255)
   static let offGray00 = Color(red: 185 / 255, green: 195 / 255, blue: 211 / 255)
   static let offGray01 = Color(red: 163 / 255, green: 177 / 255, blue: 198 / 255)
@@ -52,6 +53,7 @@ extension UIColor {
   static let darkPurple = UIColor(red: 38, green: 0, blue: 50)
   
   static let offWhite01 = UIColor(red: 243, green: 245, blue: 248)
+  static let offWhite015 = UIColor(red: 237, green: 240, blue: 244)
   static let offWhite02 = UIColor(red: 231, green: 234, blue: 240)
   static let offGray00 = UIColor(red: 185, green: 195, blue: 211)
   static let offGray01 = UIColor(red: 163, green: 177, blue: 198)
@@ -271,11 +273,11 @@ struct EditToggleStyle: ToggleStyle {
     func makeBody(configuration: Configuration) -> some View {
         return HStack {
           //  configuration.label
-            Image(systemName: configuration.isOn ? "multiply.circle" : "pencil.circle")
-              .font(Font.system(size: configuration.isOn ? 25 : 32))
+            Image(systemName: configuration.isOn ? "multiply.circle" : "square.and.pencil")
+              .font(Font.system(size: configuration.isOn ? 25 : 30))
               .foregroundColor(configuration.isOn ? Color.offGray02 : Color.darkPurple)
                 .onTapGesture { configuration.isOn.toggle() }
-        }
+        }.padding(.leading, 15)
     }
 }
 
@@ -303,7 +305,7 @@ func endEditing() {
 struct MultiTextField: UIViewRepresentable {
   
   @Binding var text: String
-  @EnvironmentObject var obj : observed
+//  @EnvironmentObject var obj : observed
   var onDone: (() -> Void)?
   
   func makeUIView(context: UIViewRepresentableContext<MultiTextField>) -> UITextView {
@@ -319,7 +321,7 @@ struct MultiTextField: UIViewRepresentable {
     view.text = "Type the bet here"
     view.textColor = UIColor.offblack03.withAlphaComponent(0.35)
 
-    self.obj.size = view.contentSize.height
+  //  self.obj.size = view.contentSize.height
     
     if nil != onDone {
         view.returnKeyType = .done
@@ -357,7 +359,7 @@ struct MultiTextField: UIViewRepresentable {
     }
     func textViewDidChange(_ textView: UITextView) {
       text.wrappedValue = textView.text
-      self.parent.obj.size = textView.contentSize.height
+  //    self.parent.obj.size = textView.contentSize.height
     }
   }
 }

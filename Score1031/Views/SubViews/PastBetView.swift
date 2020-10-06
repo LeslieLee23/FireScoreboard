@@ -21,9 +21,8 @@ struct PastBetView: View {
         VStack(alignment: .leading) {
           List {
             ForEach (betLoader.fetchPastBet(self.userData.playerID!)) { bets3 in
-//              if bets3.playerID == self.userData.playerID && bets3.winnerNameEmo != nil {
                 if self.userData.deleteMode == false {
-                  NavigationLink(destination: BetAssignResultView(bets3: bets3)) {
+                  
                     HStack(){
                       VStack{
                         BetViewModel(bets3: bets3)
@@ -44,8 +43,8 @@ struct PastBetView: View {
                       }
                       .frame(width:50, height: 80, alignment: .leading)
                     }
-                    .frame(minWidth: 350, maxWidth: 350, minHeight: 85, maxHeight: 95, alignment: .leading)
-                  }
+                    .frame(minWidth: 340, maxWidth: 340, minHeight: 85, maxHeight: 95, alignment: .leading)
+                
                 } else {
                   HStack(){
                     VStack{
@@ -73,17 +72,16 @@ struct PastBetView: View {
                       }
                     }.frame(width:50, height: 80, alignment: .center)
                   }
-                  .frame(minWidth: 350, maxWidth: 350, minHeight: 85, maxHeight: 95, alignment: .leading)
+                  .frame(minWidth: 340, maxWidth: 340, minHeight: 85, maxHeight: 95, alignment: .leading)
                 }
-
-       //       }
             }.listRowBackground(Color.offWhite02)
           }
         }//Past Bet
-
+      
     }
 
   }
+  
 }
 
 struct PastBetView_Previews: PreviewProvider {
