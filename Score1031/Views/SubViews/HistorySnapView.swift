@@ -45,7 +45,6 @@ struct HistorySnapView: View {
           Spacer()
         Button(action: {
           self.appState.selectedTab = .HistoryView
-          
         })
         {
           Image(systemName: "chevron.right")

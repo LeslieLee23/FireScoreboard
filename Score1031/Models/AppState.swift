@@ -11,7 +11,6 @@ import SwiftUI
 
 class AppState: ObservableObject {
     @Published var selectedTab: TabBarView.Tab = .home
-    @Published var showActionSheet: Bool = false
 }
 
 

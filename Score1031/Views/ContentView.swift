@@ -143,15 +143,21 @@ struct ContentView: View {
             if  betLoader.fetchOngoingBet(self.userData.playerID!).count < 1 {
               Spacer()
               Spacer()
-              HistorySnapView().environmentObject(self.userData)
+              HistorySnapView()
+                .environmentObject(self.userData)
+                
               Spacer()
               Spacer()
               Spacer()
             } else {
               Spacer()
-              HistorySnapView().environmentObject(self.userData)
+              HistorySnapView()
+                .environmentObject(self.userData)
+                
               Spacer()
-              BetSnapView().environmentObject(self.userData)
+              BetSnapView()
+                .environmentObject(self.userData)
+                
               Spacer()
             }
           } else {

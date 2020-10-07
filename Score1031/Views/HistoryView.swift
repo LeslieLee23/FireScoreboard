@@ -28,12 +28,11 @@ struct HistoryView: View {
       }
       .navigationBarTitle("History")
         .foregroundColor(.offblack04)
-      .navigationBarItems(trailing:
-        HStack{
-        Spacer()
-        }
-      )
-      
+//      .navigationBarItems(trailing:
+//        HStack{
+//        Spacer()
+//        }
+//      )
     }
     .background(Color.offWhite02)
   }

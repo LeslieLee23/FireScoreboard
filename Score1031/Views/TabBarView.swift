@@ -23,12 +23,13 @@ struct TabBarView: View {
   }
   var body: some View {
     TabView(selection: $appState.selectedTab) {
-      
+      //ptea.sima@gmail.com
       ContentView()
-        .onTapGesture {
+      // I think this wasnt needed and it was causing trouble, so problbaly delete it
+        /* .onTapGesture {
           self.appState.selectedTab = .home
           
-      }
+      }*/
 //      .animation(
 //        Animation.spring(dampingFraction: 1.5)
 //      )
@@ -76,9 +77,7 @@ struct TabBarView: View {
       .tag(Tab.HistoryView)
       
       BetsHomeView()
-//        .animation(
-//          Animation.spring(dampingFraction: 1.5)
-//        )
+
         .tabItem {
           if self.appState.selectedTab == .BetsHomeView {
              Image(systemName: "suit.spade.fill")
@@ -97,9 +96,6 @@ struct TabBarView: View {
       .tag(Tab.BetsHomeView)
       
       PlayersView()
-//        .animation(
-//          Animation.spring(dampingFraction: 1.5)
-//        )
         .tabItem {
           if self.appState.selectedTab == .PlayersView {
             Image(systemName: "person.2.square.stack.fill")
@@ -118,9 +114,6 @@ struct TabBarView: View {
       .tag(Tab.PlayersView)
       
       AddNewPlayerView()
-//        .animation(
-//          Animation.spring(dampingFraction: 1.5)
-//        )
         .tabItem {
           
           if self.appState.selectedTab == .AddNewPlayerView {
@@ -155,6 +148,11 @@ struct TabBarView: View {
     }
     .accentColor(Color.darkPurple)
     .environmentObject(userData)
+//    .environmentObject(NameAndScore())
+//    .environmentObject(AddScoreFunc())
+//    .environmentObject(AddBetFunc())
+    .environmentObject(appState)
+    .environmentObject(obj)
   }
 }
 
