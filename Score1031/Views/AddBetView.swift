@@ -53,12 +53,13 @@ struct AddBetView: View {
         }) {
           Text("-")
             .fontWeight(.medium)
-            .foregroundColor(Color.offblack01)
+            .foregroundColor(self.betScore == 0 ? .offGray01 : .offblack01)
             .font(.system(size: 25))
         }
         .frame(width: 35, height: 35)
         .foregroundColor(.offWhite02)
         .buttonStyle(CircleStyle())
+        .disabled(self.betScore == 0)
         
         Text("\(self.betScore)")
           .font(.system(size: 25))

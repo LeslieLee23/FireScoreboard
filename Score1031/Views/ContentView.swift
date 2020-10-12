@@ -144,7 +144,7 @@ struct ContentView: View {
               Spacer()
               Spacer()
               HistorySnapView()
-                .environmentObject(self.userData)
+                .environmentObject(UserData())
                 
               Spacer()
               Spacer()
@@ -152,11 +152,13 @@ struct ContentView: View {
             } else {
               Spacer()
               HistorySnapView()
-                .environmentObject(self.userData)
+                .environmentObject(UserData())
+             //   .environmentObject(AppState())
                 
               Spacer()
               BetSnapView()
-                .environmentObject(self.userData)
+                .environmentObject(UserData())
+                //.environmentObject(AppState())
                 
               Spacer()
             }
