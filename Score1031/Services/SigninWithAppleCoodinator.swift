@@ -69,8 +69,8 @@ extension SignInWithAppleCoordinator: ASAuthorizationControllerDelegate {
       }
       // Initialize a Firebase credential.
       let credential = OAuthProvider.credential(withProviderID: "apple.com",
-                                                idToken: idTokenString,
-                                                rawNonce: nonce)
+        idToken: idTokenString,
+        rawNonce: nonce)
       
       Auth.auth().currentUser?.link(with: credential, completion: { (authresult, error) in
         if let error = error, (error as NSError).code == AuthErrorCode.credentialAlreadyInUse.rawValue {

@@ -49,6 +49,7 @@
 		F5EAA41C2511CEC000584E86 /* Pods_Score1031.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01D18C8DA08D01B06A0E91E2 /* Pods_Score1031.framework */; };
 		F5EAA41D2511CEC000584E86 /* Pods_Score1031.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 01D18C8DA08D01B06A0E91E2 /* Pods_Score1031.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F5F02578244427A20038A4FB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F5F02577244427A20038A4FB /* GoogleService-Info.plist */; };
+		F5F6C4F525358BF6007C9A1F /* FirebaseUILoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F6C4F425358BF6007C9A1F /* FirebaseUILoginView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -112,6 +113,7 @@
 		F5D7FC7B24D9E721006BFC4A /* FireScoreboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FireScoreboard.entitlements; sourceTree = "<group>"; };
 		F5EAA41A2511C08D00584E86 /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		F5F02577244427A20038A4FB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F5F6C4F425358BF6007C9A1F /* FirebaseUILoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUILoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +167,7 @@
 			children = (
 				F5CD314625116ACA00B67510 /* SubViews */,
 				F5D7FC7424D942A6006BFC4A /* SignInView.swift */,
+				F5F6C4F425358BF6007C9A1F /* FirebaseUILoginView.swift */,
 				F55DABD724EF3B9B0078452F /* TabBarView.swift */,
 				F56E71912493505C007E8FF5 /* ContentView.swift */,
 				F508FB6324501144001C5C24 /* HistoryView.swift */,
@@ -287,6 +290,7 @@
 				F53BDFCA236B44CC00C3E203 /* Resources */,
 				6FCDE50AEAB3774C301BDC67 /* [CP] Embed Pods Frameworks */,
 				F5EAA41E2511CEC000584E86 /* Embed Frameworks */,
+				E337ABEEFE0448905FE5D203 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -384,6 +388,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		E337ABEEFE0448905FE5D203 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Score1031/Pods-Score1031-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Score1031/Pods-Score1031-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Score1031/Pods-Score1031-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -402,6 +423,7 @@
 				F500DA6B25075F60003E60F3 /* BetLoader.swift in Sources */,
 				F5D7FC7A24D9CEF4006BFC4A /* SigninWithAppleCoodinator.swift in Sources */,
 				F50762E624BC244600676F9C /* RecordViewModel.swift in Sources */,
+				F5F6C4F525358BF6007C9A1F /* FirebaseUILoginView.swift in Sources */,
 				F5D7FC6F24D94087006BFC4A /* SigninWithAppleButton.swift in Sources */,
 				F51EE72223F12D9D0030B17C /* Score1031.xcdatamodeld in Sources */,
 				F53BDFD0236B44CC00C3E203 /* AppDelegate.swift in Sources */,

@@ -9,11 +9,18 @@ target 'Score1031' do
   pod 'Resolver'
   pod 'Disk', '~> 0.6.4'
   
+  pod 'FirebaseUI'
   pod 'Firebase/Analytics'
   pod 'Firebase/Firestore'
   pod 'FirebaseFirestoreSwift'
   pod 'Firebase/Core'
   pod 'Firebase/Database'
   pod 'Firebase/Auth'
+
+  pod 'FirebaseUI/Auth'
+  pod 'FirebaseUI/Google'
+  pod 'FirebaseUI/Facebook'
+  pod 'FirebaseUI/OAuth' 
+
 end
 

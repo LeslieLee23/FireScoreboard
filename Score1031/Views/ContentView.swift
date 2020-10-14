@@ -13,6 +13,7 @@ import UIKit
 import Resolver
 import Disk
 import Firebase
+import FirebaseUI
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 
@@ -173,7 +174,9 @@ struct ContentView: View {
         endEditing()
       }
       .sheet(isPresented: $showSignInForm) {
-        SignInView()
+        LoginView()
+    //    SignInView()
+   //     FirebaseUILoginView()
       }
         
       .navigationBarItems(trailing:
@@ -223,7 +226,11 @@ struct ContentView: View {
                 self.index = (self.index + 1) % self.colors.count
               })
           Spacer()
-          Button(action: {self.showSignInForm.toggle() }) {
+          Button(action: {
+           /// Old sign in with Apple code
+            self.showSignInForm.toggle()
+            
+          }) {
             Image(systemName: "person.circle")
             .font(Font.system(size: 20, weight: .regular))
           }
