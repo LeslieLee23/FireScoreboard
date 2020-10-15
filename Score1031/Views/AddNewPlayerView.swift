@@ -25,13 +25,12 @@ struct AddNewPlayerView: View {
   @EnvironmentObject private var userData: UserData
   @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
   @EnvironmentObject var appState: AppState
-  
+  @ObservedObject private var apiLoader = APILoader()
   @ObservedObject var keyboardResponder = KeyboardResponder()
   
   //New repository change
   @State private var records3 = APILoader().records3
-  
-  @ObservedObject private var apiLoader = APILoader()
+
   
   var body: some View {
     NavigationView {
@@ -147,7 +146,7 @@ struct AddNewPlayerView: View {
  
         }
       }
-      .navigationBarTitle("Add New Players")
+      .navigationBarTitle(self.apiLoader.queryPlayerList().count < 1 ? "Welcome!" : "Add New Players")
         .foregroundColor(.offblack04)
       .onTapGesture {
           endEditing()

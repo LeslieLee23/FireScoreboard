@@ -13,4 +13,17 @@ class AppState: ObservableObject {
     @Published var selectedTab: TabBarView.Tab = .home
 }
 
+//class AppState: ObservableObject {
+//
+//  init() {
+////    @ObservedObject let apiLoader = APILoader()
+//      if ApiLoader.queryPlayerList().count < 1 {
+//        selectedTab = .AddNewPlayerView
+//      } else {
+//        selectedTab = .home
+//      }
+//  }
+//    @Published var selectedTab: TabBarView.Tab
+//}
+
 

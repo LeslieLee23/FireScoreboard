@@ -137,7 +137,7 @@ struct BetAssignResultView: View {
               self.betLoader.updateData(bets: self.bets3)
               
               self.records3 = self.addScoreFunc.createRecord(
-                playerID: self.userData.playerID!,
+                playerID: self.userData.playerID,
                 oldscore: self.userData.oldscore,
                 emojiPlusName: self.userData.emojiPlusName,
                 names: self.userData.names,

@@ -102,7 +102,7 @@ class APILoader: BaseScoreRepository, ScoreRepository, ObservableObject {
         filteredPlayerData.append(item)
       }
     }
-    return filteredPlayerData.sorted(by: { $0.recordEntryTime! >= $1.recordEntryTime!})
+    return filteredPlayerData.sorted(by: { $0.recordEntryTime ?? Date() >= $1.recordEntryTime ?? Date()})
   }
   
   func queryPlayerList() -> [Recordline] {

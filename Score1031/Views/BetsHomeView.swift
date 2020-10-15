@@ -210,6 +210,8 @@ struct BetsHomeView: View {
           Spacer()
           NavigationLink(destination: AddBetView()
             .environmentObject(UserData())
+            ///adding this solved the obj error I have been getting on and off
+            .environmentObject(observed())
           ) {
             Image(systemName: "plus.circle.fill")
               .font(.system(size:21))

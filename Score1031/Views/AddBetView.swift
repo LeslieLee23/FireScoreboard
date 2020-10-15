@@ -100,7 +100,7 @@ struct AddBetView: View {
             self.pointGrammar = "point"
           }
           self.bets = self.addBetFunc.createBet(
-            playerID: self.userData.playerID!,
+            playerID: self.userData.playerID,
             betScore: self.betScore,
             betDescription: self.bet)
           print(self.bets)

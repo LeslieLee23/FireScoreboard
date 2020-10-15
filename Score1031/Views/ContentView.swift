@@ -139,9 +139,9 @@ struct ContentView: View {
             }///Scoreboard Content View
               .frame(width: 340, height: 250, alignment: .top)
           }///Scoreboard Section
-            .padding(.top, betLoader.fetchOngoingBet(self.userData.playerID!).count < 1 ? 50 : 0)
+            .padding(.top, betLoader.fetchOngoingBet(self.userData.playerID).count < 1 ? 50 : 0)
           if self.userData.editMode == false {
-            if  betLoader.fetchOngoingBet(self.userData.playerID!).count < 1 {
+            if  betLoader.fetchOngoingBet(self.userData.playerID).count < 1 {
               Spacer()
               Spacer()
               HistorySnapView()

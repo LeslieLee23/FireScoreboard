@@ -47,7 +47,7 @@ class UserData: ObservableObject {
         }
     }
     
-    @Published var playerID = UserDefaults.standard.string(forKey: "playerID") {
+    @Published var playerID = UserDefaults.standard.string(forKey: "playerID") ?? "0" {
         didSet {
             UserDefaults.standard.set(self.playerID, forKey: "playerID")
         }

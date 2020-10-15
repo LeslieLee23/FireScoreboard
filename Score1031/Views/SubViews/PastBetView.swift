@@ -20,7 +20,7 @@ struct PastBetView: View {
       Color.offWhite02.edgesIgnoringSafeArea(.all)
         VStack(alignment: .leading) {
           List {
-            ForEach (betLoader.fetchPastBet(self.userData.playerID!)) { bets3 in
+            ForEach (betLoader.fetchPastBet(self.userData.playerID)) { bets3 in
                 if self.userData.deleteMode == false {
                   
                     HStack(){

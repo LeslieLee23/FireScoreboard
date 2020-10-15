@@ -14,6 +14,7 @@ import UIKit
 struct TabBarView: View {
   @EnvironmentObject var appState: AppState
   @ObservedObject var betLoader = BetLoader()
+  @ObservedObject var apiLoader = APILoader()
   @EnvironmentObject var obj : observed
   var userData = UserData()
   init() {
@@ -23,16 +24,7 @@ struct TabBarView: View {
   }
   var body: some View {
     TabView(selection: $appState.selectedTab) {
-      //ptea.sima@gmail.com
       ContentView()
-      // I think this wasnt needed and it was causing trouble, so problbaly delete it
-        /* .onTapGesture {
-          self.appState.selectedTab = .home
-          
-      }*/
-//      .animation(
-//        Animation.spring(dampingFraction: 1.5)
-//      )
         .tabItem {
           if self.appState.selectedTab == .home {
             VStack{
@@ -133,16 +125,21 @@ struct TabBarView: View {
       .tag(Tab.AddNewPlayerView)
     }
     .onAppear() {
+      if self.apiLoader.queryPlayerList().count < 1 {
+        self.appState.selectedTab = .AddNewPlayerView
+      } else {
+        self.appState.selectedTab = .home
+      }
       
-      if self.betLoader.fetchPastBet(self.userData.playerID!).count < 1 && self.betLoader.fetchOngoingBet(self.userData.playerID!).count < 1 {
+      if  self.betLoader.fetchPastBet(self.userData.playerID).count < 1 && self.betLoader.fetchOngoingBet(self.userData.playerID).count < 1 {
         self.userData.betState = 0
       }
-      else if self.betLoader.fetchOngoingBet(self.userData.playerID!).count > 0 {
+      else if self.betLoader.fetchOngoingBet(self.userData.playerID).count > 0 {
         self.userData.betState = 1
-      } else if self.betLoader.fetchPastBet(self.userData.playerID!).count > 0 {
+      } else if self.betLoader.fetchPastBet(self.userData.playerID).count > 0 {
         self.userData.betState = 2
       }
-      print("count fetchOngoingBet \(self.betLoader.fetchOngoingBet(self.userData.playerID!).count)")
+      print("count fetchOngoingBet \(self.betLoader.fetchOngoingBet(self.userData.playerID).count)")
       print("playerID \(self.userData.playerID)")
       print("betState \(self.userData.betState)")
     }

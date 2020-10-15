@@ -58,7 +58,7 @@ struct BetSnapView: View {
         Divider()
         VStack {
         List {
-          ForEach (betLoader.fetchOngoingBet(self.userData.playerID!).prefix(3)) { bets3 in
+          ForEach (betLoader.fetchOngoingBet(self.userData.playerID).prefix(3)) { bets3 in
                 VStack{
                   BetSnapViewModel(bets3: bets3)
                 }
