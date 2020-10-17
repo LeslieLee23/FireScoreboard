@@ -223,7 +223,6 @@ PODS:
   - BoringSSL-GRPC/Implementation (0.0.7):
     - BoringSSL-GRPC/Interface (= 0.0.7)
   - BoringSSL-GRPC/Interface (0.0.7)
-  - Disk (0.6.4)
   - FBSDKCoreKit (5.15.1):
     - FBSDKCoreKit/Basics (= 5.15.1)
     - FBSDKCoreKit/Core (= 5.15.1)
@@ -416,13 +415,11 @@ PODS:
   - nanopb/decode (1.30905.0)
   - nanopb/encode (1.30905.0)
   - PromisesObjC (1.2.8)
-  - Resolver (1.1.4)
   - SDWebImage (5.9.3):
     - SDWebImage/Core (= 5.9.3)
   - SDWebImage/Core (5.9.3)
 
 DEPENDENCIES:
-  - Disk (~> 0.6.4)
   - Firebase/Analytics
   - Firebase/Auth
   - Firebase/Core
@@ -431,17 +428,13 @@ DEPENDENCIES:
   - FirebaseFirestoreSwift
   - FirebaseUI
   - FirebaseUI/Auth
-  - FirebaseUI/Facebook
-  - FirebaseUI/Google
   - FirebaseUI/OAuth
-  - Resolver
 
 SPEC REPOS:
   trunk:
     - abseil
     - AppAuth
     - BoringSSL-GRPC
-    - Disk
     - FBSDKCoreKit
     - FBSDKLoginKit
     - Firebase
@@ -469,14 +462,12 @@ SPEC REPOS:
     - leveldb-library
     - nanopb
     - PromisesObjC
-    - Resolver
     - SDWebImage
 
 SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
   AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
   BoringSSL-GRPC: 8edf627ee524575e2f8d19d56f068b448eea3879
-  Disk: dcee5c2e98fb72f9a924cde8da8435b08244a80e
   FBSDKCoreKit: 1d5acf7c9d7a2f92bb1a242dc60cae5b7adb91df
   FBSDKLoginKit: f1ea8026a58b52d30c9f2e6a58ca7d813619fb83
   Firebase: 5719b4f965f76643241a1bb8244483ff6117db39
@@ -504,9 +495,8 @@ SPEC CHECKSUMS:
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: c43f40fadfe79e8b8db116583945847910cbabc9
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
-  Resolver: 1f4c046255cbadfa97094692e16e940d4329779f
   SDWebImage: a31ee8e90a97303529e03fb0c333eae0eacb88e9
 
-PODFILE CHECKSUM: 2e44781312edf10ede02cd68164a4c4a677b1a53
+PODFILE CHECKSUM: 697c47697fa92b257faed6c6a9d0d74288f36244
 
 COCOAPODS: 1.9.1
