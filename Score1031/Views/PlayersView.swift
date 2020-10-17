@@ -7,7 +7,6 @@
 //
 
 import SwiftUI
-import Disk
 
 struct PlayersView: View {
   

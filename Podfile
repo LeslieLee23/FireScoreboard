@@ -6,8 +6,6 @@ target 'Score1031' do
   use_frameworks!
 
   # Pods for Score1031
-  pod 'Resolver'
-  pod 'Disk', '~> 0.6.4'
   
   pod 'FirebaseUI'
   pod 'Firebase/Analytics'
@@ -18,9 +16,8 @@ target 'Score1031' do
   pod 'Firebase/Auth'
 
   pod 'FirebaseUI/Auth'
-  pod 'FirebaseUI/Google'
-  pod 'FirebaseUI/Facebook'
   pod 'FirebaseUI/OAuth' 
+
 
 end
 
