@@ -30,7 +30,7 @@ class APILoader: BaseScoreRepository, ScoreRepository, ObservableObject {
   
   override init() {
     super.init()
-    //fetchData()
+    fetchData()
   }
   
   func defaultValue() -> [Recordline] {
@@ -94,10 +94,6 @@ class APILoader: BaseScoreRepository, ScoreRepository, ObservableObject {
   }
   
   func fetchPlayerData(_ playerID: String) -> [Recordline] {
-    
-    
-    
-    
     
     let recordsCopy = self.records
     var filteredPlayerData = [Recordline]()

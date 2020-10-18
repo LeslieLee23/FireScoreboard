@@ -18,27 +18,31 @@ struct HistoryView: View {
   
   var body: some View {
     NavigationView {
+      ZStack{
+        //ZStack Color Die
+        Color.offWhite02.edgesIgnoringSafeArea(.all)
       VStack(alignment: .leading) {
         List {
           ForEach(viewModel.historyData, id: \.id) { records3 in
               RecordViewModel(name: records3.recordName, score: records3.recordScore, reason: records3.recordReason, entryTime: records3.recordEntryTimeString, playerID: records3.playerID, nameStr: records3.recordNameStr ?? "Wowo", nameEmo: records3.recordNameEmo ?? "🐒")
 
           }.listRowBackground(Color.offWhite02)
-        }
+          }
         
+      }
       }
       .navigationBarTitle("History")
         .foregroundColor(.offblack04)
       .onAppear {
         viewModel.fetchHistoryData(playerId: self.userData.playerID)
       }
-//      .navigationBarItems(trailing:
-//        HStack{
-//        Spacer()
-//        }
-//      )
+      .navigationBarItems(trailing:
+        HStack{
+        Spacer()
+        }
+      )
     }
-    .background(Color.offWhite02)
+    
   }
 }
 

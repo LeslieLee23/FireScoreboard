@@ -11,7 +11,6 @@ import SwiftUI
 struct BetSnapView: View {
   
   @EnvironmentObject var userData: UserData
-  @ObservedObject var apiLoader = APILoader()
   @ObservedObject var betLoader = BetLoader()
   @EnvironmentObject var appState: AppState
 
@@ -41,7 +40,7 @@ struct BetSnapView: View {
         Spacer()
 
         HStack {
-        Text("Bets")
+        Text("Ongoing Bets")
           .font(.system(size: 16))
           .padding(.leading, 25)
           .foregroundColor(Color.offblack03)

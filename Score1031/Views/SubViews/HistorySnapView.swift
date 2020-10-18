@@ -7,7 +7,7 @@
 //
 
 import SwiftUI
-import Foundation
+//import Foundation
 
 struct HistorySnapView: View {
   
@@ -41,7 +41,8 @@ struct HistorySnapView: View {
       VStack(alignment: .center) {
         Spacer()
         HStack {
-        Text("History")
+        Text("Score Change History")
+          .foregroundColor(Color.offblack03)
           .padding(.leading, 25)
           Spacer()
         Button(action: {

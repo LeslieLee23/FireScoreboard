@@ -172,7 +172,6 @@
 				F5CD314625116ACA00B67510 /* SubViews */,
 				F5D7FC7424D942A6006BFC4A /* SignInView.swift */,
 				F5F6C4F425358BF6007C9A1F /* FirebaseUILoginView.swift */,
-				F57760E5253C1FB300D978AB /* HistoryViewModel.swift */,
 				F55DABD724EF3B9B0078452F /* TabBarView.swift */,
 				F56E71912493505C007E8FF5 /* ContentView.swift */,
 				F508FB6324501144001C5C24 /* HistoryView.swift */,
@@ -251,6 +250,7 @@
 		F5CD31432511689700B67510 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				F57760E5253C1FB300D978AB /* HistoryViewModel.swift */,
 				F5CD313F250DD30F00B67510 /* BetViewModel.swift */,
 				F50762E524BC244600676F9C /* RecordViewModel.swift */,
 				F5441EB924F8726900F8DBDF /* RecordSnapViewModel.swift */,
