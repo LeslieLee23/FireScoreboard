@@ -167,11 +167,11 @@ struct TabBarView_Previews: PreviewProvider {
 }
 
 extension TabBarView {
-  enum Tab: Hashable {
-    case home
-    case HistoryView
-    case PlayersView
-    case AddNewPlayerView
-    case BetsHomeView
+  enum Tab: Int, Hashable {
+    case home = 0
+    case HistoryView = 1
+    case PlayersView = 2
+    case AddNewPlayerView = 3
+    case BetsHomeView = 4
   }
 }

@@ -30,7 +30,7 @@ class APILoader: BaseScoreRepository, ScoreRepository, ObservableObject {
   
   override init() {
     super.init()
-    fetchData()
+    //fetchData()
   }
   
   func defaultValue() -> [Recordline] {
@@ -70,7 +70,7 @@ class APILoader: BaseScoreRepository, ScoreRepository, ObservableObject {
         let recordNameStr = data["recordNameStr"] as? String ?? ""
         let recordNameEmo = data["recordNameEmo"] as? String ?? ""
         let abc = Recordline(
-                  id: id,
+          id: UUID(uuidString: id)!,
                   playerID: playerID,
                   playerOneEmoji: playerOneEmoji,
                   playerOneName: playerOneName,
@@ -94,6 +94,11 @@ class APILoader: BaseScoreRepository, ScoreRepository, ObservableObject {
   }
   
   func fetchPlayerData(_ playerID: String) -> [Recordline] {
+    
+    
+    
+    
+    
     let recordsCopy = self.records
     var filteredPlayerData = [Recordline]()
     
@@ -111,7 +116,7 @@ class APILoader: BaseScoreRepository, ScoreRepository, ObservableObject {
     var resultArray = [String]()
 
     for playerID in recordSet {
-      let id = self.records.filter({$0.playerID == playerID}).map{$0.id}.first
+      let id = self.records.filter({$0.playerID == playerID}).map{$0.id.uuidString}.first
       resultArray.append(id!)
 
     }
@@ -119,7 +124,7 @@ class APILoader: BaseScoreRepository, ScoreRepository, ObservableObject {
     var filteredRecords3 = [Recordline]()
 
     for id in resultArray {
-      if let filtered = self.records.filter({$0.id == id}).first {
+      if let filtered = self.records.filter({$0.id.uuidString == id}).first {
         filteredRecords3.append(filtered) }
       else {
         _ = [Recordline(playerID: "0", playerOneEmoji: "🎏",playerOneName: "Player One", playerOneScore: 0, playerTwoEmoji: "👨🏻", playerTwoName: "Player Two", playerTwoScore: 0, recordName: "Player one and two", recordScore: "NA", recordReason: "Default players created", recordEntryTime: Date(), recordEntryTimeString: "",

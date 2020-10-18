@@ -12,7 +12,8 @@ import Foundation
 struct HistorySnapView: View {
   
   @EnvironmentObject var userData: UserData
-  @ObservedObject var apiLoader = APILoader()
+  //@ObservedObject var apiLoader = APILoader()
+  @ObservedObject var viewModel = HistoryViewModel()
   @EnvironmentObject var appState: AppState
   
   init(){
@@ -54,7 +55,7 @@ struct HistorySnapView: View {
         }
         Divider()
         List {
-          ForEach (apiLoader.fetchPlayerData(self.userData.playerID ?? "0").prefix(3)) { records3 in
+          ForEach (viewModel.historyData.prefix(3)) { records3 in
 
               RecordSnapViewModel(name: records3.recordName, score: records3.recordScore, reason: records3.recordReason, entryTime: records3.recordEntryTimeString, playerID: records3.playerID, nameStr: records3.recordNameStr ?? "Wowo", nameEmo: records3.recordNameEmo ?? "🐒")
 
@@ -63,6 +64,9 @@ struct HistorySnapView: View {
       }//.border(Color.red)
       
       .frame(width: 290, height: 110, alignment: .leading)
+    }
+    .onAppear {
+      viewModel.fetchHistoryData(playerId: self.userData.playerID)
     }
 
   }

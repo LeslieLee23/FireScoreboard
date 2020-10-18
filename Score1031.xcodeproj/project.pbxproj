@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B779C3DDD64E72D31729DF0C /* Pods_Score1031.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B92F034ACFCAE2C33C88A06 /* Pods_Score1031.framework */; };
 		F500DA67250732BA003E60F3 /* AddBetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F500DA66250732BA003E60F3 /* AddBetView.swift */; };
 		F500DA6925074C3F003E60F3 /* BetRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = F500DA6825074C3F003E60F3 /* BetRecord.swift */; };
 		F500DA6B25075F60003E60F3 /* BetLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F500DA6A25075F60003E60F3 /* BetLoader.swift */; };
@@ -36,6 +37,8 @@
 		F56F88AB2517307C00FD3CF7 /* BetSnapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56F88AA2517307C00FD3CF7 /* BetSnapView.swift */; };
 		F56F88AD2517376C00FD3CF7 /* BetSnapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56F88AC2517376C00FD3CF7 /* BetSnapViewModel.swift */; };
 		F56F88B3251BEBF000FD3CF7 /* NeupbuttonText.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56F88B2251BEBF000FD3CF7 /* NeupbuttonText.swift */; };
+		F577601C253BF97C00D978AB /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F577601B253BF97C00D978AB /* Launch Screen.storyboard */; };
+		F57760E6253C1FB300D978AB /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57760E5253C1FB300D978AB /* HistoryViewModel.swift */; };
 		F5776DC825141DA50017858D /* PastBetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5776DC725141DA50017858D /* PastBetView.swift */; };
 		F59129502420368F0071E1D3 /* SelectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F591294F2420368F0071E1D3 /* SelectViewModel.swift */; };
 		F5BA924724E75A6900CA3519 /* EditModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BA924624E75A6900CA3519 /* EditModeView.swift */; };
@@ -46,8 +49,7 @@
 		F5D7FC7524D942A6006BFC4A /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D7FC7424D942A6006BFC4A /* SignInView.swift */; };
 		F5D7FC7A24D9CEF4006BFC4A /* SigninWithAppleCoodinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D7FC7924D9CEF4006BFC4A /* SigninWithAppleCoodinator.swift */; };
 		F5EAA41B2511C08D00584E86 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EAA41A2511C08D00584E86 /* Styles.swift */; };
-		F5EAA41C2511CEC000584E86 /* Pods_Score1031.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01D18C8DA08D01B06A0E91E2 /* Pods_Score1031.framework */; };
-		F5EAA41D2511CEC000584E86 /* Pods_Score1031.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 01D18C8DA08D01B06A0E91E2 /* Pods_Score1031.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F5EAA41D2511CEC000584E86 /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F5F02578244427A20038A4FB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F5F02577244427A20038A4FB /* GoogleService-Info.plist */; };
 		F5F6C4F525358BF6007C9A1F /* FirebaseUILoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F6C4F425358BF6007C9A1F /* FirebaseUILoginView.swift */; };
 /* End PBXBuildFile section */
@@ -59,7 +61,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				F5EAA41D2511CEC000584E86 /* Pods_Score1031.framework in Embed Frameworks */,
+				F5EAA41D2511CEC000584E86 /* (null) in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -67,9 +69,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		01D18C8DA08D01B06A0E91E2 /* Pods_Score1031.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Score1031.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		0C286CC72021282DB2177955 /* Pods-Score1031.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Score1031.release.xcconfig"; path = "Target Support Files/Pods-Score1031/Pods-Score1031.release.xcconfig"; sourceTree = "<group>"; };
-		20FA246B4855C4B139F8EDF9 /* Pods-Score1031.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Score1031.debug.xcconfig"; path = "Target Support Files/Pods-Score1031/Pods-Score1031.debug.xcconfig"; sourceTree = "<group>"; };
+		0C916CA7FAED33CBF98EA690 /* Pods-Score1031.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Score1031.release.xcconfig"; path = "Target Support Files/Pods-Score1031/Pods-Score1031.release.xcconfig"; sourceTree = "<group>"; };
+		4B92F034ACFCAE2C33C88A06 /* Pods_Score1031.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Score1031.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		94D13CEFB9F9BAC3FFBB0859 /* Pods-Score1031.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Score1031.debug.xcconfig"; path = "Target Support Files/Pods-Score1031/Pods-Score1031.debug.xcconfig"; sourceTree = "<group>"; };
 		F500DA66250732BA003E60F3 /* AddBetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBetView.swift; sourceTree = "<group>"; };
 		F500DA6825074C3F003E60F3 /* BetRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetRecord.swift; sourceTree = "<group>"; };
 		F500DA6A25075F60003E60F3 /* BetLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetLoader.swift; sourceTree = "<group>"; };
@@ -101,6 +103,8 @@
 		F56F88AA2517307C00FD3CF7 /* BetSnapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetSnapView.swift; sourceTree = "<group>"; };
 		F56F88AC2517376C00FD3CF7 /* BetSnapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetSnapViewModel.swift; sourceTree = "<group>"; };
 		F56F88B2251BEBF000FD3CF7 /* NeupbuttonText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeupbuttonText.swift; sourceTree = "<group>"; };
+		F577601B253BF97C00D978AB /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		F57760E5253C1FB300D978AB /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
 		F5776DC725141DA50017858D /* PastBetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastBetView.swift; sourceTree = "<group>"; };
 		F591294F2420368F0071E1D3 /* SelectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectViewModel.swift; sourceTree = "<group>"; };
 		F5BA924624E75A6900CA3519 /* EditModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditModeView.swift; sourceTree = "<group>"; };
@@ -121,7 +125,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F5EAA41C2511CEC000584E86 /* Pods_Score1031.framework in Frameworks */,
+				B779C3DDD64E72D31729DF0C /* Pods_Score1031.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,16 +135,16 @@
 		2530B1FA40EA97F3FDD4A6B2 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				20FA246B4855C4B139F8EDF9 /* Pods-Score1031.debug.xcconfig */,
-				0C286CC72021282DB2177955 /* Pods-Score1031.release.xcconfig */,
+				94D13CEFB9F9BAC3FFBB0859 /* Pods-Score1031.debug.xcconfig */,
+				0C916CA7FAED33CBF98EA690 /* Pods-Score1031.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		8C1AD8E4C5ADBF034705611A /* Frameworks */ = {
+		D6DD6B811D55A6981652041A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				01D18C8DA08D01B06A0E91E2 /* Pods_Score1031.framework */,
+				4B92F034ACFCAE2C33C88A06 /* Pods_Score1031.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -168,6 +172,7 @@
 				F5CD314625116ACA00B67510 /* SubViews */,
 				F5D7FC7424D942A6006BFC4A /* SignInView.swift */,
 				F5F6C4F425358BF6007C9A1F /* FirebaseUILoginView.swift */,
+				F57760E5253C1FB300D978AB /* HistoryViewModel.swift */,
 				F55DABD724EF3B9B0078452F /* TabBarView.swift */,
 				F56E71912493505C007E8FF5 /* ContentView.swift */,
 				F508FB6324501144001C5C24 /* HistoryView.swift */,
@@ -201,7 +206,7 @@
 				F53BDFCE236B44CC00C3E203 /* Score1031 */,
 				F53BDFCD236B44CC00C3E203 /* Products */,
 				2530B1FA40EA97F3FDD4A6B2 /* Pods */,
-				8C1AD8E4C5ADBF034705611A /* Frameworks */,
+				D6DD6B811D55A6981652041A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -221,6 +226,7 @@
 				F51C7A3C23D96C3800540B25 /* Resource */,
 				F5D7FC7624D9CE07006BFC4A /* Services */,
 				F53BDFCF236B44CC00C3E203 /* AppDelegate.swift */,
+				F577601B253BF97C00D978AB /* Launch Screen.storyboard */,
 				F53BDFD1236B44CC00C3E203 /* SceneDelegate.swift */,
 				F5CD31432511689700B67510 /* ViewModels */,
 				F51C7A3B23D5715A00540B25 /* Views */,
@@ -284,13 +290,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F53BDFE0236B44CF00C3E203 /* Build configuration list for PBXNativeTarget "Score1031" */;
 			buildPhases = (
-				D094A83385D800047DA40917 /* [CP] Check Pods Manifest.lock */,
+				47C3D773B5E0765363F4BEFF /* [CP] Check Pods Manifest.lock */,
 				F53BDFC8236B44CC00C3E203 /* Sources */,
 				F53BDFC9236B44CC00C3E203 /* Frameworks */,
 				F53BDFCA236B44CC00C3E203 /* Resources */,
-				6FCDE50AEAB3774C301BDC67 /* [CP] Embed Pods Frameworks */,
 				F5EAA41E2511CEC000584E86 /* Embed Frameworks */,
-				E337ABEEFE0448905FE5D203 /* [CP] Copy Pods Resources */,
+				B50CCFD75DAE7D9D07340EED /* [CP] Embed Pods Frameworks */,
+				CD16FA78DF5ED915828D6F38 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -342,6 +348,7 @@
 				F53BDFDC236B44CF00C3E203 /* LaunchScreen.storyboard in Resources */,
 				F5F02578244427A20038A4FB /* GoogleService-Info.plist in Resources */,
 				F53BDFD9236B44CF00C3E203 /* Preview Assets.xcassets in Resources */,
+				F577601C253BF97C00D978AB /* Launch Screen.storyboard in Resources */,
 				F53BDFD6236B44CF00C3E203 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -349,24 +356,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		6FCDE50AEAB3774C301BDC67 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Score1031/Pods-Score1031-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Score1031/Pods-Score1031-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Score1031/Pods-Score1031-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D094A83385D800047DA40917 /* [CP] Check Pods Manifest.lock */ = {
+		47C3D773B5E0765363F4BEFF /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -388,7 +378,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E337ABEEFE0448905FE5D203 /* [CP] Copy Pods Resources */ = {
+		B50CCFD75DAE7D9D07340EED /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Score1031/Pods-Score1031-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Score1031/Pods-Score1031-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Score1031/Pods-Score1031-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CD16FA78DF5ED915828D6F38 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -417,6 +424,7 @@
 				F5D7FC7524D942A6006BFC4A /* SignInView.swift in Sources */,
 				F56E71922493505C007E8FF5 /* ContentView.swift in Sources */,
 				F53BE01B2384482700C3E203 /* UserData.swift in Sources */,
+				F57760E6253C1FB300D978AB /* HistoryViewModel.swift in Sources */,
 				F55DABDA24EFAF880078452F /* AppState.swift in Sources */,
 				F500DA6925074C3F003E60F3 /* BetRecord.swift in Sources */,
 				F5441EBE24FAFAB700F8DBDF /* AddNewPlayerView.swift in Sources */,
@@ -582,7 +590,7 @@
 		};
 		F53BDFE1236B44CF00C3E203 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 20FA246B4855C4B139F8EDF9 /* Pods-Score1031.debug.xcconfig */;
+			baseConfigurationReference = 94D13CEFB9F9BAC3FFBB0859 /* Pods-Score1031.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Score1031/FireScoreboard.entitlements;
@@ -607,7 +615,7 @@
 		};
 		F53BDFE2236B44CF00C3E203 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0C286CC72021282DB2177955 /* Pods-Score1031.release.xcconfig */;
+			baseConfigurationReference = 0C916CA7FAED33CBF98EA690 /* Pods-Score1031.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Score1031/FireScoreboard.entitlements;

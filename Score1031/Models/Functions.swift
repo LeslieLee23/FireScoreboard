@@ -43,7 +43,7 @@ class AddScoreFunc: ObservableObject {
     var record = Recordline(playerID: "0", playerOneEmoji: "✨",playerOneName: "Player One", playerOneScore: 0, playerTwoEmoji: "👨🏻", playerTwoName: "Player Two", playerTwoScore: 0, recordName: "Player one and two", recordScore: "NA", recordReason: "Default players created", recordEntryTime: Date(), recordEntryTimeString: "",
                             recordNameStr: "recordNameStrGUAGUA", recordNameEmo: "💩")
     
-    record.id = UUID().uuidString
+    record.id = UUID()
     record.recordReason = reason
     record.recordEntryTime = Date()
     record.playerID = playerID

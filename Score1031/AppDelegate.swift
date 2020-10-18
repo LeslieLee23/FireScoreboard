@@ -1,6 +1,7 @@
 import UIKit
-import CoreData
 import Firebase
+import FirebaseFirestore
+import FirebaseFirestoreSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -11,6 +12,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       if Auth.auth().currentUser == nil {
         Auth.auth().signInAnonymously()
       }
+      
+      let screenWidth  = UIScreen.main.bounds.width
+      let screenHeight = UIScreen.main.bounds.height
+      print("screenWidth \(screenWidth)")
+      
         return true
     }
 
@@ -26,27 +32,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the user discards a scene session.
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
-    }
-    
-    lazy var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "Score1031")
-        container.loadPersistentStores { description, error in
-            if let error = error as NSError? {
-                fatalError("Unresolved error \(error), \(error.userInfo)")
-            }
-        }
-        return container
-    }()
-    func saveContext () {
-        let managedObjectContext = persistentContainer.viewContext
-        if managedObjectContext.hasChanges {
-            do {
-                try managedObjectContext.save()
-            } catch {
-                let nserror = error as NSError
-                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-            }
-        }
     }
 
 }
