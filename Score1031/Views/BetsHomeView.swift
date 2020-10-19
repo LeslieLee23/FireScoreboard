@@ -13,7 +13,6 @@ struct BetsHomeView: View {
   
   @EnvironmentObject var userData: UserData
   @ObservedObject var betLoader = BetLoader()
-  @ObservedObject private var apiLoader = APILoader()
   @State var showAlert = false
   
   var body: some View {
@@ -55,7 +54,7 @@ struct BetsHomeView: View {
             }//Ongoing Section title
           //  .background(Color.darkPurple)
             
-            if betLoader.fetchOngoingBet(self.userData.playerID ?? "0").count < 1 {
+            if betLoader.fetchOngoingBet(self.userData.playerID).count < 1 {
               //Ongoing content if no record
               VStack {
                 Spacer()

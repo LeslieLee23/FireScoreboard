@@ -9,27 +9,23 @@
 import SwiftUI
 
 struct RecordSnapViewModel: View {
-  var name: String = "mia"
-  var score: String = "+2"
-  var reason: String = "cute cute monkey"
-  var entryTime: String = "Aug 03 2020 5:30pm"
-  var playerID: String = ""
-  var nameStr: String = "Micheal"
-  var nameEmo: String = "🐒"
+  
+  var records3 = Recordline(playerID: "0", playerOneEmoji: "🍑",playerOneName: "Player One", playerOneScore: 0, playerTwoEmoji: "👨🏻", playerTwoName: "Player Two", playerTwoScore: 0, recordName: "Player one and two", recordScore: "NA", recordReason: "Default players created", recordEntryTime: Date(), recordEntryTimeString: "", recordNameStr: "recordNameStr", recordNameEmo: "👩🏻")
+  
   var body: some View {
     
     VStack(){
       HStack(){
         
       VStack(alignment: .leading){
-        Text(nameEmo)
+        Text(records3.recordNameEmo ?? "👩🏻")
           //  .font(.headline)
           .font(.system(size: 28))
       }.frame(width:40, height: 50, alignment: .leading)
         
         VStack(alignment: .leading) {
           VStack(alignment: .leading) {
-          Text(reason)
+          Text(records3.recordReason)
           .font(.system(size: 13))
           .multilineTextAlignment(.leading)
           }//.frame(width:165, height: 40, alignment: .leading)
@@ -37,7 +33,7 @@ struct RecordSnapViewModel: View {
 
         //  Spacer()
           VStack(alignment: .leading) {
-          Text(entryTime)
+          Text(records3.recordEntryTimeString)
           .font(.system(size: 11))
             .foregroundColor(Color.offGray03)
           }//.frame(width:165, height: 40, alignment: .leading)
@@ -46,10 +42,10 @@ struct RecordSnapViewModel: View {
         
         
         VStack(alignment: .leading) {
-          Text(score)
+          Text(records3.recordScore)
           .font(.system(size: 20))
           .fontWeight(.medium)
-          .foregroundColor(score.first == "-" ? .red : .green)
+          .foregroundColor(records3.recordScore.first == "-" ? .red : .green)
         }.frame(width:45, height: 50, alignment: .center)
       
       }

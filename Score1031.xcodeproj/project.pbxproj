@@ -16,7 +16,6 @@
 		F50762E624BC244600676F9C /* RecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50762E524BC244600676F9C /* RecordViewModel.swift */; };
 		F50762EC24C01D0100676F9C /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50762EB24C01D0100676F9C /* Functions.swift */; };
 		F508FB60244EA96A001C5C24 /* Recordline.swift in Sources */ = {isa = PBXBuildFile; fileRef = F508FB5F244EA96A001C5C24 /* Recordline.swift */; };
-		F508FB6424501144001C5C24 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F508FB6324501144001C5C24 /* HistoryView.swift */; };
 		F51C7A3623D4EB6300540B25 /* NameAndScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51C7A3523D4EB6300540B25 /* NameAndScore.swift */; };
 		F51EE72223F12D9D0030B17C /* Score1031.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F51EE72023F12D9D0030B17C /* Score1031.xcdatamodeld */; };
 		F53BDFD0236B44CC00C3E203 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53BDFCF236B44CC00C3E203 /* AppDelegate.swift */; };
@@ -33,12 +32,12 @@
 		F55DABD624EBB9090078452F /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55DABD524EBB9090078452F /* SplashView.swift */; };
 		F55DABD824EF3B9B0078452F /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55DABD724EF3B9B0078452F /* TabBarView.swift */; };
 		F55DABDA24EFAF880078452F /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55DABD924EFAF880078452F /* AppState.swift */; };
+		F5693CEF253D023800EA7626 /* ScoreHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5693CEE253D023800EA7626 /* ScoreHistoryView.swift */; };
 		F56E71922493505C007E8FF5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56E71912493505C007E8FF5 /* ContentView.swift */; };
 		F56F88AB2517307C00FD3CF7 /* BetSnapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56F88AA2517307C00FD3CF7 /* BetSnapView.swift */; };
 		F56F88AD2517376C00FD3CF7 /* BetSnapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56F88AC2517376C00FD3CF7 /* BetSnapViewModel.swift */; };
 		F56F88B3251BEBF000FD3CF7 /* NeupbuttonText.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56F88B2251BEBF000FD3CF7 /* NeupbuttonText.swift */; };
 		F577601C253BF97C00D978AB /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F577601B253BF97C00D978AB /* Launch Screen.storyboard */; };
-		F57760E6253C1FB300D978AB /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57760E5253C1FB300D978AB /* HistoryViewModel.swift */; };
 		F5776DC825141DA50017858D /* PastBetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5776DC725141DA50017858D /* PastBetView.swift */; };
 		F59129502420368F0071E1D3 /* SelectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F591294F2420368F0071E1D3 /* SelectViewModel.swift */; };
 		F5BA924724E75A6900CA3519 /* EditModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BA924624E75A6900CA3519 /* EditModeView.swift */; };
@@ -80,7 +79,6 @@
 		F50762E524BC244600676F9C /* RecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewModel.swift; sourceTree = "<group>"; };
 		F50762EB24C01D0100676F9C /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		F508FB5F244EA96A001C5C24 /* Recordline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recordline.swift; sourceTree = "<group>"; };
-		F508FB6324501144001C5C24 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		F51C7A3523D4EB6300540B25 /* NameAndScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameAndScore.swift; sourceTree = "<group>"; };
 		F51EE72123F12D9D0030B17C /* Score1031.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Score1031.xcdatamodel; sourceTree = "<group>"; };
 		F53BDFCC236B44CC00C3E203 /* FireScoreboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FireScoreboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -99,12 +97,12 @@
 		F55DABD524EBB9090078452F /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		F55DABD724EF3B9B0078452F /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		F55DABD924EFAF880078452F /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		F5693CEE253D023800EA7626 /* ScoreHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreHistoryView.swift; sourceTree = "<group>"; };
 		F56E71912493505C007E8FF5 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F56F88AA2517307C00FD3CF7 /* BetSnapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetSnapView.swift; sourceTree = "<group>"; };
 		F56F88AC2517376C00FD3CF7 /* BetSnapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetSnapViewModel.swift; sourceTree = "<group>"; };
 		F56F88B2251BEBF000FD3CF7 /* NeupbuttonText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeupbuttonText.swift; sourceTree = "<group>"; };
 		F577601B253BF97C00D978AB /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
-		F57760E5253C1FB300D978AB /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
 		F5776DC725141DA50017858D /* PastBetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastBetView.swift; sourceTree = "<group>"; };
 		F591294F2420368F0071E1D3 /* SelectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectViewModel.swift; sourceTree = "<group>"; };
 		F5BA924624E75A6900CA3519 /* EditModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditModeView.swift; sourceTree = "<group>"; };
@@ -174,7 +172,7 @@
 				F5F6C4F425358BF6007C9A1F /* FirebaseUILoginView.swift */,
 				F55DABD724EF3B9B0078452F /* TabBarView.swift */,
 				F56E71912493505C007E8FF5 /* ContentView.swift */,
-				F508FB6324501144001C5C24 /* HistoryView.swift */,
+				F5693CEE253D023800EA7626 /* ScoreHistoryView.swift */,
 				F50762E324B438AD00676F9C /* PlayersView.swift */,
 				F5441EBD24FAFAB700F8DBDF /* AddNewPlayerView.swift */,
 				F500DA66250732BA003E60F3 /* AddBetView.swift */,
@@ -250,7 +248,6 @@
 		F5CD31432511689700B67510 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				F57760E5253C1FB300D978AB /* HistoryViewModel.swift */,
 				F5CD313F250DD30F00B67510 /* BetViewModel.swift */,
 				F50762E524BC244600676F9C /* RecordViewModel.swift */,
 				F5441EB924F8726900F8DBDF /* RecordSnapViewModel.swift */,
@@ -424,7 +421,6 @@
 				F5D7FC7524D942A6006BFC4A /* SignInView.swift in Sources */,
 				F56E71922493505C007E8FF5 /* ContentView.swift in Sources */,
 				F53BE01B2384482700C3E203 /* UserData.swift in Sources */,
-				F57760E6253C1FB300D978AB /* HistoryViewModel.swift in Sources */,
 				F55DABDA24EFAF880078452F /* AppState.swift in Sources */,
 				F500DA6925074C3F003E60F3 /* BetRecord.swift in Sources */,
 				F5441EBE24FAFAB700F8DBDF /* AddNewPlayerView.swift in Sources */,
@@ -440,7 +436,6 @@
 				F5CD3142250EB6B500B67510 /* BetAssignResultView.swift in Sources */,
 				F51C7A3623D4EB6300540B25 /* NameAndScore.swift in Sources */,
 				F500DA67250732BA003E60F3 /* AddBetView.swift in Sources */,
-				F508FB6424501144001C5C24 /* HistoryView.swift in Sources */,
 				F5BA924724E75A6900CA3519 /* EditModeView.swift in Sources */,
 				F56F88AB2517307C00FD3CF7 /* BetSnapView.swift in Sources */,
 				F56F88AD2517376C00FD3CF7 /* BetSnapViewModel.swift in Sources */,
@@ -450,6 +445,7 @@
 				F5441EB824F7091900F8DBDF /* HistorySnapView.swift in Sources */,
 				F5441EBA24F8726900F8DBDF /* RecordSnapViewModel.swift in Sources */,
 				F50762EC24C01D0100676F9C /* Functions.swift in Sources */,
+				F5693CEF253D023800EA7626 /* ScoreHistoryView.swift in Sources */,
 				F55DABD624EBB9090078452F /* SplashView.swift in Sources */,
 				F50762E424B438AD00676F9C /* PlayersView.swift in Sources */,
 				F55DABD824EF3B9B0078452F /* TabBarView.swift in Sources */,

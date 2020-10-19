@@ -8,13 +8,8 @@
 import SwiftUI
 
 struct RecordViewModel: View {
-  var name: String = "Dudu"
-  var score: String = "+2"
-  var reason: String = "being a cute monkey"
-  var entryTime: String = "Sep 10, 2020 9:20 PM"
-  var playerID: String = ""
-  var nameStr: String = "Player Default"
-  var nameEmo: String = "🐒"
+
+  var records3 = Recordline(playerID: "0", playerOneEmoji: "🍑",playerOneName: "Player One", playerOneScore: 0, playerTwoEmoji: "👨🏻", playerTwoName: "Player Two", playerTwoScore: 0, recordName: "Player one and two", recordScore: "NA", recordReason: "Default players created", recordEntryTime: Date(), recordEntryTimeString: "", recordNameStr: "recordNameStr", recordNameEmo: "👩🏻")
   
   var body: some View  {
       
@@ -23,13 +18,13 @@ struct RecordViewModel: View {
         HStack(){
           VStack(alignment: .leading) {
           Spacer()
-          Text(nameEmo)
+          Text(records3.recordNameEmo ?? "🐒")
             .font(.system(size: 25))
           }
           .frame(width:45, height: 20, alignment: .leading)
           VStack(alignment: .leading) {
           Spacer()
-          Text(nameStr)
+          Text(records3.recordNameStr ?? "Wowo")
             .font(.headline)
             .foregroundColor(Color.offblack04)
             
@@ -38,7 +33,7 @@ struct RecordViewModel: View {
           
           VStack(alignment: .trailing) {
           Spacer()
-          Text(entryTime)
+          Text(records3.recordEntryTimeString)
             .font(.system(size: 11))
             .foregroundColor(Color.offGray03)
           }
@@ -52,11 +47,11 @@ struct RecordViewModel: View {
         VStack(alignment: .leading){
           Spacer()
           Spacer()
-          Text(score)
+          Text(records3.recordScore)
           //  .font(.headline)
             .font(.system(size: 25))
             .fontWeight(.medium)
-            .foregroundColor(score.first == "-" ? .red : .green)
+            .foregroundColor( records3.recordScore.first == "-" ? .red : .green)
         }
         .frame(width:45,height: 35, alignment: .leading)
    //     .border(Color.purple)
@@ -64,7 +59,7 @@ struct RecordViewModel: View {
         
         VStack(alignment: .leading){
           
-          Text(reason)
+          Text(records3.recordReason)
             .font(.system(size: 13))
             .multilineTextAlignment(.leading)
             .foregroundColor(Color.offblack04)

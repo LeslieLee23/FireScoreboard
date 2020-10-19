@@ -14,9 +14,9 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 
 
-struct Recordline: Codable , Identifiable, Equatable
+struct Recordline: Codable , Identifiable
 {
-  var id: UUID = UUID()
+  var id: String = UUID().uuidString
   var playerID: String
   var playerOneEmoji: String
   var playerOneName: String

@@ -78,7 +78,7 @@ struct AddNewPlayerView: View {
               
               self.userData.maxPlayerID = self.apiLoader.findMaxPlayerID() + 1
               self.showAlert = true
-              self.records3.id = UUID()
+              self.records3.id = UUID().uuidString
               self.records3.playerOneName = self.userData.addPlayerOneName
               self.records3.playerTwoName = self.userData.addPlayerTwoName
               self.records3.playerOneEmoji = self.userData.addPlayerOneEmoji

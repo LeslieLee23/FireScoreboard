@@ -12,8 +12,7 @@ import SwiftUI
 struct HistorySnapView: View {
   
   @EnvironmentObject var userData: UserData
-  //@ObservedObject var apiLoader = APILoader()
-  @ObservedObject var viewModel = HistoryViewModel()
+  @ObservedObject var apiLoader = APILoader()
   @EnvironmentObject var appState: AppState
   
   init(){
@@ -45,20 +44,20 @@ struct HistorySnapView: View {
           .foregroundColor(Color.offblack03)
           .padding(.leading, 25)
           Spacer()
-        Button(action: {
-          self.appState.selectedTab = .HistoryView
-        })
-        {
-          Image(systemName: "chevron.right")
-            .font(.system(size:17))
-            .padding(.trailing, 25)
-        }
+//        Button(action: {
+//          self.appState.selectedTab = .ScoreHistoryView
+//        })
+//        {
+//          Image(systemName: "chevron.right")
+//            .font(.system(size:17))
+//            .padding(.trailing, 25)
+//        }
         }
         Divider()
         List {
-          ForEach (viewModel.historyData.prefix(3)) { records3 in
+          ForEach (apiLoader.fetchPlayerData(self.userData.playerID).prefix(3)) { records3 in
 
-              RecordSnapViewModel(name: records3.recordName, score: records3.recordScore, reason: records3.recordReason, entryTime: records3.recordEntryTimeString, playerID: records3.playerID, nameStr: records3.recordNameStr ?? "Wowo", nameEmo: records3.recordNameEmo ?? "🐒")
+            RecordSnapViewModel(records3: records3)
 
           }.listRowBackground(Color.offWhite02)
         }
@@ -66,9 +65,10 @@ struct HistorySnapView: View {
       
       .frame(width: 290, height: 110, alignment: .leading)
     }
-    .onAppear {
-      viewModel.fetchHistoryData(playerId: self.userData.playerID)
-    }
+//    .onAppear {
+//      self.apiLoader.fetchData()
+//      
+//    }
 
   }
 }

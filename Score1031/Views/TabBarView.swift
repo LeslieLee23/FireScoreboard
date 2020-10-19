@@ -47,12 +47,10 @@ struct TabBarView: View {
       }
       .tag(Tab.home)
       
-      HistoryView()
-//        .animation(
-//          Animation.spring(dampingFraction: 1.5)
-//        )
+      ScoreHistoryView()
+
         .tabItem {
-          if self.appState.selectedTab == .HistoryView {
+          if self.appState.selectedTab == .ScoreHistoryView {
             Image(systemName: "clock.fill")
               .font(.system(size:27))
             Text("History")
@@ -66,7 +64,7 @@ struct TabBarView: View {
               .font(.system(size:11))
           }
       }
-      .tag(Tab.HistoryView)
+      .tag(Tab.ScoreHistoryView)
       
       BetsHomeView()
 
@@ -125,6 +123,8 @@ struct TabBarView: View {
       .tag(Tab.AddNewPlayerView)
     }
     .onAppear() {
+      self.apiLoader.fetchData()
+      
       if self.apiLoader.queryPlayerList().count < 1 {
         self.appState.selectedTab = .AddNewPlayerView
       } else {
@@ -169,7 +169,7 @@ struct TabBarView_Previews: PreviewProvider {
 extension TabBarView {
   enum Tab: Int, Hashable {
     case home = 0
-    case HistoryView = 1
+    case ScoreHistoryView = 1
     case PlayersView = 2
     case AddNewPlayerView = 3
     case BetsHomeView = 4

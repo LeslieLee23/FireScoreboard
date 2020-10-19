@@ -185,9 +185,6 @@ struct ContentView: View {
           Spacer()
         HStack(spacing: 62){
             Toggle(isOn: $userData.editMode
-//              .animation(
-//                Animation.spring(dampingFraction: 0.7)
-//              )
               )
             {
               Text("x")
@@ -211,10 +208,6 @@ struct ContentView: View {
             })
           Spacer()
               Toggle(isOn: $userData.showEmoji
-//                .animation(
-//                  Animation.spring(dampingFraction: 0.7)
-//                )
-                
               ) {
                 Text("Emoji Mode")
               }

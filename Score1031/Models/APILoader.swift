@@ -70,7 +70,7 @@ class APILoader: BaseScoreRepository, ScoreRepository, ObservableObject {
         let recordNameStr = data["recordNameStr"] as? String ?? ""
         let recordNameEmo = data["recordNameEmo"] as? String ?? ""
         let abc = Recordline(
-          id: UUID(uuidString: id)!,
+                  id: id,
                   playerID: playerID,
                   playerOneEmoji: playerOneEmoji,
                   playerOneName: playerOneName,
@@ -112,7 +112,7 @@ class APILoader: BaseScoreRepository, ScoreRepository, ObservableObject {
     var resultArray = [String]()
 
     for playerID in recordSet {
-      let id = self.records.filter({$0.playerID == playerID}).map{$0.id.uuidString}.first
+      let id = self.records.filter({$0.playerID == playerID}).map{$0.id}.first
       resultArray.append(id!)
 
     }
@@ -120,7 +120,7 @@ class APILoader: BaseScoreRepository, ScoreRepository, ObservableObject {
     var filteredRecords3 = [Recordline]()
 
     for id in resultArray {
-      if let filtered = self.records.filter({$0.id.uuidString == id}).first {
+      if let filtered = self.records.filter({$0.id == id}).first {
         filteredRecords3.append(filtered) }
       else {
         _ = [Recordline(playerID: "0", playerOneEmoji: "🎏",playerOneName: "Player One", playerOneScore: 0, playerTwoEmoji: "👨🏻", playerTwoName: "Player Two", playerTwoScore: 0, recordName: "Player one and two", recordScore: "NA", recordReason: "Default players created", recordEntryTime: Date(), recordEntryTimeString: "",
