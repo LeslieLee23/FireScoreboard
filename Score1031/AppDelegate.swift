@@ -12,11 +12,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       if Auth.auth().currentUser == nil {
         Auth.auth().signInAnonymously()
       }
-      
-      let screenWidth  = UIScreen.main.bounds.width
-      let screenHeight = UIScreen.main.bounds.height
-      print("screenWidth \(screenWidth)")
-      
         return true
     }
 

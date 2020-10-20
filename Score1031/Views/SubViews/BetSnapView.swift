@@ -31,14 +31,13 @@ struct BetSnapView: View {
               .clipShape(
                 RoundedRectangle(cornerRadius: 20)
             )
-          .frame(width: 320, height: 150, alignment: .top)
+              .frame(width: appState.BetSnapViewWidth, height: appState.BetSnapViewHeight, alignment: .top)
           .background(Color.offWhite02)
           .cornerRadius(25)
       }
-      Spacer()
+    //  Spacer()
       VStack(alignment: .center) {
         Spacer()
-
         HStack {
         Text("Ongoing Bets")
           .font(.system(size: 16))
@@ -55,19 +54,16 @@ struct BetSnapView: View {
         }
         }
         Divider()
-        VStack {
         List {
           ForEach (betLoader.fetchOngoingBet(self.userData.playerID).prefix(3)) { bets3 in
-                VStack{
-                  BetSnapViewModel(bets3: bets3)
-                }
+            BetSnapViewModel(bets3: bets3)
+            
           }.listRowBackground(Color.offWhite02)
         }
-      }.frame(width: 290, height: 75, alignment: .leading)
-        //.border(Color.red)
       }
       
-      .frame(width: 290, height: 85, alignment: .leading)
+      .frame(width: appState.HistorySnapViewListWidth, height: appState.HistorySnapViewListHeight, alignment: .leading)
+    //  .border(Color.blue)
     }
 
   }

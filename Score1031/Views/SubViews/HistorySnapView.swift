@@ -32,7 +32,7 @@ struct HistorySnapView: View {
               .clipShape(
                 RoundedRectangle(cornerRadius: 20)
             )
-          .frame(width: 320, height: 135, alignment: .top)
+              .frame(width: appState.HistorySnapViewWidth, height: appState.HistorySnapViewHeight, alignment: .top)
           .background(Color.offWhite02)
           .cornerRadius(25)
       }
@@ -41,8 +41,9 @@ struct HistorySnapView: View {
         Spacer()
         HStack {
         Text("Score Change History")
-          .foregroundColor(Color.offblack03)
+          .font(.system(size:16))
           .padding(.leading, 25)
+          .foregroundColor(Color.offblack03)
           Spacer()
 //        Button(action: {
 //          self.appState.selectedTab = .ScoreHistoryView
@@ -61,15 +62,10 @@ struct HistorySnapView: View {
 
           }.listRowBackground(Color.offWhite02)
         }
-      }//.border(Color.red)
+      }
       
-      .frame(width: 290, height: 110, alignment: .leading)
+      .frame(width: appState.HistorySnapViewListWidth, height: appState.HistorySnapViewListHeight, alignment: .leading)
     }
-//    .onAppear {
-//      self.apiLoader.fetchData()
-//      
-//    }
-
   }
 }
 

@@ -76,8 +76,8 @@ struct RecordViewModel: View {
       }
         .frame(width:335, height: 35, alignment: .leading)
       }
-      .frame(width:355, height: 55, alignment: .leading)
-  //    .border(Color.blue)
+//      .frame(width:355, height: 55, alignment: .leading)
+//      .border(Color.blue)
     }
 }
 

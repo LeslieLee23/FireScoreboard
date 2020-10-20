@@ -17,8 +17,6 @@ import FirebaseFirestoreSwift
 
 struct ContentView: View {
   
-  @EnvironmentObject var appState: AppState
-  
   @State var oneEmoji = [String]()
   @State var twoEmoji = [String]()
   @State var records = [Recordline]()
@@ -32,7 +30,7 @@ struct ContentView: View {
   @EnvironmentObject var addScoreFunc: AddScoreFunc
   @EnvironmentObject var userData: UserData
   @ObservedObject private var apiLoader = APILoader()
-  @State private var records3 = APILoader().records3
+  @EnvironmentObject var appState: AppState
   @ObservedObject var betLoader = BetLoader()
   @State var showSignInForm = false
   @EnvironmentObject var obj : observed
@@ -53,8 +51,8 @@ struct ContentView: View {
             ///Color Change View
             VStack {
               SplashView(animationType: .angle(Angle(degrees: 40)), color: .offWhite01)
-              .frame(width: 340, height: 250, alignment: .top)
-              .cornerRadius(25)
+                .frame(width: appState.scoreboradWidth, height: appState.scoreboradHeight, alignment: .top)
+              .cornerRadius(20)
               .shadow(color: Color.offGray01.opacity(0.8), radius: 5, x: 5, y: 5)
             }///Color Change View
             
@@ -64,7 +62,8 @@ struct ContentView: View {
                VStack {
                 Spacer()
               }
-              .frame(width: 340, height: 35, alignment: .center)
+               .frame(width: appState.scoreboradWidth, height: appState.scoreboradGap, alignment: .center)
+              // .border(Color.red)
               ///Score row (60)
               HStack {
                 VStack() {
@@ -72,18 +71,19 @@ struct ContentView: View {
                     .font(.system(size: 50))
                     .foregroundColor(self.userData.editMode ? .offGray00 : .offblack03)
                 }
-                .frame(width: 165, height: 55, alignment: .center)
+                .frame(width: appState.ScoreRowWidth, height: appState.ScoreRowHeight, alignment: .center)
                 
                 VStack() {
                   Text("\(self.nameAndScore.PlayerTwoScore)")
                     .font(.system(size: 50))
                     .foregroundColor(self.userData.editMode ? .offGray00 : .offblack03)
                 }
-                .frame(width: 165, height: 55, alignment: .center)
+                .frame(width: appState.ScoreRowWidth, height: appState.ScoreRowHeight, alignment: .center)
                 
               }///Score row
-                .frame(width: 340, height: 60, alignment: .top)
+                .frame(width: appState.scoreboradWidth, height: appState.ScoreRowHeight, alignment: .top)
               
+              Spacer()
               Spacer()
               
               ///NameEmojiRow (140) (Edit Mode)
@@ -91,7 +91,7 @@ struct ContentView: View {
                 
                 VStack {
                   NameEmojiRowView()
-                }.frame(width: 340, height: 125, alignment: .center)
+                }.frame(width: appState.scoreboradWidth, height: appState.NameEmojiRowHeight, alignment: .center)
                 Spacer()
               } ///NameEmojiRow (140) (Edit Mode)
                 
@@ -104,14 +104,14 @@ struct ContentView: View {
                         .font(.system(size: 55))
                         .transition(.scale(scale: 5))
                     }
-                    .frame(width: 165, height: 125, alignment: .center)
+                    .frame(width: appState.ScoreRowWidth, height: appState.NameEmojiRowHeight, alignment: .center)
                     VStack{
                       Text(self.nameAndScore.playerTwoEmoji ?? "👨🏻")
                         .font(.system(size: 55))
                     }
-                    .frame(width: 165, height: 125, alignment: .center)
+                    .frame(width: appState.ScoreRowWidth, height: appState.NameEmojiRowHeight, alignment: .center)
                   }
-                  .frame(width: 340, height: 125, alignment: .center)
+                  .frame(width: appState.scoreboradWidth, height: appState.NameEmojiRowHeight, alignment: .center)
                   Spacer()
                 } else {
                   HStack {
@@ -120,24 +120,24 @@ struct ContentView: View {
                         .font(.system(size: 28))
                         .foregroundColor(.offblack03)
                     }
-                    .frame(width: 160, height: 125, alignment: .center)
+                    .frame(width: appState.ScoreRowWidth - 3, height: appState.NameEmojiRowHeight, alignment: .center)
                     VStack{
                       Text(self.nameAndScore.playerTwoName ?? "Whof")
                         .font(.system(size: 28))
                         .foregroundColor(.offblack03)
                     }
-                    .frame(width: 160, height: 125, alignment: .center)
+                    .frame(width: appState.ScoreRowWidth - 3, height: appState.NameEmojiRowHeight, alignment: .center)
                   }
-                  .frame(width: 340, height: 125, alignment: .center)
+                  .frame(width: appState.scoreboradWidth, height: appState.NameEmojiRowHeight, alignment: .center)
                   Spacer()
                 }
               }///NameEmojiRow (140) (Normal Mode)
               Spacer()
               Spacer()
             }///Scoreboard Content View
-              .frame(width: 340, height: 250, alignment: .top)
+            .frame(width: appState.scoreboradWidth, height: appState.scoreboradHeight, alignment: .top)
           }///Scoreboard Section
-            .padding(.top, betLoader.fetchOngoingBet(self.userData.playerID).count < 1 ? 50 : 0)
+//            .padding(.top, betLoader.fetchOngoingBet(self.userData.playerID).count < 1 ? 50 : 0)
           if self.userData.editMode == false {
             if  betLoader.fetchOngoingBet(self.userData.playerID).count < 1 {
               Spacer()
@@ -229,8 +229,8 @@ struct ContentView: View {
         }
         ///Title row (60)
           Spacer()
-          Spacer()
-          Spacer()
+//          Spacer()
+//          Spacer()
         VStack {
           if self.userData.editMode == true {
             Text("Select one:")
@@ -244,11 +244,15 @@ struct ContentView: View {
               .foregroundColor(Color.offblack03)
           }
         } ///Title row
-          .frame(width: 340, height: 25, alignment: .center)
+          .frame(width: appState.scoreboradWidth, height: 25, alignment: .center)
         }
       )
     }
     .onAppear() {
+      print("width: \(appState.screenWidth)")
+      print("Height: \(appState.screenHeight)")
+      print("ratio: \(appState.ratio)")
+      
       if self.nameAndScore.playerTwoName == nil {
         self.nameAndScore.PlayerTwoScore = 0
         self.nameAndScore.PlayerOneScore = 0

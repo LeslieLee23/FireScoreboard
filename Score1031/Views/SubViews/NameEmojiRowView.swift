@@ -12,6 +12,7 @@ struct NameEmojiRowView: View {
   
   @EnvironmentObject private var nameAndScore: NameAndScore
   @EnvironmentObject var userData: UserData
+  @EnvironmentObject var appState: AppState
   
   var body: some View {
     VStack() {
@@ -25,7 +26,7 @@ struct NameEmojiRowView: View {
             Text(self.nameAndScore.playerOneEmoji ?? "👩🏻")
               .font(.system(size: 55))
           }
-          .frame(width: 165, height: 125, alignment: .center)
+          .frame(width: appState.ScoreRowWidth, height: appState.NameEmojiRowHeight, alignment: .center)
           .buttonStyle(CircleStyleEmoji(player: 0, selectedPlayer: self.userData.selectedName))
 
           Button(action: {
@@ -35,7 +36,7 @@ struct NameEmojiRowView: View {
             Text(self.nameAndScore.playerTwoEmoji ?? "👨🏻")
               .font(.system(size: 55))
           }
-          .frame(width: 165, height: 125, alignment: .center)
+          .frame(width: appState.ScoreRowWidth, height: appState.NameEmojiRowHeight, alignment: .center)
           .buttonStyle(CircleStyleEmoji(player: 1, selectedPlayer: self.userData.selectedName))
 
         }
@@ -53,7 +54,7 @@ struct NameEmojiRowView: View {
             Text(self.nameAndScore.playerOneName ?? "Miu")
               .font(.system(size: 28))
           }
-          .frame(width: 165, height: 125, alignment: .center)
+          .frame(width: appState.ScoreRowWidth, height: appState.NameEmojiRowHeight, alignment: .center)
           .buttonStyle(SquareStyle(player: 0, selectedPlayer: self.userData.selectedName))
           Button(action: {
             self.userData.selectedName = 1
@@ -62,10 +63,10 @@ struct NameEmojiRowView: View {
             Text(self.nameAndScore.playerTwoName ?? "Whof")
               .font(.system(size: 28))
           }
-          .frame(width: 165, height: 125, alignment: .center)
+          .frame(width: appState.ScoreRowWidth, height: appState.NameEmojiRowHeight, alignment: .center)
           .buttonStyle(SquareStyle(player: 1, selectedPlayer: self.userData.selectedName))
         }
-        .frame(width: 350, height: 125, alignment: .center)
+        .frame(width: appState.scoreboradWidth, height: appState.NameEmojiRowHeight, alignment: .center)
       }///NameEmojiRow (140) (Edit Mode) (Normal Mode)
     }
   }

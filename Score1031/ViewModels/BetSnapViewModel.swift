@@ -10,6 +10,7 @@ import SwiftUI
 
 struct BetSnapViewModel: View {
   @ObservedObject var betLoader = BetLoader()
+  @EnvironmentObject var appState: AppState
   @State var bets3: BetRecord = BetRecord(id: "110", playerID: "0", betDescription: "Default Bet Description", betScore: "0", betEntryTime: Date(), betEntryTimeString: "9/9/2020")
    @EnvironmentObject var userData: UserData
   
@@ -24,7 +25,7 @@ struct BetSnapViewModel: View {
               .multilineTextAlignment(.leading)
               .foregroundColor(Color.offblack03)
               }
-                .frame(minWidth: 200, maxWidth: 200, minHeight: 20, maxHeight: .infinity, alignment: .leading)
+                .frame(minWidth: 200, maxWidth: 210, minHeight: 20, maxHeight: .infinity, alignment: .leading)
 
             //  Spacer()
               VStack(alignment: .leading) {
@@ -32,7 +33,7 @@ struct BetSnapViewModel: View {
               .font(.system(size: 11))
                 .foregroundColor(Color.offGray03)
               }//.frame(width:165, height: 40, alignment: .leading)
-              .frame(width:200, height: 25, alignment: .leading)
+              .frame(width:200, height: 15, alignment: .leading)
             }
            
             VStack() {
@@ -52,10 +53,8 @@ struct BetSnapViewModel: View {
             .frame(minWidth: 60, maxWidth: 60, minHeight: 50, maxHeight: .infinity, alignment: .top)
           }
         }
-        .frame(minWidth: 270, maxWidth: 270, minHeight: 50, maxHeight: 75, alignment: .center)
-    //  .border(Color.blue)
+        .frame(minWidth: appState.BetSnapViewListWidth280, maxWidth: appState.BetSnapViewListWidth280, minHeight: 50, maxHeight: appState.BetSnapViewListHeight50_75, alignment: .center)
 
-  //      .frame(width:270, height: 50, alignment: .center)
     }
 }
 

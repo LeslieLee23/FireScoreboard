@@ -9,8 +9,8 @@
 import SwiftUI
 
 struct RecordSnapViewModel: View {
-  
-  var records3 = Recordline(playerID: "0", playerOneEmoji: "🍑",playerOneName: "Player One", playerOneScore: 0, playerTwoEmoji: "👨🏻", playerTwoName: "Player Two", playerTwoScore: 0, recordName: "Player one and two", recordScore: "NA", recordReason: "Default players created", recordEntryTime: Date(), recordEntryTimeString: "", recordNameStr: "recordNameStr", recordNameEmo: "👩🏻")
+  @EnvironmentObject var appState: AppState
+  var records3 = Recordline(playerID: "0", playerOneEmoji: "🍑",playerOneName: "Player One", playerOneScore: 0, playerTwoEmoji: "👨🏻", playerTwoName: "Player Two", playerTwoScore: 0, recordName: "Player one and two", recordScore: "+1", recordReason: "Default players created", recordEntryTime: Date(), recordEntryTimeString: "Sep 16th, 8:00 pm", recordNameStr: "recordNameStr", recordNameEmo: "👩🏻")
   
   var body: some View {
     
@@ -21,14 +21,14 @@ struct RecordSnapViewModel: View {
         Text(records3.recordNameEmo ?? "👩🏻")
           //  .font(.headline)
           .font(.system(size: 28))
-      }.frame(width:40, height: 50, alignment: .leading)
+      }.frame(width:38, height: 50, alignment: .leading)
         
         VStack(alignment: .leading) {
           VStack(alignment: .leading) {
           Text(records3.recordReason)
           .font(.system(size: 13))
           .multilineTextAlignment(.leading)
-          }//.frame(width:165, height: 40, alignment: .leading)
+          }
             .frame(minWidth: 165, maxWidth: .infinity, minHeight: 20, maxHeight: .infinity, alignment: .leading)
 
         //  Spacer()
@@ -47,11 +47,10 @@ struct RecordSnapViewModel: View {
           .fontWeight(.medium)
           .foregroundColor(records3.recordScore.first == "-" ? .red : .green)
         }.frame(width:45, height: 50, alignment: .center)
-      
       }
     }
-    .frame(width:270, height: 50, alignment: .center)
-  //  .border(Color.blue)
+    .frame(width: appState.HistorySnapViewListWidth280, height: appState.HistorySnapViewListHeight50_63, alignment: .center)
+   // .border(Color.red)
   }
 }
 
