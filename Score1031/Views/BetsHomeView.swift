@@ -13,6 +13,7 @@ struct BetsHomeView: View {
   
   @EnvironmentObject var userData: UserData
   @ObservedObject var betLoader = BetLoader()
+  @EnvironmentObject var appState: AppState
   @State var showAlert = false
   
   var body: some View {
@@ -199,14 +200,18 @@ struct BetsHomeView: View {
           self.betLoader.fetchBetData()
       }
       .navigationBarItems(leading:
-        HStack(spacing: 81){
+          HStack(alignment: .center, spacing: appState.screenWidth - 100 ){
+            VStack(alignment: .leading) {
           Toggle(isOn: $userData.deleteMode) {
             Text("")
           }
           .toggleStyle(DeleteToggleStyle())
-          .padding(.leading, 18)
-          Spacer()
-          Spacer()
+         // .padding(.leading, 18)
+            }
+            .frame(width: 50, height: 50, alignment: .leading)
+            .border(Color.blue)
+         
+            VStack {
           NavigationLink(destination: AddBetView()
             .environmentObject(UserData())
             ///adding this solved the obj error I have been getting on and off
@@ -216,7 +221,12 @@ struct BetsHomeView: View {
               .font(.system(size:21))
               .padding(.trailing, 18)
           }
-        }
+            } .frame(width: 50, height: 50, alignment: .leading)
+            .border(Color.blue)
+          
+        }.frame(width: appState.screenWidth, height: appState.TitleRowHeight, alignment: .center)
+         .border(Color.red)
+                          
       )
     }
     .onAppear() {

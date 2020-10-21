@@ -46,6 +46,110 @@ struct ContentView: View {
       ZStack{
         Color.offWhite02.edgesIgnoringSafeArea(.all)
          VStack {
+          ///Header row
+          VStack {
+          ///buttons row
+          ZStack(){
+            ///first button
+            VStack(alignment: .leading) {
+              Spacer()
+              Toggle(isOn: $userData.editMode)
+              {
+                Text("x")
+              }
+              .toggleStyle(EditToggleStyle())
+              .padding(.leading, 25)
+              .labelsHidden()
+              .simultaneousGesture(TapGesture().onEnded {
+                if self.userData.editMode == false {
+                  self.userData.selectedName = 5
+                  self.userData.emojiPlusName  = ["\(self.nameAndScore.playerOneEmoji!) \( self.nameAndScore.playerOneName!)","\( self.nameAndScore.playerTwoEmoji!) \( self.nameAndScore.playerTwoName!)"]
+                  print("\(self.userData.emojiPlusName)")
+                  self.userData.oldscore = ["\(self.nameAndScore.PlayerOneScore)", "\(self.nameAndScore.PlayerTwoScore)"]
+
+                  self.userData.emojis = [self.nameAndScore.playerOneEmoji!, self.nameAndScore.playerTwoEmoji!]
+                  print("\(self.userData.emojis)")
+                  self.userData.names = [self.nameAndScore.playerOneName!, self.nameAndScore.playerTwoName!]
+                } else {
+                }
+              }
+              )
+              Spacer()
+              Spacer()
+              Spacer()
+              Spacer()
+          }///first button
+            .frame(width: appState.screenWidth, height: appState.TitleRowHeight, alignment: .leading)
+            
+            ///secound button
+            VStack(alignment: .center) {
+              Spacer()
+                Toggle(isOn: $userData.showEmoji
+                ) {
+                  Text("Emoji Mode")
+                }
+                .toggleStyle(EmojiToggleStyle())
+                .labelsHidden()
+                .simultaneousGesture(TapGesture().onEnded {
+                  self.index = (self.index + 1) % self.colors.count
+                })
+              Spacer()
+              Spacer()
+              Spacer()
+              Spacer()
+            }///secound button
+            .frame(width: appState.screenWidth, height: appState.TitleRowHeight, alignment: .center)
+            
+            ///third button
+            VStack(alignment: .trailing) {
+            Spacer()
+            Button(action: {
+             /// Old sign in with Apple code
+              self.showSignInForm.toggle()
+
+            }) {
+              Image(systemName: "person.circle")
+              .font(Font.system(size: 20, weight: .regular))
+            }
+            .padding(.trailing, 30)
+              Spacer()
+              Spacer()
+              Spacer()
+              Spacer()
+              
+            }///third button
+            .frame(width: appState.screenWidth, height: appState.TitleRowHeight, alignment: .trailing)
+            
+            ///Title row
+           
+            VStack(alignment: .center) {
+              Spacer()
+              Spacer()
+              Spacer()
+              Spacer()
+              Spacer()
+              Spacer()
+              if self.userData.editMode == true {
+                Text("Pick the Player to Edit")
+                  .font(.system(size: 23))
+                    .fontWeight(.medium)
+                  .foregroundColor(Color.offblack01)
+              } else {
+                Text("Scoreboard")
+                  .font(.system(size: 23))
+                  .fontWeight(.bold)
+                  .foregroundColor(Color.offblack03)
+              }
+              Spacer()
+            }///Title row
+              .frame(width: appState.scoreboradWidth, height: appState.TitleRowHeight, alignment: .center)
+         //   .border(Color.red)
+
+          }///buttons row
+          
+          } ///header row
+        //  .border(Color.red)
+          
           ///Scoreboard Section
           ZStack{
             ///Color Change View
@@ -63,7 +167,7 @@ struct ContentView: View {
                 Spacer()
               }
                .frame(width: appState.scoreboradWidth, height: appState.scoreboradGap, alignment: .center)
-              // .border(Color.red)
+              
               ///Score row (60)
               HStack {
                 VStack() {
@@ -138,6 +242,7 @@ struct ContentView: View {
             .frame(width: appState.scoreboradWidth, height: appState.scoreboradHeight, alignment: .top)
           }///Scoreboard Section
 //            .padding(.top, betLoader.fetchOngoingBet(self.userData.playerID).count < 1 ? 50 : 0)
+          
           if self.userData.editMode == false {
             if  betLoader.fetchOngoingBet(self.userData.playerID).count < 1 {
               Spacer()
@@ -164,6 +269,7 @@ struct ContentView: View {
           } else {
             VStack() {
               EditModeView()
+              Spacer()
             }
           }
         }
@@ -176,77 +282,78 @@ struct ContentView: View {
     //    SignInView()
    //     FirebaseUILoginView()
       }
-        
-      .navigationBarItems(trailing:
-        VStack {
-          Spacer()
-          Spacer()
-          Spacer()
-          Spacer()
-        HStack(spacing: 62){
-            Toggle(isOn: $userData.editMode
-              )
-            {
-              Text("x")
-            }
-            .toggleStyle(EditToggleStyle())
-            .padding(.leading, 30)
-            .labelsHidden()
-            .simultaneousGesture(TapGesture().onEnded {
-              if self.userData.editMode == false {
-                self.userData.selectedName = 5
-                self.userData.emojiPlusName  = ["\(self.nameAndScore.playerOneEmoji!) \( self.nameAndScore.playerOneName!)","\( self.nameAndScore.playerTwoEmoji!) \( self.nameAndScore.playerTwoName!)"]
-                print("\(self.userData.emojiPlusName)")
-                self.userData.oldscore = ["\(self.nameAndScore.PlayerOneScore)", "\(self.nameAndScore.PlayerTwoScore)"]
-                
-                self.userData.emojis = [self.nameAndScore.playerOneEmoji!, self.nameAndScore.playerTwoEmoji!]
-                print("\(self.userData.emojis)")
-                self.userData.names = [self.nameAndScore.playerOneName!, self.nameAndScore.playerTwoName!]
-              } else {
-                
-              }
-            })
-          Spacer()
-              Toggle(isOn: $userData.showEmoji
-              ) {
-                Text("Emoji Mode")
-              }
-              .toggleStyle(EmojiToggleStyle())
-              .labelsHidden()
-              .simultaneousGesture(TapGesture().onEnded {
-                self.index = (self.index + 1) % self.colors.count
-              })
-          Spacer()
-          Button(action: {
-           /// Old sign in with Apple code
-            self.showSignInForm.toggle()
-            
-          }) {
-            Image(systemName: "person.circle")
-            .font(Font.system(size: 20, weight: .regular))
-          }
-          .padding(.trailing, 30)
-        }
-        ///Title row (60)
-          Spacer()
+      .navigationBarTitle("")
+      .navigationBarHidden(true)
+//      .navigationBarItems(trailing:
+//        VStack {
 //          Spacer()
+////          Spacer()
+////          Spacer()
+////          Spacer()
+//        HStack(spacing: 62){
+//            Toggle(isOn: $userData.editMode
+//              )
+//            {
+//              Text("x")
+//            }
+//            .toggleStyle(EditToggleStyle())
+//            .padding(.leading, 25)
+//            .labelsHidden()
+//            .simultaneousGesture(TapGesture().onEnded {
+//              if self.userData.editMode == false {
+//                self.userData.selectedName = 5
+//                self.userData.emojiPlusName  = ["\(self.nameAndScore.playerOneEmoji!) \( self.nameAndScore.playerOneName!)","\( self.nameAndScore.playerTwoEmoji!) \( self.nameAndScore.playerTwoName!)"]
+//                print("\(self.userData.emojiPlusName)")
+//                self.userData.oldscore = ["\(self.nameAndScore.PlayerOneScore)", "\(self.nameAndScore.PlayerTwoScore)"]
+//
+//                self.userData.emojis = [self.nameAndScore.playerOneEmoji!, self.nameAndScore.playerTwoEmoji!]
+//                print("\(self.userData.emojis)")
+//                self.userData.names = [self.nameAndScore.playerOneName!, self.nameAndScore.playerTwoName!]
+//              } else {
+//
+//              }
+//            })
 //          Spacer()
-        VStack {
-          if self.userData.editMode == true {
-            Text("Select one:")
-              .font(.system(size: 22))
-              //  .fontWeight(.bold)
-              .foregroundColor(Color.offblack01)
-          } else {
-            Text("Scoreboard")
-              .font(.system(size: 23))
-              .fontWeight(.bold)
-              .foregroundColor(Color.offblack03)
-          }
-        } ///Title row
-          .frame(width: appState.scoreboradWidth, height: 25, alignment: .center)
-        }
-      )
+//              Toggle(isOn: $userData.showEmoji
+//              ) {
+//                Text("Emoji Mode")
+//              }
+//              .toggleStyle(EmojiToggleStyle())
+//              .labelsHidden()
+//              .simultaneousGesture(TapGesture().onEnded {
+//                self.index = (self.index + 1) % self.colors.count
+//              })
+//          Spacer()
+//          Button(action: {
+//           /// Old sign in with Apple code
+//            self.showSignInForm.toggle()
+//
+//          }) {
+//            Image(systemName: "person.circle")
+//            .font(Font.system(size: 20, weight: .regular))
+//          }
+//          .padding(.trailing, 30)
+//        }
+//        ///Title row (60)
+//          Spacer()
+////          Spacer()
+////          Spacer()
+//        VStack {
+//          if self.userData.editMode == true {
+//            Text("Pick the Player to Edit")
+//              .font(.system(size: 18))
+//              //  .fontWeight(.bold)
+//              .foregroundColor(Color.offblack01)
+//          } else {
+//            Text("Scoreboard")
+//              .font(.system(size: 23))
+//              .fontWeight(.bold)
+//              .foregroundColor(Color.offblack03)
+//          }
+//        } ///Title row
+//          .frame(width: appState.scoreboradWidth, height: 25, alignment: .center)
+//        }.border(Color.red)
+//      )
     }
     .onAppear() {
       print("width: \(appState.screenWidth)")

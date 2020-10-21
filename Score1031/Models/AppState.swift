@@ -34,6 +34,8 @@ class AppState: ObservableObject {
   lazy var BetSnapViewHeight = screenWidth * (0.28 + CGFloat(ratio) * 0.08) // 0.36_0.44 150_165
   lazy var BetSnapViewListWidth280 = screenWidth * 0.75 //280
   lazy var BetSnapViewListHeight50_75 = screenWidth * (0.067 + CGFloat(ratio) * 0.067) //0.133_0.2 -> 50_75
+  lazy var TitleRowHeight = CGFloat(40) + CGFloat(ratio) * 20 //  -> 60_80
+  
 }
 
 
