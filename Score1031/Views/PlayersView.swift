@@ -80,7 +80,7 @@ struct PlayersView: View {
       }.foregroundColor(.offblack04)
         
       .navigationBarItems(leading:
-        HStack(spacing: 81){
+          VStack(alignment: .leading) {
           Button(action: {
             self.deleteMode = true
           })
@@ -89,19 +89,22 @@ struct PlayersView: View {
               Text("")
             }
             .toggleStyle(DeleteToggleStyle())
-            .padding(.leading, 18)
           }
-          Spacer()
-          Spacer()
+          }
+          .padding(.leading, 4)
+         
+          , trailing:
+          VStack {
           Button(action: {
             self.appState.selectedTab = .AddNewPlayerView
           })
           {
             Image(systemName: "person.crop.circle.badge.plus")
-              .font(.system(size:21))
-              .padding(.trailing, 18)
+              .font(.system(size:20))
           }
-        }.foregroundColor(.offblack04)
+          }
+            .padding(.trailing, 10)
+           
       )
   }
   }

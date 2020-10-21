@@ -200,17 +200,15 @@ struct BetsHomeView: View {
           self.betLoader.fetchBetData()
       }
       .navigationBarItems(leading:
-          HStack(alignment: .center, spacing: appState.screenWidth - 100 ){
-            VStack(alignment: .leading) {
+          VStack(alignment: .leading) {
           Toggle(isOn: $userData.deleteMode) {
             Text("")
           }
           .toggleStyle(DeleteToggleStyle())
-         // .padding(.leading, 18)
             }
-            .frame(width: 50, height: 50, alignment: .leading)
-            .border(Color.blue)
-         
+            .padding(.leading, 4)
+           
+            , trailing:
             VStack {
           NavigationLink(destination: AddBetView()
             .environmentObject(UserData())
@@ -219,14 +217,11 @@ struct BetsHomeView: View {
           ) {
             Image(systemName: "plus.circle.fill")
               .font(.system(size:21))
-              .padding(.trailing, 18)
+             // .padding(.trailing, 18)
           }
-            } .frame(width: 50, height: 50, alignment: .leading)
-            .border(Color.blue)
-          
-        }.frame(width: appState.screenWidth, height: appState.TitleRowHeight, alignment: .center)
-         .border(Color.red)
-                          
+            }// .frame(width: 50, height: 50, alignment: .leading)
+            .padding(.trailing, 10)
+        
       )
     }
     .onAppear() {
