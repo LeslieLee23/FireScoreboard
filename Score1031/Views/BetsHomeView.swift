@@ -19,17 +19,63 @@ struct BetsHomeView: View {
   var body: some View {
     NavigationView {
       ZStack{
-        //ZStack Color Die
+        ///ZStack Color Die
         Color.offWhite02.edgesIgnoringSafeArea(.all)
         VStack {
-         // Spacer()
+         ///button section
+          VStack {
+            ///button mix section
+            ZStack {
+              ///minus button
+              HStack() {
+                VStack {
+                  Toggle(isOn: $userData.deleteMode) {
+                    Text("")
+                  }
+                  .toggleStyle(DeleteToggleStyle())
+                    }.frame(width: 55, height: appState.TitleRowHeight, alignment: .leading)
+           //     .border(Color.red)
+                Spacer()
+                }///minus button
+              .frame(width: appState.screenWidth, height: appState.TitleRowHeight, alignment: .leading)
+              
+              ///add button
+              HStack() {
+              Spacer()
+              VStack(alignment: .leading) {
+              NavigationLink(destination: AddBetView()
+                .environmentObject(UserData())
+                ///adding this solved the obj error I have been getting on and off
+                .environmentObject(observed())
+              ) {
+                Image(systemName: "plus.circle.fill")
+                  .font(.system(size:21))
+              }
+                }
+             //   .padding(.trailing, 10)
+                .frame(width: 55, height: appState.TitleRowHeight, alignment: .leading)
+           //   .border(Color.red)
+              }///add button
+            }
+            ///button mix section
+          }
+          ///button section
+         // .border(Color.blue)
+          .frame(width: appState.screenWidth, height: appState.TitleRowHeight - 15, alignment: .center)
+          ///Gap row
+          VStack () {
+            Spacer()
+          }.frame(width: appState.screenWidth, height: appState.BetGapHeight, alignment: .leading)
+          ///Gap row
+          
+          ///content section
           VStack {
             RoundedRectangle(cornerRadius: 15)
               .fill(Color.offWhite02)
            //   .fill(Color.offGray01)
               .shadow(color: Color.offGray01.opacity(1), radius: 5, x: 6, y: 6)
               .shadow(color: Color.white.opacity(0.8), radius: 6, x: -3, y: -3)
-              .frame(width:340, height: 250, alignment: .leading)
+              .frame(width:appState.scoreboradWidth, height: 250, alignment: .leading)
             .overlay(
           VStack {
             //Ongoing Section
@@ -40,21 +86,12 @@ struct BetsHomeView: View {
                 Text("Ongoing Bets:")
                   .foregroundColor(Color.offblack03)
                   .padding(.leading)
-            
-          //        .foregroundColor(Color.offWhite01)
                   .font(Font.headline.weight(.medium))
                 Divider()
                
               }
-              .frame(minWidth: 0,
-              maxWidth: .infinity,
-              minHeight: 28,
-              maxHeight: 28,
-              alignment: .leading)
               
             }//Ongoing Section title
-          //  .background(Color.darkPurple)
-            
             if betLoader.fetchOngoingBet(self.userData.playerID).count < 1 {
               //Ongoing content if no record
               VStack {
@@ -64,7 +101,7 @@ struct BetsHomeView: View {
                   .foregroundColor(Color.offGray02)
                 Spacer()
                 Spacer()
-              }.frame(width:340, height: 200, alignment: .leading)
+              }.frame(width:appState.scoreboradWidth, height: 200, alignment: .leading)
              //   .border(Color.red)
             }//Ongoing content if no record
               
@@ -72,7 +109,7 @@ struct BetsHomeView: View {
               //Ongoing content with content
               VStack(alignment: .leading) {
                 List {
-                  ForEach (betLoader.fetchOngoingBet(self.userData.playerID ?? "0")) { bets3 in
+                  ForEach (betLoader.fetchOngoingBet(self.userData.playerID)) { bets3 in
                     if self.userData.deleteMode == false {
                       //Ongoing content in normal mode
                       NavigationLink(destination: BetAssignResultView(bets3: bets3)) {
@@ -97,7 +134,7 @@ struct BetsHomeView: View {
                           }
                           .frame(width:50, height: 80, alignment: .leading)
                         }
-                        .frame(minWidth: 340, maxWidth: 340, minHeight: 85, maxHeight: 95, alignment: .leading)
+                        .frame(minWidth: appState.scoreboradWidth, maxWidth: appState.scoreboradWidth, minHeight: 85, maxHeight: 95, alignment: .leading)
                     //    .border(Color.blue)
                       }
                     }//Ongoing content in normal mode
@@ -130,23 +167,25 @@ struct BetsHomeView: View {
                         }.frame(width:50, height: 80, alignment: .center)
                         
                       }
-                      .frame(minWidth: 340, maxWidth: 340, minHeight: 85, maxHeight: 95, alignment: .leading)
+                      .frame(minWidth: appState.scoreboradWidth, maxWidth: appState.scoreboradWidth, minHeight: 85, maxHeight: 95, alignment: .leading)
                       
                     }//Ongoing content in edit mode
                   }.listRowBackground(Color.offWhite02)
                 }
               }
-              .frame(width:340, height: 200, alignment: .leading)
+              .frame(width:appState.scoreboradWidth, height: 200, alignment: .leading)
               .foregroundColor(Color.offWhite02)
             }//Ongoing content with content
           }//Ongoing Section
-            .frame(minWidth: 340, maxWidth: 340, minHeight: 140, maxHeight: 240, alignment: .leading)
+            .frame(minWidth: appState.scoreboradWidth, maxWidth: appState.scoreboradWidth, minHeight: 140, maxHeight: 240, alignment: .leading)
               .cornerRadius(15)
           //  .border(Color.green)
             )
           }
           Spacer()
-          if betLoader.fetchPastBet(self.userData.playerID ?? "0").count < 1 {
+          Spacer()
+
+          if betLoader.fetchPastBet(self.userData.playerID).count < 1 {
           //PastBet Section if no data
             
           }//PastBet Section if no data
@@ -158,7 +197,7 @@ struct BetsHomeView: View {
             //   .fill(Color.offGray01)
                .shadow(color: Color.offGray01.opacity(1), radius: 5, x: 6, y: 6)
                .shadow(color: Color.white.opacity(0.8), radius: 6, x: -3, y: -3)
-               .frame(width:340, height: 250, alignment: .leading)
+               .frame(width:appState.scoreboradWidth, height: 250, alignment: .leading)
              .overlay(
             VStack {
             HStack {
@@ -182,8 +221,8 @@ struct BetsHomeView: View {
             //Pastbet content
               PastBetView()
             }//Pastbet content
-            .frame(width:340, height: 200, alignment: .leading)
-          //  .border(Color.red)
+            .frame(width:appState.scoreboradWidth, height: 200, alignment: .leading)
+            .cornerRadius(15)
           }//PastBet Section with content
           )
             }
@@ -191,6 +230,7 @@ struct BetsHomeView: View {
           Spacer()
           Spacer()
           Spacer()
+         
         }
       }//ZStack Color Die
         //  .frame(minWidth: 370, maxWidth: 370, minHeight: 0, maxHeight: .infinity, alignment: .leading)
@@ -199,30 +239,32 @@ struct BetsHomeView: View {
         .onAppear() {
           self.betLoader.fetchBetData()
       }
-      .navigationBarItems(leading:
-          VStack(alignment: .leading) {
-          Toggle(isOn: $userData.deleteMode) {
-            Text("")
-          }
-          .toggleStyle(DeleteToggleStyle())
-            }
-            .padding(.leading, 4)
-           
-            , trailing:
-            VStack {
-          NavigationLink(destination: AddBetView()
-            .environmentObject(UserData())
-            ///adding this solved the obj error I have been getting on and off
-            .environmentObject(observed())
-          ) {
-            Image(systemName: "plus.circle.fill")
-              .font(.system(size:21))
-             // .padding(.trailing, 18)
-          }
-            }// .frame(width: 50, height: 50, alignment: .leading)
-            .padding(.trailing, 10)
-        
-      )
+      .navigationBarTitle("")
+      .navigationBarHidden(true)
+//      .navigationBarItems(leading:
+//          VStack(alignment: .leading) {
+//          Toggle(isOn: $userData.deleteMode) {
+//            Text("")
+//          }
+//          .toggleStyle(DeleteToggleStyle())
+//            }
+//            .padding(.leading, 4)
+//
+//            , trailing:
+//            VStack {
+//          NavigationLink(destination: AddBetView()
+//            .environmentObject(UserData())
+//            ///adding this solved the obj error I have been getting on and off
+//            .environmentObject(observed())
+//          ) {
+//            Image(systemName: "plus.circle.fill")
+//              .font(.system(size:21))
+//             // .padding(.trailing, 18)
+//          }
+//            }// .frame(width: 50, height: 50, alignment: .leading)
+//            .padding(.trailing, 10)
+//
+//      )
     }
     .onAppear() {
       self.userData.deleteMode = false

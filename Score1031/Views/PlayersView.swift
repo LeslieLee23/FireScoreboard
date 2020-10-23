@@ -19,7 +19,61 @@ struct PlayersView: View {
   
   var body: some View {
     NavigationView {
+      ZStack{
+        ///ZStack Color Die
+        Color.offWhite02.edgesIgnoringSafeArea(.all)
       VStack {
+        ///button section
+         VStack {
+           ///button mix section
+           ZStack {
+             ///minus button
+             HStack() {
+               VStack {
+                Button(action: {
+                  self.deleteMode = true
+                })
+                {
+                  Toggle(isOn: self.$deleteMode) {
+                    Text("")
+                  }
+                  .toggleStyle(DeleteToggleStyle())
+                }
+                }.frame(width: 55, height: appState.TitleRowHeight, alignment: .leading)
+          //     .border(Color.red)
+               Spacer()
+               }///minus button
+             .frame(width: appState.screenWidth, height: appState.TitleRowHeight, alignment: .leading)
+             
+             ///add button
+             HStack() {
+             Spacer()
+             VStack(alignment: .leading) {
+              Button(action: {
+                self.appState.selectedTab = .AddNewPlayerView
+              })
+              {
+                Image(systemName: "person.crop.circle.badge.plus")
+                  .font(.system(size:20))
+                  .foregroundColor(Color.darkPurple)
+              }
+              }
+            //   .padding(.trailing, 10)
+               .frame(width: 55, height: appState.TitleRowHeight, alignment: .leading)
+          //   .border(Color.red)
+             }///add button
+           }
+           ///button mix section
+         }
+         ///button section
+         .frame(width: appState.screenWidth, height: appState.TitleRowHeight, alignment: .center)
+        
+        ///Gap row
+        VStack () {
+          Spacer()
+        }.frame(width: appState.screenWidth, height: appState.BetGapHeight, alignment: .leading)
+        ///Gap row
+        
         List {
           ForEach(self.apiLoader.queryPlayerList()) { record in
             if record.playerID != self.userData.playerID {
@@ -42,7 +96,7 @@ struct PlayersView: View {
                     })
                     {
                       Image(systemName: "chevron.right")
-                        //  .foregroundColor(.green)
+                        .foregroundColor(Color.darkPurple)
                         .font(.system(size:20))
                     }
                   }
@@ -78,34 +132,36 @@ struct PlayersView: View {
           }.listRowBackground(Color.offWhite02)
         }
       }.foregroundColor(.offblack04)
-        
-      .navigationBarItems(leading:
-          VStack(alignment: .leading) {
-          Button(action: {
-            self.deleteMode = true
-          })
-          {
-            Toggle(isOn: self.$deleteMode) {
-              Text("")
-            }
-            .toggleStyle(DeleteToggleStyle())
-          }
-          }
-          .padding(.leading, 4)
-         
-          , trailing:
-          VStack {
-          Button(action: {
-            self.appState.selectedTab = .AddNewPlayerView
-          })
-          {
-            Image(systemName: "person.crop.circle.badge.plus")
-              .font(.system(size:20))
-          }
-          }
-            .padding(.trailing, 10)
-           
-      )
+      .navigationBarTitle("")
+      .navigationBarHidden(true)
+//      .navigationBarItems(leading:
+//          VStack(alignment: .leading) {
+//          Button(action: {
+//            self.deleteMode = true
+//          })
+//          {
+//            Toggle(isOn: self.$deleteMode) {
+//              Text("")
+//            }
+//            .toggleStyle(DeleteToggleStyle())
+//          }
+//          }
+//          .padding(.leading, 4)
+//
+//          , trailing:
+//          VStack {
+//          Button(action: {
+//            self.appState.selectedTab = .AddNewPlayerView
+//          })
+//          {
+//            Image(systemName: "person.crop.circle.badge.plus")
+//              .font(.system(size:20))
+//          }
+//          }
+//            .padding(.trailing, 10)
+//
+//      )
+    } ///ZStack Color
   }
   }
 }
