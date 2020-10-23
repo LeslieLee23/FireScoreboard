@@ -241,7 +241,6 @@ struct ContentView: View {
             }///Scoreboard Content View
             .frame(width: appState.scoreboradWidth, height: appState.scoreboradHeight, alignment: .top)
           }///Scoreboard Section
-//            .padding(.top, betLoader.fetchOngoingBet(self.userData.playerID).count < 1 ? 50 : 0)
           
           if self.userData.editMode == false {
             if  betLoader.fetchOngoingBet(self.userData.playerID).count < 1 {
@@ -255,14 +254,13 @@ struct ContentView: View {
               Spacer()
             } else {
               Spacer()
+              Spacer()
               HistorySnapView()
                 .environmentObject(UserData())
-             //   .environmentObject(AppState())
                 
               Spacer()
               BetSnapView()
                 .environmentObject(UserData())
-                //.environmentObject(AppState())
                 
               Spacer()
             }
@@ -284,81 +282,10 @@ struct ContentView: View {
       }
       .navigationBarTitle("")
       .navigationBarHidden(true)
-//      .navigationBarItems(trailing:
-//        VStack {
-//          Spacer()
-////          Spacer()
-////          Spacer()
-////          Spacer()
-//        HStack(spacing: 62){
-//            Toggle(isOn: $userData.editMode
-//              )
-//            {
-//              Text("x")
-//            }
-//            .toggleStyle(EditToggleStyle())
-//            .padding(.leading, 25)
-//            .labelsHidden()
-//            .simultaneousGesture(TapGesture().onEnded {
-//              if self.userData.editMode == false {
-//                self.userData.selectedName = 5
-//                self.userData.emojiPlusName  = ["\(self.nameAndScore.playerOneEmoji!) \( self.nameAndScore.playerOneName!)","\( self.nameAndScore.playerTwoEmoji!) \( self.nameAndScore.playerTwoName!)"]
-//                print("\(self.userData.emojiPlusName)")
-//                self.userData.oldscore = ["\(self.nameAndScore.PlayerOneScore)", "\(self.nameAndScore.PlayerTwoScore)"]
-//
-//                self.userData.emojis = [self.nameAndScore.playerOneEmoji!, self.nameAndScore.playerTwoEmoji!]
-//                print("\(self.userData.emojis)")
-//                self.userData.names = [self.nameAndScore.playerOneName!, self.nameAndScore.playerTwoName!]
-//              } else {
-//
-//              }
-//            })
-//          Spacer()
-//              Toggle(isOn: $userData.showEmoji
-//              ) {
-//                Text("Emoji Mode")
-//              }
-//              .toggleStyle(EmojiToggleStyle())
-//              .labelsHidden()
-//              .simultaneousGesture(TapGesture().onEnded {
-//                self.index = (self.index + 1) % self.colors.count
-//              })
-//          Spacer()
-//          Button(action: {
-//           /// Old sign in with Apple code
-//            self.showSignInForm.toggle()
-//
-//          }) {
-//            Image(systemName: "person.circle")
-//            .font(Font.system(size: 20, weight: .regular))
-//          }
-//          .padding(.trailing, 30)
-//        }
-//        ///Title row (60)
-//          Spacer()
-////          Spacer()
-////          Spacer()
-//        VStack {
-//          if self.userData.editMode == true {
-//            Text("Pick the Player to Edit")
-//              .font(.system(size: 18))
-//              //  .fontWeight(.bold)
-//              .foregroundColor(Color.offblack01)
-//          } else {
-//            Text("Scoreboard")
-//              .font(.system(size: 23))
-//              .fontWeight(.bold)
-//              .foregroundColor(Color.offblack03)
-//          }
-//        } ///Title row
-//          .frame(width: appState.scoreboradWidth, height: 25, alignment: .center)
-//        }.border(Color.red)
-//      )
+
     }
     .onAppear() {
-      print("width: \(appState.screenWidth)")
-      print("Height: \(appState.screenHeight)")
-      print("ratio: \(appState.ratio)")
+      self.userData.editMode = false
       
       if self.nameAndScore.playerTwoName == nil {
         self.nameAndScore.PlayerTwoScore = 0

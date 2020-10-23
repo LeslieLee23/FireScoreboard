@@ -122,7 +122,7 @@ struct EditModeView: View {
         .alert(isPresented: $showAlert) { () ->
           Alert in
        
-          return Alert(title: Text("Score edited!"), message: Text("You edited \(self.records3.recordName)'s score to \(self.editedScore)"), dismissButton: Alert.Button.default(Text("Ok"))
+          return Alert(title: Text("Score edited!"), message: Text("You added/reduced \(self.editedScore) \(self.pointGrammar)to \(self.records3.recordName)"), dismissButton: Alert.Button.default(Text("Ok"))
             {
               self.userData.editMode = false
             }

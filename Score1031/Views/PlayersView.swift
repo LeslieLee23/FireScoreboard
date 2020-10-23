@@ -98,8 +98,10 @@ struct PlayersView: View {
                       Image(systemName: "chevron.right")
                         .foregroundColor(Color.darkPurple)
                         .font(.system(size:20))
+                      
                     }
-                  }
+                  }.frame(width: 50, height: 30, alignment: .center)
+                //  .border(Color.red)
                 }
                 else {
                   VStack(alignment: .leading) {
@@ -125,7 +127,7 @@ struct PlayersView: View {
                         })
                     }
                     
-                  }
+                  }.border(Color.red)
                 }
               }
             }

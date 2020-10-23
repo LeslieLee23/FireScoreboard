@@ -37,7 +37,6 @@ struct BetSnapView: View {
       }
     //  Spacer()
       VStack(alignment: .center) {
-        Spacer()
         HStack {
         Text("Ongoing Bets")
           .font(.system(size: 16))

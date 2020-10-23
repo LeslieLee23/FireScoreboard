@@ -124,12 +124,8 @@ struct TabBarView: View {
     }
     .onAppear() {
       self.apiLoader.fetchData()
-      
-      if self.apiLoader.queryPlayerList().count < 1 {
-        self.appState.selectedTab = .AddNewPlayerView
-      } else {
-        self.appState.selectedTab = .home
-      }
+
+      self.appState.selectedTab = .home
       
       if  self.betLoader.fetchPastBet(self.userData.playerID).count < 1 && self.betLoader.fetchOngoingBet(self.userData.playerID).count < 1 {
         self.userData.betState = 0
@@ -145,9 +141,6 @@ struct TabBarView: View {
     }
     .accentColor(Color.darkPurple)
     .environmentObject(userData)
-//    .environmentObject(NameAndScore())
-//    .environmentObject(AddScoreFunc())
-//    .environmentObject(AddBetFunc())
     .environmentObject(appState)
     .environmentObject(obj)
   }
@@ -162,7 +155,7 @@ struct TabBarView_Previews: PreviewProvider {
       .environmentObject(AddScoreFunc())
       .environmentObject(AddBetFunc())
       .environmentObject(AppState())
-   //   .environmentObject(obj)
+   
   }
 }
 
