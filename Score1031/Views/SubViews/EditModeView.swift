@@ -16,6 +16,7 @@ struct EditModeView: View {
   @State var editedScore = 0
   @State var selectedNameString = ""
   @State var pointGrammar = "points"
+  @State var action = "added"
   @State var showAlert = false
   @EnvironmentObject var nameAndScore: NameAndScore
   @EnvironmentObject var addScoreFunc: AddScoreFunc
@@ -91,9 +92,14 @@ struct EditModeView: View {
         
         Button(action: {
           self.showAlert = true
-          if self.editedScore == 1 {
+          if self.editedScore == 1 || self.editedScore == -1 {
             self.pointGrammar = "point"
           }
+          
+          if String(editedScore).first == "-" {
+            self.action = "reduced"
+          }
+          
           self.records3 = self.addScoreFunc.createRecord(
             playerID: self.userData.playerID,
             oldscore: self.userData.oldscore,
@@ -122,9 +128,10 @@ struct EditModeView: View {
         .alert(isPresented: $showAlert) { () ->
           Alert in
        
-          return Alert(title: Text("Score edited!"), message: Text("You added/reduced \(self.editedScore) \(self.pointGrammar)to \(self.records3.recordName)"), dismissButton: Alert.Button.default(Text("Ok"))
+          return Alert(title: Text("Score \(self.action)!"), message: Text("You \(self.action) \(abs(self.editedScore)) \(self.pointGrammar) to \(self.records3.recordName)'s score."), dismissButton: Alert.Button.default(Text("Ok"))
             {
               self.userData.editMode = false
+              self.userData.selectedName = 5
             }
           )
         }

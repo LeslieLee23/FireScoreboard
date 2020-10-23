@@ -38,7 +38,7 @@ struct AddNewPlayerView: View {
           Group{
             HStack{
               TextField("Player One Name", text: $userData.addPlayerOneName)
-                .textFieldStyle(NeuTextStyle())
+                .textFieldStyle(NeuTextStyle(w: appState.NeuTextWidth, h: appState.NeuTextHeight))
                 .padding(.trailing, 35)
                 .padding(.bottom, 8)
                 .padding(.top, 10)
@@ -48,7 +48,7 @@ struct AddNewPlayerView: View {
 
             HStack{
               TextField("Player One Emoji 🧜‍♀️", text: $userData.addPlayerOneEmoji)
-                .textFieldStyle(NeuTextStyle())
+                .textFieldStyle(NeuTextStyle(w: appState.NeuTextWidth, h: appState.NeuTextHeight))
                 .padding(.trailing, 35)
                 .padding(.bottom, 8)
               //  .padding(.leading, 15)
@@ -56,7 +56,7 @@ struct AddNewPlayerView: View {
 
             HStack{
               TextField("Player Two Name", text: $userData.addPlayerTwoName)
-                .textFieldStyle(NeuTextStyle())
+                .textFieldStyle(NeuTextStyle(w: appState.NeuTextWidth, h: appState.NeuTextHeight))
                 .padding(.trailing, 35)
                 .padding(.bottom, 8)
               //  .padding(.leading, 15)
@@ -64,7 +64,7 @@ struct AddNewPlayerView: View {
 
             HStack{
               TextField("Player Two Emoji 🧞‍♂️", text: $userData.addPlayerTwoEmoji)
-                .textFieldStyle(NeuTextStyle())
+                .textFieldStyle(NeuTextStyle(w: appState.NeuTextWidth, h: appState.NeuTextHeight))
                 .padding(.trailing, 35)
                 .padding(.bottom, 10)
               //  .padding(.leading, 15)
