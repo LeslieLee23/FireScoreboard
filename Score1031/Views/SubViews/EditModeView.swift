@@ -25,10 +25,20 @@ struct EditModeView: View {
   @State private var records3 = APILoader().records3
   @ObservedObject private var keyboard = KeyboardResponder()
   @EnvironmentObject var obj : observed
+  @EnvironmentObject var appState: AppState
   
   var body: some View {
     VStack {
+      //Spacer()
+      ///Reason text input row
       Spacer()
+      TextField("  Score change reason", text: $reason)
+        .textFieldStyle(NeuTextStyle(w: appState.NeuTextReasonWidth, h: appState.NeuTextHeight))
+//        .frame(width: appState.scoreboradWidth, height: appState.NeuTextHeight)
+       // .padding(.bottom, keyboard.currentHeight)
+      .edgesIgnoringSafeArea(.bottom)
+      ///Reason text input row
+     // Spacer()
       ///Add and minus button row
       HStack {
         Spacer()
@@ -64,15 +74,7 @@ struct EditModeView: View {
       }///Add and minus button row
         
       
-      ///Reason text input row
-      Spacer()
-
-      MultiTextField1("  What for?", text: $reason)
-        
-      .padding(.bottom, keyboard.currentHeight)
-      .edgesIgnoringSafeArea(.bottom)
-   //   .animation(.easeOut(duration: 0.12))
-      ///Reason text input row
+     
       
       Spacer()
       

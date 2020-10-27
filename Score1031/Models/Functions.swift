@@ -115,7 +115,7 @@ class KeyboardResponder: ObservableObject {
     
     //2. Keeping track off the keyboard's current height
     @Published var currentHeight: CGFloat = 0
-    
+   
     //3. We use the NotificationCenter to listen to system notifications
     var _center: NotificationCenter
     

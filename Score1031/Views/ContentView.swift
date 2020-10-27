@@ -286,7 +286,7 @@ struct ContentView: View {
     }
     .onAppear() {
       self.userData.editMode = false
-      
+      self.userData.selectedName = 5
       if self.nameAndScore.playerTwoName == nil {
         self.nameAndScore.PlayerTwoScore = 0
         self.nameAndScore.PlayerOneScore = 0
