@@ -38,7 +38,7 @@ class AppState: ObservableObject {
   lazy var BetGapHeight = CGFloat(-30) + CGFloat(ratio) * 30 //  -> 0_30
   lazy var NeuTextWidth = screenWidth * 0.72
   lazy var NeuTextHeight = screenWidth * 0.14
-  
+  lazy var NeuTextReasonWidth = screenWidth * 0.8
 }
 
 

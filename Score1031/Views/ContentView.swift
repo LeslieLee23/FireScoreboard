@@ -89,6 +89,7 @@ struct ContentView: View {
                   Text("Emoji Mode")
                 }
                 .toggleStyle(EmojiToggleStyle())
+                .foregroundColor(Color.darkPurple)
                 .labelsHidden()
                 .simultaneousGesture(TapGesture().onEnded {
                   self.index = (self.index + 1) % self.colors.count

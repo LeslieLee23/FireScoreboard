@@ -88,8 +88,8 @@ public struct NeuTextStyle : TextFieldStyle {
       .overlay(
         configuration
           .foregroundColor(.offblack01)
-          .frame(width: w - 20, height: h)
-        , alignment: .trailing
+          .frame(width: w - 25, height: h)
+        , alignment: .center
     )
   }
 }
