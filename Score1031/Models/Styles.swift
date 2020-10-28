@@ -15,7 +15,6 @@ extension Color {
   static let babyPP = Color(red: 184 / 255, green: 200 / 255, blue: 243 / 255)
   static let niceBlue = Color(red: 161 / 255, green: 217 / 255, blue: 241 / 255)
   static let grayCircle = Color(red: 157 / 255, green: 157 / 255, blue: 157 / 255)
-//  static let offWhite = Color(red: 223 / 255, green: 228 / 255, blue: 235 / 255)
   static let darkGray = Color(red: 70 / 255, green: 70 / 255, blue: 70 / 255)
   static let lightGray = Color(red: 206 / 255, green: 206 / 255, blue: 206 / 255)
   static let darkStart = Color(red: 50 / 255, green: 60 / 255, blue: 65 / 255)
@@ -23,7 +22,12 @@ extension Color {
   static let lightStart = Color(red: 60 / 255, green: 160 / 255, blue: 240 / 255)
   static let lightEnd = Color(red: 30 / 255, green: 80 / 255, blue: 120 / 255)
   static let darkPurple = Color(red: 130 / 255, green: 0 / 255, blue: 174 / 255)
-
+  // static let mixedPurple = Color(red: 205 / 255, green: 85 / 255, blue: 248 / 255)
+  static let mixedBlue = Color(red: 43 / 255, green: 89 / 255, blue: 254 / 255)
+  static let mixedPurple = Color(red: 223 / 255, green: 78 / 255, blue: 255 / 255)
+  /// 43, 89, 254
+  ///#662BFE new blue
+  ///#CD55F8 new purple
   static let offWhite = Color(red: 228 / 255, green: 232 / 255, blue: 240 / 255)
   static let lightOffWhite = Color(red: 240 / 255, green: 245 / 255, blue: 251 / 255)
   
@@ -40,14 +44,14 @@ extension Color {
   static let offblack04 = Color(red: 39 / 255, green: 41 / 255, blue: 47 / 255)
 }
 extension UIColor {
-    convenience init(red: Int, green: Int, blue: Int) {
-        let newRed = CGFloat(red)/255
-        let newGreen = CGFloat(green)/255
-        let newBlue = CGFloat(blue)/255
-        
-        self.init(red: newRed, green: newGreen, blue: newBlue, alpha: 1.0)
-    }
-
+  convenience init(red: Int, green: Int, blue: Int) {
+    let newRed = CGFloat(red)/255
+    let newGreen = CGFloat(green)/255
+    let newBlue = CGFloat(blue)/255
+    
+    self.init(red: newRed, green: newGreen, blue: newBlue, alpha: 1.0)
+  }
+  
   static let offWhite = UIColor(red: 228, green: 232, blue: 240)
   static let lightOffWhite = UIColor(red: 240, green: 245, blue: 251)
   static let darkPurple = UIColor(red: 38, green: 0, blue: 50)
@@ -217,20 +221,21 @@ struct CircleStyleEmoji: ButtonStyle {
   var player: Int = 5
   var selectedPlayer: Int = 6
   func makeBody(configuration: ButtonStyleConfiguration) -> some View {
-    
-    Circle()
-      .strokeBorder(player == selectedPlayer ? Color.purple : Color.offGray00, lineWidth: 6.5)
-      
-      .opacity(configuration.isPressed ? 0.3 : 1)
-      .aspectRatio(contentMode: .fit)
+    LinearGradient(gradient: Gradient(colors: player == selectedPlayer ? [.mixedBlue, .mixedPurple] : [.offGray00, .offGray00]), startPoint: .topLeading, endPoint: .bottomTrailing)
+      .frame(width: 125, height: 125, alignment: .center)
+      .mask(Circle()
+              .strokeBorder(player == selectedPlayer ? Color.purple : Color.offGray00, lineWidth: 6.5)
+              .opacity(configuration.isPressed ? 0.3 : 1)
+              .aspectRatio(contentMode: .fit)
+
+      )
       .overlay(
         configuration.label
           .transition(.scale(scale: 5))
           .opacity(configuration.isPressed ? 0.3 : 1)
-    )
+      )
       .modifier(FitToWidth(fraction: 3))
       .frame(width: 160, height: 125, alignment: .center)
-    
   }
 }
 
@@ -239,67 +244,70 @@ struct SquareStyle: ButtonStyle {
   var selectedPlayer: Int = 6
   
   func makeBody(configuration: Self.Configuration) -> some View {
-    RoundedRectangle(cornerRadius: 13)
-      .stroke(player == selectedPlayer ? Color.purple : Color.offGray00, lineWidth: 7.5)
-      .frame(width: 135, height: 60, alignment: .center)
-      .cornerRadius(13)
-      .opacity(configuration.isPressed ? 0.3 : 1)
-      .aspectRatio(contentMode: .fit)
+    LinearGradient(gradient: Gradient(colors: player == selectedPlayer ? [.mixedBlue, .mixedPurple] : [.offGray00, .offGray00]), startPoint: .topLeading, endPoint: .bottomTrailing)
+      .frame(width: 160, height: 80, alignment: .center)
+      .mask(RoundedRectangle(cornerRadius: 15)
+              .stroke(player == selectedPlayer ? Color.purple : Color.offGray00, lineWidth: 8)
+              .frame(width: 150, height: 60, alignment: .center)
+              .cornerRadius(13)
+              .opacity(configuration.isPressed ? 0.3 : 1)
+              .aspectRatio(contentMode: .fit)
+      )
       .overlay(
         configuration.label
           .transition(.scale(scale: 5))
           .opacity(configuration.isPressed ? 0.3 : 1)
           .foregroundColor(.offblack04)
-    )
+      )
       .modifier(FitToWidth(fraction: 3))
       .frame(width: 135, height: 60, alignment: .center)
   }
 }
 
 struct DeleteToggleStyle: ToggleStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        return HStack {
-          //  configuration.label
-            Spacer()
-            Image(systemName: configuration.isOn ? "minus.circle.fill" : "minus.circle")
-                .resizable()
-                .frame(width: 21, height: 21)
-                .onTapGesture { configuration.isOn.toggle() }
-        }
+  func makeBody(configuration: Configuration) -> some View {
+    return HStack {
+      //  configuration.label
+      Spacer()
+      Image(systemName: configuration.isOn ? "minus.circle.fill" : "minus.circle")
+        .resizable()
+        .frame(width: 21, height: 21)
+        .onTapGesture { configuration.isOn.toggle() }
     }
+  }
 }
 
 struct EditToggleStyle: ToggleStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        return HStack {
-          //  configuration.label
-            Image(systemName: configuration.isOn ? "multiply.circle" : "square.and.pencil")
-              .font(Font.system(size: configuration.isOn ? 25 : 30))
-              .foregroundColor(configuration.isOn ? Color.offGray02 : Color.darkPurple)
-                .onTapGesture { configuration.isOn.toggle() }
-        }.padding(.leading, 15)
-    }
+  func makeBody(configuration: Configuration) -> some View {
+    return HStack {
+      //  configuration.label
+      Image(systemName: configuration.isOn ? "multiply.circle" : "square.and.pencil")
+        .font(Font.system(size: configuration.isOn ? 25 : 30))
+        .foregroundColor(configuration.isOn ? Color.offGray02 : Color.darkPurple)
+        .onTapGesture { configuration.isOn.toggle() }
+    }.padding(.leading, 15)
+  }
 }
 
 struct EmojiToggleStyle: ToggleStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        return HStack {
-          //  configuration.label
-            Image(systemName: configuration.isOn ? "a.circle" : "smiley" )
-              .font(Font.system(size: 20, weight: .regular))
-              .onTapGesture { configuration.isOn.toggle() }
-        }
+  func makeBody(configuration: Configuration) -> some View {
+    return HStack {
+      //  configuration.label
+      Image(systemName: configuration.isOn ? "a.circle" : "smiley" )
+        .font(Font.system(size: 20, weight: .regular))
+        .onTapGesture { configuration.isOn.toggle() }
     }
+  }
 }
 
 extension UIApplication {
-    func endEditing() {
-        sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-    }
+  func endEditing() {
+    sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+  }
 }
 
 func endEditing() {
-    UIApplication.shared.endEditing()
+  UIApplication.shared.endEditing()
 }
 
 struct MultiTextField: UIViewRepresentable {
@@ -320,27 +328,27 @@ struct MultiTextField: UIViewRepresentable {
     view.font = .systemFont(ofSize: 17)
     view.text = "Type the bet here"
     view.textColor = UIColor.offblack03.withAlphaComponent(0.35)
-
+    
     self.obj.size = view.contentSize.height
     
     if nil != onDone {
-        view.returnKeyType = .done
+      view.returnKeyType = .done
     }
-
+    
     view.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
     
     return view
   }
   func updateUIView(_ uiView: UITextView, context: UIViewRepresentableContext<MultiTextField>) {
     if uiView.text != self.text {
-        uiView.text = self.text
+      uiView.text = self.text
     }
   }
   
   func makeCoordinator() -> Coordinator {
     return MultiTextField.Coordinator(text: $text, parent1: self, onDone: onDone)
-   }
-   
+  }
+  
   
   class Coordinator : NSObject,UITextViewDelegate{
     var text: Binding<String>
@@ -369,125 +377,125 @@ class observed : ObservableObject {
 }
 
 struct MultiTextField1: View {
-
-    private var placeholder: String
-    private var onCommit: (() -> Void)?
-    @State private var viewHeight: CGFloat = 25 //start with one line
-    @State private var shouldShowPlaceholder = false
-    @Binding private var text: String
-    @EnvironmentObject var obj : observed
   
-    private var internalText: Binding<String> {
-        Binding<String>(get: { self.text } ) {
-            self.text = $0
-            self.shouldShowPlaceholder = $0.isEmpty
-        }
+  private var placeholder: String
+  private var onCommit: (() -> Void)?
+  @State private var viewHeight: CGFloat = 25 //start with one line
+  @State private var shouldShowPlaceholder = false
+  @Binding private var text: String
+  @EnvironmentObject var obj : observed
+  
+  private var internalText: Binding<String> {
+    Binding<String>(get: { self.text } ) {
+      self.text = $0
+      self.shouldShowPlaceholder = $0.isEmpty
     }
-
-    var body: some View {
-      VStack() {
-         RoundedRectangle(cornerRadius: 15)
-           .stroke(Color.offWhite02, lineWidth: 5)
-           .shadow(color: Color.offGray01.opacity(1), radius: 4, x: 5, y: 5)
-           .frame(width: 290, height: self.obj.size < 100 ? self.obj.size + 15  : 120)
-           .clipShape(
-             RoundedRectangle(cornerRadius: 18)
-         )
-          .shadow(color: Color.white, radius: 4, x: -3.3, y: -3.3)
-           .frame(width: 290, height: self.obj.size < 100 ? self.obj.size + 15 : 120)
-           .clipShape(
-             RoundedRectangle(cornerRadius: 18)
-         )
-           .background(Color.offWhite02)
-           .cornerRadius(15)
-           .frame(width: 290, height: self.obj.size < 100 ? self.obj.size + 15 : 120)
-
-           .overlay(
-           MultiTextField(text: self.internalText, onDone: onCommit)
-           .frame(width: 265, height: self.obj.size < 100 ? self.obj.size : 100)
-           .padding(10)
-           .cornerRadius(15)
-           .background(placeholderView, alignment: .leading)
-         )
-       }.padding()
+  }
+  
+  var body: some View {
+    VStack() {
+      RoundedRectangle(cornerRadius: 15)
+        .stroke(Color.offWhite02, lineWidth: 5)
+        .shadow(color: Color.offGray01.opacity(1), radius: 4, x: 5, y: 5)
+        .frame(width: 290, height: self.obj.size < 100 ? self.obj.size + 15  : 120)
+        .clipShape(
+          RoundedRectangle(cornerRadius: 18)
+        )
+        .shadow(color: Color.white, radius: 4, x: -3.3, y: -3.3)
+        .frame(width: 290, height: self.obj.size < 100 ? self.obj.size + 15 : 120)
+        .clipShape(
+          RoundedRectangle(cornerRadius: 18)
+        )
+        .background(Color.offWhite02)
+        .cornerRadius(15)
+        .frame(width: 290, height: self.obj.size < 100 ? self.obj.size + 15 : 120)
+        
+        .overlay(
+          MultiTextField(text: self.internalText, onDone: onCommit)
+            .frame(width: 265, height: self.obj.size < 100 ? self.obj.size : 100)
+            .padding(10)
+            .cornerRadius(15)
+            .background(placeholderView, alignment: .leading)
+        )
+    }.padding()
+  }
+  
+  var placeholderView: some View {
+    Group {
+      if shouldShowPlaceholder {
+        Text(placeholder).foregroundColor(.gray)
+          .padding(.leading, 10)
+          .font(Font.system(size: 17))
+      }
     }
-
-    var placeholderView: some View {
-        Group {
-            if shouldShowPlaceholder {
-                Text(placeholder).foregroundColor(.gray)
-                    .padding(.leading, 10)
-                    .font(Font.system(size: 17))
-            }
-        }
-    }
-
-    init (_ placeholder: String = "", text: Binding<String>, onCommit: (() -> Void)? = nil) {
-        self.placeholder = placeholder
-        self.onCommit = onCommit
-        self._text = text
-        self._shouldShowPlaceholder = State<Bool>(initialValue: self.text.isEmpty)
-    }
-
+  }
+  
+  init (_ placeholder: String = "", text: Binding<String>, onCommit: (() -> Void)? = nil) {
+    self.placeholder = placeholder
+    self.onCommit = onCommit
+    self._text = text
+    self._shouldShowPlaceholder = State<Bool>(initialValue: self.text.isEmpty)
+  }
+  
 }
 
 struct MultiTextField2: View {
-
-    private var placeholder: String
-    private var onCommit: (() -> Void)?
-    @State private var viewHeight: CGFloat = 25 //start with one line
-    @State private var shouldShowPlaceholder = false
-    @Binding private var text: String
   
-    private var internalText: Binding<String> {
-        Binding<String>(get: { self.text } ) {
-            self.text = $0
-            self.shouldShowPlaceholder = $0.isEmpty
-        }
+  private var placeholder: String
+  private var onCommit: (() -> Void)?
+  @State private var viewHeight: CGFloat = 25 //start with one line
+  @State private var shouldShowPlaceholder = false
+  @Binding private var text: String
+  
+  private var internalText: Binding<String> {
+    Binding<String>(get: { self.text } ) {
+      self.text = $0
+      self.shouldShowPlaceholder = $0.isEmpty
     }
-
-    var body: some View {
-      VStack() {
-        RoundedRectangle(cornerRadius: 18)
-          .stroke(Color.offWhite02, lineWidth: 5)
-          .shadow(color: Color.offGray01.opacity(1), radius: 4, x: 5, y: 5)
-          .frame(width: 300, height: 140)
-          .clipShape(
-            RoundedRectangle(cornerRadius: 18)
+  }
+  
+  var body: some View {
+    VStack() {
+      RoundedRectangle(cornerRadius: 18)
+        .stroke(Color.offWhite02, lineWidth: 5)
+        .shadow(color: Color.offGray01.opacity(1), radius: 4, x: 5, y: 5)
+        .frame(width: 300, height: 140)
+        .clipShape(
+          RoundedRectangle(cornerRadius: 18)
         )
-          .shadow(color: Color.white, radius: 4, x: -3.3, y: -3.3)
-          .frame(width: 300, height: 130)
-          .clipShape(
-            RoundedRectangle(cornerRadius: 18)
+        .shadow(color: Color.white, radius: 4, x: -3.3, y: -3.3)
+        .frame(width: 300, height: 130)
+        .clipShape(
+          RoundedRectangle(cornerRadius: 18)
         )
-          .background(Color.offWhite02)
-          .cornerRadius(15)
-          .frame(width: 300, height: 130)
-
+        .background(Color.offWhite02)
+        .cornerRadius(15)
+        .frame(width: 300, height: 130)
+        
         .overlay(
           MultiTextField(text: self.internalText, onDone: onCommit)
             .frame(width: 280, height: 110)
-          .padding(10)
-          .cornerRadius(15)
+            .padding(10)
+            .cornerRadius(15)
         )
-      }.padding()
+    }.padding()
+  }
+  
+  var placeholderView: some View {
+    Group {
+      if shouldShowPlaceholder {
+        Text(placeholder).foregroundColor(.gray)
+          .padding(.leading, 10)
+          .font(Font.system(size: 17))
+      }
     }
-
-    var placeholderView: some View {
-        Group {
-            if shouldShowPlaceholder {
-                Text(placeholder).foregroundColor(.gray)
-                    .padding(.leading, 10)
-                    .font(Font.system(size: 17))
-            }
-        }
-    }
-
-    init (_ placeholder: String = "Enter bet here:", text: Binding<String>, onCommit: (() -> Void)? = nil) {
-        self.placeholder = placeholder
-        self.onCommit = onCommit
-        self._text = text
-        self._shouldShowPlaceholder = State<Bool>(initialValue: self.text.isEmpty)
-    }
-
+  }
+  
+  init (_ placeholder: String = "Enter bet here:", text: Binding<String>, onCommit: (() -> Void)? = nil) {
+    self.placeholder = placeholder
+    self.onCommit = onCommit
+    self._text = text
+    self._shouldShowPlaceholder = State<Bool>(initialValue: self.text.isEmpty)
+  }
+  
 }

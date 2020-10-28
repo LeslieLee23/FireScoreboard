@@ -89,11 +89,8 @@ struct ContentView: View {
                   Text("Emoji Mode")
                 }
                 .toggleStyle(EmojiToggleStyle())
-                .foregroundColor(Color.darkPurple)
+                .foregroundColor(self.userData.editMode ? Color.offGray02 : Color.darkPurple)
                 .labelsHidden()
-                .simultaneousGesture(TapGesture().onEnded {
-                  self.index = (self.index + 1) % self.colors.count
-                })
               Spacer()
               Spacer()
               Spacer()
@@ -111,6 +108,7 @@ struct ContentView: View {
             }) {
               Image(systemName: "person.circle")
               .font(Font.system(size: 20, weight: .regular))
+              .foregroundColor(self.userData.editMode ? Color.offGray02 : Color.darkPurple)
             }
             .padding(.trailing, 30)
               Spacer()
@@ -132,9 +130,27 @@ struct ContentView: View {
               Spacer()
               if self.userData.editMode == true {
                 Text("Pick the Player to Edit")
-                  .font(.system(size: 23))
-                    .fontWeight(.medium)
-                  .foregroundColor(Color.offblack01)
+                .font(.system(size: 23))
+                .fontWeight(.medium)
+                  .foregroundColor(Color.darkPurple)
+//                VStack(alignment: .center){
+//                RadialGradient(gradient: Gradient(colors: [.mixedBlue, .darkPurple, .mixedBlue]), center: .center, startRadius: 10,
+//                     endRadius: 200)
+//                     .mask(
+//                      Text("Pick the Player to Edit")
+//                      .font(.system(size: 23))
+//                      .fontWeight(.medium)
+//
+//                     )
+//                }
+//                .frame(width: appState.scoreboradWidth * 0.6, height: 30, alignment: .center)
+                   //  .frame(width: 250, height: 100, alignment: .center)
+                //)
+                
+//                Text("Pick the Player to Edit")
+//                  .font(.system(size: 23))
+//                    .fontWeight(.medium)
+//                  .foregroundColor(Color.offblack01)
               } else {
                 Text("Scoreboard")
                   .font(.system(size: 23))
