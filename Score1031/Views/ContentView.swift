@@ -129,28 +129,11 @@ struct ContentView: View {
               Spacer()
               Spacer()
               if self.userData.editMode == true {
-                Text("Pick the Player to Edit")
-                .font(.system(size: 23))
+                Text("Pick the player to edit")
+                .font(.system(size: 22))
                 .fontWeight(.medium)
                   .foregroundColor(Color.darkPurple)
-//                VStack(alignment: .center){
-//                RadialGradient(gradient: Gradient(colors: [.mixedBlue, .darkPurple, .mixedBlue]), center: .center, startRadius: 10,
-//                     endRadius: 200)
-//                     .mask(
-//                      Text("Pick the Player to Edit")
-//                      .font(.system(size: 23))
-//                      .fontWeight(.medium)
-//
-//                     )
-//                }
-//                .frame(width: appState.scoreboradWidth * 0.6, height: 30, alignment: .center)
-                   //  .frame(width: 250, height: 100, alignment: .center)
-                //)
-                
-//                Text("Pick the Player to Edit")
-//                  .font(.system(size: 23))
-//                    .fontWeight(.medium)
-//                  .foregroundColor(Color.offblack01)
+
               } else {
                 Text("Scoreboard")
                   .font(.system(size: 23))
@@ -171,9 +154,9 @@ struct ContentView: View {
           ZStack{
             ///Color Change View
             VStack {
-              SplashView(animationType: .angle(Angle(degrees: 40)), color: .offWhite01)
+              RoundedRectangle(cornerRadius: 20)
                 .frame(width: appState.scoreboradWidth, height: appState.scoreboradHeight, alignment: .top)
-              .cornerRadius(20)
+              .foregroundColor(Color.offWhite01)
               .shadow(color: Color.offGray01.opacity(0.8), radius: 5, x: 5, y: 5)
             }///Color Change View
             

@@ -36,7 +36,7 @@ class BetLoader: BaseBetRepository, BetRepository, ObservableObject {
   func fetchBetData() {
     let userId = Auth.auth().currentUser?.uid
     db.collection("bets")
-    .whereField("userId", isEqualTo: userId)
+    .whereField("userId", isEqualTo: userId ?? "0")
       .addSnapshotListener {(querySnapshot, error) in
       guard let documents = querySnapshot?.documents else {
         print("No documents")
@@ -116,9 +116,10 @@ class BetLoader: BaseBetRepository, BetRepository, ObservableObject {
       
       print("Yes yes this bet works!")
       
-    } catch{
-      print("NONONO This didn't work!")
     }
+//    catch{
+//      print("NONONO This didn't work!")
+//    }
     
     
    
@@ -137,7 +138,7 @@ class BetLoader: BaseBetRepository, BetRepository, ObservableObject {
   func remove(id: String) -> Void {
     db.collection("bets").whereField("id", isEqualTo: id).getDocuments { (querySnapshot, error) in
       if error != nil {
-        print(error)
+        print(error ?? "Remove error")
       } else {
         for document in querySnapshot!.documents {
           document.reference.delete()

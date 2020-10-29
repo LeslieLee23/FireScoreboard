@@ -73,7 +73,7 @@ struct PlayersView: View {
           Spacer()
         }.frame(width: appState.screenWidth, height: appState.BetGapHeight, alignment: .leading)
         ///Gap row
-        
+        Divider()
         List {
           ForEach(self.apiLoader.queryPlayerList()) { record in
             if record.playerID != self.userData.playerID {
@@ -120,11 +120,10 @@ struct PlayersView: View {
                       {
                         self.apiLoader.remove(record.playerID)
                         self.deleteMode = false
-                        }, secondaryButton: .cancel()
-                          
-                          {
+                        }, secondaryButton: .cancel(){
                             self.deleteMode = false
-                        })
+                        }
+                      )
                     }
                     
                   }.border(Color.red)

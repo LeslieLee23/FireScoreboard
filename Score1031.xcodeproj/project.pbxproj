@@ -29,7 +29,6 @@
 		F5441EB824F7091900F8DBDF /* HistorySnapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5441EB724F7091900F8DBDF /* HistorySnapView.swift */; };
 		F5441EBA24F8726900F8DBDF /* RecordSnapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5441EB924F8726900F8DBDF /* RecordSnapViewModel.swift */; };
 		F5441EBE24FAFAB700F8DBDF /* AddNewPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5441EBD24FAFAB700F8DBDF /* AddNewPlayerView.swift */; };
-		F55DABD624EBB9090078452F /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55DABD524EBB9090078452F /* SplashView.swift */; };
 		F55DABD824EF3B9B0078452F /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55DABD724EF3B9B0078452F /* TabBarView.swift */; };
 		F55DABDA24EFAF880078452F /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55DABD924EFAF880078452F /* AppState.swift */; };
 		F5693CEF253D023800EA7626 /* ScoreHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5693CEE253D023800EA7626 /* ScoreHistoryView.swift */; };
@@ -37,16 +36,14 @@
 		F56F88AB2517307C00FD3CF7 /* BetSnapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56F88AA2517307C00FD3CF7 /* BetSnapView.swift */; };
 		F56F88AD2517376C00FD3CF7 /* BetSnapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56F88AC2517376C00FD3CF7 /* BetSnapViewModel.swift */; };
 		F56F88B3251BEBF000FD3CF7 /* NeupbuttonText.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56F88B2251BEBF000FD3CF7 /* NeupbuttonText.swift */; };
-		F577601C253BF97C00D978AB /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F577601B253BF97C00D978AB /* Launch Screen.storyboard */; };
+		F577601C253BF97C00D978AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F577601B253BF97C00D978AB /* LaunchScreen.storyboard */; };
 		F5776DC825141DA50017858D /* PastBetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5776DC725141DA50017858D /* PastBetView.swift */; };
 		F59129502420368F0071E1D3 /* SelectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F591294F2420368F0071E1D3 /* SelectViewModel.swift */; };
 		F5BA924724E75A6900CA3519 /* EditModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BA924624E75A6900CA3519 /* EditModeView.swift */; };
 		F5CD3140250DD30F00B67510 /* BetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CD313F250DD30F00B67510 /* BetViewModel.swift */; };
 		F5CD3142250EB6B500B67510 /* BetAssignResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CD3141250EB6B500B67510 /* BetAssignResultView.swift */; };
 		F5D7FC6B24D0E7F7006BFC4A /* APILoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D7FC6A24D0E7F7006BFC4A /* APILoader.swift */; };
-		F5D7FC6F24D94087006BFC4A /* SigninWithAppleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D7FC6E24D94087006BFC4A /* SigninWithAppleButton.swift */; };
 		F5D7FC7524D942A6006BFC4A /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D7FC7424D942A6006BFC4A /* SignInView.swift */; };
-		F5D7FC7A24D9CEF4006BFC4A /* SigninWithAppleCoodinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D7FC7924D9CEF4006BFC4A /* SigninWithAppleCoodinator.swift */; };
 		F5EAA41B2511C08D00584E86 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EAA41A2511C08D00584E86 /* Styles.swift */; };
 		F5EAA41D2511CEC000584E86 /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F5F02578244427A20038A4FB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F5F02577244427A20038A4FB /* GoogleService-Info.plist */; };
@@ -94,7 +91,6 @@
 		F5441EB724F7091900F8DBDF /* HistorySnapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistorySnapView.swift; sourceTree = "<group>"; };
 		F5441EB924F8726900F8DBDF /* RecordSnapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordSnapViewModel.swift; sourceTree = "<group>"; };
 		F5441EBD24FAFAB700F8DBDF /* AddNewPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewPlayerView.swift; sourceTree = "<group>"; };
-		F55DABD524EBB9090078452F /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		F55DABD724EF3B9B0078452F /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		F55DABD924EFAF880078452F /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		F5693CEE253D023800EA7626 /* ScoreHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreHistoryView.swift; sourceTree = "<group>"; };
@@ -102,16 +98,14 @@
 		F56F88AA2517307C00FD3CF7 /* BetSnapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetSnapView.swift; sourceTree = "<group>"; };
 		F56F88AC2517376C00FD3CF7 /* BetSnapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetSnapViewModel.swift; sourceTree = "<group>"; };
 		F56F88B2251BEBF000FD3CF7 /* NeupbuttonText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeupbuttonText.swift; sourceTree = "<group>"; };
-		F577601B253BF97C00D978AB /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		F577601B253BF97C00D978AB /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F5776DC725141DA50017858D /* PastBetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastBetView.swift; sourceTree = "<group>"; };
 		F591294F2420368F0071E1D3 /* SelectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectViewModel.swift; sourceTree = "<group>"; };
 		F5BA924624E75A6900CA3519 /* EditModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditModeView.swift; sourceTree = "<group>"; };
 		F5CD313F250DD30F00B67510 /* BetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetViewModel.swift; sourceTree = "<group>"; };
 		F5CD3141250EB6B500B67510 /* BetAssignResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetAssignResultView.swift; sourceTree = "<group>"; };
 		F5D7FC6A24D0E7F7006BFC4A /* APILoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APILoader.swift; sourceTree = "<group>"; };
-		F5D7FC6E24D94087006BFC4A /* SigninWithAppleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninWithAppleButton.swift; sourceTree = "<group>"; };
 		F5D7FC7424D942A6006BFC4A /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
-		F5D7FC7924D9CEF4006BFC4A /* SigninWithAppleCoodinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninWithAppleCoodinator.swift; sourceTree = "<group>"; };
 		F5D7FC7B24D9E721006BFC4A /* FireScoreboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FireScoreboard.entitlements; sourceTree = "<group>"; };
 		F5EAA41A2511C08D00584E86 /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		F5F02577244427A20038A4FB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -223,7 +217,7 @@
 				F51C7A3C23D96C3800540B25 /* Resource */,
 				F5D7FC7624D9CE07006BFC4A /* Services */,
 				F53BDFCF236B44CC00C3E203 /* AppDelegate.swift */,
-				F577601B253BF97C00D978AB /* Launch Screen.storyboard */,
+				F577601B253BF97C00D978AB /* LaunchScreen.storyboard */,
 				F53BDFD1236B44CC00C3E203 /* SceneDelegate.swift */,
 				F5CD31432511689700B67510 /* ViewModels */,
 				F51C7A3B23D5715A00540B25 /* Views */,
@@ -262,10 +256,8 @@
 			children = (
 				F5BA924624E75A6900CA3519 /* EditModeView.swift */,
 				F541995724EA3D6A00BF54EC /* NameEmojiRowView.swift */,
-				F55DABD524EBB9090078452F /* SplashView.swift */,
 				F5441EB724F7091900F8DBDF /* HistorySnapView.swift */,
 				F56F88AA2517307C00FD3CF7 /* BetSnapView.swift */,
-				F5D7FC6E24D94087006BFC4A /* SigninWithAppleButton.swift */,
 				F5776DC725141DA50017858D /* PastBetView.swift */,
 				F56F88B2251BEBF000FD3CF7 /* NeupbuttonText.swift */,
 			);
@@ -275,7 +267,6 @@
 		F5D7FC7624D9CE07006BFC4A /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				F5D7FC7924D9CEF4006BFC4A /* SigninWithAppleCoodinator.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -345,7 +336,7 @@
 				F53BDFDC236B44CF00C3E203 /* LaunchScreen.storyboard in Resources */,
 				F5F02578244427A20038A4FB /* GoogleService-Info.plist in Resources */,
 				F53BDFD9236B44CF00C3E203 /* Preview Assets.xcassets in Resources */,
-				F577601C253BF97C00D978AB /* Launch Screen.storyboard in Resources */,
+				F577601C253BF97C00D978AB /* LaunchScreen.storyboard in Resources */,
 				F53BDFD6236B44CF00C3E203 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -425,10 +416,8 @@
 				F500DA6925074C3F003E60F3 /* BetRecord.swift in Sources */,
 				F5441EBE24FAFAB700F8DBDF /* AddNewPlayerView.swift in Sources */,
 				F500DA6B25075F60003E60F3 /* BetLoader.swift in Sources */,
-				F5D7FC7A24D9CEF4006BFC4A /* SigninWithAppleCoodinator.swift in Sources */,
 				F50762E624BC244600676F9C /* RecordViewModel.swift in Sources */,
 				F5F6C4F525358BF6007C9A1F /* FirebaseUILoginView.swift in Sources */,
-				F5D7FC6F24D94087006BFC4A /* SigninWithAppleButton.swift in Sources */,
 				F51EE72223F12D9D0030B17C /* Score1031.xcdatamodeld in Sources */,
 				F53BDFD0236B44CC00C3E203 /* AppDelegate.swift in Sources */,
 				F500DA6D25089247003E60F3 /* BetsHomeView.swift in Sources */,
@@ -446,7 +435,6 @@
 				F5441EBA24F8726900F8DBDF /* RecordSnapViewModel.swift in Sources */,
 				F50762EC24C01D0100676F9C /* Functions.swift in Sources */,
 				F5693CEF253D023800EA7626 /* ScoreHistoryView.swift in Sources */,
-				F55DABD624EBB9090078452F /* SplashView.swift in Sources */,
 				F50762E424B438AD00676F9C /* PlayersView.swift in Sources */,
 				F55DABD824EF3B9B0078452F /* TabBarView.swift in Sources */,
 				F5441EB624F701BB00F8DBDF /* Neumorphic.swift in Sources */,

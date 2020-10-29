@@ -42,7 +42,7 @@ class APILoader: BaseScoreRepository, ScoreRepository, ObservableObject {
   func fetchData() {
     let userId = Auth.auth().currentUser?.uid
     db.collection("records")
-    .whereField("userId", isEqualTo: userId)
+    .whereField("userId", isEqualTo: userId ?? "0")
       .addSnapshotListener {(querySnapshot, error) in
       guard let documents = querySnapshot?.documents else {
         print("No documents")
@@ -133,8 +133,7 @@ class APILoader: BaseScoreRepository, ScoreRepository, ObservableObject {
   
   func findMaxPlayerID() -> Int {
     let maxPlayerIDInt = self.records.map{Int($0.playerID)!}.max()
-    let maxPlayerID = String(maxPlayerIDInt ?? 0)
-    print("&&&\(maxPlayerIDInt)")
+    print("maxPlayerIDInt\(String(describing: maxPlayerIDInt))")
     return maxPlayerIDInt ?? 0
   }
   
@@ -146,9 +145,10 @@ class APILoader: BaseScoreRepository, ScoreRepository, ObservableObject {
       
       print("Yes yes yes this works!")
       
-    } catch{
-      print("NONONO This didn't work!")
     }
+//    catch{
+//      print("NONONO This didn't work!")
+//    }
     
     
    
@@ -157,7 +157,7 @@ class APILoader: BaseScoreRepository, ScoreRepository, ObservableObject {
   func remove(_ playerID: String) -> Void {
     db.collection("records").whereField("playerID", isEqualTo: playerID).getDocuments { (querySnapshot, error) in
       if error != nil {
-        print(error)
+        print(error ?? "Remove error")
       } else {
         for document in querySnapshot!.documents {
           document.reference.delete()
