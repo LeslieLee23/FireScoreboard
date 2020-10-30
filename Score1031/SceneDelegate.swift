@@ -31,6 +31,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             .environmentObject(appState)
             .environmentObject(AddBetFunc())
             .environmentObject(obj)
+            .environmentObject(ViewRouter())
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)

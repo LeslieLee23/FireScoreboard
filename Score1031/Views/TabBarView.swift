@@ -12,17 +12,23 @@ import Combine
 import UIKit
 
 struct TabBarView: View {
+  @EnvironmentObject var viewRouter: ViewRouter
   @EnvironmentObject var appState: AppState
   @ObservedObject var betLoader = BetLoader()
   @ObservedObject var apiLoader = APILoader()
   @EnvironmentObject var obj : observed
   var userData = UserData()
+  
   init() {
     UITabBar.appearance().barTintColor = UIColor.offWhite01
     UITableView.appearance().backgroundColor = UIColor.offWhite02
     UITableViewCell.appearance().backgroundColor = UIColor.offWhite02
   }
   var body: some View {
+    VStack {
+      if self.viewRouter.currentPage == "onboardingView" {
+            OnboardingView()
+      } else if self.viewRouter.currentPage == "tabBarView" {
     TabView(selection: $appState.selectedTab) {
       ContentView()
         .tabItem {
@@ -143,6 +149,9 @@ struct TabBarView: View {
     .environmentObject(userData)
     .environmentObject(appState)
     .environmentObject(obj)
+    
+  }
+}
   }
 }
 
@@ -150,6 +159,7 @@ struct TabBarView_Previews: PreviewProvider {
   
   static var previews: some View {
     TabBarView()
+      .environmentObject(ViewRouter())
       .environmentObject(NameAndScore())
       .environmentObject(UserData())
       .environmentObject(AddScoreFunc())
