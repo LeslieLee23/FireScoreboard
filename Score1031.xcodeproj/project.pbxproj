@@ -29,12 +29,17 @@
 		F5441EB824F7091900F8DBDF /* HistorySnapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5441EB724F7091900F8DBDF /* HistorySnapView.swift */; };
 		F5441EBA24F8726900F8DBDF /* RecordSnapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5441EB924F8726900F8DBDF /* RecordSnapViewModel.swift */; };
 		F5441EBE24FAFAB700F8DBDF /* AddNewPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5441EBD24FAFAB700F8DBDF /* AddNewPlayerView.swift */; };
+		F55AFE47254E446B0024D36E /* UserLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55AFE46254E446B0024D36E /* UserLoader.swift */; };
+		F55AFE49254E44CD0024D36E /* UserRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55AFE48254E44CD0024D36E /* UserRecord.swift */; };
 		F55DABD824EF3B9B0078452F /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55DABD724EF3B9B0078452F /* TabBarView.swift */; };
 		F55DABDA24EFAF880078452F /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55DABD924EFAF880078452F /* AppState.swift */; };
 		F5693CEF253D023800EA7626 /* ScoreHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5693CEE253D023800EA7626 /* ScoreHistoryView.swift */; };
 		F569E067254A7F7D00C3974C /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F569E066254A7F7D00C3974C /* OnboardingView.swift */; };
 		F569E069254A814900C3974C /* MotherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F569E068254A814900C3974C /* MotherView.swift */; };
 		F569E06B254A81FF00C3974C /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F569E06A254A81FE00C3974C /* ViewRouter.swift */; };
+		F569E06F254BD84A00C3974C /* OnboardingStage2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F569E06E254BD84A00C3974C /* OnboardingStage2.swift */; };
+		F569E071254BDC7F00C3974C /* OnboardingStage3.swift in Sources */ = {isa = PBXBuildFile; fileRef = F569E070254BDC7F00C3974C /* OnboardingStage3.swift */; };
+		F569E073254BDF7200C3974C /* OnboardingStage4.swift in Sources */ = {isa = PBXBuildFile; fileRef = F569E072254BDF7200C3974C /* OnboardingStage4.swift */; };
 		F56E71922493505C007E8FF5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56E71912493505C007E8FF5 /* ContentView.swift */; };
 		F56F88AB2517307C00FD3CF7 /* BetSnapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56F88AA2517307C00FD3CF7 /* BetSnapView.swift */; };
 		F56F88AD2517376C00FD3CF7 /* BetSnapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56F88AC2517376C00FD3CF7 /* BetSnapViewModel.swift */; };
@@ -94,12 +99,17 @@
 		F5441EB724F7091900F8DBDF /* HistorySnapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistorySnapView.swift; sourceTree = "<group>"; };
 		F5441EB924F8726900F8DBDF /* RecordSnapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordSnapViewModel.swift; sourceTree = "<group>"; };
 		F5441EBD24FAFAB700F8DBDF /* AddNewPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewPlayerView.swift; sourceTree = "<group>"; };
+		F55AFE46254E446B0024D36E /* UserLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoader.swift; sourceTree = "<group>"; };
+		F55AFE48254E44CD0024D36E /* UserRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRecord.swift; sourceTree = "<group>"; };
 		F55DABD724EF3B9B0078452F /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		F55DABD924EFAF880078452F /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		F5693CEE253D023800EA7626 /* ScoreHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreHistoryView.swift; sourceTree = "<group>"; };
 		F569E066254A7F7D00C3974C /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		F569E068254A814900C3974C /* MotherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotherView.swift; sourceTree = "<group>"; };
 		F569E06A254A81FE00C3974C /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
+		F569E06E254BD84A00C3974C /* OnboardingStage2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStage2.swift; sourceTree = "<group>"; };
+		F569E070254BDC7F00C3974C /* OnboardingStage3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStage3.swift; sourceTree = "<group>"; };
+		F569E072254BDF7200C3974C /* OnboardingStage4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStage4.swift; sourceTree = "<group>"; };
 		F56E71912493505C007E8FF5 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F56F88AA2517307C00FD3CF7 /* BetSnapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetSnapView.swift; sourceTree = "<group>"; };
 		F56F88AC2517376C00FD3CF7 /* BetSnapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetSnapViewModel.swift; sourceTree = "<group>"; };
@@ -152,6 +162,7 @@
 			children = (
 				F5D7FC6A24D0E7F7006BFC4A /* APILoader.swift */,
 				F500DA6A25075F60003E60F3 /* BetLoader.swift */,
+				F55AFE46254E446B0024D36E /* UserLoader.swift */,
 				F53BE01A2384482700C3E203 /* UserData.swift */,
 				F51C7A3523D4EB6300540B25 /* NameAndScore.swift */,
 				F508FB5F244EA96A001C5C24 /* Recordline.swift */,
@@ -161,6 +172,7 @@
 				F5EAA41A2511C08D00584E86 /* Styles.swift */,
 				F5441EB524F701BB00F8DBDF /* Neumorphic.swift */,
 				F569E06A254A81FE00C3974C /* ViewRouter.swift */,
+				F55AFE48254E44CD0024D36E /* UserRecord.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -269,6 +281,9 @@
 				F56F88AA2517307C00FD3CF7 /* BetSnapView.swift */,
 				F5776DC725141DA50017858D /* PastBetView.swift */,
 				F56F88B2251BEBF000FD3CF7 /* NeupbuttonText.swift */,
+				F569E06E254BD84A00C3974C /* OnboardingStage2.swift */,
+				F569E070254BDC7F00C3974C /* OnboardingStage3.swift */,
+				F569E072254BDF7200C3974C /* OnboardingStage4.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -420,6 +435,8 @@
 				F5EAA41B2511C08D00584E86 /* Styles.swift in Sources */,
 				F5D7FC7524D942A6006BFC4A /* SignInView.swift in Sources */,
 				F56E71922493505C007E8FF5 /* ContentView.swift in Sources */,
+				F55AFE47254E446B0024D36E /* UserLoader.swift in Sources */,
+				F569E073254BDF7200C3974C /* OnboardingStage4.swift in Sources */,
 				F53BE01B2384482700C3E203 /* UserData.swift in Sources */,
 				F55DABDA24EFAF880078452F /* AppState.swift in Sources */,
 				F500DA6925074C3F003E60F3 /* BetRecord.swift in Sources */,
@@ -439,11 +456,14 @@
 				F56F88AB2517307C00FD3CF7 /* BetSnapView.swift in Sources */,
 				F56F88AD2517376C00FD3CF7 /* BetSnapViewModel.swift in Sources */,
 				F5776DC825141DA50017858D /* PastBetView.swift in Sources */,
+				F55AFE49254E44CD0024D36E /* UserRecord.swift in Sources */,
 				F541995824EA3D6A00BF54EC /* NameEmojiRowView.swift in Sources */,
 				F5D7FC6B24D0E7F7006BFC4A /* APILoader.swift in Sources */,
+				F569E06F254BD84A00C3974C /* OnboardingStage2.swift in Sources */,
 				F5441EB824F7091900F8DBDF /* HistorySnapView.swift in Sources */,
 				F5441EBA24F8726900F8DBDF /* RecordSnapViewModel.swift in Sources */,
 				F50762EC24C01D0100676F9C /* Functions.swift in Sources */,
+				F569E071254BDC7F00C3974C /* OnboardingStage3.swift in Sources */,
 				F5693CEF253D023800EA7626 /* ScoreHistoryView.swift in Sources */,
 				F50762E424B438AD00676F9C /* PlayersView.swift in Sources */,
 				F569E067254A7F7D00C3974C /* OnboardingView.swift in Sources */,

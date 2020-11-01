@@ -35,10 +35,6 @@ struct ContentView: View {
   @State var showSignInForm = false
   @EnvironmentObject var obj : observed
   
-  var colors: [Color] = [.offWhite02, .niceBlue]
-  @State var index: Int = 0
-  @State var progress: CGFloat = 0
-  
   
   var body: some View {
     
@@ -102,7 +98,6 @@ struct ContentView: View {
             VStack(alignment: .trailing) {
             Spacer()
             Button(action: {
-             /// Old sign in with Apple code
               self.showSignInForm.toggle()
 
             }) {

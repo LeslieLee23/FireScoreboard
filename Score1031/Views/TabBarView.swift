@@ -133,17 +133,10 @@ struct TabBarView: View {
 
       self.appState.selectedTab = .home
       
-      if  self.betLoader.fetchPastBet(self.userData.playerID).count < 1 && self.betLoader.fetchOngoingBet(self.userData.playerID).count < 1 {
-        self.userData.betState = 0
-      }
-      else if self.betLoader.fetchOngoingBet(self.userData.playerID).count > 0 {
-        self.userData.betState = 1
-      } else if self.betLoader.fetchPastBet(self.userData.playerID).count > 0 {
-        self.userData.betState = 2
-      }
+      
       print("count fetchOngoingBet \(self.betLoader.fetchOngoingBet(self.userData.playerID).count)")
       print("playerID \(self.userData.playerID)")
-      print("betState \(self.userData.betState)")
+    
     }
     .accentColor(Color.darkPurple)
     .environmentObject(userData)
