@@ -147,7 +147,12 @@ struct OnboardingStage3: View {
               print("self.userData.userEmoji \(self.userData.userEmoji)")
               print("self.userData.userName \(self.userData.userName)")
               
-              
+              print("self.nameAndScore.PlayerOneScore \(self.nameAndScore.PlayerOneScore)")
+              print("self.nameAndScore.PlayerTwoScore \(self.nameAndScore.PlayerTwoScore)")
+              print("self.nameAndScore.playerOneName \(self.nameAndScore.playerOneName)")
+              print("self.nameAndScore.playerTwoName \(self.nameAndScore.playerTwoName)")
+              print("self.nameAndScore.playerOneEmoji \(self.nameAndScore.playerOneEmoji)")
+              print("self.nameAndScore.playerTwoEmoji \(self.nameAndScore.playerTwoEmoji)")
             }) {
               Text("Confirm")
             }
