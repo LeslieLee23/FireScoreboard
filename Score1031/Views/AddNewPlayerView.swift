@@ -20,7 +20,7 @@ struct AddNewPlayerView: View {
   @State var showAlert = false
   
   @EnvironmentObject var nameAndScore: NameAndScore
-  @EnvironmentObject private var userData: UserData
+  @EnvironmentObject var userData: UserData
   @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
   @EnvironmentObject var appState: AppState
   @ObservedObject private var apiLoader = APILoader()

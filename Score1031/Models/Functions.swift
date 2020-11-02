@@ -76,7 +76,7 @@ class AddScoreFunc: ObservableObject {
     } else {
       record.recordScore = "+\(String(editedScore))"
     }
-    print(record)
+    print("saved record \(record)")
     return record
     
   }

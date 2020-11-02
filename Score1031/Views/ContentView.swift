@@ -26,10 +26,12 @@ struct ContentView: View {
   @State var selectedNameString = ""
   @State var pointGrammar = "points"
   @State var showAlert = false
+  @State var userIcon = "SignIn"
   @EnvironmentObject var nameAndScore: NameAndScore
   @EnvironmentObject var addScoreFunc: AddScoreFunc
   @EnvironmentObject var userData: UserData
   @ObservedObject private var apiLoader = APILoader()
+  @ObservedObject private var userLoader = UserLoader()
   @EnvironmentObject var appState: AppState
   @ObservedObject var betLoader = BetLoader()
   @State var showSignInForm = false
@@ -60,7 +62,7 @@ struct ContentView: View {
                 if self.userData.editMode == false {
                   self.userData.selectedName = 5
                   self.userData.emojiPlusName  = ["\(self.nameAndScore.playerOneEmoji!) \( self.nameAndScore.playerOneName!)","\( self.nameAndScore.playerTwoEmoji!) \( self.nameAndScore.playerTwoName!)"]
-                  print("\(self.userData.emojiPlusName)")
+                  print("self.userData.emojiPlusName ???\(self.userData.emojiPlusName)")
                   self.userData.oldscore = ["\(self.nameAndScore.PlayerOneScore)", "\(self.nameAndScore.PlayerTwoScore)"]
 
                   self.userData.emojis = [self.nameAndScore.playerOneEmoji!, self.nameAndScore.playerTwoEmoji!]
@@ -101,9 +103,11 @@ struct ContentView: View {
               self.showSignInForm.toggle()
 
             }) {
-              Image(systemName: "person.circle")
+             // Text(self.userIcon)
+              Text(self.userData.userEmoji ?? "Waa")
+           //   Image(systemName: "person.circle")
               .font(Font.system(size: 20, weight: .regular))
-              .foregroundColor(self.userData.editMode ? Color.offGray02 : Color.darkPurple)
+           //   .foregroundColor(self.userData.editMode ? Color.offGray02 : Color.darkPurple)
             }
             .padding(.trailing, 30)
               Spacer()
@@ -130,15 +134,16 @@ struct ContentView: View {
                   .foregroundColor(Color.darkPurple)
 
               } else {
-                Text("Scoreboard")
+                Text(" Scoreboard ")
                   .font(.system(size: 23))
                   .fontWeight(.bold)
                   .foregroundColor(Color.offblack03)
+                //  .border(Color.red)
               }
               Spacer()
             }///Title row
               .frame(width: appState.scoreboradWidth, height: appState.TitleRowHeight, alignment: .center)
-         //   .border(Color.red)
+           // .border(Color.red)
 
           }///buttons row
           
@@ -292,6 +297,32 @@ struct ContentView: View {
         self.userData.playerID = "0"
         self.userData.selectedName = 5
       }
+      
+      self.apiLoader.fetchData()
+      self.betLoader.fetchBetData()
+      self.userLoader.fetchUserData()
+      self.userIcon = self.userLoader.getUserData()
+      
+      print("self.userData.emojiPlusName \(self.userData.emojiPlusName)")
+      print("self.userData.oldscore \(self.userData.oldscore)")
+      print("self.userData.names \(self.userData.names)")
+      print("self.userData.emojis \(self.userData.emojis)")
+      print("self.userData.editMode \(self.userData.editMode)")
+      print("self.userData.showEmoji \(self.userData.showEmoji)")
+      print("self.userData.playerID \(self.userData.playerID)")
+      print("self.userData.maxPlayerID \(self.userData.maxPlayerID)")
+      print("self.userData.selectedName \(self.userData.selectedName)")
+      print("self.userData.addPlayerOneName \(self.userData.addPlayerOneName)")
+      print("self.userData.addPlayerOneEmoji \(self.userData.addPlayerOneEmoji)")
+      print("self.userData.addPlayerTwoName \(self.userData.addPlayerTwoName)")
+      print("self.userData.addPlayerTwoEmoji \(self.userData.addPlayerTwoEmoji)")
+      print("self.userData.betWinnerName \(self.userData.betWinnerName)")
+      print("self.userData.deleteMode \(self.userData.deleteMode)")
+      print("self.userData.onboardingStage \(self.userData.onboardingStage)")
+      print("self.userData.userEmoji \(self.userData.userEmoji)")
+      print("self.userData.userName \(self.userData.userName)")
+      
+      
     }
   }
 }

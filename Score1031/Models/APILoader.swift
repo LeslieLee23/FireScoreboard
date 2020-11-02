@@ -108,7 +108,7 @@ class APILoader: BaseScoreRepository, ScoreRepository, ObservableObject {
   
   func queryPlayerList() -> [Recordline] {
     let recordSet = Set<String>(self.records.map{$0.playerID})
-
+    print("recordSet \(recordSet)")
     var resultArray = [String]()
 
     for playerID in recordSet {

@@ -19,14 +19,16 @@ struct OnboardingStage3: View {
   @State var showAlert = false
   
   @EnvironmentObject var nameAndScore: NameAndScore
-  @EnvironmentObject private var userData: UserData
+  @EnvironmentObject var userData: UserData
   @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
   @EnvironmentObject var appState: AppState
   @ObservedObject private var apiLoader = APILoader()
+  @ObservedObject private var userLoader = UserLoader()
   @ObservedObject var keyboardResponder = KeyboardResponder()
   @EnvironmentObject var viewRouter: ViewRouter
   //New repository change
   @State private var records3 = APILoader().records3
+  @State private var user3 = UserLoader().user3
   
     var body: some View {
       ZStack {
@@ -73,8 +75,8 @@ struct OnboardingStage3: View {
             
         //    Spacer()
             Button(action: {
-             
-              self.userData.maxPlayerID = 1
+             //records save
+              self.userData.playerID = "1"
               self.showAlert = true
               self.records3.id = UUID().uuidString
               self.records3.playerOneName = self.userData.addPlayerOneName
@@ -83,7 +85,7 @@ struct OnboardingStage3: View {
               self.records3.playerTwoEmoji = self.userData.addPlayerTwoEmoji
               self.records3.playerOneScore = 0
               self.records3.playerTwoScore = 0
-              self.records3.playerID = String(self.userData.maxPlayerID)
+              self.records3.playerID = self.userData.playerID
               self.records3.recordName = "\(self.userData.addPlayerOneName)+\(self.userData.addPlayerTwoName)"
               self.records3.recordScore = self.userData.addPlayerOneEmoji
               self.records3.recordReason = "New Players Added"
@@ -95,6 +97,56 @@ struct OnboardingStage3: View {
               self.records3.recordNameEmo = self.userData.addPlayerTwoEmoji
               
               self.apiLoader.saveData(record3: self.records3)
+              
+              //user save
+              self.user3.id = UUID().uuidString
+              self.user3.userId = Auth.auth().currentUser?.uid ?? "0"
+              self.user3.userEmoji = self.userData.addPlayerOneEmoji
+              self.user3.userName = self.userData.addPlayerOneName
+              self.user3.userCreateTime = Date()
+              
+              
+              self.userLoader.saveData(user3: self.user3)
+              
+              //nameAndScore initalization
+              self.nameAndScore.playerOneName = self.userData.addPlayerOneName
+              print("!!!!!!!playerOneName \(self.nameAndScore.playerOneName ?? "999")")
+              self.nameAndScore.playerTwoName = self.userData.addPlayerTwoName
+              print("playerTwoName \(self.nameAndScore.playerTwoName ?? "666")")
+              self.nameAndScore.playerOneEmoji = self.userData.addPlayerOneEmoji
+              self.nameAndScore.playerTwoEmoji = self.userData.addPlayerTwoEmoji
+              self.nameAndScore.PlayerOneScore = 0
+              self.nameAndScore.PlayerTwoScore = 0
+              
+              //UserData initalization
+              self.userData.emojiPlusName = ["\(self.nameAndScore.playerOneEmoji!) \( self.nameAndScore.playerOneName!)","\( self.nameAndScore.playerTwoEmoji!) \( self.nameAndScore.playerTwoName!)"]
+              self.userData.oldscore = ["\(self.nameAndScore.PlayerOneScore)", "\(self.nameAndScore.PlayerTwoScore)"]
+              self.userData.names = [self.nameAndScore.playerOneName!, self.nameAndScore.playerTwoName!]
+              self.userData.emojis = [self.nameAndScore.playerOneEmoji!, self.nameAndScore.playerTwoEmoji!]
+              self.userData.showEmoji = true
+              
+              self.userData.userEmoji = self.user3.userEmoji
+              self.userData.userName = self.user3.userName
+              
+              print("self.userData.emojiPlusName \(self.userData.emojiPlusName)")
+              print("self.userData.oldscore \(self.userData.oldscore)")
+              print("self.userData.names \(self.userData.names)")
+              print("self.userData.emojis \(self.userData.emojis)")
+              print("self.userData.editMode \(self.userData.editMode)")
+              print("self.userData.showEmoji \(self.userData.showEmoji)")
+              print("self.userData.playerID \(self.userData.playerID)")
+              print("self.userData.maxPlayerID \(self.userData.maxPlayerID)")
+              print("self.userData.selectedName \(self.userData.selectedName)")
+              print("self.userData.addPlayerOneName \(self.userData.addPlayerOneName)")
+              print("self.userData.addPlayerOneEmoji \(self.userData.addPlayerOneEmoji)")
+              print("self.userData.addPlayerTwoName \(self.userData.addPlayerTwoName)")
+              print("self.userData.addPlayerTwoEmoji \(self.userData.addPlayerTwoEmoji)")
+              print("self.userData.betWinnerName \(self.userData.betWinnerName)")
+              print("self.userData.deleteMode \(self.userData.deleteMode)")
+              print("self.userData.onboardingStage \(self.userData.onboardingStage)")
+              print("self.userData.userEmoji \(self.userData.userEmoji)")
+              print("self.userData.userName \(self.userData.userName)")
+              
               
             }) {
               Text("Confirm")
@@ -116,22 +168,11 @@ struct OnboardingStage3: View {
               Alert in
               return Alert(title: Text("Players info saved!"), message: Text("You set your name to be \(self.userData.addPlayerOneName), with emoji \(self.userData.addPlayerOneEmoji). You set opponent's name to be  \(self.userData.addPlayerTwoName), with emoji \(self.userData.addPlayerTwoEmoji)."), dismissButton: Alert.Button.default(Text("Ok"))
               {
-                self.nameAndScore.playerOneName = self.userData.addPlayerOneName
-                print("playerOneName \(self.nameAndScore.playerOneName ?? "999")")
-                self.nameAndScore.playerTwoName = self.userData.addPlayerTwoName
-                print("playerTwoName \(self.nameAndScore.playerTwoName ?? "666")")
-                self.nameAndScore.playerOneEmoji = self.userData.addPlayerOneEmoji
-                self.nameAndScore.playerTwoEmoji = self.userData.addPlayerTwoEmoji
-                self.nameAndScore.PlayerOneScore = 0
-                self.nameAndScore.PlayerTwoScore = 0
-                self.userData.playerID = String(self.userData.maxPlayerID)
-                
                 self.userData.addPlayerOneName = ""
                 self.userData.addPlayerTwoName = ""
                 self.userData.addPlayerOneEmoji = ""
                 self.userData.addPlayerTwoEmoji = ""
                 self.viewRouter.currentPage = "tabBarView"
-//                self.appState.selectedTab = .home
                 }
               )
              

@@ -22,6 +22,7 @@ class BaseUserRepository {
 protocol UserRepository: BaseUserRepository {
   func saveData(user3: UserRecord)
   func updateData(user: UserRecord)
+  func getUserData() -> String
 }
 
 class UserLoader: BaseUserRepository, UserRepository, ObservableObject {
@@ -44,6 +45,7 @@ class UserLoader: BaseUserRepository, UserRepository, ObservableObject {
       }
       self.user = documents.map {(queryDocumentSnapshot) -> UserRecord in
         let data = queryDocumentSnapshot.data()
+        
         let id = data["id"] as? String ?? "no id"
         let userId = data["userId"] as? String ?? "no userID"
         let userEmoji = data["userEmoji"] as? String ?? "no userEmoji"
@@ -59,10 +61,19 @@ class UserLoader: BaseUserRepository, UserRepository, ObservableObject {
                   userName: userName,
                   userCreateTime: userCreateTime
         )
+       // print("abc info load \(abc)")
         return abc
         
       }.sorted(by: { $0.userCreateTime! >= $1.userCreateTime!})
     }
+
+  }
+
+  func getUserData() -> String {
+    let emojiSet = Set<String>(self.user.map{$0.userEmoji})
+    print("emojiSet \(emojiSet)")
+    return emojiSet.first ?? "NA"
+   
   }
 
 

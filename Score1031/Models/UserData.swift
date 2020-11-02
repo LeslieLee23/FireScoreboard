@@ -11,13 +11,13 @@ import Combine
 
 class UserData: ObservableObject {
   
-  @Published var emojiPlusName: [String] = UserDefaults.standard.stringArray(forKey: "emojiPlusName") ?? ["A", "B"] {
+  @Published var emojiPlusName: [String] = UserDefaults.standard.stringArray(forKey: "emojiPlusName") ?? ["Aa", "Bb"] {
     didSet {
       UserDefaults.standard.set(self.emojiPlusName, forKey: "emojiPlusName")
     }
   }
   
-  @Published var oldscore: [String] = UserDefaults.standard.stringArray(forKey: "oldscore") ?? ["A", "B"] {
+  @Published var oldscore: [String] = UserDefaults.standard.stringArray(forKey: "oldscore") ?? ["0", "0"] {
     didSet {
       UserDefaults.standard.set(self.oldscore, forKey: "oldscore")
     }
@@ -106,5 +106,18 @@ class UserData: ObservableObject {
       UserDefaults.standard.set(self.onboardingStage, forKey: "onboardingStage")
     }
   }
+  
+  @Published var userEmoji = UserDefaults.standard.string(forKey: "userEmoji")  {
+    didSet {
+      UserDefaults.standard.set(self.userEmoji, forKey: "userEmoji")
+    }
+  }
+  
+  @Published var userName = UserDefaults.standard.string(forKey: "userName") ?? "Default Name" {
+    didSet {
+      UserDefaults.standard.set(self.userName, forKey: "userName")
+    }
+  }
+
   
 }
