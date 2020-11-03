@@ -11,7 +11,7 @@ import SwiftUI
 struct OnboardingStage4: View {
     var body: some View {
       VStack {
-        LoginView()
+        SignInView()
       }
     }
 }

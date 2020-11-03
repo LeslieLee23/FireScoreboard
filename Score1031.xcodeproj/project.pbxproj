@@ -46,6 +46,8 @@
 		F56F88B3251BEBF000FD3CF7 /* NeupbuttonText.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56F88B2251BEBF000FD3CF7 /* NeupbuttonText.swift */; };
 		F577601C253BF97C00D978AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F577601B253BF97C00D978AB /* LaunchScreen.storyboard */; };
 		F5776DC825141DA50017858D /* PastBetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5776DC725141DA50017858D /* PastBetView.swift */; };
+		F5808F2825511DF400D7230A /* SigninWithAppleCoodinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5808F2725511DF400D7230A /* SigninWithAppleCoodinator.swift */; };
+		F5808F2A25511E7C00D7230A /* SigninWithAppleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5808F2925511E7C00D7230A /* SigninWithAppleButton.swift */; };
 		F59129502420368F0071E1D3 /* SelectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F591294F2420368F0071E1D3 /* SelectViewModel.swift */; };
 		F5BA924724E75A6900CA3519 /* EditModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BA924624E75A6900CA3519 /* EditModeView.swift */; };
 		F5CD3140250DD30F00B67510 /* BetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CD313F250DD30F00B67510 /* BetViewModel.swift */; };
@@ -116,6 +118,8 @@
 		F56F88B2251BEBF000FD3CF7 /* NeupbuttonText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeupbuttonText.swift; sourceTree = "<group>"; };
 		F577601B253BF97C00D978AB /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F5776DC725141DA50017858D /* PastBetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastBetView.swift; sourceTree = "<group>"; };
+		F5808F2725511DF400D7230A /* SigninWithAppleCoodinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninWithAppleCoodinator.swift; sourceTree = "<group>"; };
+		F5808F2925511E7C00D7230A /* SigninWithAppleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninWithAppleButton.swift; sourceTree = "<group>"; };
 		F591294F2420368F0071E1D3 /* SelectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectViewModel.swift; sourceTree = "<group>"; };
 		F5BA924624E75A6900CA3519 /* EditModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditModeView.swift; sourceTree = "<group>"; };
 		F5CD313F250DD30F00B67510 /* BetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetViewModel.swift; sourceTree = "<group>"; };
@@ -173,6 +177,7 @@
 				F5441EB524F701BB00F8DBDF /* Neumorphic.swift */,
 				F569E06A254A81FE00C3974C /* ViewRouter.swift */,
 				F55AFE48254E44CD0024D36E /* UserRecord.swift */,
+				F5808F2725511DF400D7230A /* SigninWithAppleCoodinator.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -284,6 +289,7 @@
 				F569E06E254BD84A00C3974C /* OnboardingStage2.swift */,
 				F569E070254BDC7F00C3974C /* OnboardingStage3.swift */,
 				F569E072254BDF7200C3974C /* OnboardingStage4.swift */,
+				F5808F2925511E7C00D7230A /* SigninWithAppleButton.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -308,7 +314,6 @@
 				F53BDFCA236B44CC00C3E203 /* Resources */,
 				F5EAA41E2511CEC000584E86 /* Embed Frameworks */,
 				B50CCFD75DAE7D9D07340EED /* [CP] Embed Pods Frameworks */,
-				CD16FA78DF5ED915828D6F38 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -407,23 +412,6 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Score1031/Pods-Score1031-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		CD16FA78DF5ED915828D6F38 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Score1031/Pods-Score1031-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Score1031/Pods-Score1031-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Score1031/Pods-Score1031-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -451,6 +439,7 @@
 				F59129502420368F0071E1D3 /* SelectViewModel.swift in Sources */,
 				F5CD3142250EB6B500B67510 /* BetAssignResultView.swift in Sources */,
 				F51C7A3623D4EB6300540B25 /* NameAndScore.swift in Sources */,
+				F5808F2A25511E7C00D7230A /* SigninWithAppleButton.swift in Sources */,
 				F500DA67250732BA003E60F3 /* AddBetView.swift in Sources */,
 				F5BA924724E75A6900CA3519 /* EditModeView.swift in Sources */,
 				F56F88AB2517307C00FD3CF7 /* BetSnapView.swift in Sources */,
@@ -468,6 +457,7 @@
 				F50762E424B438AD00676F9C /* PlayersView.swift in Sources */,
 				F569E067254A7F7D00C3974C /* OnboardingView.swift in Sources */,
 				F55DABD824EF3B9B0078452F /* TabBarView.swift in Sources */,
+				F5808F2825511DF400D7230A /* SigninWithAppleCoodinator.swift in Sources */,
 				F5441EB624F701BB00F8DBDF /* Neumorphic.swift in Sources */,
 				F5CD3140250DD30F00B67510 /* BetViewModel.swift in Sources */,
 				F569E06B254A81FF00C3974C /* ViewRouter.swift in Sources */,

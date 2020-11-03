@@ -91,6 +91,10 @@ struct PlayersView: View {
                       self.nameAndScore.playerTwoEmoji = record.playerTwoEmoji
                       self.nameAndScore.PlayerOneScore = record.playerOneScore
                       self.nameAndScore.PlayerTwoScore = record.playerTwoScore
+                      self.userData.emojiPlusName = ["\(self.nameAndScore.playerOneEmoji!) \( self.nameAndScore.playerOneName!)","\( self.nameAndScore.playerTwoEmoji!) \( self.nameAndScore.playerTwoName!)"]
+                      self.userData.oldscore = ["\(self.nameAndScore.PlayerOneScore)", "\(self.nameAndScore.PlayerTwoScore)"]
+                      self.userData.names = [self.nameAndScore.playerOneName!, self.nameAndScore.playerTwoName!]
+                      self.userData.emojis = [self.nameAndScore.playerOneEmoji!, self.nameAndScore.playerTwoEmoji!]
                       self.appState.selectedTab = .home
                       
                     })
@@ -126,7 +130,7 @@ struct PlayersView: View {
                       )
                     }
                     
-                  }.border(Color.red)
+                  }//.border(Color.red)
                 }
               }
             }

@@ -8,16 +8,16 @@ target 'Score1031' do
   # Pods for Score1031
   
   pod 'Firebase'
-  pod 'FirebaseUI'
-  pod 'Firebase/Analytics'
+  # pod 'FirebaseUI'
+  # pod 'Firebase/Analytics'
   pod 'Firebase/Firestore'
   pod 'FirebaseFirestoreSwift'
   pod 'Firebase/Core'
   pod 'Firebase/Database'
   pod 'Firebase/Auth'
 
-  pod 'FirebaseUI/Auth'
-  pod 'FirebaseUI/OAuth' 
+  # pod 'FirebaseUI/Auth'
+  # pod 'FirebaseUI/OAuth' 
 
 
 end

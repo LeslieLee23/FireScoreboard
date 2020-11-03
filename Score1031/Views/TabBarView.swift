@@ -17,7 +17,9 @@ struct TabBarView: View {
   @ObservedObject var betLoader = BetLoader()
   @ObservedObject var apiLoader = APILoader()
   @EnvironmentObject var obj : observed
-  var userData = UserData()
+  @EnvironmentObject var nameAndScore: NameAndScore
+  @EnvironmentObject var addScoreFunc: AddScoreFunc
+  @EnvironmentObject var userData: UserData
   
   init() {
     UITabBar.appearance().barTintColor = UIColor.offWhite01
@@ -129,7 +131,7 @@ struct TabBarView: View {
       .tag(Tab.AddNewPlayerView)
     }
     .onAppear() {
-      self.apiLoader.fetchData()
+//      self.apiLoader.fetchData()
 
       self.appState.selectedTab = .home
       
@@ -138,10 +140,10 @@ struct TabBarView: View {
       print("playerID \(self.userData.playerID)")
     
     }
-    .accentColor(Color.darkPurple)
-    .environmentObject(userData)
-    .environmentObject(appState)
-    .environmentObject(obj)
+//    .accentColor(Color.darkPurple)
+//    .environmentObject(userData)
+//    .environmentObject(appState)
+//    .environmentObject(obj)
     
   }
 }

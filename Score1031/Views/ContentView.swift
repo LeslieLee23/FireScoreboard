@@ -11,7 +11,7 @@ import SwiftUI
 import Combine
 import UIKit
 import Firebase
-import FirebaseUI
+//import FirebaseUI
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 
@@ -276,8 +276,8 @@ struct ContentView: View {
         endEditing()
       }
       .sheet(isPresented: $showSignInForm) {
-        LoginView()
-    //    SignInView()
+    //    LoginView()
+        SignInView()
    //     FirebaseUILoginView()
       }
       .navigationBarTitle("")
