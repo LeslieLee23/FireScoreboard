@@ -140,7 +140,7 @@ struct TabBarView: View {
       print("playerID \(self.userData.playerID)")
     
     }
-//    .accentColor(Color.darkPurple)
+    .accentColor(Color.darkPurple)
 //    .environmentObject(userData)
 //    .environmentObject(appState)
 //    .environmentObject(obj)

@@ -112,12 +112,12 @@ struct EditModeView: View {
             reason: self.reason,
             selectedName: self.userData.selectedName)
           
-          self.nameAndScore.playerOneEmoji = self.records3.playerOneEmoji
-          self.nameAndScore.playerTwoEmoji = self.records3.playerTwoEmoji
-          self.nameAndScore.playerOneName = self.records3.playerOneName
-          self.nameAndScore.playerTwoName = self.records3.playerTwoName
-          self.nameAndScore.PlayerOneScore = self.records3.playerOneScore
-          self.nameAndScore.PlayerTwoScore = self.records3.playerTwoScore
+            self.nameAndScore.playerOneEmoji = self.records3.playerOneEmoji
+            self.nameAndScore.playerTwoEmoji = self.records3.playerTwoEmoji
+            self.nameAndScore.playerOneName = self.records3.playerOneName
+            self.nameAndScore.playerTwoName = self.records3.playerTwoName
+            self.nameAndScore.PlayerOneScore = self.records3.playerOneScore
+            self.nameAndScore.PlayerTwoScore = self.records3.playerTwoScore
           
           self.apiLoader.saveData(record3: self.records3)
         }) {
@@ -134,6 +134,16 @@ struct EditModeView: View {
             {
               self.userData.editMode = false
               self.userData.selectedName = 5
+            
+           
+            
+            self.userData.emojiPlusName  = ["\(self.nameAndScore.playerOneEmoji!) \( self.nameAndScore.playerOneName!)","\( self.nameAndScore.playerTwoEmoji!) \( self.nameAndScore.playerTwoName!)"]
+            print("self.userData.emojiPlusName ???\(self.userData.emojiPlusName)")
+            self.userData.oldscore = ["\(self.nameAndScore.PlayerOneScore)", "\(self.nameAndScore.PlayerTwoScore)"]
+
+            self.userData.emojis = [self.nameAndScore.playerOneEmoji!, self.nameAndScore.playerTwoEmoji!]
+            print("\(self.userData.emojis)")
+            self.userData.names = [self.nameAndScore.playerOneName!, self.nameAndScore.playerTwoName!]
             }
           )
         }
