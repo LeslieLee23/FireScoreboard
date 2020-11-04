@@ -17,7 +17,7 @@ struct AddBetView: View {
   @State var selectedNameString = ""
   @State var pointGrammar = "points"
   @State var showAlert = false
-  @EnvironmentObject var nameAndScore: NameAndScore
+  
   @EnvironmentObject var addBetFunc: AddBetFunc
   @EnvironmentObject var userData: UserData
   @ObservedObject private var betLoader = BetLoader()
@@ -141,7 +141,7 @@ struct AddBetView: View {
 struct AddBetView_Previews: PreviewProvider {
   static var previews: some View {
     AddBetView()
-      .environmentObject(NameAndScore())
+      
       .environmentObject(UserData())
       .environmentObject(AddScoreFunc())
       .environmentObject(AppState())

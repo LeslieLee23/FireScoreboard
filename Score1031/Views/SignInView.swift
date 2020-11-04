@@ -63,7 +63,7 @@ struct SignInView_Previews: PreviewProvider {
 //      }.offset(y: self.MainviewState.height).animation(.spring())
 //      ContentView()
 //        .environmentObject(UserData())
-//        .environmentObject(NameAndScore())
+//        
 //        .environmentObject(AddScoreFunc())
 //        .environmentObject(AddBetFunc())
 //        .environmentObject(AppState())

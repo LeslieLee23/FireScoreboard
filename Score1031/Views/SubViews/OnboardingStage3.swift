@@ -18,7 +18,7 @@ struct OnboardingStage3: View {
   @State var id = ""
   @State var showAlert = false
   
-  @EnvironmentObject var nameAndScore: NameAndScore
+  
   @EnvironmentObject var userData: UserData
   @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
   @EnvironmentObject var appState: AppState
@@ -104,27 +104,16 @@ struct OnboardingStage3: View {
               self.user3.userEmoji = self.userData.addPlayerOneEmoji
               self.user3.userName = self.userData.addPlayerOneName
               self.user3.userCreateTime = Date()
-              
-              
+                
               self.userLoader.saveData(user3: self.user3)
               
-              //nameAndScore initalization
-              self.nameAndScore.playerOneName = self.userData.addPlayerOneName
-              print("!!!!!!!playerOneName \(self.nameAndScore.playerOneName ?? "999")")
-              self.nameAndScore.playerTwoName = self.userData.addPlayerTwoName
-              print("playerTwoName \(self.nameAndScore.playerTwoName ?? "666")")
-              self.nameAndScore.playerOneEmoji = self.userData.addPlayerOneEmoji
-              self.nameAndScore.playerTwoEmoji = self.userData.addPlayerTwoEmoji
-              self.nameAndScore.PlayerOneScore = 0
-              self.nameAndScore.PlayerTwoScore = 0
               
               //UserData initalization
-              self.userData.emojiPlusName = ["\(self.nameAndScore.playerOneEmoji!) \( self.nameAndScore.playerOneName!)","\( self.nameAndScore.playerTwoEmoji!) \( self.nameAndScore.playerTwoName!)"]
-              self.userData.oldscore = ["\(self.nameAndScore.PlayerOneScore)", "\(self.nameAndScore.PlayerTwoScore)"]
-              self.userData.names = [self.nameAndScore.playerOneName!, self.nameAndScore.playerTwoName!]
-              self.userData.emojis = [self.nameAndScore.playerOneEmoji!, self.nameAndScore.playerTwoEmoji!]
+              self.userData.emojiPlusName = ["\(self.userData.addPlayerOneEmoji) \( self.userData.addPlayerOneName)","\( self.userData.addPlayerTwoEmoji) \( self.userData.addPlayerTwoName)"]
+              self.userData.oldscore = ["0", "0"]
+              self.userData.names = [self.userData.addPlayerOneName, self.userData.addPlayerTwoName]
+              self.userData.emojis = [self.userData.addPlayerOneEmoji, self.userData.addPlayerTwoEmoji]
               self.userData.showEmoji = true
-              
               self.userData.userEmoji = self.user3.userEmoji
               self.userData.userName = self.user3.userName
               
@@ -147,12 +136,6 @@ struct OnboardingStage3: View {
               print("self.userData.userEmoji \(self.userData.userEmoji)")
               print("self.userData.userName \(self.userData.userName)")
               
-              print("self.nameAndScore.PlayerOneScore \(self.nameAndScore.PlayerOneScore)")
-              print("self.nameAndScore.PlayerTwoScore \(self.nameAndScore.PlayerTwoScore)")
-              print("self.nameAndScore.playerOneName \(self.nameAndScore.playerOneName)")
-              print("self.nameAndScore.playerTwoName \(self.nameAndScore.playerTwoName)")
-              print("self.nameAndScore.playerOneEmoji \(self.nameAndScore.playerOneEmoji)")
-              print("self.nameAndScore.playerTwoEmoji \(self.nameAndScore.playerTwoEmoji)")
             }) {
               Text("Confirm")
             }

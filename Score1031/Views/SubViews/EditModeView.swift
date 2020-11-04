@@ -18,7 +18,7 @@ struct EditModeView: View {
   @State var pointGrammar = "points"
   @State var action = "added"
   @State var showAlert = false
-  @EnvironmentObject var nameAndScore: NameAndScore
+  
   @EnvironmentObject var addScoreFunc: AddScoreFunc
   @EnvironmentObject var userData: UserData
   @ObservedObject private var apiLoader = APILoader()
@@ -112,14 +112,12 @@ struct EditModeView: View {
             reason: self.reason,
             selectedName: self.userData.selectedName)
           
-            self.nameAndScore.playerOneEmoji = self.records3.playerOneEmoji
-            self.nameAndScore.playerTwoEmoji = self.records3.playerTwoEmoji
-            self.nameAndScore.playerOneName = self.records3.playerOneName
-            self.nameAndScore.playerTwoName = self.records3.playerTwoName
-            self.nameAndScore.PlayerOneScore = self.records3.playerOneScore
-            self.nameAndScore.PlayerTwoScore = self.records3.playerTwoScore
-          
           self.apiLoader.saveData(record3: self.records3)
+            
+             self.userData.emojiPlusName  = ["\(self.records3.playerOneEmoji) \( self.records3.playerOneName)","\( self.records3.playerTwoEmoji) \( self.records3.playerTwoName)"]
+             self.userData.oldscore = ["\(self.records3.playerOneScore)", "\(self.records3.playerTwoScore)"]
+             self.userData.emojis = [self.records3.playerOneEmoji, self.records3.playerTwoEmoji]
+             self.userData.names = [self.records3.playerOneName, self.records3.playerTwoName]
         }) {
           Text("Confirm")
         }
@@ -135,15 +133,7 @@ struct EditModeView: View {
               self.userData.editMode = false
               self.userData.selectedName = 5
             
-           
-            
-            self.userData.emojiPlusName  = ["\(self.nameAndScore.playerOneEmoji!) \( self.nameAndScore.playerOneName!)","\( self.nameAndScore.playerTwoEmoji!) \( self.nameAndScore.playerTwoName!)"]
-            print("self.userData.emojiPlusName ???\(self.userData.emojiPlusName)")
-            self.userData.oldscore = ["\(self.nameAndScore.PlayerOneScore)", "\(self.nameAndScore.PlayerTwoScore)"]
-
-            self.userData.emojis = [self.nameAndScore.playerOneEmoji!, self.nameAndScore.playerTwoEmoji!]
-            print("\(self.userData.emojis)")
-            self.userData.names = [self.nameAndScore.playerOneName!, self.nameAndScore.playerTwoName!]
+          
             }
           )
         }
@@ -157,7 +147,7 @@ struct EditModeView: View {
 struct EditModeView_Previews: PreviewProvider {
   static var previews: some View {
     EditModeView()
-    .environmentObject(NameAndScore())
+    
     .environmentObject(UserData())
     .environmentObject(AddScoreFunc())
     .environmentObject(AppState())

@@ -27,7 +27,7 @@ struct ContentView: View {
   @State var pointGrammar = "points"
   @State var showAlert = false
   @State var userIcon = "SignIn"
-  @EnvironmentObject var nameAndScore: NameAndScore
+  
   @EnvironmentObject var addScoreFunc: AddScoreFunc
   @EnvironmentObject var userData: UserData
   @ObservedObject private var apiLoader = APILoader()
@@ -165,14 +165,14 @@ struct ContentView: View {
               ///Score row (60)
               HStack {
                 VStack() {
-                  Text("\(self.nameAndScore.PlayerOneScore)")
+                  Text("\(self.userData.oldscore[0])")
                     .font(.system(size: 50))
                     .foregroundColor(self.userData.editMode ? .offGray00 : .offblack03)
                 }
                 .frame(width: appState.ScoreRowWidth, height: appState.ScoreRowHeight, alignment: .center)
                 
                 VStack() {
-                  Text("\(self.nameAndScore.PlayerTwoScore)")
+                  Text("\(self.userData.oldscore[1])")
                     .font(.system(size: 50))
                     .foregroundColor(self.userData.editMode ? .offGray00 : .offblack03)
                 }
@@ -198,13 +198,13 @@ struct ContentView: View {
                 if self.userData.showEmoji == true {
                   HStack {
                     VStack{
-                      Text(self.nameAndScore.playerOneEmoji ?? "🦧")
+                      Text(self.userData.emojis[0])
                         .font(.system(size: 55))
                         .transition(.scale(scale: 5))
                     }
                     .frame(width: appState.ScoreRowWidth, height: appState.NameEmojiRowHeight, alignment: .center)
                     VStack{
-                      Text(self.nameAndScore.playerTwoEmoji ?? "👨🏻")
+                      Text(self.userData.emojis[1])
                         .font(.system(size: 55))
                     }
                     .frame(width: appState.ScoreRowWidth, height: appState.NameEmojiRowHeight, alignment: .center)
@@ -214,13 +214,13 @@ struct ContentView: View {
                 } else {
                   HStack {
                     VStack{
-                      Text(self.nameAndScore.playerOneName ?? "Miu")
+                      Text(self.userData.names[0])
                         .font(.system(size: 28))
                         .foregroundColor(.offblack03)
                     }
                     .frame(width: appState.ScoreRowWidth - 3, height: appState.NameEmojiRowHeight, alignment: .center)
                     VStack{
-                      Text(self.nameAndScore.playerTwoName ?? "Whof")
+                      Text(self.userData.names[1])
                         .font(.system(size: 28))
                         .foregroundColor(.offblack03)
                     }
@@ -281,16 +281,16 @@ struct ContentView: View {
     .onAppear() {
       self.userData.editMode = false
       self.userData.selectedName = 5
-      if self.nameAndScore.playerTwoName == nil {
-        self.nameAndScore.PlayerTwoScore = 0
-        self.nameAndScore.PlayerOneScore = 0
-        self.nameAndScore.playerTwoName = "Player Two"
-        self.nameAndScore.playerOneName = "Player One"
-        self.nameAndScore.playerOneEmoji = "🌋"
-        self.nameAndScore.playerTwoEmoji = "👨🏻"
-        self.userData.playerID = "0"
-        self.userData.selectedName = 5
-      }
+//      if self.nameAndScore.playerTwoName == nil {
+//        self.nameAndScore.PlayerTwoScore = 0
+//        self.nameAndScore.PlayerOneScore = 0
+//        self.nameAndScore.playerTwoName = "Player Two"
+//        self.nameAndScore.playerOneName = "Player One"
+//        self.nameAndScore.playerOneEmoji = "🌋"
+//        self.nameAndScore.playerTwoEmoji = "👨🏻"
+//        self.userData.playerID = "0"
+//        self.userData.selectedName = 5
+//      }
       
       self.apiLoader.fetchData()
       self.betLoader.fetchBetData()
@@ -316,12 +316,6 @@ struct ContentView: View {
       print("self.userData.userEmoji \(self.userData.userEmoji)")
       print("self.userData.userName \(self.userData.userName)")
       
-      print("self.nameAndScore.PlayerOneScore \(self.nameAndScore.PlayerOneScore)")
-      print("self.nameAndScore.PlayerTwoScore \(self.nameAndScore.PlayerTwoScore)")
-      print("self.nameAndScore.playerOneName \(self.nameAndScore.playerOneName)")
-      print("self.nameAndScore.playerTwoName \(self.nameAndScore.playerTwoName)")
-      print("self.nameAndScore.playerOneEmoji \(self.nameAndScore.playerOneEmoji)")
-      print("self.nameAndScore.playerTwoEmoji \(self.nameAndScore.playerTwoEmoji)")
     }
   }
 }
@@ -332,7 +326,7 @@ struct ContentView_Previews: PreviewProvider {
         .previewDevice(PreviewDevice(rawValue: deviceName))
         .previewDisplayName(deviceName)
     }
-    .environmentObject(NameAndScore())
+    
     .environmentObject(UserData())
     .environmentObject(AddScoreFunc())
     .environmentObject(AppState())

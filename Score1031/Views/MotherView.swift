@@ -23,7 +23,7 @@ struct MotherView : View {
             } else if viewRouter.currentPage == "tabBarView" {
               TabBarView()
                 .environmentObject(ViewRouter())
-                .environmentObject(NameAndScore())
+                
                 .environmentObject(UserData())
                 .environmentObject(AddScoreFunc())
                 .environmentObject(appState)

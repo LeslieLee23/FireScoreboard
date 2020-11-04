@@ -12,7 +12,7 @@ struct BetAssignResultView: View {
   @ObservedObject private var apiLoader = APILoader()
   @ObservedObject var betLoader = BetLoader()
   @State private var records3 = APILoader().records3
-  @EnvironmentObject private var nameAndScore: NameAndScore
+  
   @EnvironmentObject var userData: UserData
   @EnvironmentObject var addScoreFunc: AddScoreFunc
   @EnvironmentObject var appState: AppState
@@ -104,13 +104,7 @@ struct BetAssignResultView: View {
           Button(action: {
             self.showAlert = true
             self.userData.editMode = false
-            self.userData.emojiPlusName  = ["\(self.nameAndScore.playerOneEmoji!) \( self.nameAndScore.playerOneName!)","\( self.nameAndScore.playerTwoEmoji!) \( self.nameAndScore.playerTwoName!)"]
-            print("\(self.userData.emojiPlusName)")
-            self.userData.oldscore = ["\(self.nameAndScore.PlayerOneScore)", "\(self.nameAndScore.PlayerTwoScore)"]
-            print("\(self.userData.emojis)")
-            self.userData.emojis = [self.nameAndScore.playerOneEmoji!, self.nameAndScore.playerTwoEmoji!]
-            self.userData.names = [self.nameAndScore.playerOneName!, self.nameAndScore.playerTwoName!]
-            
+
             if self.userData.selectedName == 0 {
               self.bets3.winnerName = self.userData.emojiPlusName[0]
               self.bets3.winnerNameStr = self.userData.names[0]
@@ -146,8 +140,8 @@ struct BetAssignResultView: View {
                 reason: "Won the bet: \(self.bets3.betDescription)",
                 selectedName: self.userData.selectedName)
               
-              self.nameAndScore.PlayerOneScore = self.records3.playerOneScore
-              self.nameAndScore.PlayerTwoScore = self.records3.playerTwoScore
+              self.userData.oldscore[0] = String(self.records3.playerOneScore)
+              self.userData.oldscore[1] = String(self.records3.playerTwoScore)
               
               self.apiLoader.saveData(record3: self.records3)
               

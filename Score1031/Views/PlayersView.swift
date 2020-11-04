@@ -10,7 +10,7 @@ import SwiftUI
 
 struct PlayersView: View {
   
-  @EnvironmentObject var nameAndScore: NameAndScore
+  
   @EnvironmentObject var userData: UserData
   @EnvironmentObject var appState: AppState
   @ObservedObject private var apiLoader = APILoader()
@@ -85,16 +85,12 @@ struct PlayersView: View {
                   VStack(alignment: .trailing) {
                     Button(action: {
                       self.userData.playerID = record.playerID
-                      self.nameAndScore.playerOneName = record.playerOneName
-                      self.nameAndScore.playerTwoName = record.playerTwoName
-                      self.nameAndScore.playerOneEmoji = record.playerOneEmoji
-                      self.nameAndScore.playerTwoEmoji = record.playerTwoEmoji
-                      self.nameAndScore.PlayerOneScore = record.playerOneScore
-                      self.nameAndScore.PlayerTwoScore = record.playerTwoScore
-                      self.userData.emojiPlusName = ["\(self.nameAndScore.playerOneEmoji!) \( self.nameAndScore.playerOneName!)","\( self.nameAndScore.playerTwoEmoji!) \( self.nameAndScore.playerTwoName!)"]
-                      self.userData.oldscore = ["\(self.nameAndScore.PlayerOneScore)", "\(self.nameAndScore.PlayerTwoScore)"]
-                      self.userData.names = [self.nameAndScore.playerOneName!, self.nameAndScore.playerTwoName!]
-                      self.userData.emojis = [self.nameAndScore.playerOneEmoji!, self.nameAndScore.playerTwoEmoji!]
+                        
+                      self.userData.emojiPlusName  = ["\(record.playerOneEmoji) \( record.playerOneName)","\( record.playerTwoEmoji) \( record.playerTwoName)"]
+                      self.userData.oldscore = ["\(record.playerOneScore)", "\(record.playerTwoScore)"]
+                      self.userData.emojis = [record.playerOneEmoji, record.playerTwoEmoji]
+                      self.userData.names = [record.playerOneName, record.playerTwoName]
+                        
                       self.appState.selectedTab = .home
                       
                     })

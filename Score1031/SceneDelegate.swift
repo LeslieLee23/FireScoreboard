@@ -25,7 +25,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let obj = observed()
       
         let contentView = TabBarView()
-            .environmentObject(NameAndScore())
+
             .environmentObject(UserData())
             .environmentObject(AddScoreFunc())
             .environmentObject(appState)

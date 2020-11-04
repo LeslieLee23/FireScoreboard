@@ -19,7 +19,7 @@ struct AddNewPlayerView: View {
   @State var id = ""
   @State var showAlert = false
   
-  @EnvironmentObject var nameAndScore: NameAndScore
+  
   @EnvironmentObject var userData: UserData
   @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
   @EnvironmentObject var appState: AppState
@@ -96,6 +96,14 @@ struct AddNewPlayerView: View {
               self.records3.recordNameEmo = self.userData.addPlayerTwoEmoji
               
               self.apiLoader.saveData(record3: self.records3)
+                
+                //UserData initalization
+              self.userData.emojiPlusName = ["\(self.userData.addPlayerOneEmoji) \( self.userData.addPlayerOneName)","\( self.userData.addPlayerTwoEmoji) \( self.userData.addPlayerTwoName)"]
+              self.userData.oldscore = ["0", "0"]
+              self.userData.names = [self.userData.addPlayerOneName, self.userData.addPlayerTwoName]
+              self.userData.emojis = [self.userData.addPlayerOneEmoji, self.userData.addPlayerTwoEmoji]
+              self.userData.showEmoji = true
+            
               
             }) {
               Text("Confirm")
@@ -117,25 +125,13 @@ struct AddNewPlayerView: View {
               Alert in
               return Alert(title: Text("Player Changed!"), message: Text("You changed player one to \(self.userData.addPlayerOneName), with emoji \(self.userData.addPlayerOneEmoji). You changed player two to \(self.userData.addPlayerTwoName), with emoji \(self.userData.addPlayerTwoEmoji)."), dismissButton: Alert.Button.default(Text("Ok"))
               {
-                self.nameAndScore.playerOneName = self.userData.addPlayerOneName
-                print("playerOneName \(self.nameAndScore.playerOneName ?? "999")")
-                self.nameAndScore.playerTwoName = self.userData.addPlayerTwoName
-                print("playerTwoName \(self.nameAndScore.playerTwoName ?? "666")")
-                self.nameAndScore.playerOneEmoji = self.userData.addPlayerOneEmoji
-                self.nameAndScore.playerTwoEmoji = self.userData.addPlayerTwoEmoji
-                self.nameAndScore.PlayerOneScore = 0
-                self.nameAndScore.PlayerTwoScore = 0
                 self.userData.playerID = String(self.userData.maxPlayerID)
                 
                 self.userData.addPlayerOneName = ""
                 self.userData.addPlayerTwoName = ""
                 self.userData.addPlayerOneEmoji = ""
                 self.userData.addPlayerTwoEmoji = ""
-                self.userData.emojiPlusName = ["\(self.nameAndScore.playerOneEmoji!) \( self.nameAndScore.playerOneName!)","\( self.nameAndScore.playerTwoEmoji!) \( self.nameAndScore.playerTwoName!)"]
-                self.userData.oldscore = ["\(self.nameAndScore.PlayerOneScore)", "\(self.nameAndScore.PlayerTwoScore)"]
-                self.userData.names = [self.nameAndScore.playerOneName!, self.nameAndScore.playerTwoName!]
-                self.userData.emojis = [self.nameAndScore.playerOneEmoji!, self.nameAndScore.playerTwoEmoji!]
-           //     self.presentationMode.wrappedValue.dismiss()
+    
                 self.appState.selectedTab = .home
                 }
               )

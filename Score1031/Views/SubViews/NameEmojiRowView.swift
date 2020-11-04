@@ -10,7 +10,7 @@ import SwiftUI
 
 struct NameEmojiRowView: View {
   
-  @EnvironmentObject private var nameAndScore: NameAndScore
+  
   @EnvironmentObject var userData: UserData
   @EnvironmentObject var appState: AppState
   
@@ -23,7 +23,7 @@ struct NameEmojiRowView: View {
             self.userData.selectedName = 0
             print("Set selectedName to \(self.userData.selectedName)")
           }) {
-            Text(self.nameAndScore.playerOneEmoji ?? "👩🏻")
+            Text(self.userData.emojis[0])
               .font(.system(size: 55))
           }
           .frame(width: appState.ScoreRowWidth, height: appState.NameEmojiRowHeight, alignment: .center)
@@ -33,7 +33,7 @@ struct NameEmojiRowView: View {
             self.userData.selectedName = 1
             print("Set selectedName to \(self.userData.selectedName)")
           }) {
-            Text(self.nameAndScore.playerTwoEmoji ?? "👨🏻")
+            Text(self.userData.emojis[1])
               .font(.system(size: 55))
           }
           .frame(width: appState.ScoreRowWidth, height: appState.NameEmojiRowHeight, alignment: .center)
@@ -51,7 +51,7 @@ struct NameEmojiRowView: View {
             self.userData.selectedName = 0
             print("Set selectedName to \(self.userData.selectedName)")
           }) {
-            Text(self.nameAndScore.playerOneName ?? "Miu")
+            Text(self.userData.names[0])
               .font(.system(size: 28))
           }
           .frame(width: appState.ScoreRowWidth, height: appState.NameEmojiRowHeight, alignment: .center)
@@ -60,7 +60,7 @@ struct NameEmojiRowView: View {
             self.userData.selectedName = 1
             print("Set selectedName to \(self.userData.selectedName)")
           }) {
-            Text(self.nameAndScore.playerTwoName ?? "Whof")
+            Text(self.userData.names[1])
               .font(.system(size: 28))
           }
           .frame(width: appState.ScoreRowWidth, height: appState.NameEmojiRowHeight, alignment: .center)

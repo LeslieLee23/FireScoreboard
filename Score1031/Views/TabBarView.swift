@@ -17,7 +17,7 @@ struct TabBarView: View {
   @ObservedObject var betLoader = BetLoader()
   @ObservedObject var apiLoader = APILoader()
   @EnvironmentObject var obj : observed
-  @EnvironmentObject var nameAndScore: NameAndScore
+  
   @EnvironmentObject var addScoreFunc: AddScoreFunc
   @EnvironmentObject var userData: UserData
   
@@ -155,7 +155,7 @@ struct TabBarView_Previews: PreviewProvider {
   static var previews: some View {
     TabBarView()
       .environmentObject(ViewRouter())
-      .environmentObject(NameAndScore())
+      
       .environmentObject(UserData())
       .environmentObject(AddScoreFunc())
       .environmentObject(AddBetFunc())
