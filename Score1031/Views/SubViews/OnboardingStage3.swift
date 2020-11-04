@@ -177,6 +177,8 @@ struct OnboardingStage3: View {
           Spacer()
  
         }
+      }.onTapGesture {
+        endEditing()
       }
     }
 }

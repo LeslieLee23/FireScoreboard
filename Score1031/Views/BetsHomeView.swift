@@ -45,7 +45,6 @@ struct BetsHomeView: View {
               VStack(alignment: .leading) {
               NavigationLink(destination: AddBetView()
                 .environmentObject(UserData())
-                ///adding this solved the obj error I have been getting on and off
                 .environmentObject(observed())
               ) {
                 Image(systemName: "plus.circle.fill")
@@ -112,7 +111,11 @@ struct BetsHomeView: View {
                   ForEach (betLoader.fetchOngoingBet(self.userData.playerID)) { bets3 in
                     if self.userData.deleteMode == false {
                       //Ongoing content in normal mode
-                      NavigationLink(destination: BetAssignResultView(bets3: bets3)) {
+                      NavigationLink(destination: BetAssignResultView(bets3: bets3)
+                      .environmentObject(UserData())
+                      .environmentObject(AppState())
+                      
+                      ) {
                         HStack(){
                           VStack{
                             BetViewModel(bets3: bets3)

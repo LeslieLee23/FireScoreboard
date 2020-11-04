@@ -83,6 +83,8 @@ struct BetAssignResultView: View {
             .foregroundColor(Color.offblack03)
             .padding(.bottom, 30)
         }
+        .frame(width: 340, height: 10, alignment: .center)
+      //  .border(Color.red)
         VStack {
           NameEmojiRowView()
         }.frame(width: 340, height: 125, alignment: .center)
