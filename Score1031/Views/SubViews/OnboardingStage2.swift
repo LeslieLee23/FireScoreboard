@@ -12,18 +12,25 @@ struct OnboardingStage2: View {
   @State var showSignInForm = false
   @EnvironmentObject var viewRouter: ViewRouter
   @EnvironmentObject var userData: UserData
+  @State var coordinator: SignInWithAppleCoordinator?
+    
     var body: some View {
       ZStack {
-        LinearGradient(gradient: Gradient(colors: [.mixedBlue, .mixedPurple]), startPoint: .topLeading, endPoint: .bottomTrailing)
+//        LinearGradient(gradient: Gradient(colors: [.mixedBlue, .mixedPurple]), startPoint: .topLeading, endPoint: .bottomTrailing)
         VStack{
-        Text("Hello, Wooooorld!")
+        Text("Welcome to EmojiScoreBoard!")
           
-          Button(action: {
-            print("self.userData.onboardingStage \(self.userData.onboardingStage)")
-            self.userData.onboardingStage = "4"
-          }) {
-            Text("Sign up / Sign in")
-          }
+            SignInWithAppleButton()
+              .frame(width: 260, height: 45)
+              .onTapGesture {
+                self.coordinator = SignInWithAppleCoordinator()
+                if let coordinator = self.coordinator {
+                coordinator.startSignInWithAppleFlow {
+                  print("You successfully signed in")
+                    self.userData.onboardingStage = "3"
+                }
+                }
+            }
           
           Button(action: {
             print("self.userData.onboardingStage \(self.userData.onboardingStage)")
@@ -31,6 +38,7 @@ struct OnboardingStage2: View {
           }) {
             Text("Sign in anonymously")
           }
+        Text("* You can sign in with Apple later")
         }
       }
     }

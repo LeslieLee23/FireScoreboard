@@ -135,6 +135,7 @@ class BetLoader: BaseBetRepository, BetRepository, ObservableObject {
     }
     
   }
+    
   func remove(id: String) -> Void {
     db.collection("bets").whereField("id", isEqualTo: id).getDocuments { (querySnapshot, error) in
       if error != nil {

@@ -11,7 +11,6 @@ import SwiftUI
 import Combine
 import UIKit
 import Firebase
-//import FirebaseUI
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 
@@ -92,23 +91,34 @@ struct ContentView: View {
             
             ///third button
             VStack(alignment: .trailing) {
-            Spacer()
-            Button(action: {
-              self.showSignInForm.toggle()
-
-            }) {
-             // Text(self.userIcon)
-              Text(self.userData.userEmoji ?? "Waa")
-           //   Image(systemName: "person.circle")
-              .font(Font.system(size: 20, weight: .regular))
-           //   .foregroundColor(self.userData.editMode ? Color.offGray02 : Color.darkPurple)
-            }
-            .padding(.trailing, 30)
-              Spacer()
-              Spacer()
-              Spacer()
-              Spacer()
-              
+                Spacer()
+                
+                if userData.userEmoji != nil {
+                    Button(action: {
+                        self.showSignInForm.toggle()
+                        
+                    }) {
+                        Text(self.userData.userEmoji ?? "")
+                            .font(Font.system(size: 20, weight: .regular))
+                    }
+                    .padding(.trailing, 30)
+                } else {
+                    Button(action: {
+                        self.showSignInForm.toggle()
+                        
+                    }) {
+                        Image(systemName: "person.circle")
+                            .font(Font.system(size: 20, weight: .regular))
+                    }
+                    .padding(.trailing, 30)
+                }
+                
+                
+                Spacer()
+                Spacer()
+                Spacer()
+                Spacer()
+                
             }///third button
             .frame(width: appState.screenWidth, height: appState.TitleRowHeight, alignment: .trailing)
             
@@ -271,7 +281,10 @@ struct ContentView: View {
       }
       .sheet(isPresented: $showSignInForm) {
     //    LoginView()
-        SignInView()
+    //    SignInView()
+        UserProfileView()
+            .environmentObject(AppState())
+            .environmentObject(UserData())
    //     FirebaseUILoginView()
       }
       .navigationBarTitle("")
@@ -281,16 +294,6 @@ struct ContentView: View {
     .onAppear() {
       self.userData.editMode = false
       self.userData.selectedName = 5
-//      if self.nameAndScore.playerTwoName == nil {
-//        self.nameAndScore.PlayerTwoScore = 0
-//        self.nameAndScore.PlayerOneScore = 0
-//        self.nameAndScore.playerTwoName = "Player Two"
-//        self.nameAndScore.playerOneName = "Player One"
-//        self.nameAndScore.playerOneEmoji = "🌋"
-//        self.nameAndScore.playerTwoEmoji = "👨🏻"
-//        self.userData.playerID = "0"
-//        self.userData.selectedName = 5
-//      }
       
       self.apiLoader.fetchData()
       self.betLoader.fetchBetData()

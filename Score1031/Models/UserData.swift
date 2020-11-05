@@ -11,7 +11,7 @@ import Combine
 
 class UserData: ObservableObject {
   
-  @Published var emojiPlusName: [String] = UserDefaults.standard.stringArray(forKey: "emojiPlusName") ?? ["Aa", "Bb"] {
+  @Published var emojiPlusName: [String] = UserDefaults.standard.stringArray(forKey: "emojiPlusName") ?? ["👩🏻 Player One", "👨🏻 Player Two"] {
     didSet {
       UserDefaults.standard.set(self.emojiPlusName, forKey: "emojiPlusName")
     }
@@ -23,13 +23,13 @@ class UserData: ObservableObject {
     }
   }
   
-  @Published var names: [String] = UserDefaults.standard.stringArray(forKey: "names") ?? ["A", "B"] {
+  @Published var names: [String] = UserDefaults.standard.stringArray(forKey: "names") ?? ["Player One", "Player Two"] {
     didSet {
       UserDefaults.standard.set(self.names, forKey: "names")
     }
   }
   
-  @Published var emojis: [String] = UserDefaults.standard.stringArray(forKey: "emojis") ?? ["A", "B"] {
+  @Published var emojis: [String] = UserDefaults.standard.stringArray(forKey: "emojis") ?? ["👩🏻", "👨🏻"] {
     didSet {
       UserDefaults.standard.set(self.emojis, forKey: "emojis")
     }
@@ -107,17 +107,34 @@ class UserData: ObservableObject {
     }
   }
   
-  @Published var userEmoji = UserDefaults.standard.string(forKey: "userEmoji")  {
+  @Published var userEmoji = UserDefaults.standard.string(forKey: "userEmoji") {
     didSet {
       UserDefaults.standard.set(self.userEmoji, forKey: "userEmoji")
     }
   }
   
-  @Published var userName = UserDefaults.standard.string(forKey: "userName") ?? "Default Name" {
+  @Published var userName = UserDefaults.standard.string(forKey: "userName") ?? "Anonymous" {
     didSet {
       UserDefaults.standard.set(self.userName, forKey: "userName")
     }
   }
-
+    
+    @Published var newUserEmoji = UserDefaults.standard.string(forKey: "newUserEmoji") ?? "" {
+      didSet {
+        UserDefaults.standard.set(self.newUserEmoji, forKey: "newUserEmoji")
+      }
+    }
+    
+    @Published var newUserName = UserDefaults.standard.string(forKey: "newUserName") ?? "" {
+      didSet {
+        UserDefaults.standard.set(self.newUserName, forKey: "newUserName")
+      }
+    }
+    
+    @Published var signedInWithApple: Bool = UserDefaults.standard.bool(forKey: "signedInWithApple") {
+      didSet {
+        UserDefaults.standard.set(self.signedInWithApple, forKey: "signedInWithApple")
+      }
+    }
   
 }

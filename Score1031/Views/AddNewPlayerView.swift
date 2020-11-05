@@ -88,11 +88,11 @@ struct AddNewPlayerView: View {
               self.records3.playerID = String(self.userData.maxPlayerID)
               self.records3.recordName = "\(self.userData.addPlayerOneName)+\(self.userData.addPlayerTwoName)"
               self.records3.recordScore = self.userData.addPlayerOneEmoji
-              self.records3.recordReason = "New Players Added"
+              self.records3.recordReason = "New Players Added!"
               self.records3.recordEntryTime = Date()
               self.records3.recordEntryTimeString = getDateString(Date: self.records3.recordEntryTime!)
               self.records3.userId = Auth.auth().currentUser?.uid
-              self.records3.recordNameStr = "Player Pairs Created!"
+              self.records3.recordNameStr = ""
               self.records3.recordNameEmo = self.userData.addPlayerTwoEmoji
               
               self.apiLoader.saveData(record3: self.records3)
@@ -144,7 +144,8 @@ struct AddNewPlayerView: View {
  
         }
       }
-      .navigationBarTitle("Add New Players")
+      .navigationBarTitle("Add new player pairs")
+
         .foregroundColor(.offblack04)
       .onTapGesture {
           endEditing()
