@@ -39,6 +39,7 @@ struct ContentView: View {
   
   
   var body: some View {
+    VStack {
     if self.userData.profileMode == true {
       UserProfileView()
     } else {
@@ -326,6 +327,7 @@ struct ContentView: View {
         print("self.userData.signedInWithApple \(self.userData.signedInWithApple)")
       print("Auth.auth().currentUser?.uid \(Auth.auth().currentUser?.uid)")
       
+    }
     }
     }
   }

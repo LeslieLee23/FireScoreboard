@@ -25,9 +25,6 @@ extension Color {
   // static let mixedPurple = Color(red: 205 / 255, green: 85 / 255, blue: 248 / 255)
   static let mixedBlue = Color(red: 43 / 255, green: 89 / 255, blue: 254 / 255)
   static let mixedPurple = Color(red: 223 / 255, green: 78 / 255, blue: 255 / 255)
-  /// 43, 89, 254
-  ///#662BFE new blue
-  ///#CD55F8 new purple
   static let offWhite = Color(red: 228 / 255, green: 232 / 255, blue: 240 / 255)
   static let lightOffWhite = Color(red: 240 / 255, green: 245 / 255, blue: 251 / 255)
   
@@ -42,6 +39,7 @@ extension Color {
   static let offblack02 = Color(red: 66 / 255, green: 71 / 255, blue: 79 / 255)
   static let offblack03 = Color(red: 55 / 255, green: 59 / 255, blue: 66 / 255)
   static let offblack04 = Color(red: 39 / 255, green: 41 / 255, blue: 47 / 255)
+  static let signInGray = Color(red: 211 / 255, green: 211 / 255, blue: 211 / 255)
 }
 extension UIColor {
   convenience init(red: Int, green: Int, blue: Int) {

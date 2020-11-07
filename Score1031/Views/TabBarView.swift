@@ -130,8 +130,7 @@ struct TabBarView: View {
       .tag(Tab.AddNewPlayerView)
     }
     .onAppear() {
-//      self.apiLoader.fetchData()
-
+      self.userData.profileMode = false
       self.appState.selectedTab = .home
       
       

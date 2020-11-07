@@ -31,9 +31,10 @@ struct ChangeUserInfoView: View {
         VStack {
           Spacer()
           HStack {
-            Button(action:
-                    {self.presentationMode.wrappedValue.dismiss()})
-            {
+            Button(action: {
+            self.userData.profileEditMode = false
+            }
+            ){
               Image(systemName: "chevron.left")
                 .font(Font.system(size: 20, weight: .regular))
             }.foregroundColor(Color.darkPurple)
@@ -83,7 +84,7 @@ struct ChangeUserInfoView: View {
             print("self.userData.userEmoji \(self.userData.userEmoji)")
             print("self.userData.userName \(self.userData.userName)")
            // self.presentationMode.wrappedValue.dismiss()
-            self.userData.profileEditMode = false 
+            self.userData.profileEditMode = false
           }) {
             Text("Confirm")
           }
