@@ -17,7 +17,6 @@ struct TabBarView: View {
   @ObservedObject var betLoader = BetLoader()
   @ObservedObject var apiLoader = APILoader()
   @EnvironmentObject var obj : observed
-  
   @EnvironmentObject var addScoreFunc: AddScoreFunc
   @EnvironmentObject var userData: UserData
   
@@ -141,9 +140,7 @@ struct TabBarView: View {
     
     }
     .accentColor(Color.darkPurple)
-//    .environmentObject(userData)
-//    .environmentObject(appState)
-//    .environmentObject(obj)
+    .environmentObject(UserData())
     
   }
 }

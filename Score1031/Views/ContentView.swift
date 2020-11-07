@@ -29,8 +29,9 @@ struct ContentView: View {
   
   @EnvironmentObject var addScoreFunc: AddScoreFunc
   @EnvironmentObject var userData: UserData
-  @ObservedObject private var apiLoader = APILoader()
-  @ObservedObject private var userLoader = UserLoader()
+  @ObservedObject var apiLoader = APILoader()
+  @ObservedObject var userLoader = UserLoader()
+  @State private var user3 = UserLoader().user3
   @EnvironmentObject var appState: AppState
   @ObservedObject var betLoader = BetLoader()
   @State var showSignInForm = false
@@ -38,7 +39,9 @@ struct ContentView: View {
   
   
   var body: some View {
-    
+    if self.userData.profileMode == true {
+      UserProfileView()
+    } else {
     NavigationView{
       ZStack{
         Color.offWhite02.edgesIgnoringSafeArea(.all)
@@ -94,19 +97,18 @@ struct ContentView: View {
                 Spacer()
                 
                 if userData.userEmoji != nil {
-                    Button(action: {
-                        self.showSignInForm.toggle()
-                        
-                    }) {
+                  Button(action: {
+                  self.userData.profileMode = true
+                  })
+                     {
                         Text(self.userData.userEmoji ?? "")
                             .font(Font.system(size: 20, weight: .regular))
                     }
                     .padding(.trailing, 30)
                 } else {
                     Button(action: {
-                        self.showSignInForm.toggle()
-                        
-                    }) {
+                  self.userData.profileMode = true
+                  }) {
                         Image(systemName: "person.circle")
                             .font(Font.system(size: 20, weight: .regular))
                     }
@@ -295,11 +297,13 @@ struct ContentView: View {
       self.userData.editMode = false
       self.userData.selectedName = 5
       
-      self.apiLoader.fetchData()
-      self.betLoader.fetchBetData()
+//      self.apiLoader.fetchData()
+//      self.betLoader.fetchBetData()
       self.userLoader.fetchUserData()
-      self.userIcon = self.userLoader.getUserData()
-      
+      self.userIcon = self.user3.userEmoji
+      print("self.user3 \(self.user3)")
+      print("self.userIcon \(self.userIcon)")
+
       print("self.userData.emojiPlusName \(self.userData.emojiPlusName)")
       print("self.userData.oldscore \(self.userData.oldscore)")
       print("self.userData.names \(self.userData.names)")
@@ -318,7 +322,11 @@ struct ContentView: View {
       print("self.userData.onboardingStage \(self.userData.onboardingStage)")
       print("self.userData.userEmoji \(self.userData.userEmoji)")
       print("self.userData.userName \(self.userData.userName)")
+        print("self.userData.userUid \(self.userData.userUid)")
+        print("self.userData.signedInWithApple \(self.userData.signedInWithApple)")
+      print("Auth.auth().currentUser?.uid \(Auth.auth().currentUser?.uid)")
       
+    }
     }
   }
 }

@@ -34,8 +34,6 @@ struct OnboardingView: View {
         OnboardingStage2()
       } else if self.userData.onboardingStage == "3" {
         OnboardingStage3()
-      } else if self.userData.onboardingStage == "4" {
-        OnboardingStage4()
       }
       }.onAppear() {
         self.userData.onboardingStage = "1"

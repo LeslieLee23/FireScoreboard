@@ -118,23 +118,41 @@ class UserData: ObservableObject {
       UserDefaults.standard.set(self.userName, forKey: "userName")
     }
   }
-    
-    @Published var newUserEmoji = UserDefaults.standard.string(forKey: "newUserEmoji") ?? "" {
-      didSet {
-        UserDefaults.standard.set(self.newUserEmoji, forKey: "newUserEmoji")
-      }
+  
+  @Published var userUid = UserDefaults.standard.string(forKey: "userUid") ?? "No userUid" {
+    didSet {
+      UserDefaults.standard.set(self.userUid, forKey: "userUid")
     }
-    
-    @Published var newUserName = UserDefaults.standard.string(forKey: "newUserName") ?? "" {
-      didSet {
-        UserDefaults.standard.set(self.newUserName, forKey: "newUserName")
-      }
+  }
+  
+  @Published var newUserEmoji = UserDefaults.standard.string(forKey: "newUserEmoji") ?? "" {
+    didSet {
+      UserDefaults.standard.set(self.newUserEmoji, forKey: "newUserEmoji")
     }
-    
-    @Published var signedInWithApple: Bool = UserDefaults.standard.bool(forKey: "signedInWithApple") {
-      didSet {
-        UserDefaults.standard.set(self.signedInWithApple, forKey: "signedInWithApple")
-      }
+  }
+  
+  @Published var newUserName = UserDefaults.standard.string(forKey: "newUserName") ?? "" {
+    didSet {
+      UserDefaults.standard.set(self.newUserName, forKey: "newUserName")
     }
+  }
+  
+  @Published var signedInWithApple: Bool = UserDefaults.standard.bool(forKey: "signedInWithApple") {
+    didSet {
+      UserDefaults.standard.set(self.signedInWithApple, forKey: "signedInWithApple")
+    }
+  }
+  
+  @Published var profileMode: Bool = UserDefaults.standard.bool(forKey: "profileMode") {
+    didSet {
+      UserDefaults.standard.set(self.profileMode, forKey: "profileMode")
+    }
+  }
+  
+  @Published var profileEditMode: Bool = UserDefaults.standard.bool(forKey: "profileEditMode") {
+    didSet {
+      UserDefaults.standard.set(self.profileEditMode, forKey: "profileEditMode")
+    }
+  }
   
 }

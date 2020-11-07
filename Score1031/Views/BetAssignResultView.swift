@@ -147,7 +147,7 @@ struct BetAssignResultView: View {
               
               self.apiLoader.saveData(record3: self.records3)
               
-              self.appState.selectedTab = .home
+              self.presentationMode.wrappedValue.dismiss()
               }, secondaryButton: .cancel())
           }
           Spacer()
@@ -162,6 +162,7 @@ struct BetAssignResultView: View {
     .onAppear() {
       self.userData.selectedName = 5
     }
+    
   }
 }
 

@@ -17,12 +17,14 @@ import FirebaseDatabase
 class BaseUserRepository {
   @Published var user = [UserRecord]()
   @Published var user3 = UserRecord(id: "0", userId: "0", userEmoji: "userEmoji", userName: "userName", userCreateTime: Date())
+  @EnvironmentObject var userData: UserData
 }
 
 protocol UserRepository: BaseUserRepository {
   func saveData(user3: UserRecord)
   func updateData(user: UserRecord)
   func getUserData() -> String
+  
 }
 
 class UserLoader: BaseUserRepository, UserRepository, ObservableObject {
@@ -35,12 +37,12 @@ class UserLoader: BaseUserRepository, UserRepository, ObservableObject {
   }
   
   func fetchUserData() {
-    let userId = Auth.auth().currentUser?.uid
+    let id = Auth.auth().currentUser?.uid
     db.collection("user")
-    .whereField("userId", isEqualTo: userId ?? "0")
+    .whereField("id", isEqualTo: id)
       .addSnapshotListener {(querySnapshot, error) in
       guard let documents = querySnapshot?.documents else {
-        print("didn't find userid \(String(describing: Auth.auth().currentUser?.uid)) in firebase")
+        print("didn't find userid \(Auth.auth().currentUser?.uid)) in firebase")
         return
       }
       self.user = documents.map {(queryDocumentSnapshot) -> UserRecord in
@@ -61,12 +63,12 @@ class UserLoader: BaseUserRepository, UserRepository, ObservableObject {
                   userName: userName,
                   userCreateTime: userCreateTime
         )
-       // print("abc info load \(abc)")
+        self.user3 = abc
+     //   print("abc info load \(abc)")
+     //  print("user3 info load \(abc)")
         return abc
-        
-      }.sorted(by: { $0.userCreateTime! >= $1.userCreateTime!})
+      }
     }
-
   }
 
   func getUserData() -> String {

@@ -7,6 +7,10 @@
 //
 
 import SwiftUI
+import Firebase
+import FirebaseAuth
+import FirebaseFirestore
+import FirebaseFirestoreSwift
 
 struct OnboardingStage2: View {
   @State var showSignInForm = false
@@ -27,13 +31,22 @@ struct OnboardingStage2: View {
                 if let coordinator = self.coordinator {
                 coordinator.startSignInWithAppleFlow {
                   print("You successfully signed in")
+                    self.userData.signedInWithApple = true
                     self.userData.onboardingStage = "3"
                 }
                 }
             }
           
           Button(action: {
-            print("self.userData.onboardingStage \(self.userData.onboardingStage)")
+            Auth.auth().signInAnonymously { (user, err) in
+                if let err = err {
+                    print("failed to sign in anonymously with error", err)
+                }
+                self.userData.signedInWithApple = false
+                self.userData.userUid = (user?.user.uid)!
+                print("Successfully sigined in anonymously with uid", user?.user.uid)
+                print("Successfully sigined in anonymously with userData.userUid", self.userData.userUid)
+            }
             self.userData.onboardingStage = "3"
           }) {
             Text("Sign in anonymously")

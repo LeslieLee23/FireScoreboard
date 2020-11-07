@@ -34,11 +34,9 @@
 		F55DABDA24EFAF880078452F /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55DABD924EFAF880078452F /* AppState.swift */; };
 		F5693CEF253D023800EA7626 /* ScoreHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5693CEE253D023800EA7626 /* ScoreHistoryView.swift */; };
 		F569E067254A7F7D00C3974C /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F569E066254A7F7D00C3974C /* OnboardingView.swift */; };
-		F569E069254A814900C3974C /* MotherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F569E068254A814900C3974C /* MotherView.swift */; };
 		F569E06B254A81FF00C3974C /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F569E06A254A81FE00C3974C /* ViewRouter.swift */; };
 		F569E06F254BD84A00C3974C /* OnboardingStage2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F569E06E254BD84A00C3974C /* OnboardingStage2.swift */; };
 		F569E071254BDC7F00C3974C /* OnboardingStage3.swift in Sources */ = {isa = PBXBuildFile; fileRef = F569E070254BDC7F00C3974C /* OnboardingStage3.swift */; };
-		F569E073254BDF7200C3974C /* OnboardingStage4.swift in Sources */ = {isa = PBXBuildFile; fileRef = F569E072254BDF7200C3974C /* OnboardingStage4.swift */; };
 		F56E71922493505C007E8FF5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56E71912493505C007E8FF5 /* ContentView.swift */; };
 		F56F88AB2517307C00FD3CF7 /* BetSnapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56F88AA2517307C00FD3CF7 /* BetSnapView.swift */; };
 		F56F88AD2517376C00FD3CF7 /* BetSnapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56F88AC2517376C00FD3CF7 /* BetSnapViewModel.swift */; };
@@ -58,7 +56,6 @@
 		F5EAA41B2511C08D00584E86 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EAA41A2511C08D00584E86 /* Styles.swift */; };
 		F5EAA41D2511CEC000584E86 /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F5F02578244427A20038A4FB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F5F02577244427A20038A4FB /* GoogleService-Info.plist */; };
-		F5F6C4F525358BF6007C9A1F /* FirebaseUILoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F6C4F425358BF6007C9A1F /* FirebaseUILoginView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -107,11 +104,9 @@
 		F55DABD924EFAF880078452F /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		F5693CEE253D023800EA7626 /* ScoreHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreHistoryView.swift; sourceTree = "<group>"; };
 		F569E066254A7F7D00C3974C /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
-		F569E068254A814900C3974C /* MotherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotherView.swift; sourceTree = "<group>"; };
 		F569E06A254A81FE00C3974C /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
 		F569E06E254BD84A00C3974C /* OnboardingStage2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStage2.swift; sourceTree = "<group>"; };
 		F569E070254BDC7F00C3974C /* OnboardingStage3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStage3.swift; sourceTree = "<group>"; };
-		F569E072254BDF7200C3974C /* OnboardingStage4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStage4.swift; sourceTree = "<group>"; };
 		F56E71912493505C007E8FF5 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F56F88AA2517307C00FD3CF7 /* BetSnapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetSnapView.swift; sourceTree = "<group>"; };
 		F56F88AC2517376C00FD3CF7 /* BetSnapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetSnapViewModel.swift; sourceTree = "<group>"; };
@@ -131,7 +126,6 @@
 		F5D7FC7B24D9E721006BFC4A /* FireScoreboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FireScoreboard.entitlements; sourceTree = "<group>"; };
 		F5EAA41A2511C08D00584E86 /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		F5F02577244427A20038A4FB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		F5F6C4F425358BF6007C9A1F /* FirebaseUILoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUILoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,7 +182,6 @@
 			children = (
 				F5CD314625116ACA00B67510 /* SubViews */,
 				F5D7FC7424D942A6006BFC4A /* SignInView.swift */,
-				F5F6C4F425358BF6007C9A1F /* FirebaseUILoginView.swift */,
 				F55DABD724EF3B9B0078452F /* TabBarView.swift */,
 				F56E71912493505C007E8FF5 /* ContentView.swift */,
 				F5693CEE253D023800EA7626 /* ScoreHistoryView.swift */,
@@ -198,7 +191,8 @@
 				F500DA6C25089247003E60F3 /* BetsHomeView.swift */,
 				F5CD3141250EB6B500B67510 /* BetAssignResultView.swift */,
 				F569E066254A7F7D00C3974C /* OnboardingView.swift */,
-				F569E068254A814900C3974C /* MotherView.swift */,
+				F569E06E254BD84A00C3974C /* OnboardingStage2.swift */,
+				F569E070254BDC7F00C3974C /* OnboardingStage3.swift */,
 				F5BE1CA825537E4B00DAF9D7 /* UserProfileView.swift */,
 				F5BE1CAA2553D94F00DAF9D7 /* ChangeUserInfoView.swift */,
 			);
@@ -289,9 +283,6 @@
 				F56F88AA2517307C00FD3CF7 /* BetSnapView.swift */,
 				F5776DC725141DA50017858D /* PastBetView.swift */,
 				F56F88B2251BEBF000FD3CF7 /* NeupbuttonText.swift */,
-				F569E06E254BD84A00C3974C /* OnboardingStage2.swift */,
-				F569E070254BDC7F00C3974C /* OnboardingStage3.swift */,
-				F569E072254BDF7200C3974C /* OnboardingStage4.swift */,
 				F5808F2925511E7C00D7230A /* SigninWithAppleButton.swift */,
 			);
 			path = SubViews;
@@ -427,7 +418,6 @@
 				F5D7FC7524D942A6006BFC4A /* SignInView.swift in Sources */,
 				F56E71922493505C007E8FF5 /* ContentView.swift in Sources */,
 				F55AFE47254E446B0024D36E /* UserLoader.swift in Sources */,
-				F569E073254BDF7200C3974C /* OnboardingStage4.swift in Sources */,
 				F53BE01B2384482700C3E203 /* UserData.swift in Sources */,
 				F5BE1CAB2553D94F00DAF9D7 /* ChangeUserInfoView.swift in Sources */,
 				F5BE1CA925537E4B00DAF9D7 /* UserProfileView.swift in Sources */,
@@ -436,10 +426,8 @@
 				F5441EBE24FAFAB700F8DBDF /* AddNewPlayerView.swift in Sources */,
 				F500DA6B25075F60003E60F3 /* BetLoader.swift in Sources */,
 				F50762E624BC244600676F9C /* RecordViewModel.swift in Sources */,
-				F5F6C4F525358BF6007C9A1F /* FirebaseUILoginView.swift in Sources */,
 				F51EE72223F12D9D0030B17C /* Score1031.xcdatamodeld in Sources */,
 				F53BDFD0236B44CC00C3E203 /* AppDelegate.swift in Sources */,
-				F569E069254A814900C3974C /* MotherView.swift in Sources */,
 				F500DA6D25089247003E60F3 /* BetsHomeView.swift in Sources */,
 				F59129502420368F0071E1D3 /* SelectViewModel.swift in Sources */,
 				F5CD3142250EB6B500B67510 /* BetAssignResultView.swift in Sources */,

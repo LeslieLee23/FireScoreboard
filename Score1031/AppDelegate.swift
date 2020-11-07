@@ -1,5 +1,6 @@
 import UIKit
 import Firebase
+import FirebaseAuth
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 
@@ -11,7 +12,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       ///Firebase set up
         FirebaseApp.configure()
       if Auth.auth().currentUser == nil {
-        Auth.auth().signInAnonymously()
+        Auth.auth().signInAnonymously(){ (authResult, error) in
+            guard let user = authResult?.user else { return }
+            let isAnonymous = user.isAnonymous  // true
+            let uid = user.uid
+            print("@@@@@@@@@@@@@@@@@@@@@isAnonymous \(isAnonymous)")
+            print("uid \(uid)")
+          }
+        
+       
       }
       
       

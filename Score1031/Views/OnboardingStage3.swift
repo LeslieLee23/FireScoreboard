@@ -99,7 +99,7 @@ struct OnboardingStage3: View {
               self.apiLoader.saveData(record3: self.records3)
               
               //user save
-              self.user3.id = UUID().uuidString
+              self.user3.id = self.userData.userUid
               self.user3.userId = Auth.auth().currentUser?.uid ?? "0"
               self.user3.userEmoji = self.userData.addPlayerOneEmoji
               self.user3.userName = self.userData.addPlayerOneName
