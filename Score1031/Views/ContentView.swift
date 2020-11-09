@@ -300,11 +300,11 @@ struct ContentView: View {
       
 //      self.apiLoader.fetchData()
 //      self.betLoader.fetchBetData()
-      self.userLoader.fetchUserData()
-      self.userIcon = self.user3.userEmoji
-      print("self.user3 \(self.user3)")
-      print("self.userIcon \(self.userIcon)")
-
+//      self.userLoader.fetchUserData()
+//      self.userIcon = self.user3.userEmoji
+//      print("self.user3 \(self.user3)")
+//      print("self.userIcon \(self.userIcon)")
+//
       print("self.userData.emojiPlusName \(self.userData.emojiPlusName)")
       print("self.userData.oldscore \(self.userData.oldscore)")
       print("self.userData.names \(self.userData.names)")

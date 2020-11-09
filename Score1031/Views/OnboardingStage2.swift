@@ -18,20 +18,24 @@ struct OnboardingStage2: View {
   @EnvironmentObject var userData: UserData
   @State var coordinator: SignInWithAppleCoordinator?
   @EnvironmentObject var appState: AppState
+  @State var showAlert = false
+  @State var localizdDescription = ""
     
     var body: some View {
       ZStack {
 //        LinearGradient(gradient: Gradient(colors: [.mixedBlue, .mixedPurple]), startPoint: .topLeading, endPoint: .bottomTrailing)
         VStack{
           Spacer()
+          VStack(alignment: .center) {
           RadialGradient(gradient: Gradient(colors: [.mixedBlue, .mixedPurple]), center: .center, startRadius: 10, endRadius: 200)
-            .frame(width: appState.screenWidth, height: appState.TitleRowHeight, alignment: .trailing)
+            .frame(width: 300, height: appState.TitleRowHeight, alignment: .trailing)
             .mask(
         Text("Welcome to EmojiScoreBoard!")
           .font(.system(size: 22))
           .fontWeight(.medium)
           )
           .padding()
+          }
           Spacer()
           Spacer()
             SignInWithAppleButton()
@@ -51,6 +55,8 @@ struct OnboardingStage2: View {
           Button(action: {
             Auth.auth().signInAnonymously { (user, err) in
                 if let err = err {
+                  self.localizdDescription = err.localizedDescription
+                    self.showAlert = true
                     print("failed to sign in anonymously with error", err)
                 }
                 self.userData.signedInWithApple = false
@@ -69,6 +75,15 @@ struct OnboardingStage2: View {
             )
             
           }
+          .alert(isPresented: $showAlert) { () ->
+            Alert in
+            return Alert(title: Text("Sign In Error"), message: Text(self.localizdDescription), dismissButton: Alert.Button.default(Text("Ok"))
+            {
+              }
+            )
+            
+          }
+          
         Text("* You can sign in with Apple later")
           .font(.system(size: 13))
           

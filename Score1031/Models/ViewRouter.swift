@@ -9,11 +9,15 @@
 import Foundation
 import SwiftUI
 import Combine
+import Firebase
+import FirebaseAuth
+import FirebaseFirestore
+import FirebaseFirestoreSwift
 
 class ViewRouter: ObservableObject {
 
     init() {
-        if !UserDefaults.standard.bool(forKey: "didLaunchBefore") {
+      if !UserDefaults.standard.bool(forKey: "didLaunchBefore") && Auth.auth().currentUser?.uid == nil {
             UserDefaults.standard.set(true, forKey: "didLaunchBefore")
             currentPage = "onboardingView"
         } else {

@@ -70,7 +70,7 @@ struct ChangeUserInfoView: View {
           //    Spacer()
           Button(action: {
             
-            self.user3.id = self.userData.userUid
+            self.user3.id = self.userData.userUid ?? "No userUid"
             
             self.user3.userEmoji = self.userData.newUserEmoji
             self.user3.userName = self.userData.newUserName

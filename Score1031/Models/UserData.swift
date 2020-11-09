@@ -113,13 +113,13 @@ class UserData: ObservableObject {
     }
   }
   
-  @Published var userName = UserDefaults.standard.string(forKey: "userName") ?? "Anonymous" {
+  @Published var userName = UserDefaults.standard.string(forKey: "userName") {
     didSet {
       UserDefaults.standard.set(self.userName, forKey: "userName")
     }
   }
   
-  @Published var userUid = UserDefaults.standard.string(forKey: "userUid") ?? "No userUid" {
+  @Published var userUid = UserDefaults.standard.string(forKey: "userUid") {
     didSet {
       UserDefaults.standard.set(self.userUid, forKey: "userUid")
     }

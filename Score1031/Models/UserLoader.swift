@@ -21,10 +21,10 @@ class BaseUserRepository {
 }
 
 protocol UserRepository: BaseUserRepository {
-  func saveData(user3: UserRecord)
+  
   func updateData(user: UserRecord)
   func getUserData() -> String
-  
+  func saveData(user3: UserRecord)
 }
 
 class UserLoader: BaseUserRepository, UserRepository, ObservableObject {
@@ -39,10 +39,10 @@ class UserLoader: BaseUserRepository, UserRepository, ObservableObject {
   func fetchUserData() {
     let id = Auth.auth().currentUser?.uid
     db.collection("user")
-    .whereField("id", isEqualTo: id)
+      .whereField("id", isEqualTo: id ?? "")
       .addSnapshotListener {(querySnapshot, error) in
       guard let documents = querySnapshot?.documents else {
-        print("didn't find userid \(Auth.auth().currentUser?.uid)) in firebase")
+        print("didn't find userid \(String(describing: Auth.auth().currentUser?.uid))) in firebase")
         return
       }
       self.user = documents.map {(queryDocumentSnapshot) -> UserRecord in

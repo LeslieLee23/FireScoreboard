@@ -19,10 +19,14 @@ class BaseScoreRepository {
   @Published var records3 = Recordline(playerID: "0", playerOneEmoji: "🍑",playerOneName: "Player One", playerOneScore: 0, playerTwoEmoji: "👨🏻", playerTwoName: "Player Two", playerTwoScore: 0, recordName: "Player one and two", recordScore: "NA", recordReason: "Default players created", recordEntryTime: Date(), recordEntryTimeString: "", recordNameStr: "recordNameStr", recordNameEmo: "👩🏻")
 }
 
+
 protocol ScoreRepository: BaseScoreRepository {
   func queryPlayerList() -> [Recordline]
   func findMaxPlayerID() -> Int
   func saveData(record3: Recordline)
+  func queryMostRecentPlayers() -> Recordline
+  func updateData(record3 : Recordline)
+  
 }
 
 class APILoader: BaseScoreRepository, ScoreRepository, ObservableObject {
@@ -33,11 +37,6 @@ class APILoader: BaseScoreRepository, ScoreRepository, ObservableObject {
     fetchData()
   }
   
-  func defaultValue() -> [Recordline] {
-    let defaultValue = [Recordline(playerID: "0", playerOneEmoji: "🍇",playerOneName: "Player One", playerOneScore: 0, playerTwoEmoji: "👨🏻", playerTwoName: "Player Two", playerTwoScore: 0, recordName: "Player one and two", recordScore: "NA", recordReason: "Default players created", recordEntryTime: Date(), recordEntryTimeString: "",
-      recordNameStr: "recordNameStr", recordNameEmo: "👩🏻")]
-      return defaultValue
-  }
   
   func fetchData() {
     let userId = Auth.auth().currentUser?.uid
@@ -131,6 +130,11 @@ class APILoader: BaseScoreRepository, ScoreRepository, ObservableObject {
 
   }
   
+  func queryMostRecentPlayers() -> Recordline {
+    let recentPlayer = self.records[0]
+    return recentPlayer
+  }
+  
   func findMaxPlayerID() -> Int {
     let maxPlayerIDInt = self.records.map{Int($0.playerID)!}.max()
     print("maxPlayerIDInt\(String(describing: maxPlayerIDInt))")
@@ -163,6 +167,16 @@ class APILoader: BaseScoreRepository, ScoreRepository, ObservableObject {
           document.reference.delete()
         }
       }
+    }
+  }
+  
+  func updateData(record3 : Recordline) {
+    let uniqueID = record3.id
+    do {
+      try db.collection("records").document(uniqueID).setData(from: record3)
+    }
+    catch {
+      fatalError("Unable to update data: \(error.localizedDescription)")
     }
   }
 }

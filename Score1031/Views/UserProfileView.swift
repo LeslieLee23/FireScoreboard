@@ -13,19 +13,22 @@ import UIKit
 import Firebase
 
 struct UserProfileView: View {
+  @EnvironmentObject var viewRouter: ViewRouter
   @EnvironmentObject var userData: UserData
   @EnvironmentObject var appState: AppState
   @Environment(\.presentationMode) var presentationMode
+  @ObservedObject var apiLoader = APILoader()
   @State var coordinator: SignInWithAppleCoordinator?
+  @State var records = [Recordline]()
   
   
   var body: some View {
     VStack {
-    if userData.profileEditMode == false {
-      ///Profile View
-      ZStack{
-        Color.offWhite02.edgesIgnoringSafeArea(.all)
-      
+      if userData.profileEditMode == false {
+        ///Profile View
+        ZStack{
+          Color.offWhite02.edgesIgnoringSafeArea(.all)
+          
           VStack {
             ///header row
             VStack {
@@ -36,7 +39,7 @@ struct UserProfileView: View {
                 })
                 {
                   Image(systemName: "square.and.pencil")
-                      .font(Font.system(size: 20, weight: .regular))
+                    .font(Font.system(size: 20, weight: .regular))
                   Text("Edit")
                 }
                 //.padding(.leading, 15)
@@ -48,7 +51,7 @@ struct UserProfileView: View {
                   Text("Done")
                     .font(Font.system(size: 20, weight: .regular))
                 }
-               // .padding(.trailing, 15)
+                // .padding(.trailing, 15)
               }
               
             }.frame(width:350, height: 50, alignment: .top)
@@ -66,22 +69,22 @@ struct UserProfileView: View {
                 .frame(width: 250, height: 190)
                 .overlay(
                   VStack {
-                  Text(self.userData.userEmoji ?? "👽")
-                    .font(.system(size: 65))
-                    .padding(.bottom, 10)
-                  Text(self.userData.userName)
-                    .font(.system(size: 23))
-                    .fontWeight(.bold)
-                    .foregroundColor(Color.offblack03)
+                    Text(self.userData.userEmoji ?? "👽")
+                      .font(.system(size: 65))
+                      .padding(.bottom, 10)
+                    Text(self.userData.userName ?? "Anonymous")
+                      .font(.system(size: 23))
+                      .fontWeight(.bold)
+                      .foregroundColor(Color.offblack03)
                   }
-              )
+                )
               
             }///User info row
             
             Spacer()
             if !self.userData.signedInWithApple {
               Text("You are not signed in yet ")
-
+              
               SignInWithAppleButton()
                 .frame(width: 260, height: 45)
                 .onTapGesture {
@@ -89,7 +92,21 @@ struct UserProfileView: View {
                   if let coordinator = self.coordinator {
                     coordinator.startSignInWithAppleFlow {
                       print("You successfully signed in")
-                      self.presentationMode.wrappedValue.dismiss()
+                      ///Here you are signing in from anonymous user to an Apple ID, therefore we need to bring in all the saved data in this anonymous account to Apple. Migrate everything from here to that Apple account. The way to do this by modifying the playerID or user id of the Anonymous user data and make the system think these are changed to be the appleID data. Now the question is what is the Key value that makes a system think this data is added to the fetch group? Answer: Auth.auth().currentUser?.uid.
+                      self.userData.playerID = "\(Auth.auth().currentUser?.uid)*\(self.userData.playerID)"
+                      for record in self.apiLoader.records {
+                        print("record?????????????? \(record)")
+                        var record3 = record
+                        record3.userId = Auth.auth().currentUser?.uid
+                        record3.playerID = "\(Auth.auth().currentUser?.uid)*\(record3.playerID)"
+                        
+                        print("record3 \(record3)")
+                        self.apiLoader.updateData(record3: record3)
+                      }
+                      self.userData.signedInWithApple = true
+                      self.userData.userUid = Auth.auth().currentUser?.uid
+                      self.userData.profileMode = false
+                      print("You successfully excuted in")
                     }
                   }
                 }
@@ -97,40 +114,69 @@ struct UserProfileView: View {
                 .font(.system(size: 13))
                 .foregroundColor(Color.gray)
                 .frame(width: 260, height: 45)
-            } else {
               VStack(alignment: .leading) {
                 Button(action: {
-                  
+                  do {
+                    try Auth.auth().signOut()
+                    self.userData.signedInWithApple = false
+                    self.userData.userEmoji = nil
+                    self.userData.userName = nil
+                    print("Sign out pressed: Auth.auth().currentUser?.uid \(String(describing: Auth.auth().currentUser?.uid))")
+                    self.viewRouter.currentPage = "onboardingView"
+                  } catch let err {
+                    print(err)
+                  }
+                }) {
+                  Text("Sign Out")
+                }
+              }
+            } else {
+              Text("Signed in with Apple")
+              VStack(alignment: .leading) {
+                Button(action: {
+                  do {
+                    try Auth.auth().signOut()
+                    self.userData.signedInWithApple = false
+                    self.userData.userEmoji = nil
+                    self.userData.userName = nil
+                    print("Sign out of apple pressed: Auth.auth().currentUser?.uid \(String(describing: Auth.auth().currentUser?.uid))")
+                    self.viewRouter.currentPage = "onboardingView"
+                    
+                  } catch let err {
+                    print(err)
+                  }
                 }) {
                   Text("Sign Out")
                 }
               }
             }
-
-      
+            
+            
             Spacer()
             Spacer()
           }
+        }
+        .onTapGesture {
+          endEditing()
+        }
+        .navigationBarBackButtonHidden(true)
+        .navigationBarHidden(true)
+        .navigationBarTitle("")
+        .onAppear() {
+          self.userData.profileEditMode = false
+          print("self.userData.userEmoji \(self.userData.userEmoji ?? "empty")")
+          print("self.userData.userName \(self.userData.userName ?? "empty")")
+          print("self.userData.userUid \(self.userData.userUid ?? "empty")")
+          print("self.userData.signedInWithApple \(self.userData.signedInWithApple)")
+//          self.records = self.apiLoader.records
+//          print("self.records!!!!!!!! \(self.records)")
+        }
+      }///Profile View
+      else {
+        ChangeUserInfoView()
       }
-      .onTapGesture {
-        endEditing()
-      }
-      .navigationBarBackButtonHidden(true)
-      .navigationBarHidden(true)
-      .navigationBarTitle("")
-      .onAppear() {
-        self.userData.profileEditMode = false
-        print("self.userData.userEmoji \(self.userData.userEmoji)")
-        print("self.userData.userName \(self.userData.userName)")
-        print("self.userData.userUid \(self.userData.userUid)")
-        print("self.userData.signedInWithApple \(self.userData.signedInWithApple)")
-      }
-    }///Profile View
-    else {
-      ChangeUserInfoView()
     }
-    }
-
+    
     
   }
 }
@@ -139,7 +185,7 @@ struct UserProfileView_Previews: PreviewProvider {
   static var previews: some View {
     UserProfileView()
       .environmentObject(UserData())
-
+      
       .environmentObject(AppState())
   }
 }
