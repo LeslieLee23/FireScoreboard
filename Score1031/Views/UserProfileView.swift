@@ -18,6 +18,7 @@ struct UserProfileView: View {
   @EnvironmentObject var appState: AppState
   @Environment(\.presentationMode) var presentationMode
   @ObservedObject var apiLoader = APILoader()
+  @ObservedObject var betLoader = BetLoader()
   @State var coordinator: SignInWithAppleCoordinator?
   @State var records = [Recordline]()
   
@@ -93,16 +94,28 @@ struct UserProfileView: View {
                     coordinator.startSignInWithAppleFlow {
                       print("You successfully signed in")
                       ///Here you are signing in from anonymous user to an Apple ID, therefore we need to bring in all the saved data in this anonymous account to Apple. Migrate everything from here to that Apple account. The way to do this by modifying the playerID or user id of the Anonymous user data and make the system think these are changed to be the appleID data. Now the question is what is the Key value that makes a system think this data is added to the fetch group? Answer: Auth.auth().currentUser?.uid.
-                      self.userData.playerID = "\(Auth.auth().currentUser?.uid)*\(self.userData.playerID)"
+                      self.userData.playerID = "\(String(describing: Auth.auth().currentUser?.uid))*\(self.userData.playerID)"
+                      
                       for record in self.apiLoader.records {
                         print("record?????????????? \(record)")
                         var record3 = record
                         record3.userId = Auth.auth().currentUser?.uid
-                        record3.playerID = "\(Auth.auth().currentUser?.uid)*\(record3.playerID)"
-                        
+                        record3.playerID = "\(String(describing: record.userId))*\(record3.playerID)"
+                        self.userData.playerID = record3.playerID
                         print("record3 \(record3)")
                         self.apiLoader.updateData(record3: record3)
                       }
+                      
+                      print("self.betLoader.bets \(self.betLoader.bets)")
+                      for bet in self.betLoader.bets {
+                        print("bet??????????????\(bet)")
+                        var bet3 = bet
+                        bet3.userId = Auth.auth().currentUser?.uid
+                        bet3.playerID = "\(String(describing: bet.userId))*\(bet3.playerID)"
+                        print("bet3 \(bet3)")
+                        self.betLoader.updateData(bets: bet3)
+                      }
+                      
                       self.userData.signedInWithApple = true
                       self.userData.userUid = Auth.auth().currentUser?.uid
                       self.userData.profileMode = false

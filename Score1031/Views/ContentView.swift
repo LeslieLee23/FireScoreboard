@@ -321,11 +321,11 @@ struct ContentView: View {
       print("self.userData.betWinnerName \(self.userData.betWinnerName)")
       print("self.userData.deleteMode \(self.userData.deleteMode)")
       print("self.userData.onboardingStage \(self.userData.onboardingStage)")
-      print("self.userData.userEmoji \(self.userData.userEmoji)")
-      print("self.userData.userName \(self.userData.userName)")
-        print("self.userData.userUid \(self.userData.userUid)")
+      print("self.userData.userEmoji \(String(describing: self.userData.userEmoji))")
+      print("self.userData.userName \(String(describing: self.userData.userName))")
+      print("self.userData.userUid \(String(describing: self.userData.userUid))")
         print("self.userData.signedInWithApple \(self.userData.signedInWithApple)")
-      print("Auth.auth().currentUser?.uid \(Auth.auth().currentUser?.uid)")
+      print("Auth.auth().currentUser?.uid \(String(describing: Auth.auth().currentUser?.uid))")
       
     }
     }

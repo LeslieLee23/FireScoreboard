@@ -77,7 +77,7 @@ extension SignInWithAppleCoordinator: ASAuthorizationControllerDelegate {
           print("The user you are tying to sign in with has already been linked.")
           if let updatedCredential = (error as NSError).userInfo[AuthErrorUserInfoUpdatedCredentialKey] as? OAuthCredential {
             Auth.auth().signIn(with: updatedCredential) { (authResult, error) in
-              if let user = authResult?.user {
+              if (authResult?.user) != nil {
                 if let callback = self.onSignedIn {
                 callback()
 

@@ -133,8 +133,8 @@ struct OnboardingStage3: View {
               print("self.userData.betWinnerName \(self.userData.betWinnerName)")
               print("self.userData.deleteMode \(self.userData.deleteMode)")
               print("self.userData.onboardingStage \(self.userData.onboardingStage)")
-              print("self.userData.userEmoji \(self.userData.userEmoji)")
-              print("self.userData.userName \(self.userData.userName)")
+              print("self.userData.userEmoji \(String(describing: self.userData.userEmoji))")
+              print("self.userData.userName \(String(describing: self.userData.userName))")
               
             }) {
               Text("Confirm")

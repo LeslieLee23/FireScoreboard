@@ -81,8 +81,8 @@ struct ChangeUserInfoView: View {
             print("self.user3.id \(self.user3.id)")
             print("self.user3.userEmoji \(self.user3.userEmoji)")
             print("self.user3.userName \(self.user3.userName)")
-            print("self.userData.userEmoji \(self.userData.userEmoji)")
-            print("self.userData.userName \(self.userData.userName)")
+            print("self.userData.userEmoji \(String(describing: self.userData.userEmoji))")
+            print("self.userData.userName \(String(describing: self.userData.userName))")
            // self.presentationMode.wrappedValue.dismiss()
             self.userData.profileEditMode = false
           }) {

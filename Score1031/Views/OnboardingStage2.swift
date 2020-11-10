@@ -61,8 +61,8 @@ struct OnboardingStage2: View {
                 }
                 self.userData.signedInWithApple = false
                 self.userData.userUid = (user?.user.uid)!
-                print("Successfully sigined in anonymously with uid", user?.user.uid)
-                print("Successfully sigined in anonymously with userData.userUid", self.userData.userUid)
+              print("Successfully sigined in anonymously with uid", user?.user.uid ?? "No uid")
+              print("Successfully sigined in anonymously with userData.userUid", self.userData.userUid ?? "No uid")
             }
             self.userData.onboardingStage = "3"
           }) {
