@@ -96,7 +96,7 @@ struct CircleStyleEmoji: ButtonStyle {
           .transition(.scale(scale: 5))
           .opacity(configuration.isPressed ? 0.3 : 1)
       )
-      .modifier(FitToWidth(fraction: 3))
+      //.modifier(FitToWidth(fraction: 3))
       .frame(width: 160, height: 125, alignment: .center)
   }
 }

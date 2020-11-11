@@ -24,6 +24,10 @@ struct OnboardingStage2: View {
   @State var showAlert = false
   @State var localizdDescription = ""
   @State var newUser = false
+  @ObservedObject var apiLoader = APILoader()
+  @ObservedObject var userLoader = UserLoader()
+  @State var records = [Recordline]()
+
   
     var body: some View {
       ZStack {
@@ -55,25 +59,91 @@ struct OnboardingStage2: View {
                   print("self.userData.userUid \(String(describing: self.userData.userUid))")
                   
                   //*******************
-                  let db = Firestore.firestore()
-                  db.collection("records")
-                    .whereField("userId", isEqualTo: self.userData.userUid ?? "0")
-                      .addSnapshotListener {(querySnapshot, error) in
-                        guard (querySnapshot?.documents) != nil else {
-                        print("No documents")
-                        self.newUser = true
-                        return
-                      }
-                      }
-                  //*******************
                   
-                  if self.newUser == true {
-                    self.userData.onboardingStage = "3"
-                  } else {
-                    self.viewRouter.currentPage = "tabBarView"
-                  }
+                 
+                  
+                  self.showAlert = true
+                  
+
+                  //*******************
+                  print("Over Over Over")
                 }
                 }
+            }
+            .alert(isPresented: $showAlert) { () ->
+              Alert in
+              return Alert(title: Text("Login successful! 😉"), message: Text(""), dismissButton: Alert.Button.default(Text("Ok"))
+              {
+                let db = Firestore.firestore()
+                db.collection("records")
+                  .whereField("userId", isEqualTo: Auth.auth().currentUser?.uid ?? "0")
+                  .addSnapshotListener {(querySnapshot, error) in
+                    guard let documents = querySnapshot?.documents else {
+                      print("No documents")
+                      return
+                    }
+                    records = documents.map {(queryDocumentSnapshot) -> Recordline in
+                      let data = queryDocumentSnapshot.data()
+                      
+                      let userId = data["userId"] as? String ?? ""
+                      let id = data["id"] as? String ?? ""
+                      let playerID = data["playerID"] as? String ?? ""
+                      let playerOneEmoji = data["playerOneEmoji"] as? String ?? ""
+                      let playerOneName = data["playerOneName"] as? String ?? ""
+                      let playerOneScore = data["playerOneScore"] as? Int ?? 0
+                      let playerTwoEmoji = data["playerTwoEmoji"] as? String ?? ""
+                      let playerTwoName = data["playerTwoName"] as? String ?? ""
+                      let playerTwoScore = data["playerTwoScore"] as? Int ?? 0
+                      let recordName = data["recordName"] as? String ?? ""
+                      let recordScore = data["recordScore"] as? String ?? ""
+                      let recordReason = data["recordReason"] as? String ?? ""
+                      let timestamp: Timestamp = data["recordEntryTime"] as! Timestamp
+                      let recordEntryTime: Date = timestamp.dateValue()
+                      // let recordEntryTime = data["recordEntryTime"] as? Date??
+                      let recordEntryTimeString = data["recordEntryTimeString"] as? String ?? ""
+                      let recordNameStr = data["recordNameStr"] as? String ?? ""
+                      let recordNameEmo = data["recordNameEmo"] as? String ?? ""
+                      let abc = Recordline(
+                        id: id,
+                        playerID: playerID,
+                        playerOneEmoji: playerOneEmoji,
+                        playerOneName: playerOneName,
+                        playerOneScore: playerOneScore,
+                        playerTwoEmoji: playerTwoEmoji,
+                        playerTwoName: playerTwoName,
+                        playerTwoScore: playerTwoScore,
+                        
+                        recordName: recordName,
+                        recordScore: recordScore,
+                        recordReason: recordReason,
+                        recordEntryTime: recordEntryTime,
+                        recordEntryTimeString: recordEntryTimeString,
+                        userId: userId,
+                        recordNameStr: recordNameStr,
+                        recordNameEmo: recordNameEmo
+                      )
+                      print("abc ######\(abc)")
+                      self.records.append(abc)
+                      print("self.records.append \(self.records)")
+                      return abc
+                    }.sorted(by: { $0.recordEntryTime! >= $1.recordEntryTime!})
+                    
+                    print("self.records After: \(self.records)")
+                    
+                    self.newUser = records.isEmpty ? true : false
+                    
+                    if self.newUser == true {
+                      self.userData.onboardingStage = "3"
+                    } else {
+                      self.viewRouter.currentPage = "tabBarView"
+                    }
+                  } /// need to put code inside here
+                
+                
+                
+              }
+              )
+              
             }
           
           Button(action: {
@@ -114,11 +184,12 @@ struct OnboardingStage2: View {
           Spacer()
         }
       }.onAppear {
-        print("Auth.auth().currentUser?.uid trouble shoot \(String(describing: Auth.auth().currentUser?.uid))")
+
         if Auth.auth().currentUser == nil {
           Auth.auth().signInAnonymously()
         }
         print("Auth.auth().currentUser?.uid trouble shoot \(String(describing: Auth.auth().currentUser?.uid))")
+      
       }
     }
 }

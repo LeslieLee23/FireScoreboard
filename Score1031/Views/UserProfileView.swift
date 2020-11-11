@@ -244,6 +244,55 @@ struct UserProfileView: View {
                   Spacer()
                 }.frame(width: 270, height: 50)
               }.padding(.top, 50)
+              HStack {
+                Button(action: {
+                  self.showAlert = true
+                  print("self.userData.userUid before: \(String(describing: self.userData.userUid))")
+                }) {
+                  Text("Delete profile")
+                  .italic()
+                  .font(.system(size:15))
+                  .foregroundColor(Color.lightPurple)
+                }.padding(.leading)
+                .alert(isPresented: self.$showAlert) { () ->
+                  Alert in
+                  
+                  return Alert(title: Text("Are you sure?"), message: Text("Once you delete this profile, all data linked to this account will be permanently erased."), primaryButton: .destructive(Text("Confirm"))
+                                {
+                                  do {
+                                    for record in self.apiLoader.records {
+                                      print("record?????????????? \(record)")
+                                      self.apiLoader.removeUser(id: record.id)
+                                    }
+                                    
+                                    for bet in self.betLoader.bets {
+                                      print("bet?????????????? \(bet)")
+                                      self.betLoader.remove(id: bet.id)
+                                    }
+                                    
+                                    for user in self.userLoader.user {
+                                      print("user?????????????? \(user)")
+                                      self.userLoader.remove(id: user.id)
+                                    }
+                                    
+                                    try Auth.auth().signOut()
+                                    self.userData.signedInWithApple = false
+                                    self.userData.userEmoji = nil
+                                    self.userData.userName = nil
+                                    print("Sign out of apple pressed: Auth.auth().currentUser?.uid \(String(describing: Auth.auth().currentUser?.uid))")
+                                    self.viewRouter.currentPage = "onboardingView"
+                                    
+                                  } catch let err {
+                                    print(err)
+                                  }
+                                }, secondaryButton: .cancel(){
+                                  
+                                }
+                  )
+                }
+                
+                Spacer()
+              }
             }
             
             
