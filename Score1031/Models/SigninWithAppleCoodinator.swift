@@ -10,9 +10,11 @@ import Foundation
 import CryptoKit
 import AuthenticationServices
 import Firebase
+import SwiftUI
+import Combine
 
 class SignInWithAppleCoordinator: NSObject, ASAuthorizationControllerPresentationContextProviding {
-  
+ 
   private var onSignedIn: (() -> Void)?
   
   func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
@@ -53,7 +55,8 @@ class SignInWithAppleCoordinator: NSObject, ASAuthorizationControllerPresentatio
 
 @available(iOS 13.0, *)
 extension SignInWithAppleCoordinator: ASAuthorizationControllerDelegate {
-
+  
+  
   func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
     if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
       guard let nonce = currentNonce else {
@@ -75,6 +78,7 @@ extension SignInWithAppleCoordinator: ASAuthorizationControllerDelegate {
       Auth.auth().currentUser?.link(with: credential, completion: { (authresult, error) in
         if let error = error, (error as NSError).code == AuthErrorCode.credentialAlreadyInUse.rawValue {
           print("The user you are tying to sign in with has already been linked.")
+    
           if let updatedCredential = (error as NSError).userInfo[AuthErrorUserInfoUpdatedCredentialKey] as? OAuthCredential {
             Auth.auth().signIn(with: updatedCredential) { (authResult, error) in
               if (authResult?.user) != nil {

@@ -22,7 +22,7 @@ extension Color {
   static let lightStart = Color(red: 60 / 255, green: 160 / 255, blue: 240 / 255)
   static let lightEnd = Color(red: 30 / 255, green: 80 / 255, blue: 120 / 255)
   static let darkPurple = Color(red: 130 / 255, green: 0 / 255, blue: 174 / 255)
-  // static let mixedPurple = Color(red: 205 / 255, green: 85 / 255, blue: 248 / 255)
+  static let lightPurple = Color(red: 172 / 255, green: 85 / 255, blue: 201 / 255)
   static let mixedBlue = Color(red: 43 / 255, green: 89 / 255, blue: 254 / 255)
   static let mixedPurple = Color(red: 223 / 255, green: 78 / 255, blue: 255 / 255)
   static let offWhite = Color(red: 228 / 255, green: 232 / 255, blue: 240 / 255)

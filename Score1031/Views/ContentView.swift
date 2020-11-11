@@ -282,14 +282,6 @@ struct ContentView: View {
       .onTapGesture {
         endEditing()
       }
-      .sheet(isPresented: $showSignInForm) {
-    //    LoginView()
-    //    SignInView()
-        UserProfileView()
-            .environmentObject(AppState())
-            .environmentObject(UserData())
-   //     FirebaseUILoginView()
-      }
       .navigationBarTitle("")
       .navigationBarHidden(true)
 

@@ -74,8 +74,9 @@ struct ChangeUserInfoView: View {
             
             self.user3.userEmoji = self.userData.newUserEmoji
             self.user3.userName = self.userData.newUserName
-            
+            self.user3.userId = self.userData.userUid ?? "No userUid"
             self.userLoader.updateData(user: self.user3)
+            
             self.userData.userEmoji = self.userData.newUserEmoji
             self.userData.userName = self.userData.newUserName
             print("self.user3.id \(self.user3.id)")

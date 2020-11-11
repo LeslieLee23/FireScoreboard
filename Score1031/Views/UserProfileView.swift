@@ -19,9 +19,12 @@ struct UserProfileView: View {
   @Environment(\.presentationMode) var presentationMode
   @ObservedObject var apiLoader = APILoader()
   @ObservedObject var betLoader = BetLoader()
+  @ObservedObject var userLoader = UserLoader()
+  @State private var user3 = UserLoader().user3
   @State var coordinator: SignInWithAppleCoordinator?
   @State var records = [Recordline]()
-  
+  @State var showAlert = false
+  @State var email = ""
   
   var body: some View {
     VStack {
@@ -62,12 +65,13 @@ struct UserProfileView: View {
             }.frame(width:350, height: 50, alignment: .top)
             
             ///User info row
+            if self.userData.signedInWithApple == true && self.email != "" {
             VStack {
               RoundedRectangle(cornerRadius: 30)
                 .fill(Color.offWhite02)
                 .shadow(color: Color.offGray01.opacity(1), radius: 5, x: 6, y: 6)
                 .shadow(color: Color.white.opacity(0.8), radius: 6, x: -3, y: -3)
-                .frame(width: 250, height: 190)
+                .frame(width: 270, height: 210)
                 .overlay(
                   VStack {
                     Text(self.userData.userEmoji ?? "👽")
@@ -77,9 +81,33 @@ struct UserProfileView: View {
                       .font(.system(size: 23))
                       .fontWeight(.bold)
                       .foregroundColor(Color.offblack03)
+                    Text(self.email)
+                      .font(.system(size: 16))
+                      .foregroundColor(Color.offblack01)
+                      .padding(.top, 15)
                   }
                 )
               
+            }
+            } else {
+              VStack {
+                RoundedRectangle(cornerRadius: 30)
+                  .fill(Color.offWhite02)
+                  .shadow(color: Color.offGray01.opacity(1), radius: 5, x: 6, y: 6)
+                  .shadow(color: Color.white.opacity(0.8), radius: 6, x: -3, y: -3)
+                  .frame(width: 250, height: 190)
+                  .overlay(
+                    VStack {
+                      Text(self.userData.userEmoji ?? "👽")
+                        .font(.system(size: 65))
+                        .padding(.bottom, 10)
+                      Text(self.userData.userName ?? "Anonymous")
+                        .font(.system(size: 23))
+                        .fontWeight(.bold)
+                        .foregroundColor(Color.offblack03)
+                    }
+                  )
+              }
             }///User info row
             
             Spacer()
@@ -94,8 +122,7 @@ struct UserProfileView: View {
                     coordinator.startSignInWithAppleFlow {
                       print("You successfully signed in")
                       ///Here you are signing in from anonymous user to an Apple ID, therefore we need to bring in all the saved data in this anonymous account to Apple. Migrate everything from here to that Apple account. The way to do this by modifying the playerID or user id of the Anonymous user data and make the system think these are changed to be the appleID data. Now the question is what is the Key value that makes a system think this data is added to the fetch group? Answer: Auth.auth().currentUser?.uid.
-                      self.userData.playerID = "\(String(describing: Auth.auth().currentUser?.uid))*\(self.userData.playerID)"
-                      
+
                       for record in self.apiLoader.records {
                         print("record?????????????? \(record)")
                         var record3 = record
@@ -107,6 +134,7 @@ struct UserProfileView: View {
                       }
                       
                       print("self.betLoader.bets \(self.betLoader.bets)")
+                      
                       for bet in self.betLoader.bets {
                         print("bet??????????????\(bet)")
                         var bet3 = bet
@@ -115,9 +143,23 @@ struct UserProfileView: View {
                         print("bet3 \(bet3)")
                         self.betLoader.updateData(bets: bet3)
                       }
+                      /// Delete current user data
+                      for user in self.userLoader.user {
+                        print("self.userLoader.user \(user)")
+                        self.userLoader.remove(id: user.id)
+                        
+                      }
+                      /// Update existing Signed in with Apple user data
+                      self.user3.id = Auth.auth().currentUser?.uid ?? "No userUid"
                       
-                      self.userData.signedInWithApple = true
+                      self.user3.userEmoji = self.userData.userEmoji ?? ""
+                      self.user3.userName = self.userData.userName ?? ""
+                      self.user3.userId = Auth.auth().currentUser?.uid ?? "No userUid"
+                      print("This is user33333 \(user3)")
+                      self.userLoader.updateData(user: self.user3)
+
                       self.userData.userUid = Auth.auth().currentUser?.uid
+                      self.userData.signedInWithApple = true
                       self.userData.profileMode = false
                       print("You successfully excuted in")
                     }
@@ -128,6 +170,61 @@ struct UserProfileView: View {
                 .foregroundColor(Color.gray)
                 .frame(width: 260, height: 45)
               VStack(alignment: .leading) {
+                HStack {
+                  Button(action: {
+                    self.showAlert = true
+                    print("self.userData.userUid before: \(String(describing: self.userData.userUid))")
+                  }) {
+                    Text("Delete profile")
+                    .italic()
+                    .font(.system(size:15))
+                    .foregroundColor(Color.lightPurple)
+                  }.padding(.leading)
+                  .alert(isPresented: self.$showAlert) { () ->
+                    Alert in
+                    
+                    return Alert(title: Text("Are you sure?"), message: Text("Once you delete this profile, all data linked to this account will be permanently erased."), primaryButton: .destructive(Text("Confirm"))
+                                  {
+                                    do {
+                                      for record in self.apiLoader.records {
+                                        print("record?????????????? \(record)")
+                                        self.apiLoader.removeUser(id: record.id)
+                                      }
+                                      
+                                      for bet in self.betLoader.bets {
+                                        print("bet?????????????? \(bet)")
+                                        self.betLoader.remove(id: bet.id)
+                                      }
+                                      
+                                      for user in self.userLoader.user {
+                                        print("user?????????????? \(user)")
+                                        self.userLoader.remove(id: user.id)
+                                      }
+                                      
+                                      try Auth.auth().signOut()
+                                      self.userData.signedInWithApple = false
+                                      self.userData.userEmoji = nil
+                                      self.userData.userName = nil
+                                      print("Sign out of apple pressed: Auth.auth().currentUser?.uid \(String(describing: Auth.auth().currentUser?.uid))")
+                                      self.viewRouter.currentPage = "onboardingView"
+                                      
+                                    } catch let err {
+                                      print(err)
+                                    }
+                                  }, secondaryButton: .cancel(){
+                                    
+                                  }
+                    )
+                  }
+                  
+                  Spacer()
+                }
+              }.padding(.top, 50)
+            } else {
+              Text("You are signed in with Apple")
+                .padding(.top, 40)
+              VStack(alignment: .leading) {
+                HStack {
                 Button(action: {
                   do {
                     try Auth.auth().signOut()
@@ -142,26 +239,11 @@ struct UserProfileView: View {
                 }) {
                   Text("Sign Out")
                 }
-              }
-            } else {
-              Text("Signed in with Apple")
-              VStack(alignment: .leading) {
-                Button(action: {
-                  do {
-                    try Auth.auth().signOut()
-                    self.userData.signedInWithApple = false
-                    self.userData.userEmoji = nil
-                    self.userData.userName = nil
-                    print("Sign out of apple pressed: Auth.auth().currentUser?.uid \(String(describing: Auth.auth().currentUser?.uid))")
-                    self.viewRouter.currentPage = "onboardingView"
-                    
-                  } catch let err {
-                    print(err)
-                  }
-                }) {
-                  Text("Sign Out")
-                }
-              }
+                .padding(.leading)
+                .font(.system(size:17))
+                  Spacer()
+                }.frame(width: 270, height: 50)
+              }.padding(.top, 50)
             }
             
             
@@ -181,8 +263,17 @@ struct UserProfileView: View {
           print("self.userData.userName \(self.userData.userName ?? "empty")")
           print("self.userData.userUid \(self.userData.userUid ?? "empty")")
           print("self.userData.signedInWithApple \(self.userData.signedInWithApple)")
-//          self.records = self.apiLoader.records
-//          print("self.records!!!!!!!! \(self.records)")
+          
+          let user = Auth.auth().currentUser
+          if let user = user {
+
+            let uid = user.uid
+            let email = user.email
+            print("uid \(uid)")
+            print("email \(email)")
+            self.email = user.email ?? ""
+          }
+
         }
       }///Profile View
       else {

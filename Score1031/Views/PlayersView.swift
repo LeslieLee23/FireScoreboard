@@ -74,6 +74,39 @@ struct PlayersView: View {
         }.frame(width: appState.screenWidth, height: appState.BetGapHeight, alignment: .leading)
         ///Gap row
         Divider()
+        if self.apiLoader.queryPlayerList().count < 2 {
+          VStack {
+          RoundedRectangle(cornerRadius: 15)
+            .fill(Color.offWhite02)
+         //   .fill(Color.offGray01)
+            .shadow(color: Color.offGray01.opacity(1), radius: 5, x: 6, y: 6)
+            .shadow(color: Color.white.opacity(0.8), radius: 6, x: -3, y: -3)
+            .frame(width:appState.scoreboradWidth, height: 250, alignment: .leading)
+          .overlay(
+          VStack {
+            
+            Text("No other pair of players.")
+              .padding(.leading,20)
+              .padding(.top, 30)
+              .foregroundColor(Color.offGray02)
+            HStack{
+            Text("Click")
+              .padding(.leading, 20)
+              .foregroundColor(Color.offGray02)
+              Image(systemName: "person.crop.circle.badge.plus")
+                .font(.system(size:17))
+              //  .foregroundColor(Color.darkPurple)
+                .foregroundColor(Color.offGray02)
+              Text("to add players.")
+                .foregroundColor(Color.offGray02)
+            }
+            Spacer()
+           
+          }.frame(width:appState.scoreboradWidth, height: 200, alignment: .leading)
+        )
+          }.padding(.top, 30)
+          Spacer()
+        } else {
         List {
           ForEach(self.apiLoader.queryPlayerList()) { record in
             if record.playerID != self.userData.playerID {
@@ -126,11 +159,12 @@ struct PlayersView: View {
                       )
                     }
                     
-                  }//.border(Color.red)
+                  }
                 }
               }
             }
           }.listRowBackground(Color.offWhite02)
+        }
         }
       }.foregroundColor(.offblack04)
       .navigationBarTitle("")

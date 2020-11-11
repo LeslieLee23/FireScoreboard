@@ -6,24 +6,27 @@
 //  Copyright © 2020 HULUCave. All rights reserved.
 //
 
+import Foundation
 import SwiftUI
+import Combine
+import UIKit
 import Firebase
 import FirebaseAuth
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 
 struct OnboardingStage2: View {
-  @State var showSignInForm = false
+
   @EnvironmentObject var viewRouter: ViewRouter
   @EnvironmentObject var userData: UserData
   @State var coordinator: SignInWithAppleCoordinator?
   @EnvironmentObject var appState: AppState
   @State var showAlert = false
   @State var localizdDescription = ""
-    
+  @State var newUser = false
+  
     var body: some View {
       ZStack {
-//        LinearGradient(gradient: Gradient(colors: [.mixedBlue, .mixedPurple]), startPoint: .topLeading, endPoint: .bottomTrailing)
         VStack{
           Spacer()
           VStack(alignment: .center) {
@@ -38,7 +41,7 @@ struct OnboardingStage2: View {
           }
           Spacer()
           Spacer()
-            SignInWithAppleButton()
+          SignInWithAppleButton()
               .frame(width: 260, height: 45)
               .padding(.bottom, 10)
               .onTapGesture {
@@ -46,8 +49,29 @@ struct OnboardingStage2: View {
                 if let coordinator = self.coordinator {
                 coordinator.startSignInWithAppleFlow {
                   print("You successfully signed in")
+                  print("Auth.auth().currentUser?.uid \(String(describing: Auth.auth().currentUser?.uid))")
                     self.userData.signedInWithApple = true
+                    self.userData.userUid = Auth.auth().currentUser?.uid ?? ""
+                  print("self.userData.userUid \(String(describing: self.userData.userUid))")
+                  
+                  //*******************
+                  let db = Firestore.firestore()
+                  db.collection("records")
+                    .whereField("userId", isEqualTo: self.userData.userUid ?? "0")
+                      .addSnapshotListener {(querySnapshot, error) in
+                        guard (querySnapshot?.documents) != nil else {
+                        print("No documents")
+                        self.newUser = true
+                        return
+                      }
+                      }
+                  //*******************
+                  
+                  if self.newUser == true {
                     self.userData.onboardingStage = "3"
+                  } else {
+                    self.viewRouter.currentPage = "tabBarView"
+                  }
                 }
                 }
             }
@@ -89,6 +113,12 @@ struct OnboardingStage2: View {
           
           Spacer()
         }
+      }.onAppear {
+        print("Auth.auth().currentUser?.uid trouble shoot \(String(describing: Auth.auth().currentUser?.uid))")
+        if Auth.auth().currentUser == nil {
+          Auth.auth().signInAnonymously()
+        }
+        print("Auth.auth().currentUser?.uid trouble shoot \(String(describing: Auth.auth().currentUser?.uid))")
       }
     }
 }

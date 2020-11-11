@@ -170,6 +170,18 @@ class APILoader: BaseScoreRepository, ScoreRepository, ObservableObject {
     }
   }
   
+  func removeUser(id: String) -> Void {
+    db.collection("records").whereField("id", isEqualTo: id).getDocuments { (querySnapshot, error) in
+      if error != nil {
+        print(error ?? "Remove error")
+      } else {
+        for document in querySnapshot!.documents {
+          document.reference.delete()
+        }
+      }
+    }
+  }
+  
   func updateData(record3 : Recordline) {
     let uniqueID = record3.id
     do {
