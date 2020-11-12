@@ -101,7 +101,7 @@ class UserData: ObservableObject {
     }
   }
   
-  @Published var onboardingStage = UserDefaults.standard.string(forKey: "onboardingStage") ?? ("1") {
+  @Published var onboardingStage = UserDefaults.standard.string(forKey: "onboardingStage") ?? ("2") {
     didSet {
       UserDefaults.standard.set(self.onboardingStage, forKey: "onboardingStage")
     }
@@ -154,5 +154,12 @@ class UserData: ObservableObject {
       UserDefaults.standard.set(self.profileEditMode, forKey: "profileEditMode")
     }
   }
+  
+  @Published var finishedOnboarding : Bool = UserDefaults.standard.bool(forKey: "finishedOnboarding") {
+    didSet {
+      UserDefaults.standard.set(self.finishedOnboarding, forKey: "finishedOnboarding")
+    }
+  }
+
   
 }

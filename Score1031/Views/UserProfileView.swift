@@ -66,29 +66,29 @@ struct UserProfileView: View {
             
             ///User info row
             if self.userData.signedInWithApple == true && self.email != "" {
-            VStack {
-              RoundedRectangle(cornerRadius: 30)
-                .fill(Color.offWhite02)
-                .shadow(color: Color.offGray01.opacity(1), radius: 5, x: 6, y: 6)
-                .shadow(color: Color.white.opacity(0.8), radius: 6, x: -3, y: -3)
-                .frame(width: 270, height: 210)
-                .overlay(
-                  VStack {
-                    Text(self.userData.userEmoji ?? "👽")
-                      .font(.system(size: 65))
-                      .padding(.bottom, 10)
-                    Text(self.userData.userName ?? "Anonymous")
-                      .font(.system(size: 23))
-                      .fontWeight(.bold)
-                      .foregroundColor(Color.offblack03)
-                    Text(self.email)
-                      .font(.system(size: 16))
-                      .foregroundColor(Color.offblack01)
-                      .padding(.top, 15)
-                  }
-                )
-              
-            }
+              VStack {
+                RoundedRectangle(cornerRadius: 30)
+                  .fill(Color.offWhite02)
+                  .shadow(color: Color.offGray01.opacity(1), radius: 5, x: 6, y: 6)
+                  .shadow(color: Color.white.opacity(0.8), radius: 6, x: -3, y: -3)
+                  .frame(width: 270, height: 210)
+                  .overlay(
+                    VStack {
+                      Text(self.userData.userEmoji ?? "👽")
+                        .font(.system(size: 65))
+                        .padding(.bottom, 10)
+                      Text(self.userData.userName ?? "Anonymous")
+                        .font(.system(size: 23))
+                        .fontWeight(.bold)
+                        .foregroundColor(Color.offblack03)
+                      Text(self.email)
+                        .font(.system(size: 16))
+                        .foregroundColor(Color.offblack01)
+                        .padding(.top, 15)
+                    }
+                  )
+                
+              }
             } else {
               VStack {
                 RoundedRectangle(cornerRadius: 30)
@@ -122,7 +122,7 @@ struct UserProfileView: View {
                     coordinator.startSignInWithAppleFlow {
                       print("You successfully signed in")
                       ///Here you are signing in from anonymous user to an Apple ID, therefore we need to bring in all the saved data in this anonymous account to Apple. Migrate everything from here to that Apple account. The way to do this by modifying the playerID or user id of the Anonymous user data and make the system think these are changed to be the appleID data. Now the question is what is the Key value that makes a system think this data is added to the fetch group? Answer: Auth.auth().currentUser?.uid.
-
+                      
                       for record in self.apiLoader.records {
                         print("record?????????????? \(record)")
                         var record3 = record
@@ -157,7 +157,7 @@ struct UserProfileView: View {
                       self.user3.userId = Auth.auth().currentUser?.uid ?? "No userUid"
                       print("This is user33333 \(user3)")
                       self.userLoader.updateData(user: self.user3)
-
+                      
                       self.userData.userUid = Auth.auth().currentUser?.uid
                       self.userData.signedInWithApple = true
                       self.userData.profileMode = false
@@ -176,9 +176,9 @@ struct UserProfileView: View {
                     print("self.userData.userUid before: \(String(describing: self.userData.userUid))")
                   }) {
                     Text("Delete profile")
-                    .italic()
-                    .font(.system(size:15))
-                    .foregroundColor(Color.lightPurple)
+                      .italic()
+                      .font(.system(size:15))
+                      .foregroundColor(Color.lightPurple)
                   }.padding(.leading)
                   .alert(isPresented: self.$showAlert) { () ->
                     Alert in
@@ -211,6 +211,7 @@ struct UserProfileView: View {
                                     } catch let err {
                                       print(err)
                                     }
+                                    self.userData.finishedOnboarding = false
                                   }, secondaryButton: .cancel(){
                                     
                                   }
@@ -218,41 +219,43 @@ struct UserProfileView: View {
                   }
                   
                   Spacer()
-                }
+                }.frame(width: 270, height: 50)
               }.padding(.top, 50)
             } else {
               Text("You are signed in with Apple")
-                .padding(.top, 40)
+                .padding(.top, 32)
               VStack(alignment: .leading) {
                 HStack {
-                Button(action: {
-                  do {
-                    try Auth.auth().signOut()
-                    self.userData.signedInWithApple = false
-                    self.userData.userEmoji = nil
-                    self.userData.userName = nil
-                    print("Sign out pressed: Auth.auth().currentUser?.uid \(String(describing: Auth.auth().currentUser?.uid))")
-                    self.viewRouter.currentPage = "onboardingView"
-                  } catch let err {
-                    print(err)
+                  Button(action: {
+                    do {
+                      try Auth.auth().signOut()
+                      self.userData.signedInWithApple = false
+                      self.userData.userEmoji = nil
+                      self.userData.userName = nil
+                      print("Sign out pressed: Auth.auth().currentUser?.uid \(String(describing: Auth.auth().currentUser?.uid))")
+                      self.viewRouter.currentPage = "onboardingView"
+                    } catch let err {
+                      print(err)
+                    }
+                    self.userData.finishedOnboarding = false
+                  }) {
+                    Text("Sign Out")
                   }
-                }) {
-                  Text("Sign Out")
-                }
-                .padding(.leading)
-                .font(.system(size:17))
+                  .padding(.leading)
+                  .font(.system(size:17))
                   Spacer()
                 }.frame(width: 270, height: 50)
               }.padding(.top, 50)
+              
               HStack {
                 Button(action: {
                   self.showAlert = true
                   print("self.userData.userUid before: \(String(describing: self.userData.userUid))")
                 }) {
                   Text("Delete profile")
-                  .italic()
-                  .font(.system(size:15))
-                  .foregroundColor(Color.lightPurple)
+                    .italic()
+                    .font(.system(size:15))
+                    .foregroundColor(Color.lightPurple)
                 }.padding(.leading)
                 .alert(isPresented: self.$showAlert) { () ->
                   Alert in
@@ -285,17 +288,15 @@ struct UserProfileView: View {
                                   } catch let err {
                                     print(err)
                                   }
+                                  self.userData.finishedOnboarding = false
                                 }, secondaryButton: .cancel(){
                                   
                                 }
                   )
                 }
-                
                 Spacer()
-              }
+              }.frame(width: 270, height: 50)
             }
-            
-            
             Spacer()
             Spacer()
           }
@@ -315,14 +316,14 @@ struct UserProfileView: View {
           
           let user = Auth.auth().currentUser
           if let user = user {
-
+            
             let uid = user.uid
             let email = user.email
             print("uid \(uid)")
-            print("email \(email)")
+            print("email \(String(describing: email))")
             self.email = user.email ?? ""
           }
-
+          
         }
       }///Profile View
       else {

@@ -97,7 +97,7 @@ struct ContentView: View {
             VStack(alignment: .trailing) {
                 Spacer()
                 
-                if userData.userEmoji != nil {
+                if userData.userEmoji != nil && userData.userEmoji != "" {
                   Button(action: {
                   self.userData.profileMode = true
                   })
@@ -289,7 +289,7 @@ struct ContentView: View {
     .onAppear() {
       self.userData.editMode = false
       self.userData.selectedName = 5
-      
+      self.userData.finishedOnboarding = true
 //      self.apiLoader.fetchData()
 //      self.betLoader.fetchBetData()
 //      self.userLoader.fetchUserData()
@@ -297,27 +297,27 @@ struct ContentView: View {
 //      print("self.user3 \(self.user3)")
 //      print("self.userIcon \(self.userIcon)")
 //
-//      print("self.userData.emojiPlusName \(self.userData.emojiPlusName)")
-//      print("self.userData.oldscore \(self.userData.oldscore)")
-//      print("self.userData.names \(self.userData.names)")
-//      print("self.userData.emojis \(self.userData.emojis)")
-//      print("self.userData.editMode \(self.userData.editMode)")
-//      print("self.userData.showEmoji \(self.userData.showEmoji)")
-//      print("self.userData.playerID \(self.userData.playerID)")
-//      print("self.userData.maxPlayerID \(self.userData.maxPlayerID)")
-//      print("self.userData.selectedName \(self.userData.selectedName)")
-//      print("self.userData.addPlayerOneName \(self.userData.addPlayerOneName)")
-//      print("self.userData.addPlayerOneEmoji \(self.userData.addPlayerOneEmoji)")
-//      print("self.userData.addPlayerTwoName \(self.userData.addPlayerTwoName)")
-//      print("self.userData.addPlayerTwoEmoji \(self.userData.addPlayerTwoEmoji)")
-//      print("self.userData.betWinnerName \(self.userData.betWinnerName)")
-//      print("self.userData.deleteMode \(self.userData.deleteMode)")
-//      print("self.userData.onboardingStage \(self.userData.onboardingStage)")
-//      print("self.userData.userEmoji \(String(describing: self.userData.userEmoji))")
-//      print("self.userData.userName \(String(describing: self.userData.userName))")
-//      print("self.userData.userUid \(String(describing: self.userData.userUid))")
-//        print("self.userData.signedInWithApple \(self.userData.signedInWithApple)")
-//      print("Auth.auth().currentUser?.uid \(String(describing: Auth.auth().currentUser?.uid))")
+      print("self.userData.emojiPlusName \(self.userData.emojiPlusName)")
+      print("self.userData.oldscore \(self.userData.oldscore)")
+      print("self.userData.names \(self.userData.names)")
+      print("self.userData.emojis \(self.userData.emojis)")
+      print("self.userData.editMode \(self.userData.editMode)")
+      print("self.userData.showEmoji \(self.userData.showEmoji)")
+      print("self.userData.playerID \(self.userData.playerID)")
+      print("self.userData.maxPlayerID \(self.userData.maxPlayerID)")
+      print("self.userData.selectedName \(self.userData.selectedName)")
+      print("self.userData.addPlayerOneName \(self.userData.addPlayerOneName)")
+      print("self.userData.addPlayerOneEmoji \(self.userData.addPlayerOneEmoji)")
+      print("self.userData.addPlayerTwoName \(self.userData.addPlayerTwoName)")
+      print("self.userData.addPlayerTwoEmoji \(self.userData.addPlayerTwoEmoji)")
+      print("self.userData.betWinnerName \(self.userData.betWinnerName)")
+      print("self.userData.deleteMode \(self.userData.deleteMode)")
+      print("self.userData.onboardingStage \(self.userData.onboardingStage)")
+      print("self.userData.userEmoji \(String(describing: self.userData.userEmoji))")
+      print("self.userData.userName \(String(describing: self.userData.userName))")
+      print("self.userData.userUid \(String(describing: self.userData.userUid))")
+      print("self.userData.signedInWithApple \(self.userData.signedInWithApple)")
+      print("Auth.auth().currentUser?.uid \(String(describing: Auth.auth().currentUser?.uid))")
       
     }
     }

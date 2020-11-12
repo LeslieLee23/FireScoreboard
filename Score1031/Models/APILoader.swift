@@ -16,7 +16,7 @@ import FirebaseDatabase
 
 class BaseScoreRepository {
   @Published var records = [Recordline]()
-  @Published var records3 = Recordline(playerID: "0", playerOneEmoji: "🍑",playerOneName: "Player One", playerOneScore: 0, playerTwoEmoji: "👨🏻", playerTwoName: "Player Two", playerTwoScore: 0, recordName: "Player one and two", recordScore: "NA", recordReason: "Default players created", recordEntryTime: Date(), recordEntryTimeString: "", recordNameStr: "recordNameStr", recordNameEmo: "👩🏻")
+  @Published var records3 = Recordline(playerID: "0", playerOneEmoji: "👩🏻", playerOneName: "Player One", playerOneScore: 0, playerTwoEmoji: "👨🏻", playerTwoName: "Player Two", playerTwoScore: 0, recordName: "Player one and two", recordScore: "👩🏻", recordReason: "Default players created!", recordEntryTime: Date(), recordEntryTimeString: getDateString(Date: Date()), recordNameStr: "Welcome!", recordNameEmo: "👨🏻")
 }
 
 

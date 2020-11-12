@@ -18,9 +18,9 @@ class ViewRouter: ObservableObject {
 
     init() {
       if
-       // !UserDefaults.standard.bool(forKey: "didLaunchBefore") &&
-          Auth.auth().currentUser?.uid == nil {
-      //      UserDefaults.standard.set(true, forKey: "didLaunchBefore")
+        !UserDefaults.standard.bool(forKey: "didLaunchBefore") ||
+          Auth.auth().currentUser?.uid == nil || !UserDefaults.standard.bool(forKey: "finishedOnboarding") {
+            UserDefaults.standard.set(true, forKey: "didLaunchBefore")
             currentPage = "onboardingView"
         } else {
             currentPage = "tabBarView"

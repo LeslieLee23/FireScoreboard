@@ -34,7 +34,42 @@ struct OnboardingStage3: View {
       ZStack {
         Color.offWhite02.edgesIgnoringSafeArea(.all)
         VStack{
+          ZStack{
+            VStack {
+              Spacer()
+              HStack {
+                Button(action: {
+                  self.userData.onboardingStage = "2"
+                }
+                ){
+                  Image(systemName: "chevron.left")
+                    .font(Font.system(size: 20, weight: .regular))
+                }.foregroundColor(Color.darkPurple)
+                .padding(.leading)
+                
+                Spacer()
+              }
+              Spacer()
+            }.frame(width: appState.screenWidth, height: appState.TitleRowHeight - 15)
+            
+          VStack(alignment: .center) {
+            Spacer()
+            
+          RadialGradient(gradient: Gradient(colors: [.mixedBlue, .mixedPurple]), center: .center, startRadius: 10, endRadius: 200)
+            .frame(width: 200, alignment: .trailing)
+            .mask(
           Text("Let's get started!")
+          .font(.system(size: 22))
+          .fontWeight(.medium)
+          )
+     
+            //.border(Color.red)
+            Spacer()
+          }.frame(width: appState.screenWidth, height: appState.TitleRowHeight - 15, alignment: .center)
+          
+          }.frame(width: appState.screenWidth, height: appState.TitleRowHeight - 15)
+          
+
           Group{
             HStack{
               TextField("Enter your name", text: $userData.addPlayerOneName)
@@ -47,7 +82,7 @@ struct OnboardingStage3: View {
             }
 
             HStack{
-              TextField("Enter your Emoji 😉", text: $userData.addPlayerOneEmoji)
+              TextField("Enter your emoji 😉", text: $userData.addPlayerOneEmoji)
                 .textFieldStyle(NeuTextStyle(w: appState.NeuTextWidth, h: appState.NeuTextHeight))
                 .padding(.trailing, 35)
                 .padding(.bottom, 8)
@@ -117,24 +152,24 @@ struct OnboardingStage3: View {
               self.userData.userEmoji = self.user3.userEmoji
               self.userData.userName = self.user3.userName
               
-              print("self.userData.emojiPlusName \(self.userData.emojiPlusName)")
-              print("self.userData.oldscore \(self.userData.oldscore)")
-              print("self.userData.names \(self.userData.names)")
-              print("self.userData.emojis \(self.userData.emojis)")
-              print("self.userData.editMode \(self.userData.editMode)")
-              print("self.userData.showEmoji \(self.userData.showEmoji)")
-              print("self.userData.playerID \(self.userData.playerID)")
-              print("self.userData.maxPlayerID \(self.userData.maxPlayerID)")
-              print("self.userData.selectedName \(self.userData.selectedName)")
-              print("self.userData.addPlayerOneName \(self.userData.addPlayerOneName)")
-              print("self.userData.addPlayerOneEmoji \(self.userData.addPlayerOneEmoji)")
-              print("self.userData.addPlayerTwoName \(self.userData.addPlayerTwoName)")
-              print("self.userData.addPlayerTwoEmoji \(self.userData.addPlayerTwoEmoji)")
-              print("self.userData.betWinnerName \(self.userData.betWinnerName)")
-              print("self.userData.deleteMode \(self.userData.deleteMode)")
-              print("self.userData.onboardingStage \(self.userData.onboardingStage)")
-              print("self.userData.userEmoji \(String(describing: self.userData.userEmoji))")
-              print("self.userData.userName \(String(describing: self.userData.userName))")
+//              print("self.userData.emojiPlusName \(self.userData.emojiPlusName)")
+//              print("self.userData.oldscore \(self.userData.oldscore)")
+//              print("self.userData.names \(self.userData.names)")
+//              print("self.userData.emojis \(self.userData.emojis)")
+//              print("self.userData.editMode \(self.userData.editMode)")
+//              print("self.userData.showEmoji \(self.userData.showEmoji)")
+//              print("self.userData.playerID \(self.userData.playerID)")
+//              print("self.userData.maxPlayerID \(self.userData.maxPlayerID)")
+//              print("self.userData.selectedName \(self.userData.selectedName)")
+//              print("self.userData.addPlayerOneName \(self.userData.addPlayerOneName)")
+//              print("self.userData.addPlayerOneEmoji \(self.userData.addPlayerOneEmoji)")
+//              print("self.userData.addPlayerTwoName \(self.userData.addPlayerTwoName)")
+//              print("self.userData.addPlayerTwoEmoji \(self.userData.addPlayerTwoEmoji)")
+//              print("self.userData.betWinnerName \(self.userData.betWinnerName)")
+//              print("self.userData.deleteMode \(self.userData.deleteMode)")
+//              print("self.userData.onboardingStage \(self.userData.onboardingStage)")
+//              print("self.userData.userEmoji \(String(describing: self.userData.userEmoji))")
+//              print("self.userData.userName \(String(describing: self.userData.userName))")
               
             }) {
               Text("Confirm")
@@ -166,15 +201,67 @@ struct OnboardingStage3: View {
              
             }
           }
+          HStack {
+            Spacer()
           Button(action: {
+            
+            //records save
+             self.userData.playerID = "0"
+            
+             self.records3.userId = Auth.auth().currentUser?.uid
+             print("default user userID \(self.records3.userId ?? "WAWA no id")")
+
+             self.apiLoader.saveData(record3: self.records3)
+             
+             //user save
+             self.user3.id = self.userData.userUid ?? "No userUid"
+             self.user3.userId = Auth.auth().currentUser?.uid ?? "0"
+             self.user3.userEmoji = self.records3.playerOneEmoji
+             self.user3.userName = self.records3.playerOneName
+             self.user3.userCreateTime = Date()
+               
+             self.userLoader.saveData(user3: self.user3)
+             
+             
+             //UserData initalization
+             self.userData.emojiPlusName = ["\(self.records3.playerOneEmoji) \( self.records3.playerOneName)","\(self.records3.playerTwoEmoji) \( self.records3.playerTwoName)"]
+             self.userData.oldscore = ["0", "0"]
+             self.userData.names = [self.records3.playerOneName, self.records3.playerTwoName]
+             self.userData.emojis = [self.records3.playerOneEmoji, self.records3.playerTwoEmoji]
+             self.userData.showEmoji = true
+             self.userData.userEmoji = self.user3.userEmoji
+             self.userData.userName = self.user3.userName
+            
             self.viewRouter.currentPage = "tabBarView"
           })
           {
-            Text("Use default player names")
+            Text("Skip")
+              .font(.system(size:18))
           }
-          Spacer()
-          Spacer()
-          Spacer()
+          }.frame(width: 270, height: 60)
+          
+          //Keyboard instruction row
+          VStack {
+            Text("* To save players info, please put only emojis in the emoji textfields.")
+              .font(.system(size:13))
+              .fontWeight(.light)
+              .foregroundColor(Color.offblack01)
+              .padding(.bottom, 12)
+          }.frame(width: 300)
+            VStack {
+            Text("Don't see the emoji keyboard?")
+              .font(.system(size:15))
+              .fontWeight(.light)
+              .foregroundColor(Color.offblack01)
+              .padding(.bottom, 8)
+            Text(" 1. Go to Settings > General and tap Keyboard. \n 2. Tap Keyboards, then tap Add New Keyboard. \n 3. Tap Emoji.")
+              .font(.system(size:12))
+              .fontWeight(.light)
+              .foregroundColor(Color.offblack01)
+          }.frame(width: 300)
+          
+         
+         
  
         }
       }.onTapGesture {

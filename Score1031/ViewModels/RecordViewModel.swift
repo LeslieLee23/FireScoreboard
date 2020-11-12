@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RecordViewModel: View {
 
-  var records3 = Recordline(playerID: "0", playerOneEmoji: "🍑",playerOneName: "Player One", playerOneScore: 0, playerTwoEmoji: "👨🏻", playerTwoName: "Player Two", playerTwoScore: 0, recordName: "Player one and two", recordScore: "NA", recordReason: "Default players created", recordEntryTime: Date(), recordEntryTimeString: "", recordNameStr: "recordNameStr", recordNameEmo: "👩🏻")
+  var records3 = Recordline(playerID: "0", playerOneEmoji: "👩🏻", playerOneName: "Player One", playerOneScore: 0, playerTwoEmoji: "👨🏻", playerTwoName: "Player Two", playerTwoScore: 0, recordName: "Player one and two", recordScore: "👩🏻", recordReason: "Default players created!", recordEntryTime: Date(), recordEntryTimeString: getDateString(Date: Date()), recordNameStr: "Welcome!", recordNameEmo: "👨🏻")
   
   var body: some View  {
       
@@ -76,8 +76,7 @@ struct RecordViewModel: View {
       }
         .frame(width:335, height: 35, alignment: .leading)
       }
-//      .frame(width:355, height: 55, alignment: .leading)
-//      .border(Color.blue)
+
     }
 }
 
