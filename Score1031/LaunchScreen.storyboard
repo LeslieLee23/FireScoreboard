@@ -3,7 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,34 +16,56 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome!" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="GJd-Yh-RWb">
-                                <rect key="frame" x="0.0" y="278" width="414" height="43"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Copyright © 2020 HULUCave. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="obG-Y5-kRd">
-                                <rect key="frame" x="0.0" y="790" width="414" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="BV7-7X-hmz">
+                                <rect key="frame" x="87" y="328.5" width="240" height="239"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="240" id="AhY-dt-0GS"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="239" id="C9w-L5-knL"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="240" id="Nb8-9t-bIj"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="240" id="O8R-pA-GDU"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="240" id="UW3-GU-2Vv"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="240" id="Vyd-RB-edR"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="239" id="aQd-Er-KJU"/>
+                                    <constraint firstAttribute="width" constant="240" id="n1H-KW-ECK"/>
+                                    <constraint firstAttribute="height" constant="239" id="qw1-Je-wTR"/>
+                                    <constraint firstAttribute="width" secondItem="BV7-7X-hmz" secondAttribute="height" multiplier="240:239" id="rIJ-TO-lf2"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="239" id="u0G-2h-hfW"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EmojiScoreBoard" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="GJd-Yh-RWb">
+                                <rect key="frame" x="0.0" y="279.5" width="414" height="38.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="414" id="BKa-TB-Xw1"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="414" id="LNo-ry-iGZ"/>
+                                    <constraint firstAttribute="height" constant="38.5" id="OWo-4m-OeC"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="50" id="WX6-UG-bXd"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="414" id="XKa-VW-3vn"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="414" id="pQV-tu-2kc"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="50" id="vFt-Sl-2EH"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="38.5" id="zXz-Ug-0dL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
+                                <color key="textColor" red="0.18325666243654826" green="0.18325666243654826" blue="0.18325666243654826" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Bcu-3y-fUS"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="centerX" secondItem="obG-Y5-kRd" secondAttribute="centerX" id="5cz-MP-9tL"/>
-                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="centerX" secondItem="GJd-Yh-RWb" secondAttribute="centerX" id="Q3B-4B-g5h"/>
-                            <constraint firstItem="obG-Y5-kRd" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" symbolic="YES" id="SfN-ll-jLj"/>
-                            <constraint firstAttribute="bottom" secondItem="obG-Y5-kRd" secondAttribute="bottom" constant="20" id="Y44-ml-fuU"/>
-                            <constraint firstItem="GJd-Yh-RWb" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="bottom" multiplier="1/3" constant="1" id="moa-c2-u7t"/>
-                            <constraint firstItem="GJd-Yh-RWb" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" symbolic="YES" id="x7j-FC-K8j"/>
+                            <constraint firstItem="GJd-Yh-RWb" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="K5g-4L-xyw"/>
+                            <constraint firstItem="BV7-7X-hmz" firstAttribute="firstBaseline" secondItem="GJd-Yh-RWb" secondAttribute="baseline" constant="16.5" symbolType="layoutAnchor" id="a1t-nB-LAc"/>
+                            <constraint firstItem="BV7-7X-hmz" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="bkG-eg-ecw"/>
+                            <constraint firstItem="GJd-Yh-RWb" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="nBT-ra-3xa"/>
+                            <constraint firstItem="BV7-7X-hmz" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="syv-6j-0bV"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52.173913043478265" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="logo" width="383" height="350"/>
+    </resources>
 </document>

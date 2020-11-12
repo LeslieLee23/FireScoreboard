@@ -48,7 +48,7 @@ struct OnboardingStage3: View {
                 .padding(.leading)
                 
                 Spacer()
-              }
+              }.frame(width: appState.screenWidth, height: appState.TitleRowHeight - 15)
               Spacer()
             }.frame(width: appState.screenWidth, height: appState.TitleRowHeight - 15)
             
@@ -56,7 +56,7 @@ struct OnboardingStage3: View {
             Spacer()
             
           RadialGradient(gradient: Gradient(colors: [.mixedBlue, .mixedPurple]), center: .center, startRadius: 10, endRadius: 200)
-            .frame(width: 200, alignment: .trailing)
+            .frame(width: 200, alignment: .center)
             .mask(
           Text("Let's get started!")
           .font(.system(size: 22))
@@ -260,7 +260,7 @@ struct OnboardingStage3: View {
               .foregroundColor(Color.offblack01)
           }.frame(width: 300)
           
-         
+         Spacer()
          
  
         }
@@ -273,5 +273,11 @@ struct OnboardingStage3: View {
 struct OnboardingStage3_Previews: PreviewProvider {
     static var previews: some View {
         OnboardingStage3()
+          .environmentObject(ViewRouter())
+          
+          .environmentObject(UserData())
+          .environmentObject(AddScoreFunc())
+          .environmentObject(AddBetFunc())
+          .environmentObject(AppState())
     }
 }
