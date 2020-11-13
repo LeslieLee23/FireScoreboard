@@ -65,19 +65,6 @@ extension UIColor {
   static let offblack03 = UIColor(red: 55, green: 59, blue: 66)
 }
 
-struct FitToWidth: ViewModifier {
-  var fraction: CGFloat = 1.0
-  func body(content: Content) -> some View {
-    GeometryReader { g in
-      content
-        .font(.system(size: 1000))
-        .minimumScaleFactor(0.005)
-        .lineLimit(1)
-        .frame(width: g.size.width*self.fraction)
-    }
-  }
-}
-
 
 struct CircleStyleEmoji: ButtonStyle {
   var player: Int = 5
@@ -94,9 +81,8 @@ struct CircleStyleEmoji: ButtonStyle {
       .overlay(
         configuration.label
           .transition(.scale(scale: 5))
-          .opacity(configuration.isPressed ? 0.3 : 1)
+          .opacity(configuration.isPressed ? 0.2 : 1)
       )
-      //.modifier(FitToWidth(fraction: 3))
       .frame(width: 160, height: 125, alignment: .center)
   }
 }
@@ -112,7 +98,7 @@ struct SquareStyle: ButtonStyle {
               .stroke(player == selectedPlayer ? Color.purple : Color.offGray00, lineWidth: 8)
               .frame(width: 150, height: 60, alignment: .center)
               .cornerRadius(13)
-              .opacity(configuration.isPressed ? 0.3 : 1)
+              .opacity(configuration.isPressed ? 0.2 : 1)
               .aspectRatio(contentMode: .fit)
       )
       .overlay(
@@ -121,7 +107,6 @@ struct SquareStyle: ButtonStyle {
           .opacity(configuration.isPressed ? 0.3 : 1)
           .foregroundColor(.offblack04)
       )
-      .modifier(FitToWidth(fraction: 3))
       .frame(width: 135, height: 60, alignment: .center)
   }
 }

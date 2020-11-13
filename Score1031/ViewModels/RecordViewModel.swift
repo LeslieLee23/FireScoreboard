@@ -13,9 +13,9 @@ struct RecordViewModel: View {
   
   var body: some View  {
       
-      VStack(){
+      VStack(alignment: .center){
         
-        HStack(){
+        HStack(spacing: 0){
           VStack(alignment: .leading) {
           Spacer()
           Text(records3.recordNameEmo ?? "🐒")
@@ -40,10 +40,10 @@ struct RecordViewModel: View {
           .frame(width:130, height: 20, alignment: .trailing)
    //       .border(Color.purple)
         }
-        .frame(width:335, height: 20, alignment: .leading)
+        .frame(width:340, height: 20, alignment: .leading)
    //     .border(Color.blue)
         
-        HStack(){
+        HStack(spacing: 0){
         VStack(alignment: .leading){
           Spacer()
           Spacer()
@@ -53,7 +53,7 @@ struct RecordViewModel: View {
             .fontWeight(.medium)
             .foregroundColor( records3.recordScore.first == "-" ? .red : .green)
         }
-        .frame(width:45,height: 35, alignment: .leading)
+        .frame(width:45,height: 40, alignment: .leading)
    //     .border(Color.purple)
         
         
@@ -65,17 +65,19 @@ struct RecordViewModel: View {
             .foregroundColor(Color.offblack04)
 
         }
-        .frame(width:250, height: 35, alignment: .leading)
+        .frame(width:250, height: 40, alignment: .leading)
     //      .border(Color.purple)
         
         VStack(alignment: .leading){
           Spacer()
           }
-          .frame(width:40, height: 35, alignment: .leading)
+          .frame(width:40, height: 40, alignment: .leading)
      //     .border(Color.blue)
       }
-        .frame(width:335, height: 35, alignment: .leading)
+        .frame(width:340, height: 40, alignment: .leading)
       }
+      .frame(width:345, height: 63, alignment: .leading)
+
 
     }
 }

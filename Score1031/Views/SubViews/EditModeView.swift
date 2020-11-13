@@ -49,7 +49,6 @@ struct EditModeView: View {
             .fontWeight(.medium)
             .foregroundColor(Color.offblack01)
             .font(.system(size: 25))
-            .background(Color.red)
         }
         .frame(width: 35, height: 35)
         .foregroundColor(.offWhite02)
@@ -67,7 +66,6 @@ struct EditModeView: View {
             .fontWeight(.medium)
             .foregroundColor(Color.offblack01)
             .font(.system(size: 25))
-            .background(Color.red)
         }
         .frame(width: 35, height: 35)
         .foregroundColor(.offWhite02)
