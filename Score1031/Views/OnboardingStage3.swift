@@ -210,7 +210,7 @@ struct OnboardingStage3: View {
             
              self.records3.userId = Auth.auth().currentUser?.uid
              print("default user userID \(self.records3.userId ?? "WAWA no id")")
-
+            
              self.apiLoader.saveData(record3: self.records3)
              
              //user save

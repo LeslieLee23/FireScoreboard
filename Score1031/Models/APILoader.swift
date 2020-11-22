@@ -136,7 +136,19 @@ class APILoader: BaseScoreRepository, ScoreRepository, ObservableObject {
   }
   
   func findMaxPlayerID() -> Int {
-    let maxPlayerIDInt = self.records.map{Int($0.playerID)!}.max()
+    
+    let recordSet = Set<String>(self.records.map{$0.playerID})
+    print("findMaxPlayerID recordSet \(recordSet)")
+    var numberIdArray = [Int]()
+
+    for i in recordSet {
+      if Int(i) != nil {
+        numberIdArray.append(Int(i) ?? 0)
+      }
+    }
+    print("findMaxPlayerID numberIdArray \(numberIdArray)")
+    
+    let maxPlayerIDInt = numberIdArray.max()
     print("maxPlayerIDInt\(String(describing: maxPlayerIDInt))")
     return maxPlayerIDInt ?? 0
   }
@@ -159,7 +171,10 @@ class APILoader: BaseScoreRepository, ScoreRepository, ObservableObject {
   }
   
   func remove(_ playerID: String) -> Void {
-    db.collection("records").whereField("playerID", isEqualTo: playerID).getDocuments { (querySnapshot, error) in
+    db.collection("records")
+      .whereField("playerID", isEqualTo: playerID)
+      .whereField("userId", isEqualTo: Auth.auth().currentUser?.uid ?? "0")
+      .getDocuments { (querySnapshot, error) in
       if error != nil {
         print(error ?? "Remove error")
       } else {
