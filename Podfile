@@ -7,25 +7,21 @@ target 'Score1031' do
 
   # Pods for Score1031
   
-  pod 'Firebase'
-  # pod 'FirebaseUI'
-  # pod 'Firebase/Analytics'
-  pod 'Firebase/Firestore'
-  pod 'FirebaseFirestoreSwift'
-  pod 'Firebase/Core'
-  pod 'Firebase/Database'
-  pod 'Firebase/Auth'
-
-  # pod 'FirebaseUI/Auth'
-  # pod 'FirebaseUI/OAuth' 
-
-
+  pod 'Firebase', '7.2-M1'
+  pod 'Firebase/Firestore', '7.2-M1'
+  pod 'FirebaseFirestoreSwift', '7.2-M1'
+  pod 'Firebase/Core', '7.2-M1'
+  pod 'Firebase/Database', '7.2-M1'
+  pod 'Firebase/Auth', '7.2-M1'
 end
 
 post_install do |installer|
 installer.pods_project.targets.each do |target|
 target.build_configurations.each do |config|
-config.build_settings.delete 'IPHONEOS_DEPLOYMENT_TARGET'
+
+config.build_settings["EXCLUDED_ARCHS[sdk=iphonesimulator*]"] = "arm64"
 end
 end
 end
+
+
